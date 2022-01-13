@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Thien\\Documents\\Project\\BT2\\BT2\\BT2.csproj": {}
+    "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT2\\BT2\\BT2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Thien\\Documents\\Project\\BT2\\BT2\\BT2.csproj": {
+    "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT2\\BT2\\BT2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thien\\Documents\\Project\\BT2\\BT2\\BT2.csproj",
+        "projectUniqueName": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT2\\BT2\\BT2.csproj",
         "projectName": "BT2",
-        "projectPath": "C:\\Users\\Thien\\Documents\\Project\\BT2\\BT2\\BT2.csproj",
+        "projectPath": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT2\\BT2\\BT2.csproj",
         "packagesPath": "C:\\Users\\Thien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thien\\Documents\\Project\\BT2\\BT2\\obj\\",
+        "outputPath": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT2\\BT2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thien\\AppData\\Roaming\\NuGet\\NuGet.Config",

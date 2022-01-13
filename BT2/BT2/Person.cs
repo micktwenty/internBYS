@@ -12,11 +12,6 @@ namespace BT2
         protected string gioitinh { get; set; }
         protected int tuoi { get; set; }
         protected string diachi { get; set; }
-
-      
-      
-
-
         protected virtual void NhapTT()
         {
             Console.Write("Ho va ten: ");
