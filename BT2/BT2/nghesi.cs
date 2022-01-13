@@ -59,7 +59,7 @@ namespace BT2
             return listNS;
         }
 
-        public void NhapTT()
+        public override void NhapTT()
         {
 
 

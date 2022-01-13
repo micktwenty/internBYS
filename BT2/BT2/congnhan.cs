@@ -60,7 +60,7 @@ namespace BT2
             return listCN;
         }
 
-        public void NhapTT()
+        public override void NhapTT()
         {
 
 

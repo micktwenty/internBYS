@@ -59,7 +59,7 @@ namespace BT2
             return listSVien;
         }
 
-        public void NhapTT()
+        public override void NhapTT()
         {
 
 

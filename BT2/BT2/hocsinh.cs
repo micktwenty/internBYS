@@ -65,7 +65,7 @@ namespace BT2
             return listHS;
         }
         
-        public void NhapTT()
+        public override void NhapTT()
         {
   
 
