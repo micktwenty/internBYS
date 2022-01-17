@@ -9,12 +9,12 @@ namespace BT2
     public class Person
     {
         protected string ten { get; set; }
-        protected string gioitinh { get; set; }
-        protected int tuoi { get; set; }
-        protected string diachi { get; set; }
+        public string gioitinh { get; set; }
+        public int tuoi { get; set; }
+        public string diachi { get; set; }
         
 
-        public virtual void NhapTT()
+        public virtual Person NhapTT()
         {
             Console.Write("Ho va ten: ");
             this.ten = Convert.ToString(Console.ReadLine());
@@ -24,6 +24,7 @@ namespace BT2
             this.tuoi = Int32.Parse(Console.ReadLine());
             Console.Write("Dia chi: ");
             this.diachi = Convert.ToString(Console.ReadLine());
+            return this;
         }
 
 
