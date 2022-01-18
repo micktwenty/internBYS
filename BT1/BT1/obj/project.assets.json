@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Thien\\Documents\\Project\\BT01\\BT1\\BT1\\BT1.csproj",
+      "projectUniqueName": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT1\\BT1\\BT1.csproj",
       "projectName": "BT1",
-      "projectPath": "C:\\Users\\Thien\\Documents\\Project\\BT01\\BT1\\BT1\\BT1.csproj",
+      "projectPath": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT1\\BT1\\BT1.csproj",
       "packagesPath": "C:\\Users\\Thien\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Thien\\Documents\\Project\\BT01\\BT1\\BT1\\obj\\",
+      "outputPath": "C:\\Users\\Thien\\Desktop\\Github\\internBYS\\BT1\\BT1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
