@@ -1,0 +1,31 @@
+﻿@model Stutdent_Complain_Management.Models.User
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<section class="content">
+    <section class="login-main">
+        <div class="box">
+            <h2 class="box__title">Đăng nhập</h2>
+            <div class="box__body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    <div style="color:red" id="Message">@ViewBag.Message</div>
+                    @Html.LabelFor(m => m.Username)
+                    @Html.EditorFor(m => m.Username, new { placeholder = "Username" })
+                    @Html.ValidationMessageFor(m => m.Username)
+                    <br>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.EditorFor(m => m.Password, new { type = "password", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                    <input type="submit" id="login" value="Đăng nhập">
+                    <a href="@Url.Action("Register", "Home")"><input type="button" value="Đăng ký" /></a>
+                }
+            </div>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AccountModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Feartures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFroupFeatures">
+    <Key>
+      <PropertyRef Name="UserGroupId" />
+      <PropertyRef Name="FeartureId" />
+    </Key>
+    <Property Name="UserGroupId" Type="int" Nullable="false" />
+    <Property Name="FeartureId" Type="int" Nullable="false" />
+    <Property Name="IsDataPermission" Type="bit" Nullable="false" />
+    <Property Name="IsCreatePermission" Type="bit" Nullable="false" />
+    <Property Name="IsManagerPermission" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserGroups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__UserFroup__Feart__2C3393D0">
+    <End Role="Feartures" Type="Self.Feartures" Multiplicity="1" />
+    <End Role="UserFroupFeatures" Type="Self.UserFroupFeatures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feartures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFroupFeatures">
+        <PropertyRef Name="FeartureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFroup__UserG__2B3F6F97">
+    <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="1" />
+    <End Role="UserFroupFeatures" Type="Self.UserFroupFeatures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFroupFeatures">
+        <PropertyRef Name="UserGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__GroupId__2A4B4B5E">
+    <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="spEditChecking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="AccountModelStoreContainer">
+    <EntitySet Name="Feartures" EntityType="Self.Feartures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserFroupFeatures" EntityType="Self.UserFroupFeatures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__UserFroup__Feart__2C3393D0" Association="Self.FK__UserFroup__Feart__2C3393D0">
+      <End Role="Feartures" EntitySet="Feartures" />
+      <End Role="UserFroupFeatures" EntitySet="UserFroupFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFroup__UserG__2B3F6F97" Association="Self.FK__UserFroup__UserG__2B3F6F97">
+      <End Role="UserGroups" EntitySet="UserGroups" />
+      <End Role="UserFroupFeatures" EntitySet="UserFroupFeatures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__GroupId__2A4B4B5E" Association="Self.FK__Users__GroupId__2A4B4B5E">
+      <End Role="UserGroups" EntitySet="UserGroups" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
