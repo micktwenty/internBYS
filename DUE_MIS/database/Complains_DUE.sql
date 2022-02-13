@@ -97,4 +97,15 @@ Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status]
 Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
 Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
 Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-
+go
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Lê Dân', N'Trưởng Khoa Thống kê-Tin học','danle@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Hoàng Thị Thanh Hà', N'Phó Khoa Thống kê-Tin học','ha.htt@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Cao Thị Nhâm', N'Giảng viên Khoa Thống kê- Tin học','nhamct@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (26, N'Ngô Thị Khuê Thư', N'Phó Khoa Marketing','khuethu@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (22, N'Võ Quang Trí', N'Trưởng Khoa Thương mại điện tử','voquangtri@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (22, N'Văn Ngọc Đàn', N'Giảng viên Khoa Thương mại điện tử','danvn@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Phan Thị Bích Vân', N'Giảng viên Khoa Thống kê tin học','van.ptb@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Nguyễn Bá Thế', N'Giảng viên Khoa Thống kê tin học','thenb@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Nguyễn Thành Thủy', N'Giảng viên Khoa Thống kê tin học',' thuynt@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Trần Hoàng Hiếu', N'Giảng viên, Nghiên cứu sinh tại Nga','hieuth@due.edu.vn	')
+Insert into Employees (idDepartment,[name],position,username) values (25, N'Trần Thị Thu Thảo', N'Giảng viên Khoa Thống kê tin học','thaotran@due.edu.vn')
