@@ -6,7 +6,7 @@ use Complains_DUE
 go
 create table complains
 (
-	IdStudent varchar(20) null,
+	IdStudent varchar(225) null,
 	IdComplains int IDENTITY(1,1) not null,
 	IdDepartment int null,
 	Title nvarchar(225) null,
@@ -26,10 +26,11 @@ create table Departments
 	phone char(11) null,
 	PRIMARY KEY(Id)
 )
-create table [Admin]
+create table Accounts
 (
 	[username] varchar(225) not null,
 	[password] varchar(225) not null,
+	[role] int not null,
 	PRIMARY KEY(username)
 )
 create table Employees
@@ -44,7 +45,7 @@ create table Employees
 )
 create table Students
 (
-	studentcode varchar(20) not null,
+	studentcode varchar(225) not null,
 	email varchar(256) null,
 	phone varchar(11) null,
 	[name] nvarchar(max) null,
@@ -62,7 +63,38 @@ go
 Alter table Employees
 Add Foreign key (IdDepartment) References Departments(Id);
 go
+Alter table Students
+Add Foreign Key (studentcode) References Accounts(username) 
+go
+Alter table Employees
+Add Foreign Key (username) References Accounts(username) 
+go
+Insert into Accounts Values ('181121521137','123',2)
+Insert into Accounts Values ('171121521050','123',2)
+Insert into Accounts Values ('191154833658','123',2)
+Insert into Accounts Values ('181121521136','123',2)
+Insert into Accounts Values ('181121521138','123',2)
+Insert into Accounts Values ('191123659113','123',2)
+Insert into Accounts Values ('201154896335','123',2)
+Insert into Accounts Values ('201159871175','123',2)
+Insert into Accounts Values ('171122225114','123',2)
+Insert into Accounts Values ('181121018316','123',2)
+Insert into Accounts Values ('171198422678','123',2)
+Insert into Accounts Values ('181121521141','123',2)
+Insert into Accounts Values ('danle@due.edu.vn','123',3)
+Insert into Accounts Values ('ha.htt@due.edu.vn','123',3)
+Insert into Accounts Values ('nhamct@due.edu.vn','123',3)
+Insert into Accounts Values ('khuethu@due.edu.vn','123',3)
+Insert into Accounts Values ('voquangtri@due.edu.vn','123',3)
+Insert into Accounts Values ('danvn@due.edu.vn','123',3)
+Insert into Accounts Values ('van.ptb@due.edu.vn','123',3)
+Insert into Accounts Values ('thenb@due.edu.vn','123',3)
+Insert into Accounts Values ('thuynt@due.edu.vn','123',3)
+Insert into Accounts Values ('hieuth@due.edu.vn','123',3)
+Insert into Accounts Values ('thaotran@due.edu.vn','123',3)
+Insert into Accounts Values ('Admin','admin',6)
 
+go
 Insert into Departments (name,totalstudent,totalemployee,phone) values (N'Kế toán',1862,25,'02363836987')
 Insert into Departments (name,totalstudent,totalemployee,phone) values (N'Quản trị kinh doanh',2103,27,'0914953499')
 Insert into Departments (name,totalstudent,totalemployee,phone) values (N'Marketing',1796,23,'02363525358')
@@ -86,26 +118,26 @@ Insert into Students values('181121018316','181121018316@due.udn.vn','0786368412
 Insert into Students values('171198422678','171198422678@due.udn.vn','0872236436',N'Nguyễn Thị Thu Thảo', '43K21.1',20)
 Insert into Students values('181121521141','181121521141@due.udn.vn','0947852572',N'Nguyễn Thị Thanh Tuyền', '44K21.1',26)
 go
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121018316',19,N'Phàn nàn về cơ sở vật chất',N'Chỗ để xe chưa có máy che, gây hại cho tài sản sinh viên, chưa tích hợp công nghệ hóa, vẫn sử dụng phương pháp truyền thống, gây bất tiện cho sinh viên và ùn tắc giờ cao điểm',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Thư viện chưa có không gian riêng tư, chưa tạo ra không gian thoải mái khi sinh viên học tập',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Một số giảng viên chưa có sự nhiệt huyết',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Căn tin ',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Nhân viên phòng nước',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',25,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121018316',2,N'Phàn nàn về cơ sở vật chất',N'Chỗ để xe chưa có máy che, gây hại cho tài sản sinh viên, chưa tích hợp công nghệ hóa, vẫn sử dụng phương pháp truyền thống, gây bất tiện cho sinh viên và ùn tắc giờ cao điểm',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',3,N'Phàn nàn về cơ sở vật chất',N'Thư viện chưa có không gian riêng tư, chưa tạo ra không gian thoải mái khi sinh viên học tập',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521138',4,N'Phàn nàn về cơ sở vật chất',N'Một số giảng viên chưa có sự nhiệt huyết',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('171121521050',5,N'Phàn nàn về cơ sở vật chất',N'Căn tin ',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',6,N'Phàn nàn về cơ sở vật chất',N'Nhân viên phòng nước',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('201154896335',7,N'Phàn nàn về cơ sở vật chất',N'',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('201159871175',8,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',9,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('191154833658',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521141',2,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
 go
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Lê Dân', N'Trưởng Khoa Thống kê-Tin học','danle@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Hoàng Thị Thanh Hà', N'Phó Khoa Thống kê-Tin học','ha.htt@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Cao Thị Nhâm', N'Giảng viên Khoa Thống kê- Tin học','nhamct@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (26, N'Ngô Thị Khuê Thư', N'Phó Khoa Marketing','khuethu@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (22, N'Võ Quang Trí', N'Trưởng Khoa Thương mại điện tử','voquangtri@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (22, N'Văn Ngọc Đàn', N'Giảng viên Khoa Thương mại điện tử','danvn@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Phan Thị Bích Vân', N'Giảng viên Khoa Thống kê tin học','van.ptb@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Nguyễn Bá Thế', N'Giảng viên Khoa Thống kê tin học','thenb@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Nguyễn Thành Thủy', N'Giảng viên Khoa Thống kê tin học',' thuynt@due.edu.vn')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Trần Hoàng Hiếu', N'Giảng viên, Nghiên cứu sinh tại Nga','hieuth@due.edu.vn	')
-Insert into Employees (idDepartment,[name],position,username) values (25, N'Trần Thị Thu Thảo', N'Giảng viên Khoa Thống kê tin học','thaotran@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Lê Dân', N'Trưởng Khoa Thống kê-Tin học','danle@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Hoàng Thị Thanh Hà', N'Phó Khoa Thống kê-Tin học','ha.htt@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Cao Thị Nhâm', N'Giảng viên Khoa Thống kê- Tin học','nhamct@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (9, N'Ngô Thị Khuê Thư', N'Phó Khoa Marketing','khuethu@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (9, N'Võ Quang Trí', N'Trưởng Khoa Thương mại điện tử','voquangtri@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (9, N'Văn Ngọc Đàn', N'Giảng viên Khoa Thương mại điện tử','danvn@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Phan Thị Bích Vân', N'Giảng viên Khoa Thống kê tin học','van.ptb@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguyễn Bá Thế', N'Giảng viên Khoa Thống kê tin học','thenb@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguyễn Thành Thủy', N'Giảng viên Khoa Thống kê tin học','thuynt@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (1, N'Trần Hoàng Hiếu', N'Giảng viên, Nghiên cứu sinh tại Nga','hieuth@due.edu.vn')
+Insert into Employees (idDepartment,[name],position,username) values (8, N'Trần Thị Thu Thảo', N'Giảng viên Khoa Thống kê tin học','thaotran@due.edu.vn')
