@@ -22,6 +22,8 @@ namespace Stutdent_Complain_Management.Models
         public string username { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Account Account1 { get; set; }
         public virtual Department Department { get; set; }
+        public virtual Department Department1 { get; set; }
     }
 }

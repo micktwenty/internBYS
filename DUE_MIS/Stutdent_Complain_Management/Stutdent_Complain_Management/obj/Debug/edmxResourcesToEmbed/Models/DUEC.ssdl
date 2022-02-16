@@ -76,7 +76,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__complains__IdDep__3E52440B">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="complains" Type="Self.complains" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="complains">
+        <PropertyRef Name="IdDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__complains__IdStu__2D27B809">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+    <End Role="complains" Type="Self.complains" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="studentcode" />
+      </Principal>
+      <Dependent Role="complains">
+        <PropertyRef Name="IdStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__complains__IdStu__3F466844">
     <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
     <End Role="complains" Type="Self.complains" Multiplicity="*" />
     <ReferentialConstraint>
@@ -100,6 +124,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Employees__idDep__403A8C7D">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="idDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Employees__usern__31EC6D26">
     <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -112,7 +148,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Employees__usern__4222D4EF">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Students__studen__30F848ED">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="studentcode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Students__studen__412EB0B6">
     <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
     <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -166,7 +226,15 @@
       <End Role="Departments" EntitySet="Departments" />
       <End Role="complains" EntitySet="complains" />
     </AssociationSet>
+    <AssociationSet Name="FK__complains__IdDep__3E52440B" Association="Self.FK__complains__IdDep__3E52440B">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="complains" EntitySet="complains" />
+    </AssociationSet>
     <AssociationSet Name="FK__complains__IdStu__2D27B809" Association="Self.FK__complains__IdStu__2D27B809">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="complains" EntitySet="complains" />
+    </AssociationSet>
+    <AssociationSet Name="FK__complains__IdStu__3F466844" Association="Self.FK__complains__IdStu__3F466844">
       <End Role="Students" EntitySet="Students" />
       <End Role="complains" EntitySet="complains" />
     </AssociationSet>
@@ -174,11 +242,23 @@
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
+    <AssociationSet Name="FK__Employees__idDep__403A8C7D" Association="Self.FK__Employees__idDep__403A8C7D">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
     <AssociationSet Name="FK__Employees__usern__31EC6D26" Association="Self.FK__Employees__usern__31EC6D26">
       <End Role="Accounts" EntitySet="Accounts" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
+    <AssociationSet Name="FK__Employees__usern__4222D4EF" Association="Self.FK__Employees__usern__4222D4EF">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
     <AssociationSet Name="FK__Students__studen__30F848ED" Association="Self.FK__Students__studen__30F848ED">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Students__studen__412EB0B6" Association="Self.FK__Students__studen__412EB0B6">
       <End Role="Accounts" EntitySet="Accounts" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
