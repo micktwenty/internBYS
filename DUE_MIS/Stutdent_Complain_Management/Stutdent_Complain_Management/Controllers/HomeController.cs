@@ -15,7 +15,7 @@ namespace Stutdent_Complain_Management.Controllers
 {
     public class HomeController : Controller
     {
-        AccountEntities db = new AccountEntities();
+        Complains_DUEEntities db = new Complains_DUEEntities();
         public ActionResult Index()
         {
             return View();
@@ -28,6 +28,19 @@ namespace Stutdent_Complain_Management.Controllers
             return View();
         }
 
+        public ActionResult admin()
+        {
+            int role = Convert.ToInt32(Session["Role"]);
+            if (role % 6 == 0)
+            {
+                return View("AdminView");
+            }
+            else
+            {
+                ViewBag.Message = "Bạn không có quyền truy cập trang quản trị!";
+                return View("Index");
+            }
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -42,7 +55,7 @@ namespace Stutdent_Complain_Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
+        public ActionResult Login(Account user)
         {
             if (!ModelState.IsValidField("Username"))
             {
@@ -51,15 +64,15 @@ namespace Stutdent_Complain_Management.Controllers
             else
             {
 
-                var login = db.Users.Where(p => p.Username.Equals(user.Username) && p.Password.Equals(user.Password)).FirstOrDefault();
+                var login = db.Accounts.Where(p => p.username.Equals(user.username) && p.password.Equals(user.password)).FirstOrDefault();
                 if (login != null)
                 {
-                    HttpCookie cookie = new HttpCookie("user", user.Username.ToString());
+                    HttpCookie cookie = new HttpCookie("user", user.username.ToString());
                     cookie.Expires.AddHours(8);
                     HttpContext.Response.SetCookie(cookie);
                     ViewBag.Message = "Welcome";
-                    Session["Username"] = login.Username;
-                    Session["Id"] = login.Id;
+                    Session["Username"] = login.username;
+                    Session["Role"] = login.role;
 
                     return RedirectToAction("About");
                 }

@@ -133,32 +133,44 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Account.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Account.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\complain.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DUEC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Account.tt</DependentUpon>
+      <DependentUpon>DUEC.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.Designer.cs">
+    <Compile Include="Models\DUEC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Account.edmx</DependentUpon>
+      <DependentUpon>DUEC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Fearture.cs">
-      <DependentUpon>Account.tt</DependentUpon>
+    <Compile Include="Models\DUEC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DUEC.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>Account.tt</DependentUpon>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserFroupFeature.cs">
-      <DependentUpon>Account.tt</DependentUpon>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserGroup.cs">
-      <DependentUpon>Account.tt</DependentUpon>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DUEC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -171,24 +183,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Account.Context.tt">
+    <Content Include="Models\DUEC.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Account.edmx</DependentUpon>
-      <LastGenOutput>Account.Context.cs</LastGenOutput>
+      <DependentUpon>DUEC.edmx</DependentUpon>
+      <LastGenOutput>DUEC.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Account.tt">
+    <Content Include="Models\DUEC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Account.edmx</DependentUpon>
-      <LastGenOutput>Account.cs</LastGenOutput>
+      <DependentUpon>DUEC.edmx</DependentUpon>
+      <LastGenOutput>DUEC.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Account.edmx">
+    <EntityDeploy Include="Models\DUEC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Account.Designer.cs</LastGenOutput>
+      <LastGenOutput>DUEC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Account.edmx.diagram">
-      <DependentUpon>Account.edmx</DependentUpon>
+    <Content Include="Models\DUEC.edmx.diagram">
+      <DependentUpon>DUEC.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -216,6 +228,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
+    <Content Include="Views\Shared\AdminView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

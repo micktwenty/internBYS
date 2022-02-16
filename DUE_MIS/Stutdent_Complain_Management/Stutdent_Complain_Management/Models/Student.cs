@@ -12,18 +12,23 @@ namespace Stutdent_Complain_Management.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Fearture
+    public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fearture()
+        public Student()
         {
-            this.UserFroupFeatures = new HashSet<UserFroupFeature>();
+            this.complains = new HashSet<complain>();
         }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string studentcode { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string name { get; set; }
+        public string @class { get; set; }
+        public Nullable<int> Department { get; set; }
     
+        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFroupFeature> UserFroupFeatures { get; set; }
+        public virtual ICollection<complain> complains { get; set; }
     }
 }

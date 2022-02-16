@@ -12,20 +12,16 @@ namespace Stutdent_Complain_Management.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Account()
-        {
-            this.Employees = new HashSet<Employee>();
-        }
-    
+        public int id { get; set; }
+        public Nullable<int> idDepartment { get; set; }
+        public string name { get; set; }
+        public string position { get; set; }
+        public string picture { get; set; }
         public string username { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Department Department { get; set; }
     }
 }

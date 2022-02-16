@@ -12,15 +12,12 @@ namespace Stutdent_Complain_Management.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserFroupFeature
+    public partial class sysdiagram
     {
-        public int UserGroupId { get; set; }
-        public int FeartureId { get; set; }
-        public bool IsDataPermission { get; set; }
-        public bool IsCreatePermission { get; set; }
-        public bool IsManagerPermission { get; set; }
-    
-        public virtual Fearture Fearture { get; set; }
-        public virtual UserGroup UserGroup { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

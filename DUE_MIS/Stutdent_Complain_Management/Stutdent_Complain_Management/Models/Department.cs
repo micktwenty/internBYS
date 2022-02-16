@@ -12,22 +12,24 @@ namespace Stutdent_Complain_Management.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserGroup
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserGroup()
+        public Department()
         {
-            this.UserFroupFeatures = new HashSet<UserFroupFeature>();
-            this.Users = new HashSet<User>();
+            this.complains = new HashSet<complain>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsActive { get; set; }
+        public string name { get; set; }
+        public Nullable<int> totalstudent { get; set; }
+        public Nullable<int> totalemployee { get; set; }
+        public string phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserFroupFeature> UserFroupFeatures { get; set; }
+        public virtual ICollection<complain> complains { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
