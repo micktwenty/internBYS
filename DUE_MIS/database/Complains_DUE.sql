@@ -15,6 +15,7 @@ create table complains
 	[date] datetime null,
 	Picture varchar(max) null,
 	[status] bit not null,
+	reply nvarchar(max) null,
 	PRIMARY KEY(IdComplains)
 )
 create table Departments
@@ -69,30 +70,30 @@ go
 Alter table Employees
 Add Foreign Key (username) References Accounts(username) 
 go
-Insert into Accounts Values ('181121521137','123',2)
-Insert into Accounts Values ('171121521050','123',2)
-Insert into Accounts Values ('191154833658','123',2)
-Insert into Accounts Values ('181121521136','123',2)
-Insert into Accounts Values ('181121521138','123',2)
-Insert into Accounts Values ('191123659113','123',2)
-Insert into Accounts Values ('201154896335','123',2)
-Insert into Accounts Values ('201159871175','123',2)
-Insert into Accounts Values ('171122225114','123',2)
-Insert into Accounts Values ('181121018316','123',2)
-Insert into Accounts Values ('171198422678','123',2)
-Insert into Accounts Values ('181121521141','123',2)
-Insert into Accounts Values ('danle@due.edu.vn','123',3)
-Insert into Accounts Values ('ha.htt@due.edu.vn','123',3)
-Insert into Accounts Values ('nhamct@due.edu.vn','123',3)
-Insert into Accounts Values ('khuethu@due.edu.vn','123',3)
-Insert into Accounts Values ('voquangtri@due.edu.vn','123',3)
-Insert into Accounts Values ('danvn@due.edu.vn','123',3)
-Insert into Accounts Values ('van.ptb@due.edu.vn','123',3)
-Insert into Accounts Values ('thenb@due.edu.vn','123',3)
-Insert into Accounts Values ('thuynt@due.edu.vn','123',3)
-Insert into Accounts Values ('hieuth@due.edu.vn','123',3)
-Insert into Accounts Values ('thaotran@due.edu.vn','123',3)
-Insert into Accounts Values ('Admin','admin',6)
+Insert into Accounts Values ('181121521137','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('171121521050','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('191154833658','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('181121521136','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('181121521138','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('191123659113','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('201154896335','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('201159871175','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('171122225114','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('181121018316','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('171198422678','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('181121521141','202cb962ac59075b964b07152d234b70',2)
+Insert into Accounts Values ('danle@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('ha.htt@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('nhamct@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('khuethu@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('voquangtri@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('danvn@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('van.ptb@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('thenb@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('thuynt@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('hieuth@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('thaotran@due.edu.vn','202cb962ac59075b964b07152d234b70',3)
+Insert into Accounts Values ('Admin','21232f297a57a5a743894a0e4a801fc3',6)
 
 go
 Insert into Departments (name,totalstudent,totalemployee,phone) values (N'Kế toán',1862,25,'02363836987')
@@ -141,3 +142,4 @@ Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguy�
 Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguyễn Thành Thủy', N'Giảng viên Khoa Thống kê tin học','thuynt@due.edu.vn')
 Insert into Employees (idDepartment,[name],position,username) values (1, N'Trần Hoàng Hiếu', N'Giảng viên, Nghiên cứu sinh tại Nga','hieuth@due.edu.vn')
 Insert into Employees (idDepartment,[name],position,username) values (8, N'Trần Thị Thu Thảo', N'Giảng viên Khoa Thống kê tin học','thaotran@due.edu.vn')
+

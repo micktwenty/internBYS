@@ -23,17 +23,19 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        
+
                     @if (Session["Username"] != null)
                     {
-                        <li style="font-weight:bold"><a href="@Url.Action("./admin")">Quản trị viên</a></li>
-                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                        <li>@Html.ActionLink("Sinh viên", "Index", "Students")</li>
+                        <li>@Html.ActionLink("Giảng viên", "Index", "Employees")</li>
+                        <li>@Html.ActionLink("Quản trị viên", "admin", "admin")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
                     }
-                  
+
 
                 </ul>
             </div>

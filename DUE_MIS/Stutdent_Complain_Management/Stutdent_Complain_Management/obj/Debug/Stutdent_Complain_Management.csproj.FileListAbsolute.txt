@@ -153,8 +153,8 @@ C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stu
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Newtonsoft.Json.xml
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Antlr3.Runtime.pdb
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.csproj.AssemblyReference.cache
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.csproj.CoreCompileInputs.cache
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.csproj.CopyComplete
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.dll
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.pdb
+C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\obj\Debug\Stutdent_Complain_Management.csprojAssemblyReference.cache
