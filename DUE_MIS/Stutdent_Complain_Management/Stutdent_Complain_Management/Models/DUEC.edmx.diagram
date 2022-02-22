@@ -12,15 +12,10 @@
         <EntityTypeShape EntityType="Complains_DUEModel.Student" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Complains_DUEModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="Complains_DUEModel.FK__Employees__usern__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="Complains_DUEModel.FK__Employees__usern__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="Complains_DUEModel.FK__Students__studen__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="Complains_DUEModel.FK__Students__studen__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="Complains_DUEModel.FK__complains__IdDep__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="Complains_DUEModel.FK__complains__IdDep__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="Complains_DUEModel.FK__complains__IdStu__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="Complains_DUEModel.FK__complains__IdStu__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="Complains_DUEModel.FK__Employees__idDep__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="Complains_DUEModel.FK__Employees__idDep__403A8C7D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

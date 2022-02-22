@@ -7,6 +7,7 @@ using Stutdent_Complain_Management.Models;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace Stutdent_Complain_Management.Controllers
 {
     public class AccountController : Controller
@@ -51,6 +52,7 @@ namespace Stutdent_Complain_Management.Controllers
             }
 
         }
+
         public ActionResult Logout()
         {
             Session.Clear();//remove session

@@ -4,5 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>adminview</h2>
+<h2>Đăng kí thành viên</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Giảng viên", "EmpReg", "Admin")</li>
+        <li>@Html.ActionLink("Sinh viên", "StuReg", "Admin")</li>
+    </ul>
+</div>
 

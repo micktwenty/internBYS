@@ -25,8 +25,6 @@ namespace Stutdent_Complain_Management.Models
         public bool status { get; set; }
     
         public virtual Department Department { get; set; }
-        public virtual Department Department1 { get; set; }
         public virtual Student Student { get; set; }
-        public virtual Student Student1 { get; set; }
     }
 }

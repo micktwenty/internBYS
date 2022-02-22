@@ -18,7 +18,6 @@ namespace Stutdent_Complain_Management.Models
         public Student()
         {
             this.complains = new HashSet<complain>();
-            this.complains1 = new HashSet<complain>();
         }
     
         public string studentcode { get; set; }
@@ -29,10 +28,7 @@ namespace Stutdent_Complain_Management.Models
         public Nullable<int> Department { get; set; }
     
         public virtual Account Account { get; set; }
-        public virtual Account Account1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<complain> complains { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<complain> complains1 { get; set; }
     }
 }

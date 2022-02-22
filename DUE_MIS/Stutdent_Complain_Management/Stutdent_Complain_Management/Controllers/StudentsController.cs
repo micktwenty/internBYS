@@ -11,7 +11,16 @@ namespace Stutdent_Complain_Management.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View("Students");
+            int role = Convert.ToInt32(Session["Role"]);
+            if (role % 2 == 0)
+            {
+                return View("Students");
+            }
+            else
+            {
+                ViewBag.Message = "Bạn không có quyền truy cập trang quản trị!";
+                return View("Index");
+            }
         }
     }
 }
