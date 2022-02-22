@@ -22,7 +22,7 @@ namespace Stutdent_Complain_Management.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Account user)
+        public ActionResult Login(Users user)
         {
             if (!ModelState.IsValidField("Username"))
             {

@@ -1,16 +1,19 @@
-﻿@model Stutdent_Complain_Management.Models.RegisterViewModel
+﻿@model Stutdent_Complain_Management.Models.RegisterViewModel_Stu
+
 @{
     ViewBag.Title = "StuReg";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <section class="content">
     <section class="login-main">
         <div class="box">
             <h2 class="box__title">Đăng ký</h2>
             <div class="box__body">
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("StuReg", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
+                    
                     @Html.AntiForgeryToken();
                     @Html.ValidationSummary();
 
@@ -19,22 +22,22 @@
                     <br />
 
                     @Html.LabelFor(m => m.sClass, new { @class = "register" })
-                    @Html.TextBoxFor(m => m.Department, "", new { placeholder = "Lớp" })
+                    @Html.TextBoxFor(m => m.sClass, "", new { placeholder = "Lớp" })
                     <br />
 
                     @Html.LabelFor(m => m.Department, new { @class = "register" })
-                    @Html.DropDownList("name", (IEnumerable<SelectListItem>)ViewBag.Khoa, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("Deps", (IEnumerable<SelectListItem>)ViewBag.Khoa, "Chọn khoa", htmlAttributes: new { @class = "form-control" })
                     <br />
 
-                    @Html.LabelFor(m => m.Password, new { @class = "register" })
+                    @Html.LabelFor(m => m.Password, new { @class = "register"})
                     @Html.TextBoxFor(m => m.Password, "", new { placeholder = "Password", type = "password" })
                     <br />
 
                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "register" })
                     @Html.TextBoxFor(m => m.ConfirmPassword, "", new { placeholder = "Password", type = "password" })
                     <br />
-
-                    <input class="register" id="register" type="submit" value="Đăng ký">
+                    <div style="color:red" id="tk"></div>
+                    <input class="register" id="registerbtn" type="submit" value="Đăng ký" >
                 }
             </div>
         </div>

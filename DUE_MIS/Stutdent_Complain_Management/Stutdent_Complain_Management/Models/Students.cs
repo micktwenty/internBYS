@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stutdent_Complain_Management.Models
 {
-    [Table("Student")]
+    [Table("Students")]
     public class Students
     {
         public string studentcode { get; set; }
@@ -18,7 +18,7 @@ namespace Stutdent_Complain_Management.Models
         public string phone { get; set; }
 
     }
-    public class RegisterViewModel
+    public class RegisterViewModel_Stu
     {
         [Required]
         [MaxLength(225)]
@@ -31,17 +31,19 @@ namespace Stutdent_Complain_Management.Models
 
         [Required]
         [Display(Name = "Lớp sinh hoạt")]
-        public int sClass { get; set; }
+        public string sClass { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [NotMapped]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
     }
 
 }

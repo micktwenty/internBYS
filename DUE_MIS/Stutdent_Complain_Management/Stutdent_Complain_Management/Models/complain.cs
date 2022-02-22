@@ -23,6 +23,7 @@ namespace Stutdent_Complain_Management.Models
         public Nullable<System.DateTime> date { get; set; }
         public string Picture { get; set; }
         public bool status { get; set; }
+        public string reply { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Student Student { get; set; }

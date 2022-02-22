@@ -500,6 +500,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DUEC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

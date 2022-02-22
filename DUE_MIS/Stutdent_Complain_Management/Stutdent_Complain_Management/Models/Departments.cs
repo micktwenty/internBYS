@@ -5,8 +5,11 @@ using System.Web;
 
 namespace Stutdent_Complain_Management.Models
 {
+
     public class Departments
     {
+
+
         public int id { get; set; }
         public string name { get; set; }
         public int totalstudent { get; set; }

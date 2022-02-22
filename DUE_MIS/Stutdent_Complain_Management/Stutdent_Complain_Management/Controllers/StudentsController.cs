@@ -22,5 +22,6 @@ namespace Stutdent_Complain_Management.Controllers
                 return View("Index");
             }
         }
+
     }
 }

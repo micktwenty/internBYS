@@ -7,6 +7,7 @@
     <Property Name="username" Type="varchar" MaxLength="225" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="225" Nullable="false" />
     <Property Name="role" Type="int" Nullable="false" />
+    <Property Name="Actived" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="complains">
     <Key>
@@ -21,6 +22,7 @@
     <Property Name="date" Type="datetime" />
     <Property Name="Picture" Type="varchar(max)" />
     <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="reply" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Departments">
     <Key>
