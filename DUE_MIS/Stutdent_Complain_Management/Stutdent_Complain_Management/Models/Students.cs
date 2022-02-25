@@ -42,6 +42,7 @@ namespace Stutdent_Complain_Management.Models
         [NotMapped]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
+        [Compare("Password")]
         public string ConfirmPassword { get; set; }
         
     }

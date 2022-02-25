@@ -47,22 +47,15 @@ namespace Stutdent_Complain_Management.Controllers
        [ValidateAntiForgeryToken]
         public ActionResult StuReg(RegisterViewModel_Stu user, System.Web.Mvc.FormCollection frm)
         {
-            if (true)
+            
+            if (user.Password == user.ConfirmPassword)
             {
                 Student stu = new Student();
                 Account acc = new Account();
                 var check = db.Accounts.Where(s => s.username.Equals(user.studentcode)).FirstOrDefault();
                 if( check == null)
                 {
-                    if (user.ConfirmPassword.ToString() != user.Password.ToString())
-                    {
-
-                        return Redirect(Request.UrlReferrer.ToString());
-
-
-                    }
-                    else
-                    {
+                    
                         acc.password = GetMD5(user.Password);
                         db.Configuration.ValidateOnSaveEnabled = false;
                         stu.studentcode = user.studentcode;
@@ -78,20 +71,16 @@ namespace Stutdent_Complain_Management.Controllers
                         db.SaveChanges();
                         ViewBag.Message = "Tạo mới tài khoản thành công.";
                         return RedirectToAction("Index", "Home");
-                    }
+                    
                     
                 }
                 else
                 {
-
-
-
-                    return Redirect(Request.UrlReferrer.ToString());
-
+                    return RedirectToAction("StuReg", "Admin");
 
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("StuReg", "Admin");
 
         }
         public static string GetMD5(string str)

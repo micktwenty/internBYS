@@ -16,4 +16,5 @@ namespace Stutdent_Complain_Management.Models
         public int totalemployee { get; set; }
         public string phone { get; set; }
     }
+
 }

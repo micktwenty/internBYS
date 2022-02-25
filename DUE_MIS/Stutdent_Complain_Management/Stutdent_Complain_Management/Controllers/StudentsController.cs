@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using Dapper;
+using Stutdent_Complain_Management.Models;
 
 namespace Stutdent_Complain_Management.Controllers
 {
@@ -18,10 +23,27 @@ namespace Stutdent_Complain_Management.Controllers
             }
             else
             {
-                ViewBag.Message = "Bạn không có quyền truy cập trang quản trị!";
+                ViewBag.Message = "Bạn không có quyền truy cập trang sinh viên!";
                 return View("Index");
             }
         }
+        public ActionResult MyCln()
+        {
+            List<lstCln> cpl = new List<lstCln>();
+            using (IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString))
+            {
+                cpl = connn.Query<lstCln>($"Select Complains.IdComplains, Departments.name, Complains.title, Complains.status  from Complains inner join Departments on Complains.IdDepartment = Departments.Id where IdStudent = '{Session["Username"]}'").ToList();
+            }
+            return View(cpl);
+        }
+        public ActionResult Details_Complains(string id)
+        {
+            IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString);
+            connn.Open();
+            var model = connn.Query<Detail_Complains>($"Select Departments.name, Complains.title, Complains.contenttype, Complains.Content, complains.date, complains.picture, Complains.status , complains.reply  from Complains inner join Departments on Complains.IdDepartment = Departments.Id where IdComplains = {id}").FirstOrDefault();
+            connn.Close();
 
+            return View(model);
+        }
     }
 }

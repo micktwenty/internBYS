@@ -13,9 +13,9 @@
             <div class="box__body">
                 @using (Html.BeginForm("StuReg", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    
+
                     @Html.AntiForgeryToken();
-                    @Html.ValidationSummary();
+                    @*@Html.ValidationSummary();*@
 
                     @Html.LabelFor(m => m.studentcode, new { @class = "register" })
                     @Html.TextBoxFor(m => m.studentcode, "", new { placeholder = "Mã số sinh viên" })
@@ -29,15 +29,20 @@
                     @Html.DropDownList("Deps", (IEnumerable<SelectListItem>)ViewBag.Khoa, "Chọn khoa", htmlAttributes: new { @class = "form-control" })
                     <br />
 
-                    @Html.LabelFor(m => m.Password, new { @class = "register"})
-                    @Html.TextBoxFor(m => m.Password, "", new { placeholder = "Password", type = "password" })
+                    @Html.LabelFor(m => m.Password, new { @class = "register" })
+
+                    @Html.TextBoxFor(m => m.Password, "", new { placeholder = "Password", type = "password", @id = "pw" })
                     <br />
 
                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "register" })
-                    @Html.TextBoxFor(m => m.ConfirmPassword, "", new { placeholder = "Password", type = "password" })
+                    @Html.TextBoxFor(m => m.ConfirmPassword, "", new { placeholder = "Password", type = "password", @id = "cfpw" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                   
+
                     <br />
-                    <div style="color:red" id="tk"></div>
-                    <input class="register" id="registerbtn" type="submit" value="Đăng ký" >
+                    
+                    <div style="color:red" id="Message">@ViewBag.Message</div>
+                    <input class="register" id="registerbtn" type="submit" value="Đăng ký">
                 }
             </div>
         </div>
