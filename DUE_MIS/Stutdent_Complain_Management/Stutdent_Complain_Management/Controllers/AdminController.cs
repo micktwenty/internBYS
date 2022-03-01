@@ -12,15 +12,18 @@ using Stutdent_Complain_Management.Models;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using Dapper;
 
 namespace Stutdent_Complain_Management.Controllers
 {
     public class AdminController : Controller
     {
-        Complains_DUEEntities db = new Complains_DUEEntities();
+        IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString);
 
 
-        
         // GET: Admin
         public ActionResult admin()
         {
@@ -35,8 +38,10 @@ namespace Stutdent_Complain_Management.Controllers
 
         [AllowAnonymous]
         public ActionResult StuReg()
-        {   
-            List<Department> Dep = db.Departments.ToList();
+        {
+            connn.Open();
+            List<Departments> Dep = connn.Query<Departments>("Select * from Departments").ToList();
+            connn.Close();
             SelectList lstDep = new SelectList(Dep, "Id", "name");
             ViewBag.Khoa = lstDep;
             return View("StuReg");
@@ -50,36 +55,41 @@ namespace Stutdent_Complain_Management.Controllers
             
             if (user.Password == user.ConfirmPassword)
             {
-                Student stu = new Student();
-                Account acc = new Account();
-                var check = db.Accounts.Where(s => s.username.Equals(user.studentcode)).FirstOrDefault();
-                if( check == null)
+                connn.Open();
+                var check = connn.Query<Users>($"Select username from accounts where username = '{user.studentcode}'").FirstOrDefault();
+                if (check == null)
                 {
-                    
-                        acc.password = GetMD5(user.Password);
-                        db.Configuration.ValidateOnSaveEnabled = false;
-                        stu.studentcode = user.studentcode;
-                        acc.username = user.studentcode;
-                        stu.@class = user.sClass;
-                        stu.Department = user.Department;
-                        acc.role = 2;
-                        acc.Actived = false;
-                        string dep = frm["Deps"];
-                        stu.Department = Convert.ToInt32(dep);
-                        db.Students.Add(stu);
-                        db.Accounts.Add(acc);
-                        db.SaveChanges();
-                        ViewBag.Message = "Tạo mới tài khoản thành công.";
-                        return RedirectToAction("Index", "Home");
+
+                    var p = new DynamicParameters();
+                    p.Add("@username", user.studentcode);
+                    p.Add("@class", user.sClass);
+                    p.Add("@deps", frm["Deps"]);
+                    p.Add("@pass", GetMD5(user.Password));
+                    try
+                    {
+                        connn.Execute("newStudent", p, commandType: CommandType.StoredProcedure);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        Console.WriteLine(ex);
+                    }
+
+                    ViewBag.Message = "Tạo mới tài khoản thành công.";
+                    connn.Close();
+                    return RedirectToAction("Index", "Home");
                     
                     
                 }
                 else
                 {
+                    connn.Close();
+
                     return RedirectToAction("StuReg", "Admin");
 
                 }
             }
+
             return RedirectToAction("StuReg", "Admin");
 
         }

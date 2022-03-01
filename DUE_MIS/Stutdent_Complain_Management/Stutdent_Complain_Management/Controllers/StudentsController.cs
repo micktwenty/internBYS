@@ -13,6 +13,7 @@ namespace Stutdent_Complain_Management.Controllers
 {
     public class StudentsController : Controller
     {
+        IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString);
         // GET: Students
         public ActionResult Index()
         {
@@ -38,7 +39,7 @@ namespace Stutdent_Complain_Management.Controllers
         }
         public ActionResult Details_Complains(string id)
         {
-            IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString);
+           
             connn.Open();
             var model = connn.Query<Detail_Complains>($"Select Departments.name, Complains.title, Complains.contenttype, Complains.Content, complains.date, complains.picture, Complains.status , complains.reply  from Complains inner join Departments on Complains.IdDepartment = Departments.Id where IdComplains = {id}").FirstOrDefault();
             connn.Close();

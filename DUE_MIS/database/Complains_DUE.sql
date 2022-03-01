@@ -51,7 +51,7 @@ create table Students
 	email varchar(256) null,
 	phone varchar(11) null,
 	[name] nvarchar(max) null,
-	class varchar(50) null,
+	sclass varchar(50) null,
 	Department int null,
 	PRIMARY KEY(studentcode)
 )
@@ -143,4 +143,16 @@ Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguy�
 Insert into Employees (idDepartment,[name],position,username) values (8, N'Nguyễn Thành Thủy', N'Giảng viên Khoa Thống kê tin học','thuynt@due.edu.vn')
 Insert into Employees (idDepartment,[name],position,username) values (1, N'Trần Hoàng Hiếu', N'Giảng viên, Nghiên cứu sinh tại Nga','hieuth@due.edu.vn')
 Insert into Employees (idDepartment,[name],position,username) values (8, N'Trần Thị Thu Thảo', N'Giảng viên Khoa Thống kê tin học','thaotran@due.edu.vn')
+go
+Create Proc newStudent (@username varchar(225), @class varchar(50), @deps int, @pass varchar(225))
+as
+begin
+
+	declare @email varchar(256); 
+	set @email = @username + '@due.udn.vn'	
+	Insert into Accounts(username, password, role, Actived) values (@username, @pass , 2, 0);
+	
+	Insert into Students(studentcode, sClass, Department, email) values (@username, @class , @deps, @email);
+end
+
 

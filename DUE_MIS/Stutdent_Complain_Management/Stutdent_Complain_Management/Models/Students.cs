@@ -10,11 +10,22 @@ namespace Stutdent_Complain_Management.Models
     [Table("Students")]
     public class Students
     {
+        [Required]
+        [MaxLength(225)]
+        [Display(Name = "Mã số sinh viên")]
         public string studentcode { get; set; }
+        [Required]
+        [Display(Name = "Họ và tên")]
         public string name { get; set; }
-        public string _class { get; set; }
+        [Required]
+        [Display(Name = "Lớp sinh hoạt")]
+        public string sclass { get; set; }
         public int Department { get; set; }
+        [Required]
+        [Display(Name = "Email DUE")]
         public string email { get; set; }
+        [Required]
+        [Display(Name = "Số điện thoại")]
         public string phone { get; set; }
 
     }

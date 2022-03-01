@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/try.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body  onload="checkact();">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -42,6 +43,14 @@
             
         </div>
     </div>
+    <script>
+        function checkact() {
+            var a = PageMethods.activeacc();
+            if (a == 0) {
+                alert("Vui lòng kích hoạt tài khoản!!!");
+            }
+        }
+    </script>
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -567,11 +567,11 @@
     <Content Include="Views\Admin\StuReg.cshtml" />
     <Content Include="Views\Students\MyCln.cshtml" />
     <Content Include="Views\Students\Details_Complains.cshtml" />
+    <Content Include="Views\Account\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
