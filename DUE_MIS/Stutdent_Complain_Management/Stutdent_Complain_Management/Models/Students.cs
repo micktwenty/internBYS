@@ -29,20 +29,8 @@ namespace Stutdent_Complain_Management.Models
         public string phone { get; set; }
 
     }
-    public class RegisterViewModel_Stu
+    public class RegisterViewModel_Stu : Students
     {
-        [Required]
-        [MaxLength(225)]
-        [Display(Name = "Mã số sinh viên")]
-        public string studentcode { get; set; }
-
-        [Required]
-        [Display(Name = "Khoa")]
-        public int Department { get; set; }
-
-        [Required]
-        [Display(Name = "Lớp sinh hoạt")]
-        public string sClass { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

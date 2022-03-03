@@ -17,7 +17,6 @@ namespace Stutdent_Complain_Management.Controllers
     {
         // GET: Account
         IDbConnection connn = new SqlConnection(ConfigurationManager.ConnectionStrings["ComplainsConn"].ConnectionString);
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -74,10 +73,9 @@ namespace Stutdent_Complain_Management.Controllers
         public ActionResult Info(Students stu)
         {
             connn.Open();
-            connn.Execute($"Update Students set [name] = N'{stu.name}', phone = '{stu.phone}' where studentcode = '{Session["Username"]}'");
-            connn.Execute($"Update Accounts set Actived = 1 where username = '{Session["Username"]}'");
+            connn.Execute($"exec activeAcc '{Session["Username"]}', N'{stu.name}', '{stu.phone}'");
             connn.Close();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Logout","Account");
         }
 
         public ActionResult Logout()

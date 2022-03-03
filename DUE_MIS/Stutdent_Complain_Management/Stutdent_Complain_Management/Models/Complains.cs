@@ -32,15 +32,8 @@ namespace Stutdent_Complain_Management.Models
         [Display(Name ="Trạng thái")]
         public bool status { get; set; }
     }
-    public class Detail_Complains
+    public class Detail_Complains : Complains
     {
         public string name { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string ContentType { get; set; }
-        public DateTime date { get; set; }
-        public string picture { get; set; }
-        public bool status { get; set; }
-        public string reply { get; set; }
     }
 }

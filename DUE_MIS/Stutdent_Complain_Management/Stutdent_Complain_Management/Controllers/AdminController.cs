@@ -62,7 +62,7 @@ namespace Stutdent_Complain_Management.Controllers
 
                     var p = new DynamicParameters();
                     p.Add("@username", user.studentcode);
-                    p.Add("@class", user.sClass);
+                    p.Add("@class", user.sclass);
                     p.Add("@deps", frm["Deps"]);
                     p.Add("@pass", GetMD5(user.Password));
                     try
