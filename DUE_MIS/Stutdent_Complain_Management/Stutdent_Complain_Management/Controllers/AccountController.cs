@@ -47,15 +47,13 @@ namespace Stutdent_Complain_Management.Controllers
                     Session["Username"] = login.username;
                     Session["Role"] = login.role;
                     Session["Actived"] = login.Actived;
+                    Session["Name"] = infor.name;
 
                     if (Convert.ToBoolean(Session["Actived"]) == false)
                     {
                         return View("Info", infor);
                     }
-                    else
-                    {
-                        return View("About");
-                    }
+                    return View("About");
 
                 }
                 else
@@ -72,6 +70,7 @@ namespace Stutdent_Complain_Management.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Info(Students stu)
         {
+
             connn.Open();
             connn.Execute($"exec activeAcc '{Session["Username"]}', N'{stu.name}', '{stu.phone}'");
             connn.Close();

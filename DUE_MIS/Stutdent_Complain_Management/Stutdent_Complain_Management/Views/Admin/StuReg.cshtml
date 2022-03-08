@@ -1,11 +1,12 @@
 ﻿@model Stutdent_Complain_Management.Models.RegisterViewModel_Stu
+ 
 
 @{
     ViewBag.Title = "StuReg";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h3>@ViewBag.Message</h3>
 <section class="content">
     <section class="login-main">
         <div class="box">
@@ -37,10 +38,10 @@
                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "register" })
                     @Html.TextBoxFor(m => m.ConfirmPassword, "", new { placeholder = "Password", type = "password", @id = "cfpw" })
                     @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
-                   
+
 
                     <br />
-                    
+
                     <div style="color:red" id="Message">@ViewBag.Message</div>
                     <input class="register" id="registerbtn" type="submit" value="Đăng ký">
                 }

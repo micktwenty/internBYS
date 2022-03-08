@@ -19,7 +19,6 @@
           <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="status" ColumnName="status" />

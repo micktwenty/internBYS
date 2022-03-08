@@ -572,10 +572,12 @@
     <Content Include="Views\Students\MyCln.cshtml" />
     <Content Include="Views\Students\Details_Complains.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
+    <Content Include="Views\Students\CreateComplain.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

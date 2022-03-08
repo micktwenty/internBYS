@@ -416,3 +416,5 @@ C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stu
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.Owin.Security.xml
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Thien\Desktop\Github\internBYS\DUE_MIS\Stutdent_Complain_Management\Stutdent_Complain_Management\bin\Microsoft.AspNetCore.Authentication.JwtBearer.xml

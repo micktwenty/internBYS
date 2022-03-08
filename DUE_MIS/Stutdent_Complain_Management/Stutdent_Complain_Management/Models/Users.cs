@@ -9,7 +9,7 @@ namespace Stutdent_Complain_Management.Models
 {
 
 
-    [Table("Account")]
+    [Table("Accounts")]
     public class Users
     {
         public string username { get; set; }

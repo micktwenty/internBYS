@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Stutdent_Complain_Management.Models
 {
+    [Table("Complains")]
     public class Complains
     {
         public string IdStudent { get; set; }
@@ -14,11 +15,12 @@ namespace Stutdent_Complain_Management.Models
         public int IdDepartment { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string ContentType { get; set; }
         public DateTime date { get; set; }
         public string picture { get; set; }
+        public byte[] picturecontent { get; set; }
         public bool status { get; set; }
         public string reply { get; set; }
+        public bool IsPublic { get; set; }
     }
     public class lstCln
     {
@@ -35,5 +37,14 @@ namespace Stutdent_Complain_Management.Models
     public class Detail_Complains : Complains
     {
         public string name { get; set; }
+    }
+    public class Create_Complains
+    {
+        public int IdDepartment { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string url_picture { get; set; }
+        public byte[] picture { get; set; }
+
     }
 }

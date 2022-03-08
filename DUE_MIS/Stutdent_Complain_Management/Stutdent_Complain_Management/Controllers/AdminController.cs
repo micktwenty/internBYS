@@ -36,7 +36,7 @@ namespace Stutdent_Complain_Management.Controllers
             return View("adminview");
         }
 
-        [AllowAnonymous]
+
         public ActionResult StuReg()
         {
             connn.Open();
@@ -52,7 +52,7 @@ namespace Stutdent_Complain_Management.Controllers
        [ValidateAntiForgeryToken]
         public ActionResult StuReg(RegisterViewModel_Stu user, System.Web.Mvc.FormCollection frm)
         {
-            
+            user.Department = Convert.ToInt32(frm["Deps"]);
             if (user.Password == user.ConfirmPassword)
             {
                 connn.Open();
@@ -84,13 +84,13 @@ namespace Stutdent_Complain_Management.Controllers
                 else
                 {
                     connn.Close();
-
-                    return RedirectToAction("StuReg", "Admin");
+                    ViewBag.Message = "Tài khoản đã tồn tại";
+                    return View("StuReg",user);
 
                 }
             }
-
-            return RedirectToAction("StuReg", "Admin");
+            ViewBag.Message = "Mật khẩu không trùng khớp";
+            return View("StuReg", user);
 
         }
         public static string GetMD5(string str)

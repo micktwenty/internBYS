@@ -20,7 +20,6 @@
     <Property Name="IdDepartment" Type="Int32" />
     <Property Name="Title" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
     <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="Boolean" Nullable="false" />

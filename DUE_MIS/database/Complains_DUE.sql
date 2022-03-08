@@ -11,14 +11,16 @@ create table complains
 	IdDepartment int null,
 	Title nvarchar(225) null,
 	Content nvarchar(max) null,
-	ContentType nvarchar(100) null,
 	[date] datetime Default(GetDate()) not null,
 	Picture varchar(max) null,
-	[status] bit not null,
+	picturecontent varbinary(max) null,
+	[status] bit default(0) not null,
 	reply nvarchar(max) null,
 	IsPublic bit Default(0) not null,
 	PRIMARY KEY(IdComplains)
 )
+Alter table complains
+ADD [status] bit DEFAULT(0) not null
 create table Departments
 (
 	Id int not null,
@@ -124,17 +126,17 @@ Insert into Students values('181121018316','181121018316@due.udn.vn','0786368412
 Insert into Students values('171198422678','171198422678@due.udn.vn','0872236436',N'Nguyễn Thị Thu Thảo', '43K21.1',1)
 Insert into Students values('181121521141','181121521141@due.udn.vn','0947852572',N'Nguyễn Thị Thanh Tuyền', '44K21.1',2)
 go
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121018316',2,N'Phàn nàn về cơ sở vật chất',N'Chỗ để xe chưa có máy che, gây hại cho tài sản sinh viên, chưa tích hợp công nghệ hóa, vẫn sử dụng phương pháp truyền thống, gây bất tiện cho sinh viên và ùn tắc giờ cao điểm',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',3,N'Phàn nàn về cơ sở vật chất',N'Thư viện chưa có không gian riêng tư, chưa tạo ra không gian thoải mái khi sinh viên học tập',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521138',4,N'Phàn nàn về cơ sở vật chất',N'Một số giảng viên chưa có sự nhiệt huyết',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('171121521050',5,N'Phàn nàn về cơ sở vật chất',N'Căn tin ',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',6,N'Phàn nàn về cơ sở vật chất',N'Nhân viên phòng nước',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('201154896335',7,N'Phàn nàn về cơ sở vật chất',N'',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('201159871175',8,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521137',9,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('191154833658',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
-Insert into complains (IdStudent,IdDepartment,title,Content,ContentType,[status],[date]) values ('181121521141',2,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',N'Phàn nàn',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521137',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121018316',2,N'Phàn nàn về cơ sở vật chất',N'Chỗ để xe chưa có máy che, gây hại cho tài sản sinh viên, chưa tích hợp công nghệ hóa, vẫn sử dụng phương pháp truyền thống, gây bất tiện cho sinh viên và ùn tắc giờ cao điểm',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521137',3,N'Phàn nàn về cơ sở vật chất',N'Thư viện chưa có không gian riêng tư, chưa tạo ra không gian thoải mái khi sinh viên học tập',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521138',4,N'Phàn nàn về cơ sở vật chất',N'Một số giảng viên chưa có sự nhiệt huyết',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('171121521050',5,N'Phàn nàn về cơ sở vật chất',N'Căn tin ',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521137',6,N'Phàn nàn về cơ sở vật chất',N'Nhân viên phòng nước',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('201154896335',7,N'Phàn nàn về cơ sở vật chất',N'',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('201159871175',8,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521137',9,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('191154833658',1,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',0,'02/13/2022')
+Insert into complains (IdStudent,IdDepartment,title,Content,[status],[date]) values ('181121521141',2,N'Phàn nàn về cơ sở vật chất',N'Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học',0,'02/13/2022')
 go
 Insert into Employees (idDepartment,[name],position,username) values (1, N'Lê Dân', N'Trưởng Khoa Thống kê-Tin học','danle@due.edu.vn')
 Insert into Employees (idDepartment,[name],position,username) values (2, N'Hoàng Thị Thanh Hà', N'Phó Khoa Thống kê-Tin học','ha.htt@due.edu.vn')
@@ -166,4 +168,3 @@ begin
 	update Students set [name] = @name, phone = @phone where studentcode = @username;
 	update Accounts set Actived = 1 where username = @username;
 end
-
