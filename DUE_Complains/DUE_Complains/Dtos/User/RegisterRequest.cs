@@ -7,6 +7,7 @@ namespace DUE_Complains.System.User
 {
     public class RegisterRequest
     {
+        public string? Name { get; set; }
         public string UserName { get; set; }
         public string? Email { get; set; }
         public int IdDepartment { get; set; }

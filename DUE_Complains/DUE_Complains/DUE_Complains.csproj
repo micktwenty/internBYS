@@ -39,4 +39,8 @@
     <Folder Include="wwwroot\user-content\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
 </Project>

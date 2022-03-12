@@ -57,6 +57,7 @@ namespace DUE_Complains.System.User
         {
             var user = new AppUser()
             {
+
                 UserName = request.UserName,
                 IdDepartment = request.IdDepartment,
                 IdStudent = request.IdStudent != null ? request.IdStudent : null,

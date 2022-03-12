@@ -4,14 +4,16 @@ using DUE_Complains.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DUE_Complains.Migrations
 {
     [DbContext(typeof(Complains_DUEContext))]
-    partial class Complains_DUEContextModelSnapshot : ModelSnapshot
+    [Migration("20220312180933_updatedatabaseuser")]
+    partial class updatedatabaseuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -10,7 +10,7 @@ namespace DUE_Complains.Models
     [Table("AppUsers")]
     public class AppUser : IdentityUser<Guid>
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int IdDepartment  { get; set; }
         public string? IdStudent { get; set; }
         public int? idteacher { get; set; }

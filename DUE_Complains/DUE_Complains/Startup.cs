@@ -19,6 +19,7 @@ using DUE_Complains.Dtos.Complains;
 using DUE_Complains.Dtos.Commons;
 using Microsoft.AspNetCore.Identity;
 using DUE_Complains.System.User;
+using Microsoft.IdentityModel.Logging;
 
 namespace DUE_Complains
 {
@@ -34,9 +35,12 @@ namespace DUE_Complains
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            IdentityModelEventSource.ShowPII = true;
             services.AddDbContext<Complains_DUEContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<Complains_DUEContext>()
+                .AddDefaultTokenProviders();
 
             //DI
             services.AddTransient<IComplainsManagement, ManageComplainsService>();

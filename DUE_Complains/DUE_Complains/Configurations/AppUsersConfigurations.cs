@@ -14,8 +14,7 @@ namespace DUE_Complains.Configurations
         {
             entity.ToTable("AppUsers");
             entity.Property(x => x.Name)
-                .HasMaxLength(200)
-                .IsRequired();
+                .HasMaxLength(200);
             entity.Property(x => x.IdDepartment);
             entity.Property(x => x.IdStudent)
                         .HasMaxLength(225);
