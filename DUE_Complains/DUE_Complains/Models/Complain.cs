@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DUE_Complains.Models
 {
+    [Table("Complains")]
     public partial class Complain
     {
         public string IdStudent { get; set; }
@@ -17,10 +19,11 @@ namespace DUE_Complains.Models
         public bool IsPublic { get; set; }
         public string Status { get; set; }
         
-        public List<Department> DepInfo { get; set; }
-        public virtual Department IdDepartmentNavigation { get; set; }
+        public Department Department { get; set; }
+        public virtual Employee IdDepartmentNavigation { get; set; }
         public virtual Student IdStudentNavigation { get; set; }
         public virtual ICollection<ImageComplain> ImageComplain { get; set; }
+
 
     }
 }

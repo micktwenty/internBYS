@@ -17,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdDepartment)
+                @Html.DisplayNameFor(model => model.DepartmentId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -25,13 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Position)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th></th>
+
         </tr>
     </thead>
     <tbody>
@@ -41,19 +35,13 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdDepartment)
+                @Html.DisplayFor(modelItem => item.Department)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Picture)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

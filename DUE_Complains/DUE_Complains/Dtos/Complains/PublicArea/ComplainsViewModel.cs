@@ -11,7 +11,6 @@ namespace DUE_Complains.Dtos.Complains
         public string Department { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Picture { get; set; }
         public string Reply { get; set; }
         public DateTime? Date { get; set; }
         public bool IsPublic { get; set; }

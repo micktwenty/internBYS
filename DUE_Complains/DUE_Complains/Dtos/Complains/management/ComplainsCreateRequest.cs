@@ -12,9 +12,6 @@ namespace DUE_Complains.Dtos.Complains
         public int IdDepartment { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Picture { get; set; }
-        public byte[] Picturecontent { get; set; }
-        public string Department { get; set; }
 
         public IFormFile ThumbnailImage { get; set; }
 

@@ -12,15 +12,11 @@ create table complains
 	Title nvarchar(225) null,
 	Content nvarchar(max) null,
 	[date] datetime Default(GetDate()) not null,
-	Picture varchar(max) null,
-	picturecontent varbinary(max) null,
-	[status] bit default(0) not null,
+	[status] nvarchar(100) default(N'Bản nháp') not null,
 	reply nvarchar(max) null,
 	IsPublic bit Default(0) not null,
 	PRIMARY KEY(IdComplains)
 )
-Alter table complains
-ADD [status] bit DEFAULT(0) not null
 create table Departments
 (
 	Id int not null,
@@ -29,14 +25,6 @@ create table Departments
 	totalemployee int null,
 	phone char(11) null,
 	PRIMARY KEY(Id)
-)
-create table Accounts
-(
-	[username] varchar(225) not null,
-	[password] varchar(225) not null,
-	[role] int not null,
-	Actived bit not null
-	PRIMARY KEY(username)
 )
 create table Employees
 (
@@ -59,6 +47,18 @@ create table Students
 	PRIMARY KEY(studentcode)
 )
 go
+create table ImageComplain
+(
+	id int IDENTITY(1,1) not null,
+	content_image nvarchar(max) null,
+	Path_Image varchar(max) not null,
+	IdComplain int not null,
+	IsDefault bit not null,
+	SortOrder int not null,
+	Primary Key (id),
+	filesize int null
+)
+
 Alter table complains
 Add Foreign key (IdDepartment) References Departments(Id);
 go
@@ -76,6 +76,9 @@ Add Foreign Key (studentcode) References Accounts(username)
 go
 Alter table Employees
 Add Foreign Key (username) References Accounts(username) 
+go
+Alter table imagecomplain
+Add Foreign key (IdComplain) References Complains(IdComplains);
 go
 Insert into Accounts Values ('181121521137','202cb962ac59075b964b07152d234b70',2,1)
 Insert into Accounts Values ('171121521050','202cb962ac59075b964b07152d234b70',2,1)

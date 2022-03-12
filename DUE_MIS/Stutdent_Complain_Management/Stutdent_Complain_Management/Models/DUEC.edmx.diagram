@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="273cbe5e3dcb4382ad0b270d17bb5a52" Name="Diagram1">
-        <EntityTypeShape EntityType="Complains_DUEModel.Account" Width="1.5" PointX="0.5" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Complains_DUEModel.complain" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Complains_DUEModel.Account" Width="1.5" PointX="0.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Complains_DUEModel.complain" Width="1.5" PointX="7" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Complains_DUEModel.Department" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Complains_DUEModel.Employee" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Complains_DUEModel.Student" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Complains_DUEModel.Employee" Width="1.5" PointX="0.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Complains_DUEModel.Student" Width="1.5" PointX="6.125" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="Complains_DUEModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="Complains_DUEModel.FK__Employees__usern__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="Complains_DUEModel.FK__Students__studen__30F848ED" ManuallyRouted="false" />

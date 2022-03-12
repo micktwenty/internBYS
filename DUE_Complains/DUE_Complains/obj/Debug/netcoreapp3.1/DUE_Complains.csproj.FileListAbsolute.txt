@@ -198,3 +198,10 @@ D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Swashbuc
 D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Github\internBYS\DUE_Complains\DUE_Complains\obj\Debug\netcoreapp3.1\DUE_Complains.MvcApplicationPartsAssemblyInfo.cs
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll

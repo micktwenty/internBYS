@@ -34,13 +34,13 @@ namespace DUE_Complains.Dtos.Complains
                 Content = request.Content,
                 Status = "Bản nháp",
                 IsPublic = false,
-                DepInfo = new List<Department>()
-                {
-                    new Department()
-                    {
-                        Name = request.Department
-                    }
-                }
+                //DepInfo = new List<Department>()
+                //{
+                //    new Department()
+                //    {
+                //        Name = request.Department
+                //    }
+                //}
 
             };
             if (request.ThumbnailImage != null)
@@ -52,13 +52,13 @@ namespace DUE_Complains.Dtos.Complains
                         content_image = complain.Title,
                         filesize = Convert.ToInt32(request.ThumbnailImage.Length),
                         Path_image = await this.SaveFile(request.ThumbnailImage),
-                        IsDefault = true,
-                        sortOrder = 1
+                        IsDefault = true
                     }
                 };
             }
             _context.Complains.Add(complain);
-            return await _context.SaveChangesAsync();
+             await _context.SaveChangesAsync();
+            return complain.IdComplains;
         }
 
 
@@ -101,7 +101,6 @@ namespace DUE_Complains.Dtos.Complains
                         filesize = Convert.ToInt32(request.ThumbnailImage.Length),
                         Path_image = await this.SaveFile(request.ThumbnailImage),
                         IsDefault = true,
-                        sortOrder = 1
                     }
                 };
             }
@@ -112,7 +111,7 @@ namespace DUE_Complains.Dtos.Complains
         public async Task<List<ComplainsViewModel>> GetAll()
         {
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.Id
+                        join d in _context.Departments on c.IdDepartment equals d.Id                       
                         where c.IsPublic.Equals(true)
                         select new { c, d };
            
@@ -138,17 +137,18 @@ namespace DUE_Complains.Dtos.Complains
 
             var query = from c in _context.Complains
                         join d in _context.Departments on c.IdDepartment equals d.Id
-                        where c.Content.Contains(request.keyword) && c.IsPublic.Equals(true)
+                        where /*c.Content.Contains(request.keyword) &&*/ c.IsPublic.Equals(true)
                         select new {c, d };
             if (!string.IsNullOrEmpty(request.keyword))
             {
                 query = query.Where(x => x.c.Content.Contains(request.keyword));
             }
 
-            if(request.idDepartment.Count > 0)
+            if(request.idDepartment != null)
             {
                 query = query.Where(p => request.idDepartment.Contains(p.d.Id));
             }
+
             int rows = await query.CountAsync();
 
             var data = await query.Skip((request.pageIndex - 1) * request.PageSize)
@@ -172,7 +172,26 @@ namespace DUE_Complains.Dtos.Complains
 
             };
             return pageResult;
-        } 
+        }
+
+        public async Task<ComplainsViewModel> GetbyId(int IDComplain)
+        {
+
+            var complain = await _context.Complains.FindAsync(IDComplain);
+         
+
+
+            var complainview = new ComplainsViewModel()
+            {
+                IdComplains = complain.IdComplains,
+                Content = complain.Content,
+                Title = complain.Title,
+                Date = complain.Date,
+                Reply = complain.Reply,
+                Status = complain.Status
+            };
+            return complainview;
+        }
 
         public async Task<PageResult<ComplainsViewModel>> GetOwnPaging(GetComplainsPagingRequest request)
         {
@@ -231,8 +250,7 @@ namespace DUE_Complains.Dtos.Complains
                         content_image = complain.Title,
                         filesize = Convert.ToInt32(request.ThumbnailImage.Length),
                         Path_image = await this.SaveFile(request.ThumbnailImage),
-                        IsDefault = true,
-                        sortOrder = 1
+                        IsDefault = true
                     }
                 };
             }

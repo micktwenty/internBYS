@@ -66,11 +66,12 @@ namespace Stutdent_Complain_Management.Controllers
              
                 img.InputStream.Read(picture, 0, img.ContentLength);
                 string filename = System.IO.Path.GetFileName(img.FileName);
-                string url = Server.MapPath("~/Image/" + filename);
-                img.SaveAs(url);
+                string urlsave = Server.MapPath("~/Content/Image/" + filename);
+                string urlpicture = "/Content/Image/" + filename;
+                img.SaveAs(urlsave);
                 connn.Open();
-                connn.Execute($"Insert into Complains(IdStudent, IdDepartment, Title, Content, picture) values ('{Session["username"]}', {frm["Deps"]}, N'{frm["title"]}', N'{frm["content"]}', '{url}')");
-                connn.Execute($"Update Complains set picturecontent = (Select * from OPENROWSET (BULK N'{url}', SINGLE_BLOB) AS picturecontent) where IdComplains = (Select Max(IdComplains) from Complains)");
+                connn.Execute($"Insert into Complains(IdStudent, IdDepartment, Title, Content, picture) values ('{Session["username"]}', {frm["Deps"]}, N'{frm["title"]}', N'{frm["content"]}', '{urlpicture}')");
+                connn.Execute($"Update Complains set picturecontent = (Select * from OPENROWSET (BULK N'{urlsave}', SINGLE_BLOB) AS picturecontent) where IdComplains = (Select Max(IdComplains) from Complains)");
                 connn.Close();
                 return RedirectToAction("MyCln", "Students");
             }
