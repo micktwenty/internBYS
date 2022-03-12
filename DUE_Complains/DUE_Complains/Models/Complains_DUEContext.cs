@@ -1,20 +1,15 @@
-﻿using System;
-using System.Configuration;
-using DUE_Complains.Configurations;
-using DUE_Complains.Constants;
+﻿using DUE_Complains.Configurations;
 using DUE_Complains.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using System;
 
 #nullable disable
 
 namespace DUE_Complains.Models
 {
-    public class Complains_DUEContext : DbContext  
+    public class Complains_DUEContext : IdentityDbContext <AppUser,AppRole,Guid> 
     {
         //public Complains_DUEContext()
         //{
@@ -36,18 +31,16 @@ namespace DUE_Complains.Models
             modelBuilder.ApplyConfiguration(new AppUsersConfigurations());
             modelBuilder.ApplyConfiguration(new ImageComplainsConfigurations());
             modelBuilder.ApplyConfiguration(new StudentsConfigurations());
-
             //Data Seeding
             modelBuilder.Seed();
 
             //modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            //modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
-            //modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles");
-            //modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins");
-
-            //modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
-            //modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens");
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new {x.UserId , x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
 
 
 

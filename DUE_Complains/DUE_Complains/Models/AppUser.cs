@@ -12,7 +12,8 @@ namespace DUE_Complains.Models
     {
         public string Name { get; set; }
         public int IdDepartment  { get; set; }
-        public string IdStudent { get; set; }
+        public string? IdStudent { get; set; }
+        public int? idteacher { get; set; }
 
     }
 }

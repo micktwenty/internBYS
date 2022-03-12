@@ -16,11 +16,9 @@ namespace DUE_Complains.Configurations
             entity.Property(x => x.Name)
                 .HasMaxLength(200)
                 .IsRequired();
-            entity.Property(x => x.IdDepartment)
-                        .IsRequired();
+            entity.Property(x => x.IdDepartment);
             entity.Property(x => x.IdStudent)
-                        .HasMaxLength(225)
-                        .IsRequired();
+                        .HasMaxLength(225);
         }
     }
 }

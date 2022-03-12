@@ -7,7 +7,7 @@ namespace DUE_Complains.System.User
 {
      public interface IUserService
     {
-        Task<bool> Authenticate(LoginRequest request);
-        Task<bool> Register_stu(RegisterRequest_Stu request);
+        Task<string> Authenticate(LoginRequest request);
+        Task<bool> Register_stu(RegisterRequest request);
     }
 }

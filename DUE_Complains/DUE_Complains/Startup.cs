@@ -17,6 +17,8 @@ using DUE_Complains.Constants;
 using DUE_Complains.Dtos;
 using DUE_Complains.Dtos.Complains;
 using DUE_Complains.Dtos.Commons;
+using Microsoft.AspNetCore.Identity;
+using DUE_Complains.System.User;
 
 namespace DUE_Complains
 {
@@ -39,6 +41,14 @@ namespace DUE_Complains
             //DI
             services.AddTransient<IComplainsManagement, ManageComplainsService>();
             services.AddTransient<IStorageService, FileStorageService>();
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<IUserService, UserService>();
+
+
+
+
             //Swwagger
             services.AddSwaggerGen(c =>
             {

@@ -32,13 +32,18 @@ namespace DUE_Complains.Configurations
                 .IsUnicode()
                 .HasColumnType("nvarchar(225)");
 
+            entity.Property(e => e.Email)
+                .HasColumnName("Email")
+                .IsRequired()
+                .HasMaxLength(256)
+                .HasColumnType("varchar(256)");
 
             entity.Property(e => e.Position)
                 .HasMaxLength(225)
                 .HasColumnName("position")
                 .HasColumnType("nvarchar(225)")
                 .IsUnicode();
-
+            
 
         }
     }

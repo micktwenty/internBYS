@@ -4,14 +4,16 @@ using DUE_Complains.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DUE_Complains.Migrations
 {
     [DbContext(typeof(Complains_DUEContext))]
-    partial class Complains_DUEContextModelSnapshot : ModelSnapshot
+    [Migration("20220312134530_update-data-seeding")]
+    partial class updatedataseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,16 +70,6 @@ namespace DUE_Complains.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ae59a954-c5f1-419a-a3ff-38a4818ee3a0"),
-                            ConcurrencyStamp = "25620d64-d8d1-4be8-b1be-adb8bafeb3b0",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("DUE_Complains.Models.AppUser", b =>
@@ -102,6 +94,7 @@ namespace DUE_Complains.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("IdStudent")
+                        .IsRequired()
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
 
@@ -140,33 +133,9 @@ namespace DUE_Complains.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idteacher")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("40fb70ec-dbe5-46d0-a55a-a63e751e7ad5"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "baa9d907-a18a-4be8-bf32-ee415f969685",
-                            Email = "ngquthien3520@gmail.com",
-                            EmailConfirmed = true,
-                            IdDepartment = 0,
-                            LockoutEnabled = false,
-                            Name = "Thien",
-                            NormalizedEmail = "ngquthien3520@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGLIsTo2ttfWGZ964gxrdDeWo04nYbh7rI3suhkZh97mJW1j8Qj/IZXfPGUMZZTHyw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin",
-                            idteacher = 0
-                        });
                 });
 
             modelBuilder.Entity("DUE_Complains.Models.Complain", b =>
@@ -410,9 +379,6 @@ namespace DUE_Complains.Migrations
                         .HasColumnName("id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("AppUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int")
                         .HasColumnName("idDepartment");
@@ -435,12 +401,7 @@ namespace DUE_Complains.Migrations
                         .HasColumnType("nvarchar(225)")
                         .HasColumnName("position");
 
-                    b.Property<Guid>("Username")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("DepartmentId");
 
@@ -452,72 +413,63 @@ namespace DUE_Complains.Migrations
                             Id = 1,
                             DepartmentId = 1,
                             Email = "danle@due.edu.vn",
-                            Name = "Lê Dân",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Lê Dân"
                         },
                         new
                         {
                             Id = 2,
                             DepartmentId = 2,
                             Email = "ha.htt@due.edu.vn",
-                            Name = "Hoàng Thị Thanh Hà",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Hoàng Thị Thanh Hà"
                         },
                         new
                         {
                             Id = 3,
                             DepartmentId = 3,
                             Email = "nhamct@due.edu.vn",
-                            Name = "Cao Thị Nhâm",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Cao Thị Nhâm"
                         },
                         new
                         {
                             Id = 4,
                             DepartmentId = 4,
                             Email = "khuethu@due.edu.vn",
-                            Name = "Võ Quang Trí",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Võ Quang Trí"
                         },
                         new
                         {
                             Id = 5,
                             DepartmentId = 5,
                             Email = "voquangtri@due.edu.vn",
-                            Name = "Ngô Thị Khuê Thư",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Ngô Thị Khuê Thư"
                         },
                         new
                         {
                             Id = 6,
                             DepartmentId = 6,
                             Email = "danvn@due.edu.vn",
-                            Name = "Văn Ngọc Đàn",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Văn Ngọc Đàn"
                         },
                         new
                         {
                             Id = 7,
                             DepartmentId = 7,
                             Email = "van.ptb@due.edu.vn",
-                            Name = "Phan Thị Bích Vân",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Phan Thị Bích Vân"
                         },
                         new
                         {
                             Id = 8,
                             DepartmentId = 8,
                             Email = "thenb@due.edu.vn",
-                            Name = "Nguyễn Bá Thế",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Bá Thế"
                         },
                         new
                         {
                             Id = 9,
                             DepartmentId = 9,
                             Email = "thuynt@due.edu.vn",
-                            Name = "Nguyễn Thành Thủy",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Thành Thủy"
                         });
                 });
 
@@ -566,9 +518,6 @@ namespace DUE_Complains.Migrations
                         .HasColumnType("varchar(225)")
                         .HasColumnName("studentcode");
 
-                    b.Property<Guid?>("AppUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
@@ -595,13 +544,8 @@ namespace DUE_Complains.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("sclass");
 
-                    b.Property<Guid>("Username")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Studentcode")
                         .HasName("PK__Students__A5703329F248FB09");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("DepartmentId");
 
@@ -613,72 +557,63 @@ namespace DUE_Complains.Migrations
                             Studentcode = "181121521137",
                             DepartmentId = 1,
                             Email = "181121521137@due.udn.vn",
-                            Name = "Nguyễn Quốc Thiện",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Quốc Thiện"
                         },
                         new
                         {
                             Studentcode = "171121521050",
                             DepartmentId = 2,
                             Email = "171121521050@due.udn.vn",
-                            Name = "Lê Linh Phương",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Lê Linh Phương"
                         },
                         new
                         {
                             Studentcode = "191154833658",
                             DepartmentId = 3,
                             Email = "191154833658@due.udn.vn",
-                            Name = "Trần Đức Duy Anh",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Trần Đức Duy Anh"
                         },
                         new
                         {
                             Studentcode = "181121521136",
                             DepartmentId = 4,
                             Email = "181121521136@due.udn.vn",
-                            Name = "Nguyễn Quang Thành",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Quang Thành"
                         },
                         new
                         {
                             Studentcode = "181121521138",
                             DepartmentId = 5,
                             Email = "181121521138@due.udn.vn",
-                            Name = "Nguyễn Duy Thông",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Duy Thông"
                         },
                         new
                         {
                             Studentcode = "191123659113",
                             DepartmentId = 6,
                             Email = "191123659113@due.udn.vn",
-                            Name = "Nguyễn Minh",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Minh"
                         },
                         new
                         {
                             Studentcode = "201154896335",
                             DepartmentId = 7,
                             Email = "201154896335@due.udn.vn",
-                            Name = "Lê Hà Phước",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Lê Hà Phước"
                         },
                         new
                         {
                             Studentcode = "201159871175",
                             DepartmentId = 8,
                             Email = "201159871175@due.udn.vn",
-                            Name = "Nguyễn Thành Đô",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Nguyễn Thành Đô"
                         },
                         new
                         {
                             Studentcode = "171122225114",
                             DepartmentId = 9,
                             Email = "171122225114@due.udn.vn",
-                            Name = "Hồ Tiểu Băng",
-                            Username = new Guid("00000000-0000-0000-0000-000000000000")
+                            Name = "Hồ Tiểu Băng"
                         });
                 });
 
@@ -755,13 +690,6 @@ namespace DUE_Complains.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("40fb70ec-dbe5-46d0-a55a-a63e751e7ad5"),
-                            RoleId = new Guid("ae59a954-c5f1-419a-a3ff-38a4818ee3a0")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -810,18 +738,12 @@ namespace DUE_Complains.Migrations
 
             modelBuilder.Entity("DUE_Complains.Models.Employee", b =>
                 {
-                    b.HasOne("DUE_Complains.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("DUE_Complains.Models.Department", "Department")
                         .WithMany("Employees")
                         .HasForeignKey("DepartmentId")
                         .HasConstraintName("FK__Employees__idDep__2E1BDC42")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppUser");
 
                     b.Navigation("Department");
                 });
@@ -840,15 +762,9 @@ namespace DUE_Complains.Migrations
 
             modelBuilder.Entity("DUE_Complains.Models.Student", b =>
                 {
-                    b.HasOne("DUE_Complains.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("DUE_Complains.Models.Department", "DepartmentNavi")
                         .WithMany("Students")
                         .HasForeignKey("DepartmentId");
-
-                    b.Navigation("AppUser");
 
                     b.Navigation("DepartmentNavi");
                 });

@@ -21,7 +21,7 @@ namespace DUE_Complains.Dtos.Complains.PublicArea
 
 
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.Id
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
                         where c.Content.Contains(request.keyword)
                         select new { c, d };
 

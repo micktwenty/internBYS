@@ -111,7 +111,7 @@ namespace DUE_Complains.Dtos.Complains
         public async Task<List<ComplainsViewModel>> GetAll()
         {
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.Id                       
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId                       
                         where c.IsPublic.Equals(true)
                         select new { c, d };
            
@@ -136,7 +136,7 @@ namespace DUE_Complains.Dtos.Complains
         {
 
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.Id
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
                         where /*c.Content.Contains(request.keyword) &&*/ c.IsPublic.Equals(true)
                         select new {c, d };
             if (!string.IsNullOrEmpty(request.keyword))
@@ -146,7 +146,7 @@ namespace DUE_Complains.Dtos.Complains
 
             if(request.idDepartment != null)
             {
-                query = query.Where(p => request.idDepartment.Contains(p.d.Id));
+                query = query.Where(p => request.idDepartment.Contains(p.d.DepartmentId));
             }
 
             int rows = await query.CountAsync();
@@ -196,7 +196,7 @@ namespace DUE_Complains.Dtos.Complains
         public async Task<PageResult<ComplainsViewModel>> GetOwnPaging(GetComplainsPagingRequest request)
         {
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.Id
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
                         where c.IdStudent.Equals(request.idStudent)
                         select new { c, d };
             int rows = await query.CountAsync();

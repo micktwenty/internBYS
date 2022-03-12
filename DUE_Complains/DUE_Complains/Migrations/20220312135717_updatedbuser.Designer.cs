@@ -4,14 +4,16 @@ using DUE_Complains.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DUE_Complains.Migrations
 {
     [DbContext(typeof(Complains_DUEContext))]
-    partial class Complains_DUEContextModelSnapshot : ModelSnapshot
+    [Migration("20220312135717_updatedbuser")]
+    partial class updatedbuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,16 +70,6 @@ namespace DUE_Complains.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ae59a954-c5f1-419a-a3ff-38a4818ee3a0"),
-                            ConcurrencyStamp = "25620d64-d8d1-4be8-b1be-adb8bafeb3b0",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("DUE_Complains.Models.AppUser", b =>
@@ -102,6 +94,7 @@ namespace DUE_Complains.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("IdStudent")
+                        .IsRequired()
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
 
@@ -140,33 +133,9 @@ namespace DUE_Complains.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idteacher")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("40fb70ec-dbe5-46d0-a55a-a63e751e7ad5"),
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "baa9d907-a18a-4be8-bf32-ee415f969685",
-                            Email = "ngquthien3520@gmail.com",
-                            EmailConfirmed = true,
-                            IdDepartment = 0,
-                            LockoutEnabled = false,
-                            Name = "Thien",
-                            NormalizedEmail = "ngquthien3520@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGLIsTo2ttfWGZ964gxrdDeWo04nYbh7rI3suhkZh97mJW1j8Qj/IZXfPGUMZZTHyw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin",
-                            idteacher = 0
-                        });
                 });
 
             modelBuilder.Entity("DUE_Complains.Models.Complain", b =>
@@ -755,13 +724,6 @@ namespace DUE_Complains.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("40fb70ec-dbe5-46d0-a55a-a63e751e7ad5"),
-                            RoleId = new Guid("ae59a954-c5f1-419a-a3ff-38a4818ee3a0")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
