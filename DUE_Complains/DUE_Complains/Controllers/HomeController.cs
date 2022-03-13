@@ -11,27 +11,29 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
+using DUE_Complains.Dtos;
+using DUE_Complains.Dtos.Complains;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DUE_Complains.Controllers
 {
+
     public class HomeController : Controller
     {
 
-        private readonly string conn;
-        
-        public HomeController(IConfiguration configuration)
+        private readonly IComplainsManagement _complainsManagement;
+
+
+        public HomeController(IComplainsManagement complainsManagement)
         {
-            conn = configuration.GetConnectionString("ComplainsConn");
+            _complainsManagement = complainsManagement;
         }
 
-        public IActionResult Index()
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
         {
-            List<Employee> emp = new List<Employee>();
-            using (var connection = new SqlConnection(conn))
-            {
-                 emp = connection.Query<Employee>("Select * from Employees").ToList();
-            }
-            return View(emp);
+            var complains = await _complainsManagement.GetAll();
+            return View(complains);
         }
 
         public IActionResult Privacy()

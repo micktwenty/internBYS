@@ -18,14 +18,16 @@ namespace DUE_Complains.System.User
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IConfiguration _config;
+        private readonly Complains_DUEContext _context;
 
 
-        public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, IConfiguration config)
+        public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager, IConfiguration config, Complains_DUEContext context)
         {
             _usermanager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _config = config;
+            _context = context;
         }
         public async Task<string> Authenticate(LoginRequest request)
         {
@@ -53,23 +55,49 @@ namespace DUE_Complains.System.User
             return  new JwtSecurityTokenHandler().WriteToken(token) ;
         }
 
-        public async Task<bool> Register_stu(RegisterRequest request)
+        public async Task<bool> Register(RegisterRequest request)
         {
             var user = new AppUser()
             {
-
                 UserName = request.UserName,
                 IdDepartment = request.IdDepartment,
                 IdStudent = request.IdStudent != null ? request.IdStudent : null,
-                idteacher = request.IdTeacher != null ? request.IdTeacher : null,
                 Email = request.Email != null ? request.Email : null
             };
             var result = await _usermanager.CreateAsync(user, request.Password);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return true;
+                return false;
             }
-            return false;
+            if (request.Email != null)
+            {
+                var employee = new Employee()
+                {
+                    Email = request.Email,
+                    DepartmentId = request.IdDepartment
+                    
+                };
+                _context.Employees.Add(employee);
+                var result_reg = await _context.SaveChangesAsync();
+                if (result_reg == 0)
+                {
+                    return false;
+                }
+            }
+            if (request.IdStudent != null)
+            {
+                var student = new Student()
+                {
+                    Studentcode = request.IdStudent
+                };
+                _context.Students.Add(student);
+                var result_reg = await _context.SaveChangesAsync();
+                if (result_reg == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

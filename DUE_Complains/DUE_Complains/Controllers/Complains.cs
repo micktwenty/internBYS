@@ -17,7 +17,7 @@ namespace DUE_Complains.Controllers
         private readonly IComplainsManagement _complainsManagement;
         //private readonly Complains_DUEContext _context;
 
-        public Complains(IComplainsManagement complainsManagement, Complains_DUEContext context)
+        public Complains(IComplainsManagement complainsManagement)
         {
             _complainsManagement = complainsManagement;
             //_context = context;

@@ -1,4 +1,5 @@
 ﻿using DUE_Complains.Configurations;
+using DUE_Complains.Dtos.Complains;
 using DUE_Complains.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -41,6 +42,7 @@ namespace DUE_Complains.Models
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
             modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
+            modelBuilder.Entity<ComplainsViewModel>().HasNoKey();
 
 
 
