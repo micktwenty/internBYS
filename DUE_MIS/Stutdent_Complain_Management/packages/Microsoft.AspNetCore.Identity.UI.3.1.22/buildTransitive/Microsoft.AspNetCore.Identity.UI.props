@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Microsoft.AspNetCore.Identity.UI.props" />
-</Project>
