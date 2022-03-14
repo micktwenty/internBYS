@@ -11,9 +11,8 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
-using DUE_Complains.Dtos;
-using DUE_Complains.Dtos.Complains;
 using Microsoft.AspNetCore.Authorization;
+using DUE_Complains.BackendAPI;
 
 namespace DUE_Complains.Controllers
 {
@@ -32,8 +31,8 @@ namespace DUE_Complains.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            var complains = await _complainsManagement.GetAll();
-            return View(complains);
+            //var complains = await _complainsManagement.GetAll();
+            return Redirect("/swagger");
         }
 
         public IActionResult Privacy()

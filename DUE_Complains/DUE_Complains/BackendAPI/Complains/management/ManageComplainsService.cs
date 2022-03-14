@@ -1,5 +1,5 @@
-﻿using DUE_Complains.Dtos.Commons;
-using DUE_Complains.Dtos.Complains.management;
+﻿using DUE_Complains.BackendAPI.Commons;
+using DUE_Complains.BackendAPI.Complains.management;
 using DUE_Complains.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.IO;
 
-namespace DUE_Complains.Dtos.Complains
+namespace DUE_Complains.BackendAPI.Complains
 {
     public class ManageComplainsService : IComplainsManagement
     {
@@ -74,6 +74,8 @@ namespace DUE_Complains.Dtos.Complains
             return await _context.SaveChangesAsync();
 
         }
+
+
 
         public async Task<int> EditCraft(EditDraftRequest request)
         {

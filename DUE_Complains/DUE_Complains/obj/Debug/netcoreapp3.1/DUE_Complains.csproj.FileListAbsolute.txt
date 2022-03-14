@@ -204,4 +204,6 @@ D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsof
 D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-D:\Github\internBYS\DUE_Complains\DUE_Complains\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\Github\internBYS\DUE_Complains\DUE_Complains\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll

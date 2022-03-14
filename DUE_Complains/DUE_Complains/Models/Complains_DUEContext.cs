@@ -1,5 +1,6 @@
-﻿using DUE_Complains.Configurations;
-using DUE_Complains.Dtos.Complains;
+﻿using DUE_Complains.BackendAPI.Complains;
+using DUE_Complains.Configurations;
+
 using DUE_Complains.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

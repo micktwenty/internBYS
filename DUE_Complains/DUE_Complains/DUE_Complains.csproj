@@ -5,7 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Context\**" />
+    <Compile Remove="wwwroot\user-content\**" />
+    <Content Remove="Context\**" />
+    <Content Remove="wwwroot\user-content\**" />
+    <EmbeddedResource Remove="Context\**" />
+    <EmbeddedResource Remove="wwwroot\user-content\**" />
+    <None Remove="Context\**" />
+    <None Remove="wwwroot\user-content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.23" />
@@ -35,8 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Context\" />
-    <Folder Include="wwwroot\user-content\" />
+    <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
   <ItemGroup>

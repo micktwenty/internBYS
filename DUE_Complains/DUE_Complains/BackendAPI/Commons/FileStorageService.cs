@@ -6,12 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DUE_Complains.Dtos.Commons
+namespace DUE_Complains.BackendAPI.Commons
 {
     public class FileStorageService : IStorageService
     {
         private readonly string _userContentFolder;
-        private const string USER_CONTENT_FOLDER_NAME = "user-content";
+        private const string USER_CONTENT_FOLDER_NAME = "image";
         public FileStorageService (IWebHostEnvironment webHostEnviroment)
         {
             _userContentFolder = Path.Combine(webHostEnviroment.WebRootPath, USER_CONTENT_FOLDER_NAME);

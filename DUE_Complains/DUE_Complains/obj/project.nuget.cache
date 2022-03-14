@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "CLn3LkVXk0w1Go61AwoCzYKqMo4cjbv19Dvco1V+tl8VIbRqL/CqKLF7EcI0bmAhCfVhmhq9U/fPVU9OchJ6Kw==",
+  "dgSpecHash": "giScNHm4JoZc06wDpRGKKTbmlGtRV2YR83fikvE+qFAgs2H7R6ZqWPsR3ra+LJQZEDp2X6sUjKcHTAUeBxIyUg==",
   "success": true,
   "projectFilePath": "D:\\Github\\internBYS\\DUE_Complains\\DUE_Complains\\DUE_Complains.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thien\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\Thien\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512",
+    "C:\\Users\\Thien\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.4.0\\fluentvalidation.aspnetcore.10.4.0.nupkg.sha512",
+    "C:\\Users\\Thien\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.4.0\\fluentvalidation.dependencyinjectionextensions.10.4.0.nupkg.sha512",
     "C:\\Users\\Thien\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Thien\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Thien\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

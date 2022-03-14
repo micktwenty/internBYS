@@ -1,13 +1,14 @@
-﻿using DUE_Complains.Dtos.Commons;
-using DUE_Complains.Dtos.Complains;
-using DUE_Complains.Dtos.Complains.management;
+using DUE_Complains.BackendAPI.Commons;
+using DUE_Complains.BackendAPI.Complains;
+using DUE_Complains.BackendAPI.Complains.management;
+
 using DUE_Complains.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DUE_Complains.Dtos
+namespace DUE_Complains.BackendAPI
 {
     public interface IComplainsManagement
     {
@@ -21,5 +22,7 @@ namespace DUE_Complains.Dtos
         public Task<int> ReplyComplain(string reply, int idcomplains);
 
         public Task<PageResult<ComplainsViewModel>> GetOwnPaging(GetComplainsPagingRequest request);
+
+        // public Task<PageResult<ComplainsViewModel>> GetRequestComplains(GetComplainsPagingRequest request);
     }
 }

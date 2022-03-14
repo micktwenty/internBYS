@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,12 +9,15 @@ namespace DUE_Complains.System.User
 {
     public class RegisterRequest
     {
+         [Display(Name="Tạo cho nhân viên nhà trường?")]
+        public bool Isemployee { get; set; }
+
         public string? Name { get; set; }
         public string UserName { get; set; }
-        [Display(Prompt  = "Just only for employees!")]
+
         public string? Email { get; set; }
         public int IdDepartment { get; set; }
-        [Display(Prompt = "Just only for employees!")]
+
 
         public string? IdStudent { get; set; }
         public string Password { get; set; }

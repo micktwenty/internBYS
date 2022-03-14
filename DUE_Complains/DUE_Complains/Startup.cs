@@ -1,25 +1,27 @@
 using DUE_Complains.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DUE_Complains.Constants;
-using DUE_Complains.Dtos;
-using DUE_Complains.Dtos.Complains;
-using DUE_Complains.Dtos.Commons;
 using Microsoft.AspNetCore.Identity;
 using DUE_Complains.System.User;
 using Microsoft.IdentityModel.Logging;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+
+using DUE_Complains.BackendAPI;
+using DUE_Complains.BackendAPI.Complains;
+using DUE_Complains.BackendAPI.Commons;
+using DUE_Complains.BackenAPI.User;
 
 namespace DUE_Complains
 {
@@ -50,15 +52,72 @@ namespace DUE_Complains
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
 
+            //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
+            //services.AddTransient<IValidator<RegisterRequest>, RegisterValidator>();
 
+
+
+            services.AddControllersWithViews()
+                .AddFluentValidation(a => a.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
 
             //Swwagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger DUEs Complains", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger DUEs Complains", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n
+                        Enter 'Bearer' {space} and then you token in the text input below.
+                        \r\n\r\nExample: 'Bearer 12345abcdef'",
+                        Name = "Authorization",
+                        In = ParameterLocation.Header,
+                        Type = SecuritySchemeType.ApiKey,
+                        Scheme = "Bearer" 
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    { 
+                        new OpenApiSecurityScheme{
+                            Reference = new OpenApiReference{
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer", 
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
             });
-            services.AddControllersWithViews();
+
+            string issuer = Configuration.GetValue<string>("Tokens:Issuer");
+            string signinKey = Configuration.GetValue<string>("Tokens:Key");
+            byte[] signinKeybyte = Encoding.UTF8.GetBytes(signinKey);
+
+            services.AddAuthentication(otp => 
+            {
+                otp.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                otp.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+            })
+            .AddJwtBearer(options => 
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters(){
+                    ValidateIssuer = false,
+                    // ValidIssuer = issuer,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = false,
+                    ClockSkew = TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(signinKeybyte)
+                };
+            });
+            
+           
 
 
 
@@ -79,10 +138,12 @@ namespace DUE_Complains
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-      
+
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
+
 
             app.UseSwagger();
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DUE_Complains.Dtos.Commons
+namespace DUE_Complains.BackendAPI.Commons
 {
     public class PagingRequestBase
     {

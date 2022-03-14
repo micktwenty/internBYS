@@ -1,7 +1,8 @@
-﻿using DUE_Complains.Dtos;
-using DUE_Complains.Dtos.Complains;
-using DUE_Complains.Dtos.Complains.management;
+﻿using DUE_Complains.BackendAPI;
+using DUE_Complains.BackendAPI.Complains;
+using DUE_Complains.BackendAPI.Complains.management;
 using DUE_Complains.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace DUE_Complains.Controllers
 {
     [Route("/[controller]")]
     [ApiController]
+    [Authorize]
     public class Complains : Controller
     {
         private readonly IComplainsManagement _complainsManagement;

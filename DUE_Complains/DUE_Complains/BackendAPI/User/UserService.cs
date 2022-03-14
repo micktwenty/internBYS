@@ -2,9 +2,11 @@
 using DUE_Complains.Models;
 using DUE_Complains.System.Exceptions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -57,6 +59,8 @@ namespace DUE_Complains.System.User
 
         public async Task<bool> Register(RegisterRequest request)
         {
+           
+            
             var user = new AppUser()
             {
                 UserName = request.UserName,
@@ -69,13 +73,12 @@ namespace DUE_Complains.System.User
             {
                 return false;
             }
-            if (request.Email != null)
+            if (request.Isemployee)
             {
                 var employee = new Employee()
                 {
                     Email = request.Email,
                     DepartmentId = request.IdDepartment
-                    
                 };
                 _context.Employees.Add(employee);
                 var result_reg = await _context.SaveChangesAsync();
@@ -84,7 +87,7 @@ namespace DUE_Complains.System.User
                     return false;
                 }
             }
-            if (request.IdStudent != null)
+            else
             {
                 var student = new Student()
                 {

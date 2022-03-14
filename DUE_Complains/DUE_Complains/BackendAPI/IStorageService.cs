@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DUE_Complains.Dtos
+namespace DUE_Complains.BackendAPI
 {
     public interface IStorageService
     {
