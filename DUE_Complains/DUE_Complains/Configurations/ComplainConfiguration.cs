@@ -50,6 +50,9 @@ namespace DUE_Complains.Configurations
                 .HasColumnType("nvarchar(max)")
                 .IsUnicode();
 
+            entity.Property(e => e.employee_reply)
+                .HasColumnName("employee_reply");
+
             entity.Property(e => e.Status)
                 .HasColumnName("status")
                 .HasColumnType("nvarchar(100)")
@@ -76,6 +79,10 @@ namespace DUE_Complains.Configurations
                 .WithMany(p => p.Complains)
                 .HasForeignKey(d => d.IdStudent)
                 .HasConstraintName("FK__complains__IdStu__2D27B809");
+
+            entity.HasOne(d => d.Employee)
+                .WithMany(p => p.Idcomplains)
+                .HasForeignKey(d => d.employee_reply);
         }
     }
 }

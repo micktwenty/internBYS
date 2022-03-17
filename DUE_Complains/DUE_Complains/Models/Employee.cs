@@ -16,7 +16,7 @@ namespace DUE_Complains.Models
         public string Position { get; set; }
         public string Email { get; set; }
         public Department Department { get; set; }
-        public AppUser AppUser { get; set; }
+        public List<Complain> Idcomplains { get; set; }
 
     }
 }
