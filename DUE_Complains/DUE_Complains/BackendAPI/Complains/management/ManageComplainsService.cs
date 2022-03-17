@@ -259,16 +259,17 @@ namespace DUE_Complains.BackendAPI.Complains
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<int> ReplyComplain(string reply, int idcomplains)
+        public async Task<int> ReplyComplain(string reply, int idcomplains, int idemployee)
         {
-            var complain = await _context.Complains.FindAsync(idcomplains);
 
-            complain.Reply = reply;
+            var data = await _context.Complains.FirstOrDefaultAsync(x => x.IdComplains == idcomplains);
+            data.Reply = reply;
             if (reply != null)
             {
-                complain.Status = "Đã duyệt!";
-                complain.IsPublic = true;
-            }
+                data.Status = "Đã duyệt!";
+                data.IsPublic = true;
+                data.employee_reply = idemployee;
+            } 
             return await _context.SaveChangesAsync();
 
         }

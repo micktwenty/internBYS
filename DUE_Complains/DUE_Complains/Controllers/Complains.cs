@@ -80,9 +80,9 @@ namespace DUE_Complains.Controllers
         }
 
         [HttpPut("reply/{IdCom}")]
-        public async Task<IActionResult> ReplyComplain([FromQuery]string reply, int IdCom)
+        public async Task<IActionResult> ReplyComplain([FromQuery]string reply, int IdCom, int emp)
         {
-            var Result = await _complainsManagement.ReplyComplain(reply,IdCom);
+            var Result = await _complainsManagement.ReplyComplain(reply,IdCom,emp);
             if (Result == 0)
             {
                 return BadRequest();

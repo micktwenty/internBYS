@@ -19,7 +19,7 @@ namespace DUE_Complains.BackendAPI
         public Task<ComplainsViewModel> GetbyId(int IDComplain);
         public Task<int> EditCraft(EditDraftRequest request);
         public Task<int> PostRequest(EditDraftRequest request);
-        public Task<int> ReplyComplain(string reply, int idcomplains);
+        public Task<int> ReplyComplain(string reply, int idcomplains, int employee);
 
         public Task<PageResult<ComplainsViewModel>> GetOwnPaging(GetComplainsPagingRequest request);
 
