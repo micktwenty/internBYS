@@ -46,16 +46,32 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "AE59A954-C5F1-419A-A3FF-38A4818EE3A0",
-                            ConcurrencyStamp = "fcd1517d-421d-4085-ab34-90a5778190f2",
+                            ConcurrencyStamp = "b9d9e60a-da18-4b85-9e06-885fd87d5c69",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
+                        },
+                        new
+                        {
+                            Id = "8E742903-5250-4C2C-829B-F1BAE8E7981B",
+                            ConcurrencyStamp = "c509e559-a145-4e62-b22d-247eb3f64ff6",
+                            Description = "student role",
+                            Name = "student",
+                            NormalizedName = "student"
+                        },
+                        new
+                        {
+                            Id = "6BFD2AC2-5F05-4EA7-87D9-ECF95EE4A1D5",
+                            ConcurrencyStamp = "9acb40ba-2eac-46b7-a7dc-79a2b2e56ca0",
+                            Description = "employee role",
+                            Name = "employee",
+                            NormalizedName = "employee"
                         });
                 });
 
             modelBuilder.Entity("Complains_System.Models.AppUser", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
@@ -70,12 +86,21 @@ namespace Complains_System.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("IdDepartment")
                         .HasColumnType("int");
 
                     b.Property<string>("IdStudent")
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -102,40 +127,42 @@ namespace Complains_System.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Roles")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("idteacher")
+                    b.Property<int>("idteacher")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserName");
 
                     b.ToTable("AppUsers");
 
                     b.HasData(
                         new
                         {
-                            Id = "40FB70EC-DBE5-46D0-A55A-A63E751E7AD5",
+                            UserName = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8165f4b5-6f40-468d-80fb-aba00599cd05",
+                            ConcurrencyStamp = "0d896d4e-38da-42d2-8602-48b8cffb9cf3",
                             Email = "ngquthien3520@gmail.com",
                             EmailConfirmed = true,
+                            Id = "40FB70EC-DBE5-46D0-A55A-A63E751E7AD5",
                             IdDepartment = 0,
+                            IsActive = false,
                             LockoutEnabled = false,
                             Name = "Thien",
                             NormalizedEmail = "ngquthien3520@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAECdD2nBXDagIz4owbEl+8DEGmzicK+AqGEIKsK7Z40RUfn0lomxe79Spx4di4fwUrw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEC8Pkaj8fBj+Sd1RMLF/+N4h3gP9tpz+nqMefOpXbEeoO+TbPLM7Kra8ECJFQw1cLw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
-                            UserName = "admin"
+                            idteacher = 0
                         });
                 });
 
@@ -615,6 +642,48 @@ namespace Complains_System.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUserClaims");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
@@ -623,9 +692,15 @@ namespace Complains_System.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<string>");
 
                     b.HasData(
                         new
@@ -633,6 +708,15 @@ namespace Complains_System.Migrations
                             UserId = "40FB70EC-DBE5-46D0-A55A-A63E751E7AD5",
                             RoleId = "AE59A954-C5F1-419A-A3FF-38A4818EE3A0"
                         });
+                });
+
+            modelBuilder.Entity("Complains_System.Models.AppUserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
+
+                    b.ToTable("AppUserRoles");
+
+                    b.HasDiscriminator().HasValue("AppUserRole");
                 });
 
             modelBuilder.Entity("Complains_System.Models.Complain", b =>
@@ -690,6 +774,22 @@ namespace Complains_System.Migrations
                         .HasForeignKey("DepartmentId");
 
                     b.Navigation("DepartmentNavi");
+                });
+
+            modelBuilder.Entity("Complains_System.Models.AppUserRole", b =>
+                {
+                    b.HasOne("Complains_System.Models.AppUser", "AppUser")
+                        .WithMany("AppUserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Complains_System.Models.AppUser", b =>
+                {
+                    b.Navigation("AppUserRoles");
                 });
 
             modelBuilder.Entity("Complains_System.Models.Complain", b =>

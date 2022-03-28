@@ -34,6 +34,13 @@ namespace Complains_System.Controllers
             return Ok(complains);
         }
 
+        [HttpPost("my-complains")]
+        public async Task<IActionResult> Getmycomplain([FromQuery] GetComplainsPagingRequest request)
+        {
+            request.idStudent = TempData["id"].ToString();
+            var complains = await _complainsManagement.GetAllbyKeyword(request);
+            return View(complains);
+        }
 
         [HttpGet("{IdComplain}")]
         public async Task<IActionResult> GetbyID(int IdComplain)
@@ -42,9 +49,18 @@ namespace Complains_System.Controllers
             if (complains == null)
             {
                 return BadRequest("Cannot find Complains!");
-
             }
             return Ok(complains);
+        }
+        [HttpGet("viewdetail/{id}")]
+        public async Task<IActionResult> viewdetail(int id)
+        {
+            var complains = await _complainsManagement.GetbyId(id);
+            if (complains == null)
+            {
+                return BadRequest("Cannot find Complains!");
+            }
+            return View(complains);
         }
 
         [HttpPost]

@@ -22,6 +22,7 @@ namespace Complains_System.EF
             modelBuilder.ApplyConfiguration(new DepartmentConfigurations());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new AppRolesConfigurations());
+            modelBuilder.ApplyConfiguration(new AppUserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new AppUsersConfigurations());
             modelBuilder.ApplyConfiguration(new ImageComplainsConfigurations());
             modelBuilder.ApplyConfiguration(new StudentsConfigurations());
@@ -29,6 +30,9 @@ namespace Complains_System.EF
             modelBuilder.Seed();
 
             modelBuilder.Entity<IdentityUserRole<string>>().HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("AppRoleClaims");
+
+            modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("AppUserClaims");
 
         }
         public virtual DbSet<Complain> Complains { get; set; }
@@ -36,8 +40,11 @@ namespace Complains_System.EF
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<ImageComplain> ImageComplains { get; set; }
+        public virtual DbSet<AppUser> AppUsers { get; set; }
+        public virtual DbSet<AppUserRole> AppUserRoles { get; set; }
+        public virtual DbSet<AppRole> AppRoles { get; set; }
 
-           
+
 
     }
 }

@@ -21,5 +21,6 @@ namespace Complains_System.Models
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<Student> Students { get; set; }
 
+
     }
 }

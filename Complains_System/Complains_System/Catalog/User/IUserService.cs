@@ -1,14 +1,20 @@
 ﻿
+using Complains_System.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Complains_System.Catalog.User
 {
      public interface IUserService
     {
-        Task<string> Authenticate(LoginRequest request);
-        Task<bool> Register(RegisterRequest request);
+        [TempData]
+        public string StatusMessage { get; set; }
+        Task<ClaimsPrincipal> Login(LoginRequest request);
+        public void Logout();
+        public AppUser getUser(string username);
     }
 }

@@ -95,7 +95,6 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\sc
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.TagHelpers.input.cache
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.TagHelpers.output.cache
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.RazorCoreGenerate.cache
-D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -162,3 +161,15 @@ D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Sw
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.MvcApplicationPartsAssemblyInfo.cs
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Users\Login.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserAccessDenied.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserAccessDenied.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Complains_System.StaticWebAssets.xml
+D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePage\Index.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Users\StatusMessage.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\viewdetail.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\View.cshtml.g.cs

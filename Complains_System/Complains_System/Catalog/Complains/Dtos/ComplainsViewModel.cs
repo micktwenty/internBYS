@@ -16,5 +16,7 @@ namespace Complains_System.Catalog.Complains.Dtos
         public bool IsPublic { get; set; }
         public string Status { get; set; }
 
+        public string picture { get; set; }
+
     }
 }

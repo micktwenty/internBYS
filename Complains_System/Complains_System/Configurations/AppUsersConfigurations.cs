@@ -18,6 +18,15 @@ namespace Complains_System.Configurations
             entity.Property(x => x.IdDepartment);
             entity.Property(x => x.IdStudent)
                         .HasMaxLength(225);
+            entity.HasKey(x => x.UserName);
+            entity.Property(x => x.Id)
+                .IsRequired();
+            entity.Property(x => x.IsActive)
+                .IsRequired()
+                .HasDefaultValue(true);
+
+               
+
         }
     }
 }

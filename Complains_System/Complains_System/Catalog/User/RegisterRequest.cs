@@ -17,7 +17,7 @@ namespace Complains_System.Catalog.User
 
         public string Email { get; set; }
         public int IdDepartment { get; set; }
-
+        public string sClass { get; set; }
 
         public string IdStudent { get; set; }
         public string Password { get; set; }

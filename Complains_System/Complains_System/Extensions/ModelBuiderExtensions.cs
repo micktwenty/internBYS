@@ -66,7 +66,21 @@ namespace Complains_System.Extensions
                 Name = "admin",
                 NormalizedName = "admin",
                 Description = "Administrator role"
-            });
+            },
+            new AppRole
+            {
+                Id = "8E742903-5250-4C2C-829B-F1BAE8E7981B",
+                Name = "student",
+                NormalizedName = "student",
+                Description = "student role"
+            }, new AppRole
+            {
+                Id = "6BFD2AC2-5F05-4EA7-87D9-ECF95EE4A1D5",
+                Name = "employee",
+                NormalizedName = "employee",
+                Description = "employee role"
+            }
+            );
 
             var hasher = new PasswordHasher<AppUser>();
             modelBuilder.Entity<AppUser>().HasData(new AppUser

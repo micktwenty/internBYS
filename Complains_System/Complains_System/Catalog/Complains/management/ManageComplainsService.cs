@@ -183,17 +183,20 @@ namespace Complains_System.Catalog.Complains.management
         {
 
             var complain = await _context.Complains.FindAsync(IDComplain);
-         
+            var department = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == complain.IdDepartment) ;
+            var image = await _context.ImageComplains.FirstOrDefaultAsync(x => x.IdComplain == IDComplain);
 
 
             var complainview = new ComplainsViewModel()
             {
                 IdComplains = complain.IdComplains,
+                Department = department.Name,
                 Content = complain.Content,
                 Title = complain.Title,
                 Date = complain.Date,
                 Reply = complain.Reply,
-                Status = complain.Status
+                Status = complain.Status,
+                picture = image != null ? image.Path_image : null
             };
             return complainview;
         }
