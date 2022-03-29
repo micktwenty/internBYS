@@ -70,19 +70,22 @@
                                 <p>@Model.Title</p>
                             </div>
                             @*<div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Tên người đăng bài:</label>
-                                <input class="form-control" type="text" value="@Model." disabled
-                                       readonly>
-                            </div>*@
+            <label for="exampleFormControlInput1" class="form-label">Tên người đăng bài:</label>
+            <input class="form-control" type="text" value="@Model." disabled
+                   readonly>
+        </div>*@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Ngày đăng:</label>
                                 <input class="form-control" type="text" value="@Model.Date" disabled
                                        readonly>
                             </div>
+                            @if (@Url.Content(Model.picture) != null)
+                            {
+                                <div class="mb-3">
+                                    <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
+                                </div>
+                            }
 
-                            <div class="mb-3">
-                                <img id="blah" src="@Url.Content(Model.picture)" />
-                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Nội dung:</label>
                                 <textarea class="form-control" rows="5" disabled

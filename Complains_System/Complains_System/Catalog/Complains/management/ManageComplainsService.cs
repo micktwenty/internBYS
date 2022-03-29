@@ -116,9 +116,11 @@ namespace Complains_System.Catalog.Complains.management
         public async Task<List<ComplainsViewModel>> GetAll()
         {
             var query = from c in _context.Complains
-                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId                       
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                        join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                        from cpl in complain.DefaultIfEmpty()
                         where c.IsPublic.Equals(true)
-                        select new { c, d };
+                        select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" :  cpl.Path_image};
            
 
             var data = await query.Select(x => new ComplainsViewModel()
@@ -131,9 +133,12 @@ namespace Complains_System.Catalog.Complains.management
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
-                    IsPublic = x.c.IsPublic
+                    IsPublic = x.c.IsPublic,
+                    picture = x.image
+                    
                 }).ToListAsync();
-           
+
+
             return data;
         }
 

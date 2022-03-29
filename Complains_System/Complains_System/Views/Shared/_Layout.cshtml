@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <div><a href=""><img id="logo" src="./assets/img/logo.png"></a></div>
+                    <div><a href="~/"><img id="logo" src="~/assets/homepage/img/logo-dc.png"></a></div>
                 </div>
                 <div class="col-7">
                     <nav class="navbar ">
@@ -30,14 +30,25 @@
                     </nav>
                 </div>
                 <div class="col-3 navbar dropdown">
-                    <button id="xinchao" class="btn dropdown-toggle " data-toggle="dropdown">Xin chào! Nguyễn Quang
-                        Thành</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#"><img class="nav-icon" src="./assets/img/key.png"><span>Đổi mật
-                                khẩu</span></a>
-                        <a class="dropdown-item" href="#"><img class="nav-icon"
-                                src="./assets/img/log-out.png"><span>Đăng xuất</span></a>
-                    </div>
+                    @if (TempData["Name"] != null)
+                    {
+                        <button id="xinchao" class="btn dropdown-toggle " data-toggle="dropdown">Xin chào @TempData["Name"]!</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">
+                                <img class="nav-icon" src="./assets/img/key.png"><span>Đổi mật khẩu</span>
+                            </a>
+                            <a class="dropdown-item" asp-action="logout" asp-controller="users">
+                                <img class="nav-icon" src="./assets/img/log-out.png"><span>Đăng xuất</span>
+                            </a>
+                        </div>
+                    }
+                    @if (TempData["Name"] == null)
+                    {
+                        <a class="dropdown-item" asp-action="login" asp-controller="users">
+                            <img class="nav-icon" src="./assets/img/log-out.png"><span>Đăng nhập!</span>
+                        </a>
+                    }
+
                 </div>
 
             </div>
@@ -84,9 +95,9 @@
             </div>
         </section>
     </div>
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>*@
+        <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

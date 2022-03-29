@@ -24,7 +24,7 @@
                     <div class="homepage"><a href=""><img id="homepage" src="~/assets/homepage/img/home.png"></a></div>
                     <div class="row mb-4 ml-1 mt-4">
                         <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span></a></div>
-                        <button class="row lienket" onclick="openPage('Home', this, 'red')"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span></a></button>
+                        <button class="row lienket" onclick="openPage('Home', this, 'red')">@*<a href="">*@<img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span>@*</a>*@</button>
                     </div>
                     <div class="row  mb-4 ml-1">
                         <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/new-document.png"><span>Tạo bài đăng mới</span></a></div>
@@ -54,7 +54,7 @@
 
                                         @if (item.picture != null)
                                         {
-                                            <div><img class="imgpost" src="@Url.Content(item.picture)"></div>
+                                            <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
                                         }
                                         @if (item.picture == null)
                                         {

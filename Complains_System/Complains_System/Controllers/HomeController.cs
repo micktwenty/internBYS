@@ -42,7 +42,7 @@ namespace Complains_System.Controllers
             }
            
             var lstComplains = await _complains.GetAll();
-            return View(lstComplains);
+            return View(lstComplains.OrderByDescending(x => x.Date));
         }
         public async Task<IActionResult> Details(int id)
         {
