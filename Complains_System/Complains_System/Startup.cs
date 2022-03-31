@@ -1,6 +1,7 @@
 using Complains_System.Catalog;
 using Complains_System.Catalog.Admin.UserManagement;
 using Complains_System.Catalog.Complains.management;
+using Complains_System.Catalog.Department;
 using Complains_System.Catalog.Public;
 using Complains_System.Catalog.User;
 using Complains_System.Constants;
@@ -59,6 +60,8 @@ namespace Complains_System
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserManagementService, UserManagementService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
+
 
             //services.AddScoped<IAuthorizationHandler, PoliciesAuthorizationHandler>();
             //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
@@ -82,8 +85,8 @@ namespace Complains_System
             
             services.AddSession(options =>
             {
-                options.Cookie.Name = ".AdventureWorks.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(5);
+                options.Cookie.Name = "UserInfo";
+                options.IdleTimeout = TimeSpan.FromSeconds(3600);
                 options.Cookie.IsEssential = true;
             });
             services.AddControllersWithViews();

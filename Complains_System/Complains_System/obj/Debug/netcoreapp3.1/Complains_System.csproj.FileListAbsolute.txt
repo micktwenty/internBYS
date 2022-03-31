@@ -179,3 +179,4 @@ D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Mi
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\MvcPagedList.Core.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\NewDraft.cshtml.g.cs

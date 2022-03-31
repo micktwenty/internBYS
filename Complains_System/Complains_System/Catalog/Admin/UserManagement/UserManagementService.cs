@@ -22,34 +22,85 @@ namespace Complains_System.Catalog.Admin.UserManagement
             _context = context;
 
         }
-        public Task<bool> DeleteAccount(string username)
+        public async Task<bool> DeleteAccount(string username)
         {
-            throw new NotImplementedException();
+            
+            var user = await _usermanager.FindByNameAsync(username);
+            var student = await _context.Students.FindAsync(username);
+            var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == user.idteacher);
+            if (student != null)
+            {
+                var complains = await _context.Complains.Where(x => x.IdStudent == student.Studentcode).ToListAsync();
+                _context.Complains.RemoveRange(complains);
+                _context.Students.Remove(student);
+            }
+            if (employee != null)
+            {
+                var complains = await _context.Complains.Where(x => x.employee_reply == employee.Id).ToListAsync();
+                _context.Complains.RemoveRange(complains);
+                _context.Employees.Remove(employee);
+            }
+            var result = await _context.SaveChangesAsync();
+            await _usermanager.DeleteAsync(user);
+            if (result == 0)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public Task<bool> DisableAccount(string username)
+        public async Task<bool> DisableAccount(string username)
         {
-            throw new NotImplementedException();
+            var user = await _usermanager.FindByNameAsync(username);
+            user.IsActive = false;
+            _context.AppUsers.Update(user);
+            var result = await _context.SaveChangesAsync();
+            return result > 0 ? true : false;
+        }
+
+        public async Task<bool> EnableAccount(string username)
+        {
+            var user = await _usermanager.FindByNameAsync(username);
+            user.IsActive = true;
+            _context.AppUsers.Update(user);
+            var result = await _context.SaveChangesAsync();
+            return result > 0 ? true : false;
         }
 
         public async Task<List<UserViewModel>> GetListUsers()
         {
-            var data = from c in _context.AppUsers
-                       select new { c};
-           
+            List<UserViewModel> ListUser = new List<UserViewModel>();
 
-            var listUser = await data.Select(x => new UserViewModel()
+            var data = from c in _context.AppUsers
+                       select new {c};
+            foreach (var item in data)
             {
-                Name = x.c.Name,
-                username = x.c.UserName
-            }).ToListAsync();
-            return listUser;
+                List<string> rolelist = new List<string>();
+                IQueryable<AppUserRole> roles = from d in _context.AppUserRoles
+                                              where d.UserId.Equals(item.c.Id)
+                                              select d;
+                
+                foreach (var roleitem in roles)
+                {
+                    var role = await _context.AppRoles.FirstOrDefaultAsync(x => x.Id == roleitem.RoleId);
+                    rolelist.Add(role.Name);
+                }
+                var dep  = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == item.c.IdDepartment);
+                
+                var user = new UserViewModel()
+                {
+                    Name = item.c.Name,
+                    Department = dep != null ? dep.Name : null,
+                    username = item.c.UserName,
+                    Role = string.Join(", ",rolelist)
+                };
+                ListUser.Add(user);
+            }
+            return ListUser;
         }
 
         public async Task<bool> Register(RegisterRequest request)
         {
-
-
 
             if (request.Isemployee)
             {
@@ -119,9 +170,12 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return true;
         }
 
-        public Task<bool> ResetPassword(string username)
+        public async Task<bool> ResetPassword(string username)
         {
-            throw new NotImplementedException();
+            var user = await _usermanager.FindByNameAsync(username);
+            var code = await _usermanager.GeneratePasswordResetTokenAsync(user);
+            var result = await _usermanager.ResetPasswordAsync(user, code, $"Mis@2022");
+            return true;
         }
     }
 }

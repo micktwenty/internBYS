@@ -88,5 +88,10 @@ namespace Complains_System.Catalog.User
             var message = content;
             return message;
         }
+
+        public Task<ClaimsPrincipal> ChangePassword(ChangePasswordRequest request)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

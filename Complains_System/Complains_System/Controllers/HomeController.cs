@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.Session;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using MvcPagedList;
 
 namespace Complains_System.Controllers
 {
@@ -28,17 +30,14 @@ namespace Complains_System.Controllers
             _context = context;
             _complains = complains;
         }
-
         public async Task<IActionResult> Index()
         {
             ClaimsPrincipal currentUser = this.User;
             if (currentUser.FindFirst(ClaimTypes.Name) != null)
             {
-               
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = await _usermanager.FindByNameAsync(Name);
-
-                TempData["Name"] = user.Name;
+                HttpContext.Session.SetString("Name", user.Name);
             }
            
             var lstComplains = await _complains.GetAll();
@@ -52,8 +51,6 @@ namespace Complains_System.Controllers
         [Authorize(Roles ="employee")]
         public IActionResult Privacy()
         {
-            
-
             return View();
         }
 

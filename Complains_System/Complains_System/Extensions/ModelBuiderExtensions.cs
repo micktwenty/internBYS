@@ -48,7 +48,7 @@ namespace Complains_System.Extensions
               new Employee() {Email = "thuynt@due.edu.vn", Id = 9, Name = "Nguyễn Thành Thủy", DepartmentId = 9 }
                );
             modelBuilder.Entity<Complain>().HasData(
-              new Complain() {Title = "Phàn nàn" ,IdComplains=1 ,Content ="Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",IdDepartment = 1, IdStudent = "181121521137" },
+              new Complain() {Title = "Phàn nàn" ,IdComplains= 1,Content ="Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",IdDepartment = 1, IdStudent = "181121521137" },
               new Complain() {Title = "Phàn nàn" ,IdComplains= 2,Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",IdDepartment = 2, IdStudent = "171121521050" },
               new Complain() {Title = "Phàn nàn" ,IdComplains= 3,Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",IdDepartment = 3, IdStudent = "191154833658" },
               new Complain() {Title = "Phàn nàn" ,IdComplains= 4,Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",IdDepartment = 4, IdStudent = "181121521136" },

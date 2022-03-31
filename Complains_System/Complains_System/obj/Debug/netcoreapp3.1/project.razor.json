@@ -14467,6 +14467,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Github\\internBYS\\Complains_System\\Complains_System\\Views\\Complains\\NewDraft.cshtml",
+      "TargetPath": "Views\\Complains\\NewDraft.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Github\\internBYS\\Complains_System\\Complains_System\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

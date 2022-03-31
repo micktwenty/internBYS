@@ -13,6 +13,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public Task<List<UserViewModel>> GetListUsers();
         public Task<bool> ResetPassword(string username);
         public Task<bool> DisableAccount(string username);
+        public Task<bool> EnableAccount(string username);
+
         public Task<bool> DeleteAccount(string username);
         public Task<bool> Register(RegisterRequest request);
     }

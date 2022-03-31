@@ -1,4 +1,5 @@
 ﻿using Complains_System.Catalog.Admin.UserManagement;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class HomePageController : Controller
     {
         private readonly IUserManagementService _userManagementService;

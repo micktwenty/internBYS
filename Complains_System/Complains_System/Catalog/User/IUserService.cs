@@ -14,7 +14,10 @@ namespace Complains_System.Catalog.User
         [TempData]
         public string StatusMessage { get; set; }
         Task<ClaimsPrincipal> Login(LoginRequest request);
+        Task<ClaimsPrincipal> ChangePassword(ChangePasswordRequest request);
+
         public void Logout();
         public AppUser getUser(string username);
+
     }
 }

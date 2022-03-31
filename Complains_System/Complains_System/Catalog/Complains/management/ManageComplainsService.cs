@@ -90,6 +90,11 @@ namespace Complains_System.Catalog.Complains.management
             complain.IdDepartment = request.IdDepartment;
             if (request.ThumbnailImage != null)
             {
+                var images = _context.ImageComplains.Where(i => i.IdComplain == complain.IdComplains);
+                foreach (var item in images)
+                {
+                    await _storageService.DeleteFileAsync(item.Path_image);
+                }
                 var thumbnailimage = await _context.ImageComplains.FirstOrDefaultAsync(i =>  i.IdComplain == request.IdComplain);
                 if (thumbnailimage != null)
                 {
@@ -105,10 +110,10 @@ namespace Complains_System.Catalog.Complains.management
                         content_image = complain.Title,
                         filesize = Convert.ToInt32(request.ThumbnailImage.Length),
                         Path_image = await this.SaveFile(request.ThumbnailImage),
-         
                     }
                 };
             }
+            _context.Complains.Update(complain);
             return await _context.SaveChangesAsync();
 
         }
@@ -237,7 +242,33 @@ namespace Complains_System.Catalog.Complains.management
             return pageResult;
         }
 
-        public async Task<int> PostRequest(EditDraftRequest request)
+        public async Task<List<ComplainsViewModel>> GetRequestPost(int ID)
+        {
+            var query = from c in _context.Complains
+                        join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                        from cpl in complain.DefaultIfEmpty()
+                        where c.IdDepartment.Equals(ID) && c.Status.Equals("Chờ duyệt")
+                        select new { c, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
+
+
+            var data = await query.Select(x => new ComplainsViewModel()
+            {
+                IdComplains = x.c.IdComplains,
+                Title = x.c.Title,
+                Content = x.c.Content,
+                Date = x.c.Date,
+                Reply = x.c.Reply,
+                Status = x.c.Status,
+                IsPublic = x.c.IsPublic,
+                picture = x.image
+
+            }).ToListAsync();
+
+
+            return data;
+        }
+
+        public async Task<int> Post(EditDraftRequest request)
         {
             var complain = await _context.Complains.FindAsync(request.IdComplain);
 
@@ -268,6 +299,43 @@ namespace Complains_System.Catalog.Complains.management
                 };
             }
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> PostRequest(ComplainsCreateRequest request)
+        {
+            var complain = new Complain()
+            {
+                IdStudent = request.IdStudent,
+                IdDepartment = request.IdDepartment,
+                Title = request.Title,
+                Content = request.Content,
+                Status = "Chờ duyệt",
+                IsPublic = false,
+                //DepInfo = new List<Department>()
+                //{
+                //    new Department()
+                //    {
+                //        Name = request.Department
+                //    }
+                //}
+
+            };
+            if (request.ThumbnailImage != null)
+            {
+                complain.ImageComplain = new List<ImageComplain>()
+                {
+                    new ImageComplain()
+                    {
+                        content_image = complain.Title,
+                        filesize = Convert.ToInt32(request.ThumbnailImage.Length),
+                        Path_image = await this.SaveFile(request.ThumbnailImage),
+
+                    }
+                };
+            }
+            _context.Complains.Add(complain);
+            await _context.SaveChangesAsync();
+            return complain.IdComplains;
         }
 
         public async Task<int> ReplyComplain(string reply, int idcomplains, int idemployee)

@@ -35,17 +35,17 @@
                         <button id="xinchao" class="btn dropdown-toggle " data-toggle="dropdown">Xin chào @TempData["Name"]!</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">
-                                <img class="nav-icon" src="./assets/img/key.png"><span>Đổi mật khẩu</span>
+                                <img class="nav-icon" src="~/assets/img/key.png"><span>Đổi mật khẩu</span>
                             </a>
                             <a class="dropdown-item" asp-action="logout" asp-controller="users">
-                                <img class="nav-icon" src="./assets/img/log-out.png"><span>Đăng xuất</span>
+                                <img class="nav-icon" src="~/assets/img/log-out.png"><span>Đăng xuất</span>
                             </a>
                         </div>
                     }
                     @if (TempData["Name"] == null)
                     {
                         <a class="dropdown-item" asp-action="login" asp-controller="users">
-                            <img class="nav-icon" src="./assets/img/log-out.png"><span>Đăng nhập!</span>
+                            <img class="nav-icon" src="~/assets/img/log-out.png"><span>Đăng nhập!</span>
                         </a>
                     }
 
