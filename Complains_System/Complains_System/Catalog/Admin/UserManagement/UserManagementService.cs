@@ -28,19 +28,24 @@ namespace Complains_System.Catalog.Admin.UserManagement
             var user = await _usermanager.FindByNameAsync(username);
             var student = await _context.Students.FindAsync(username);
             var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == user.idteacher);
+            var result = 1;
+
             if (student != null)
             {
                 var complains = await _context.Complains.Where(x => x.IdStudent == student.Studentcode).ToListAsync();
                 _context.Complains.RemoveRange(complains);
                 _context.Students.Remove(student);
+                result = await _context.SaveChangesAsync();
+
             }
             if (employee != null)
             {
                 var complains = await _context.Complains.Where(x => x.employee_reply == employee.Id).ToListAsync();
                 _context.Complains.RemoveRange(complains);
                 _context.Employees.Remove(employee);
+                result = await _context.SaveChangesAsync();
+
             }
-            var result = await _context.SaveChangesAsync();
             await _usermanager.DeleteAsync(user);
             if (result == 0)
             {
@@ -76,9 +81,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
             foreach (var item in data)
             {
                 List<string> rolelist = new List<string>();
-                IQueryable<AppUserRole> roles = from d in _context.AppUserRoles
-                                              where d.UserId.Equals(item.c.Id)
-                                              select d;
+                List<AppUserRole> roles = await _context.AppUserRoles.Where(x => x.UserId == item.c.Id).ToListAsync();
                 
                 foreach (var roleitem in roles)
                 {
@@ -101,80 +104,85 @@ namespace Complains_System.Catalog.Admin.UserManagement
 
         public async Task<bool> Register(RegisterRequest request)
         {
-
-            if (request.Isemployee)
+            var validation = new RegisterRequestValidator();
+            var result_vali = await validation.ValidateAsync(request);
+            if (result_vali.IsValid)
             {
-                var user = new AppUser()
+                if (request.Isemployee)
                 {
-                    Name = request.Name,
-                    UserName = request.Email,
-                    IdDepartment = request.IdDepartment,
-                    Email = request.Email,
-                    idteacher = await _context.Employees.MaxAsync(x => x.Id) + 1
-                    
-                };
-                var result = await _usermanager.CreateAsync(user, request.Password);
+                    var user = new AppUser()
+                    {
+                        Name = request.Name,
+                        UserName = request.Email,
+                        IdDepartment = request.IdDepartment,
+                        Email = request.Email,
+                        idteacher = await _context.Employees.MaxAsync(x => x.Id) + 1
 
-                if (!result.Succeeded)
-                {
-                    return false;
-                }
-                result = await _usermanager.AddToRoleAsync(user, "employee");
-                if (!result.Succeeded) return false;
-                var employee = new Employee()
-                {
-                    Name = request.Name,
-                    Email = request.Email,
-                    DepartmentId = request.IdDepartment,
-                    Id = await _context.Employees.MaxAsync(x => x.Id) + 1
-                };
-                _context.Employees.Add(employee);
-                var result_reg = await _context.SaveChangesAsync();
-                if (result_reg == 0)
-                {
-                    return false;
-                }
+                    };
+                    var result = await _usermanager.CreateAsync(user, request.Password);
 
+                    if (!result.Succeeded)
+                    {
+                        return false;
+                    }
+                    result = await _usermanager.AddToRoleAsync(user, "employee");
+                    if (!result.Succeeded) return false;
+                    var employee = new Employee()
+                    {
+                        Name = request.Name,
+                        Email = request.Email,
+                        DepartmentId = request.IdDepartment,
+                        Id = await _context.Employees.MaxAsync(x => x.Id) + 1
+                    };
+                    _context.Employees.Add(employee);
+                    var result_reg = await _context.SaveChangesAsync();
+                    if (result_reg == 0)
+                    {
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    var user = new AppUser()
+                    {
+                        Name = request.Name,
+                        UserName = request.IdStudent,
+                        IdDepartment = request.IdDepartment,
+                        Email = request.IdStudent + "@due.udn.vn",
+                        IdStudent = request.IdStudent
+
+                    };
+                    var result = await _usermanager.CreateAsync(user, request.Password);
+                    if (!result.Succeeded) return false;
+
+                    result = await _usermanager.AddToRoleAsync(user, "student");
+                    if (!result.Succeeded) return false;
+
+                    var student = new Student()
+                    {
+                        Name = request.Name,
+                        Sclass = request.sClass,
+                        Studentcode = request.IdStudent,
+                        DepartmentId = request.IdDepartment
+                    };
+                    _context.Students.Add(student);
+                    var result_reg = await _context.SaveChangesAsync();
+                    if (result_reg == 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
-            else
-            {
-                var user = new AppUser()
-                {
-                    Name = request.Name,
-                    UserName = request.IdStudent,
-                    IdDepartment = request.IdDepartment,
-                    Email = request.IdStudent + "@due.udn.vn",
-                    IdStudent = request.IdStudent
-                    
-                };
-                var result = await _usermanager.CreateAsync(user, request.Password);
-                if (!result.Succeeded) return false;
-
-                result = await _usermanager.AddToRoleAsync(user, "student");
-                if (!result.Succeeded) return false;
-
-                var student = new Student()
-                {
-                    Name = request.Name,
-                    Sclass = request.sClass,
-                    Studentcode = request.IdStudent,
-                    DepartmentId = request.IdDepartment
-                };
-                _context.Students.Add(student);
-                var result_reg = await _context.SaveChangesAsync();
-                if (result_reg == 0)
-                {
-                    return false;
-                }
-            }
-            return true;
+            return false;
         }
 
         public async Task<bool> ResetPassword(string username)
         {
             var user = await _usermanager.FindByNameAsync(username);
             var code = await _usermanager.GeneratePasswordResetTokenAsync(user);
-            var result = await _usermanager.ResetPasswordAsync(user, code, $"Mis@2022");
+            var result = await _usermanager.ResetPasswordAsync(user, code, "Mis@2022");
             return true;
         }
     }

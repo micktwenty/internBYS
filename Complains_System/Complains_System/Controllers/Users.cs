@@ -15,7 +15,8 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Controllers
 {
-
+    [Route("[controller]")]
+    [ApiController]
     public class UsersController : Controller
     {
         private readonly IUserService _userService;
@@ -27,13 +28,14 @@ namespace Complains_System.Controllers
             _usermanager = usermanager;
 
         }
-
+        [HttpGet("logout")]
         public ActionResult Logout()
         {
             _userService.Logout();
+            TempData.Clear();
             return RedirectToAction("Index", "Home");
         }
-        [HttpGet]
+        [HttpGet("Login")]
         [AllowAnonymous]
         public ViewResult Login()
         {
@@ -47,33 +49,76 @@ namespace Complains_System.Controllers
       
             return View();
         }
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Authenticate(IFormCollection frm)
+        [HttpGet("change-password")]
+        public ViewResult ChangePass()
         {
-            if (!ModelState.IsValid)
+            return View();
+        }
+        [HttpPost("changepass")]
+        public async Task<IActionResult> ChangePass(IFormCollection frm)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser == null) return RedirectToAction("Login");
+            var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+            var user = await _usermanager.FindByNameAsync(Name);
+            var request = new ChangePasswordRequest()
             {
-                return BadRequest(ModelState);
+                OldPass = frm["oldpassword"],
+                NewPass = frm["newpassword"],
+                ConfirmNewPass = frm["comfirmpassword"],
+                current_user = user 
+            };
+            var validator = new ChangePasswordValidator();
+            var validateresult = await validator.ValidateAsync(request);
+            if (validateresult.IsValid)
+            {
+                var result = await _userService.ChangePassword(request);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login");
+                }
             }
+           
+            return Content(string.Join(";",validateresult.Errors));
+        }
+
+        [HttpPost("authenticate")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Authenticate([FromForm] IFormCollection frm)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             LoginRequest request = new LoginRequest();
             request.Username = frm["username"].ToString();
             request.Password = frm["password"].ToString();
-            request.RememberMe = false;
-            var resultToken = await _userService.Login(request);
-            if (resultToken == null)
+            request.RememberMe =  false;
+            if (Request.Form["remember"].Contains("true"))
             {
-                TempData["Message"] = _userService.StatusMessage;
-                return RedirectToAction("Login");
+                request.RememberMe = true;
             }
-            await HttpContext.SignInAsync(resultToken);
-            
-            var user =  _userService.getUser(request.Username);
-            var id = user.IdStudent == null ? user.idteacher.ToString() : user.IdStudent;
-            TempData["id"] = id;
-            TempData["Name"] = user.Name;
-            return RedirectToAction("Index", "Home");
+            var validator = new LoginRequestValidator();
+            var validateresult = await validator.ValidateAsync(request);
+            if (validateresult.IsValid)
+            {
+                var result = await _userService.Login(request);
+                if (result == null)
+                {
+                    TempData["Message"] = _userService.StatusMessage;
+                    return RedirectToAction("Login");
+                }
+                await HttpContext.SignInAsync(result);
+                var user = _userService.getUser(request.Username);
+                var id = user.IdStudent == null ? user.idteacher.ToString() : user.IdStudent;
+                TempData["id"] = id;
+                TempData["Name"] = user.Name;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return Content(string.Join(";", validateresult.Errors));
         }
-        [HttpGet]
+        [HttpGet("access-deny")]
         public ActionResult UserAccessDenied()
         {
             return View();

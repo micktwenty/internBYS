@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Catalog.Complains.management
 {
-    public class GetComplainsPagingRequest : PagingRequestBase
+    public class GetComplainsPagingRequest
     {
         public string keyword { get; set; }
         public List<int> idDepartment { get; set; }
         public string idStudent { get; set; }
-        public int?  DepartmentId { get; set; }
+        public int? page { get; set; }
     }
 }

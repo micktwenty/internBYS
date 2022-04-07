@@ -1,5 +1,6 @@
 ﻿
 using Complains_System.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Complains_System.Catalog.User
         [TempData]
         public string StatusMessage { get; set; }
         Task<ClaimsPrincipal> Login(LoginRequest request);
-        Task<ClaimsPrincipal> ChangePassword(ChangePasswordRequest request);
+        Task<IdentityResult> ChangePassword(ChangePasswordRequest request);
 
         public void Logout();
         public AppUser getUser(string username);

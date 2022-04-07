@@ -8,10 +8,6 @@ namespace Complains_System.Controllers
 {
     public class Account : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         public ActionResult AccessDenied()
         {
             return View("UserAccessDenied");

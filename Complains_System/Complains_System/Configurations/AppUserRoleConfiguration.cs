@@ -14,7 +14,6 @@ namespace Complains_System.Configurations
         {
             entity.ToTable("AppUserRoles");
 
-
             entity.HasOne(x => x.AppUser)
                 .WithMany(x => x.AppUserRoles)
                 .HasForeignKey(x => x.UserId);

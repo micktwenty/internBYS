@@ -6,14 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using Microsoft.AspNetCore.Session;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using MvcPagedList;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
+using System;
 
 namespace Complains_System.Controllers
 {
@@ -30,18 +29,21 @@ namespace Complains_System.Controllers
             _context = context;
             _complains = complains;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
             ClaimsPrincipal currentUser = this.User;
             if (currentUser.FindFirst(ClaimTypes.Name) != null)
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = await _usermanager.FindByNameAsync(Name);
-                HttpContext.Session.SetString("Name", user.Name);
+              
             }
            
             var lstComplains = await _complains.GetAll();
-            return View(lstComplains.OrderByDescending(x => x.Date));
+            var pageNumber = page ?? 1;
+            pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View(lstComplains.OrderByDescending(x => x.Date).ToPagedList(pageNumber,pageSize));
         }
         public async Task<IActionResult> Details(int id)
         {

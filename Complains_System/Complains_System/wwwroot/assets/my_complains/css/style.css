@@ -1,0 +1,114 @@
+.header{
+    height:80px;
+    width: 100%;
+    border-bottom: solid 1px gray;
+    padding-top:10px;
+}
+
+.quanlybaidang{
+    height:50px;
+    width: 100px;
+    background-color:#4BACE2;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+
+#user{
+    height: 50px;
+    width: 50px;
+}
+
+#search{
+    background-image: url(./assets/img/file.png);
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;;
+}
+
+.link{
+    height: 77px;
+    width: 100%;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+#link{
+    height: 20px;
+    width: 20px;
+}
+
+a{
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.lienket{
+    margin-left: 0 !important;
+    width: 100%;
+}
+
+#homepage{
+    width: 50px;
+    height: 50px;
+    margin-top:20px;
+}
+
+.homepage{
+    text-align: center;
+}
+
+.sidebar{
+    /* width: 100% !important; */
+}
+
+
+
+
+
+.sidebar-icon{
+    height: 30px;;
+    width: 30px
+}
+
+.imgpost {
+    max-width: 100%;
+    height: 169px;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.card:hover{
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+            line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+}
+
+
+
+.main{
+    
+}
+
+span{
+    margin-left: 10px;
+}
+
+/*  */
+
+.clear{
+    align-items: center;
+    justify-content: center;
+}

@@ -166,8 +166,7 @@ namespace Complains_System.Catalog.Complains.management
 
             int rows = await query.CountAsync();
 
-            var data = await query.Skip((request.pageIndex - 1) * request.PageSize)
-                .Take(request.PageSize)
+            var data = await query
                 .Select(x => new ComplainsViewModel()
                 {
                     IdComplains = x.c.IdComplains,
@@ -219,8 +218,7 @@ namespace Complains_System.Catalog.Complains.management
                         select new { c, d };
             int rows = await query.CountAsync();
 
-            var data = await query.Skip((request.pageIndex - 1) * request.PageSize)
-                .Take(request.PageSize)
+            var data = await query
                 .Select(x => new ComplainsViewModel()
                 {
                     IdComplains = x.c.IdComplains,

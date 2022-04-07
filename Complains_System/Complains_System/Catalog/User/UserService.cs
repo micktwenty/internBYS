@@ -83,15 +83,12 @@ namespace Complains_System.Catalog.User
             return _context.AppUsers.Find(username);
         }
 
-        public string Message(string content)
-        {
-            var message = content;
-            return message;
-        }
 
-        public Task<ClaimsPrincipal> ChangePassword(ChangePasswordRequest request)
+        public async Task<IdentityResult> ChangePassword(ChangePasswordRequest request)
         {
-            throw new System.NotImplementedException();
+
+            var result = await _usermanager.ChangePasswordAsync(request.current_user, request.OldPass, request.NewPass);
+            return result;
         }
     }
 }

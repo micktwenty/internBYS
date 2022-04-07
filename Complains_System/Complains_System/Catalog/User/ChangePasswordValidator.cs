@@ -10,7 +10,7 @@ namespace Complains_System.Catalog.User
     {
         public ChangePasswordValidator()
         {
-            RuleFor(x => x.OldPass).NotEmpty().WithMessage("Vui lòng nhập mật khẩu cũ!"); ;
+            RuleFor(x => x.OldPass).NotEmpty().WithMessage("Vui lòng nhập mật khẩu cũ!"); 
             RuleFor(x => x.NewPass).NotEmpty().WithMessage("Vui lòng nhập mật khẩu mới!");
             RuleFor(x => x.ConfirmNewPass).NotEmpty().WithMessage("Vui lòng xác nhận mật khẩu!")
                 .Equal<ChangePasswordRequest, string>(x => x.NewPass).WithMessage("Mật khẩu không khớp!");

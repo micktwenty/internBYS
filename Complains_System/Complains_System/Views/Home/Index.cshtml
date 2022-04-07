@@ -1,11 +1,14 @@
-﻿@model IEnumerable<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel>
-@{ 
+﻿@model X.PagedList.IPagedList<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!doctype html>
 <html lang="en">
 <head>
-    
+
     <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-   
+
 
     <div class="app">
         <div class="container mt-4">
@@ -23,7 +26,7 @@
                 <div class="col-2 sidebar shadow">
                     <div class="homepage"><a href=""><img id="homepage" src="~/assets/homepage/img/home.png"></a></div>
                     <div class="row mb-4 ml-1 mt-4">
-                        <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span></a></div>
+                        <div class="row lienket"><a asp-action="Getmycomplain" asp-controller="Complains"><img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span></a></div>
                         <button class="row lienket" onclick="openPage('Home', this, 'red')">@*<a href="">*@<img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span>@*</a>*@</button>
                     </div>
                     <div class="row  mb-4 ml-1">
@@ -39,7 +42,7 @@
                         <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/draft.png"><span>Chờ duyệt</span></a></div>
                     </div>
                     <div class="row mb-4 ml-1">
-                        <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/key.png"><span>Đổi mật khẩu</span></a></div>
+                        <div class="row lienket"><a asp-action="ChangePass" asp-controller="Users"><img class="sidebar-icon" src="~/assets/homepage/img/key.png"><span>Đổi mật khẩu</span></a></div>
                     </div>
                 </div>
                 <div class="col-7">
@@ -47,33 +50,33 @@
                         @foreach (var item in Model)
                         {
                             <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
-                            <div class="card shadow border-0">
-                                <div class="row">
-                                    @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                                    <div class="col-4">
+                                <div class="card shadow border-0">
+                                    <div class="row">
+                                        @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
+                                        <div class="col-4">
 
-                                        @if (item.picture != null)
-                                        {
-                                            <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
-                                        }
-                                        @if (item.picture == null)
-                                        {
-                                            <div><img class="imgpost" src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
-                                        }
+                                            @if (item.picture != null)
+                                            {
+                                                <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
+                                            }
+                                            @if (item.picture == null)
+                                            {
+                                                <div><img class="imgpost" src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
+                                            }
 
 
-                                    </div>
-                                    @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                                    <div class="col-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">@item.Title</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">@item.Date</h6>
-                                            <p class="card-text">@item.Content</p>
                                         </div>
+                                        @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
+                                        <div class="col-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@item.Title</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">@item.Date</h6>
+                                                <p class="card-text">@item.Content</p>
+                                            </div>
+                                        </div>
+                                        @*</a>*@
                                     </div>
-                                    @*</a>*@
                                 </div>
-                            </div>
                             </a>
                         }
 
@@ -97,7 +100,16 @@
     </div>
 
 
-    <!-- Optional JavaScript -->    
+    <br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new string[] { "page-item" },
+    PageClasses = new string[] { "page-link" }
+})
+
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

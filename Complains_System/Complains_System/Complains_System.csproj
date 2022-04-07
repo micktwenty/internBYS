@@ -27,13 +27,19 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="MvcPagedList.Core" Version="1.1.1" />
+    <PackageReference Include="PagedList" Version="1.9.0" />
+    <PackageReference Include="PagedList.Mvc" Version="3.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="X.PagedList" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Web.Common" Version="8.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Catalog\Admin\DepartmentManagement\" />
+    <Folder Include="wwwroot\assets\my_complains\" />
     <Folder Include="wwwroot\ImgComplains\" />
   </ItemGroup>
 

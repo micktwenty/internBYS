@@ -46,7 +46,7 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "AE59A954-C5F1-419A-A3FF-38A4818EE3A0",
-                            ConcurrencyStamp = "b9d9e60a-da18-4b85-9e06-885fd87d5c69",
+                            ConcurrencyStamp = "8784570f-4b55-477b-a028-dba20dfceb87",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -54,7 +54,7 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "8E742903-5250-4C2C-829B-F1BAE8E7981B",
-                            ConcurrencyStamp = "c509e559-a145-4e62-b22d-247eb3f64ff6",
+                            ConcurrencyStamp = "86916293-f2f8-4a57-b1db-3ffe3bfcc5e1",
                             Description = "student role",
                             Name = "student",
                             NormalizedName = "student"
@@ -62,7 +62,7 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "6BFD2AC2-5F05-4EA7-87D9-ECF95EE4A1D5",
-                            ConcurrencyStamp = "9acb40ba-2eac-46b7-a7dc-79a2b2e56ca0",
+                            ConcurrencyStamp = "08203876-9c45-455c-8a67-7959dc5bf152",
                             Description = "employee role",
                             Name = "employee",
                             NormalizedName = "employee"
@@ -148,7 +148,7 @@ namespace Complains_System.Migrations
                         {
                             UserName = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d896d4e-38da-42d2-8602-48b8cffb9cf3",
+                            ConcurrencyStamp = "807fc15e-b325-401e-9651-3b872cf0994c",
                             Email = "ngquthien3520@gmail.com",
                             EmailConfirmed = true,
                             Id = "40FB70EC-DBE5-46D0-A55A-A63E751E7AD5",
@@ -158,7 +158,7 @@ namespace Complains_System.Migrations
                             Name = "Thien",
                             NormalizedEmail = "ngquthien3520@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC8Pkaj8fBj+Sd1RMLF/+N4h3gP9tpz+nqMefOpXbEeoO+TbPLM7Kra8ECJFQw1cLw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJGuMplpBreA5nhyj0fOu48EJJGYH4ZxGE03aRf3Q6P7lBPKKPsMIUf/jQT+S9djJg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -301,6 +301,150 @@ namespace Complains_System.Migrations
                         new
                         {
                             IdComplains = 8,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 8,
+                            IdStudent = "201159871175",
+                            IsPublic = false,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 11,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 1,
+                            IdStudent = "181121521137",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 12,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 2,
+                            IdStudent = "171121521050",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 13,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 3,
+                            IdStudent = "191154833658",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 14,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 4,
+                            IdStudent = "181121521136",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 15,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 5,
+                            IdStudent = "181121521138",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 16,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 6,
+                            IdStudent = "191123659113",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 17,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 7,
+                            IdStudent = "201154896335",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 18,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 8,
+                            IdStudent = "201159871175",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 21,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 1,
+                            IdStudent = "181121521137",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 22,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 2,
+                            IdStudent = "171121521050",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 23,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 3,
+                            IdStudent = "191154833658",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 24,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 4,
+                            IdStudent = "181121521136",
+                            IsPublic = true,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 25,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 5,
+                            IdStudent = "181121521138",
+                            IsPublic = false,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 26,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 6,
+                            IdStudent = "191123659113",
+                            IsPublic = false,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 27,
+                            Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
+                            IdDepartment = 7,
+                            IdStudent = "201154896335",
+                            IsPublic = false,
+                            Title = "Phàn nàn"
+                        },
+                        new
+                        {
+                            IdComplains = 28,
                             Content = "Cơ sở vật chất nhà đa chức năng xuống cấp, không đảm bảo độ an toàn cho sinh viên khi sử dụng để phục vụ việc học",
                             IdDepartment = 8,
                             IdStudent = "201159871175",

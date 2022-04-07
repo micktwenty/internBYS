@@ -1,12 +1,17 @@
 ﻿using Complains_System.Catalog;
 using Complains_System.Catalog.Complains.management;
 using Complains_System.Catalog.Department;
+using Complains_System.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Complains_System.Controllers
 {
@@ -17,13 +22,14 @@ namespace Complains_System.Controllers
     {
         private readonly IComplainsManagement _complainsManagement;
         private readonly IDepartmentService _departmentService;
-
+        private readonly UserManager<AppUser> _usermanager;
         //private readonly Complains_DUEContext _context;
 
-        public Complains(IComplainsManagement complainsManagement, IDepartmentService departmentService)
+        public Complains(IComplainsManagement complainsManagement, IDepartmentService departmentService, UserManager<AppUser> usermanager)
         {
             _complainsManagement = complainsManagement;
             _departmentService = departmentService;
+            _usermanager = usermanager;
         }
 
         [HttpGet("public-post")]
@@ -34,19 +40,28 @@ namespace Complains_System.Controllers
         }
 
         [HttpPost("find-result")]
-        public async Task<IActionResult> Get([FromQuery]GetComplainsPagingRequest request)
+        public async Task<IActionResult> Get(GetComplainsPagingRequest request)
         {
             var complains = await _complainsManagement.GetAllbyKeyword(request);
             return Ok(complains);
         }
 
-        [Authorize(Roles ="student")]
-        [HttpPost("my-complains")]
+
+        [HttpGet("my-complains")]
         public async Task<IActionResult> Getmycomplain([FromQuery] GetComplainsPagingRequest request)
         {
-            request.idStudent = TempData["id"].ToString();
-            var complains = await _complainsManagement.GetAllbyKeyword(request);
-            return View(complains);
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = await _usermanager.FindByNameAsync(Name);
+                request.idStudent = user.IdStudent;
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View(complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet("{IdComplain}")]
@@ -132,7 +147,7 @@ namespace Complains_System.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "employee")]
+        //[Authorize(Roles = "employee")]
         [HttpPut("reply/{IdCom}")]
         public async Task<IActionResult> ReplyComplain([FromQuery]string reply, int IdCom, int emp)
         {

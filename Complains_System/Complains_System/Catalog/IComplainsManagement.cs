@@ -19,7 +19,7 @@ namespace Complains_System.Catalog
         public Task<ComplainsViewModel> GetbyId(int IDComplain);
         public Task<int> EditCraft(EditDraftRequest request);
         public Task<int> Post(EditDraftRequest request);
-        public Task<int> PostRequest(ComplainsCreateRequest request);\
+        public Task<int> PostRequest(ComplainsCreateRequest request);
         public Task<int> ReplyComplain(string reply, int idcomplains, int employee);
 
         public Task<PageResult<ComplainsViewModel>> GetOwnPaging(GetComplainsPagingRequest request);

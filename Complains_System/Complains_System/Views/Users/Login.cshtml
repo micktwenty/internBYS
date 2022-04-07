@@ -43,15 +43,16 @@
     </div>
 
     <div class="app">
-       
 
-        <form action="/Users/Authenticate" method="post">
+
+        @using (Html.BeginForm("Authenticate", "Users", FormMethod.Post))
+        {
             <div class="form">
                 @if (TempData["Message"] != null)
                 {
                     <partial name="StatusMessage" model="@TempData["Message"]" />
                     <div hidden> @TempData.Remove("Message");</div>
-                }
+                    }
 
                 <div class="form-title">
                     <p id="form-title">ĐĂNG NHẬP HỆ THỐNG BẰNG TÀI KHOẢN DUE</p>
@@ -72,17 +73,17 @@
                     </div>
 
                 </div>
-                <div class="row justify-content-center mt-5">
+                @*<div class="row justify-content-center mt-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Ghi nhớ mật khẩu</label>
+                        @Html.CheckBox("remember", false)
+                        <label class="form-check-label" for="remember">Ghi nhớ mật khẩu</label>
                     </div>
-                </div>
+                </div>*@
                 <div class="row justify-content-center mt-4">
                     <button type="submit" class="btn-login">Đăng Nhập</button>
                 </div>
             </div>
-        </form>
+        }
 
     </div>
     <div class="footer">

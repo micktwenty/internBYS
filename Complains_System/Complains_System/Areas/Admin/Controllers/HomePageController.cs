@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="admin")]
+    //[Authorize(Roles ="admin")]\
+    //[Route("[controller]")]
     public class HomePageController : Controller
     {
         private readonly IUserManagementService _userManagementService;
@@ -16,10 +17,12 @@ namespace Complains_System.Areas.Admin.Controllers
         {
             _userManagementService = userManagementService;
         }
+
         public async Task<IActionResult> Index()
         {
             var lst = await _userManagementService.GetListUsers();
             return View(lst);
         }
+
     }
 }
