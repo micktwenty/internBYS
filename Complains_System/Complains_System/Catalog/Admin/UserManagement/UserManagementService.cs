@@ -1,12 +1,17 @@
 ﻿using Complains_System.Catalog.Admin.UserManagement.Dtos;
+using Complains_System.Constants;
 using Complains_System.EF;
 using Complains_System.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
+
 
 namespace Complains_System.Catalog.Admin.UserManagement
 {
@@ -14,12 +19,14 @@ namespace Complains_System.Catalog.Admin.UserManagement
     {
         private readonly UserManager<AppUser> _usermanager;
         private readonly ComplainsDbContext _context;
+        private readonly IConfiguration _configuration;
 
 
-        public UserManagementService(UserManager<AppUser> userManager, ComplainsDbContext context)
+        public UserManagementService(UserManager<AppUser> userManager, ComplainsDbContext context, IConfiguration configuration)
         {
             _usermanager = userManager;
             _context = context;
+            _configuration = configuration;
 
         }
         public async Task<bool> DeleteAccount(string username)
@@ -75,14 +82,20 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public async Task<List<UserViewModel>> GetListUsers()
         {
             List<UserViewModel> ListUser = new List<UserViewModel>();
-
+           
             var data = from c in _context.AppUsers
                        select new {c};
             foreach (var item in data)
             {
                 List<string> rolelist = new List<string>();
-                List<AppUserRole> roles = await _context.AppUserRoles.Where(x => x.UserId == item.c.Id).ToListAsync();
-                
+                var roles = new List<AppUserRole>();
+                var sql = $"SELECT * FROM AppUserRoles where UserId = '{item.c.Id}'";
+                var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    roles = connection.Query<AppUserRole>(sql).ToList();
+                }
                 foreach (var roleitem in roles)
                 {
                     var role = await _context.AppRoles.FirstOrDefaultAsync(x => x.Id == roleitem.RoleId);

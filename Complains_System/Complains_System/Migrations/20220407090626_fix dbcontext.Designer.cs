@@ -4,14 +4,16 @@ using Complains_System.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Complains_System.Migrations
 {
     [DbContext(typeof(ComplainsDbContext))]
-    partial class ComplainsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220407090626_fix dbcontext")]
+    partial class fixdbcontext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -18,6 +18,6 @@ namespace Complains_System.Models
         public int idteacher { get; set; }
         public bool IsActive { get; set; }
         public string Roles { get; set; }
-        public List<AppUserRole> AppUserRoles { get; set; }
+
     }
 }

@@ -188,3 +188,4 @@ D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\X.
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\Getmycomplain.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Users\ChangePass.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Dapper.dll

@@ -29,7 +29,8 @@ namespace Complains_System.EF
             //Data Seeding
             modelBuilder.Seed();
 
-            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserRole<string>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<AppUserRole>().ToTable("AppUserRoles");
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("AppRoleClaims");
 
             modelBuilder.Entity<IdentityUserClaim<string>>().ToTable("AppUserClaims");
