@@ -113,7 +113,7 @@ namespace Complains_System.Extensions
                 Name = "Thien"
             });
 
-            modelBuilder.Entity<IdentityUserRole<string>>().ToTable("AppUserRoles").HasData(new IdentityUserRole<string>
+            modelBuilder.Entity<AppUserRole>().ToTable("AppUserRoles").HasData(new AppUserRole
             {
                 RoleId = roleId,
                 UserId = adminId

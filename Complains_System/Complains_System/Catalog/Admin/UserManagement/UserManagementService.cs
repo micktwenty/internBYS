@@ -157,7 +157,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         Name = request.Name,
                         Email = request.Email,
                         DepartmentId = request.IdDepartment,
-                        Id = await _context.Employees.MaxAsync(x => x.Id) + 1
+                        //Id = await _context.Employees.MaxAsync(x => x.Id) + 1
                     };
                     _context.Employees.Add(employee);
                     var result_reg = await _context.SaveChangesAsync();
