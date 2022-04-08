@@ -9,5 +9,6 @@ namespace Complains_System.Models
     public class AppUserRole : IdentityUserRole<string>
     {
         public AppUser AppUser { get; set; }
+        public string Discriminator { get; set; }
     }
 }

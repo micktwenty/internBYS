@@ -16,7 +16,7 @@ namespace Complains_System.Areas.Admin.Controllers
             _userManagementService = userManagementService;
         }
         [HttpPost("register")]
-        public async Task<bool> Register([FromBody] RegisterRequest request)
+        public async Task<bool> Register([FromForm] RegisterRequest request)
         {
             var result = await _userManagementService.Register(request);
             return result;

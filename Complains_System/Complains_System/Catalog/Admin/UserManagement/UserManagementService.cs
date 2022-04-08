@@ -94,7 +94,9 @@ namespace Complains_System.Catalog.Admin.UserManagement
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    roles = connection.Query<AppUserRole>(sql).ToList();
+                    roles =  connection.Query<AppUserRole>(sql).ToList();
+                    connection.Close();
+
                 }
                 foreach (var roleitem in roles)
                 {
@@ -138,8 +140,18 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     {
                         return false;
                     }
-                    result = await _usermanager.AddToRoleAsync(user, "employee");
-                    if (!result.Succeeded) return false;
+                   
+                    if (user == null) return false;
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_employee}')";
+                    var add = 0;
+                    var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        add = await connection.ExecuteAsync(sql);
+                        connection.Close();
+                    }
+                    if (add == 0) return false;
                     var employee = new Employee()
                     {
                         Name = request.Name,
@@ -169,8 +181,18 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     var result = await _usermanager.CreateAsync(user, request.Password);
                     if (!result.Succeeded) return false;
 
-                    result = await _usermanager.AddToRoleAsync(user, "student");
-                    if (!result.Succeeded) return false;
+                    if (user == null) return false;
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_student}')";
+                    var add = 0;
+                    var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        add = await connection.ExecuteAsync(sql);
+                        connection.Close();
+
+                    }
+                    if (add == 0) return false;
 
                     var student = new Student()
                     {
