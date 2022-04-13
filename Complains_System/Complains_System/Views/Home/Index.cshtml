@@ -14,6 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/ca78d69f23.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/assets/homepage/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -26,23 +27,22 @@
                 <div class="col-2 sidebar shadow">
                     <div class="homepage"><a href=""><img id="homepage" src="~/assets/homepage/img/home.png"></a></div>
                     <div class="row mb-4 ml-1 mt-4">
-                        <div class="row lienket"><a asp-action="Getmycomplain" asp-controller="Complains"><img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span></a></div>
-                        <button class="row lienket" onclick="openPage('Home', this, 'red')">@*<a href="">*@<img class="sidebar-icon" src="~/assets/homepage/img/all.png"><span>Tổng quan</span>@*</a>*@</button>
+                        <div class="row lienket"><a asp-action="Getmycomplain" asp-controller="Complains"><i class="fa-solid fa-border-all"></i><span>Tổng quan</span></a></div>
                     </div>
                     <div class="row  mb-4 ml-1">
-                        <div class="row lienket"><a asp-action="NewDraft" asp-controller="complains"><img class="sidebar-icon" src="~/assets/homepage/img/new-document.png"><span>Tạo bài đăng mới</span></a></div>
+                        <div class="row lienket"><a asp-action="NewDraft" asp-controller="complains"><i class="fa-solid fa-file-circle-plus"></i><span>Tạo bài đăng mới</span></a></div>
                     </div>
                     <div class="row mb-4 ml-1">
-                        <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/reply.png"><span>Đã phản hồi</span></a></div>
+                        <div class="row lienket"><a href=""><i class="fa-solid fa-comment"></i><span>Đã phản hồi</span></a></div>
                     </div>
                     <div class="row mb-4 ml-1">
-                        <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/spam.png"><span>Bị đánh spam</span></a></div>
+                        <div class="row lienket"><a href=""><i class="fa-solid fa-comment-slash"></i><span>Bị đánh spam</span></a></div>
                     </div>
                     <div class="row mb-4 ml-1">
-                        <div class="row lienket"><a href=""><img class="sidebar-icon" src="~/assets/homepage/img/draft.png"><span>Chờ duyệt</span></a></div>
+                        <div class="row lienket"><a href=""><i class="fa-solid fa-spinner"></i><span>Chờ duyệt</span></a></div>
                     </div>
                     <div class="row mb-4 ml-1">
-                        <div class="row lienket"><a asp-action="ChangePass" asp-controller="Users"><img class="sidebar-icon" src="~/assets/homepage/img/key.png"><span>Đổi mật khẩu</span></a></div>
+                        <div class="row lienket"><a asp-action="ChangePass" asp-controller="Users"><i class="fa-solid fa-key"></i><span>Đổi mật khẩu</span></a></div>
                     </div>
                 </div>
                 <div class="col-7">
