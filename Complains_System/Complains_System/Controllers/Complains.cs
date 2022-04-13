@@ -101,7 +101,7 @@ namespace Complains_System.Controllers
             return Ok(complain);
         }
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpPost]
         public async Task<IActionResult> RequestPosting(IFormCollection frm, IFormFile file)
         {
@@ -109,7 +109,11 @@ namespace Complains_System.Controllers
             request.Content = frm["content"];
             request.Title = frm["tieude"];
             request.IdStudent = TempData["id"].ToString();
-            request.ThumbnailImage = frm.Files[0];
+            if (frm.Files.Count > 0)
+            {
+                request.ThumbnailImage = frm.Files[0];
+            }
+            
             request.IdDepartment = Convert.ToInt32( frm["khoa"]);
 
             var ComplainID = await _complainsManagement.CreateDraft(request);

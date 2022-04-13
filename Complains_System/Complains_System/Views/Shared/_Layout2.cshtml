@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/assets/admin/layout/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/@alphardex/aqua.css@1.5.0/dist/aqua.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row container-fluid">
+        <div class="col-3 this-sidebar">
+            <div class=" container-fluid flex-wrap justify-between">
+                <div class="light-mode mr-4  h-full bg-color flex flex-col justify-between px-6 py-12 overflow-hidden this-margin mb-5">
+                    <div>
+                        <i class="fab fa-codepen mb-8 ml-3 text-secondary-darkest text-2xl cursor-pointer"></i>
+
+                        <ul class="menu mt-6">
+                            <li class="menu-item active"><i class="icon fas fa-user mr-5"></i>Tạo tài khoản sinh viên</li>
+                            <li class="menu-item"><i class="icon fas fa-star mr-5"></i>Tạo tài khoản phòng ban</li>
+                            <li class="menu-item"><i class="icon fas fa-check-square mr-5"></i>Cấp lại mật khẩu</li>
+                            <li class="menu-item"><i class="icon fas fa-compass mr-5"></i>Quản lý phòng ban</li>
+                            <li class="divider"></li>
+                            <li class="menu-item"><i class="icon fas fa-image mr-5"></i>Thống kê</li>
+                            <li class="menu-item"><i class="icon fas fa-bell mr-5"></i>Notification</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-9 mb-5">
+            <div id="content-wrapper" class="d-flex flex-column">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                      <div class="input-group">
+                        <input id="search-height" type="text" class="form-control bg-light border-0 small"
+                          placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button id="btn-search" class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form> -->
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                               aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Thanh Nguyen</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Đổi Mật Khẩu
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Đăng Xuất
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+            </div>
+
+            <!--end header-->
+            <!-- form đăng kí -->
+            @RenderBody()
+            <!-- kết thúc form đăng kí -->
+
+
+        </div>
+    </div>
+    <div class="footer shadow">
+        <div class="d-flex justify-content-center align-items-center p-3">
+            <p class="m-0">© 2022.Bản quyền Trường Đại học Kinh Tế Đà Nẵng</p>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+    "use strict";
+    const menus = document.querySelectorAll('.menu');
+    menus.forEach(menu => {
+      const menuItems = menu.querySelectorAll('.menu-item');
+      menuItems.forEach((item) => {
+        item.addEventListener('click', e => {
+          menuItems.forEach(item => item.classList.remove('active'));
+          const target = e.target;
+          target.classList.add('active');
+        });
+      });
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+</body>
+</html>
