@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Complains_System.Areas.Admin.Controllers
 {
     [Route("[controller]")]
+    //[Area("Admin")]
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
@@ -15,7 +16,12 @@ namespace Complains_System.Areas.Admin.Controllers
         {
             _userManagementService = userManagementService;
         }
-        [HttpPost("register")]
+        [HttpGet("register")]
+        public IActionResult Register()
+        {
+            return View("Register");
+        }
+        [HttpPost]
         public async Task<bool> Register([FromForm] RegisterRequest request)
         {
             var result = await _userManagementService.Register(request);

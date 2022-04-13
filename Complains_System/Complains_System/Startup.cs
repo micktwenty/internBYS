@@ -44,7 +44,7 @@ namespace Complains_System
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddMvc( opt => opt.EnableEndpointRouting = false);
             services.AddDbContext<ComplainsDbContext>(options =>
               options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
             //
@@ -91,7 +91,8 @@ namespace Complains_System
                 options.IdleTimeout = TimeSpan.FromSeconds(3600);
                 options.Cookie.IsEssential = true;
             });
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger DUEs Complains", Version = "v1" });
@@ -133,16 +134,16 @@ namespace Complains_System
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger DUEs Complains v1");
             });
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                endpoints.MapAreaRoute(
+                name: "Admin",
+                areaName: "Admin",
+                template: "Admin/{controller=HomePage}/{action=Index}"
+            );
+                endpoints.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapAreaControllerRoute(
-                    name: "Admin",
-                    areaName: "Admin",
-                    pattern: "Admin/{controller=HomePage}/{action=Index}"
-                );
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
             });
         }

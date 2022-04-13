@@ -378,3 +378,6 @@ E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.pdb
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.genruntimeconfig.cache
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout2.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout2.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\Register.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\UsersManagement\Register.cshtml.g.cs

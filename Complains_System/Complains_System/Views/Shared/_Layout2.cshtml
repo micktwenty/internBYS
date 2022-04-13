@@ -9,7 +9,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="~/assets/admin/layout/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/@alphardex/aqua.css@1.5.0/dist/aqua.min.css" rel="stylesheet" />
+    <link href=@Url.Content("https://cdn.jsdelivr.net/npm/@alphardex/aqua.css@1.5.0/dist/aqua.min.css") rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -21,7 +21,7 @@
                         <i class="fab fa-codepen mb-8 ml-3 text-secondary-darkest text-2xl cursor-pointer"></i>
 
                         <ul class="menu mt-6">
-                            <li class="menu-item active"><i class="icon fas fa-user mr-5"></i>Tạo tài khoản sinh viên</li>
+                            <li class="menu-item active"><a asp-area="admin" asp-action="register" asp-controller="UsersManagement"><i class="icon fas fa-user mr-5"></i>Tạo tài khoản sinh viên</a></li>
                             <li class="menu-item"><i class="icon fas fa-star mr-5"></i>Tạo tài khoản phòng ban</li>
                             <li class="menu-item"><i class="icon fas fa-check-square mr-5"></i>Cấp lại mật khẩu</li>
                             <li class="menu-item"><i class="icon fas fa-compass mr-5"></i>Quản lý phòng ban</li>

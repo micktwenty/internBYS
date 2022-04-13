@@ -80,7 +80,19 @@ namespace Complains_System.Catalog.Complains.management
 
         }
 
-
+        public async Task<int> DenyPost(string reply, int idcomplains, int employee)
+        {
+            var data = await _context.Complains.FirstOrDefaultAsync(x => x.IdComplains == idcomplains);
+            
+            if (data != null)
+            {
+                data.Status = "Từ chối giải quyết";
+                data.IsPublic = false;
+                data.employee_reply = employee;
+                data.Reply = reply;
+            }
+            return await _context.SaveChangesAsync();
+        }
 
         public async Task<string> EditCraft(EditDraftRequest request)
         {
@@ -344,6 +356,20 @@ namespace Complains_System.Catalog.Complains.management
             } 
             return await _context.SaveChangesAsync();
 
+        }
+
+        public async Task<int> SpamPost(string reply, int idcomplains, int employee)
+        {
+            var data = await _context.Complains.FirstOrDefaultAsync(x => x.IdComplains == idcomplains);
+
+            if (data != null)
+            {
+                data.Status = "Spam";
+                data.IsPublic = false;
+                data.employee_reply = employee;
+                data.Reply = reply;
+            }
+            return await _context.SaveChangesAsync();
         }
 
         private async Task<string> SaveFile(IFormFile file)
