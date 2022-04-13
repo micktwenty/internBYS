@@ -180,9 +180,7 @@ D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Mi
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\MvcPagedList.Core.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\NewDraft.cshtml.g.cs
-D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\PagedList.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
-D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\X.PagedList.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll

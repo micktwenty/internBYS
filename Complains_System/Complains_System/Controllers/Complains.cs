@@ -85,23 +85,23 @@ namespace Complains_System.Controllers
             return View(complains);
         }
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpGet]
         public async Task<IActionResult> Create([FromForm] ComplainsCreateRequest request)
         {
             var ComplainID = await _complainsManagement.CreateDraft(request);
 
-            if (ComplainID == 0)
+            if (ComplainID == "0")
             {
                 return BadRequest();
             }
-            var complain = await _complainsManagement.GetbyId(ComplainID);
+            var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
 
 
             return Ok(complain);
         }
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpPost]
         public async Task<IActionResult> RequestPosting(IFormCollection frm, IFormFile file)
         {
@@ -114,17 +114,17 @@ namespace Complains_System.Controllers
 
             var ComplainID = await _complainsManagement.CreateDraft(request);
 
-            if (ComplainID == 0)
+            if (ComplainID == "0")
             {
                 return BadRequest();
             }
-            var complain = await _complainsManagement.GetbyId(ComplainID);
+            var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
 
 
             return Ok(complain);
         }
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpGet("new-draft")]
         public async Task<IActionResult> NewDraft()
         {
@@ -134,12 +134,12 @@ namespace Complains_System.Controllers
         }
 
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpPut]
         public async Task<IActionResult> EditDraft([FromBody]EditDraftRequest request)
         {
             var EditedResult = await _complainsManagement.EditCraft(request);
-            if (EditedResult == 0)
+            if (EditedResult == "0")
             {
                 return BadRequest();
             }
@@ -161,7 +161,7 @@ namespace Complains_System.Controllers
         }
 
 
-        [Authorize(Roles = "student")]
+        //[Authorize(Roles = "student")]
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteDraft(int Id)
         {
