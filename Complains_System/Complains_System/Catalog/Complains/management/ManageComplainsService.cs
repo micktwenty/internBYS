@@ -27,8 +27,16 @@ namespace Complains_System.Catalog.Complains.management
             _context = context;
             _storageService = storageService;
         }
-        public async Task<int> CreateDraft(ComplainsCreateRequest request)
+        public async Task<string> CreateDraft(ComplainsCreateRequest request)
         {
+            var validator = new ComplainsRequestValidator();
+            var result = await validator.ValidateAsync(request);
+            if (!result.IsValid)
+            {
+                var message = string.Join(", ", result.Errors);
+
+                return message;
+            }
             var complain = new Complain()
             {
                 IdStudent = request.IdStudent,
@@ -37,13 +45,7 @@ namespace Complains_System.Catalog.Complains.management
                 Content = request.Content,
                 Status = "Bản nháp",
                 IsPublic = false,
-                //DepInfo = new List<Department>()
-                //{
-                //    new Department()
-                //    {
-                //        Name = request.Department
-                //    }
-                //}
+
 
             };
             if (request.ThumbnailImage != null)
@@ -61,7 +63,7 @@ namespace Complains_System.Catalog.Complains.management
             }
             _context.Complains.Add(complain);
              await _context.SaveChangesAsync();
-            return complain.IdComplains;
+            return complain.IdComplains.ToString();
         }
 
 
@@ -80,7 +82,7 @@ namespace Complains_System.Catalog.Complains.management
 
 
 
-        public async Task<int> EditCraft(EditDraftRequest request)
+        public async Task<string> EditCraft(EditDraftRequest request)
         {
             var complain = await _context.Complains.FindAsync(request.IdComplain);
 
@@ -114,7 +116,8 @@ namespace Complains_System.Catalog.Complains.management
                 };
             }
             _context.Complains.Update(complain);
-            return await _context.SaveChangesAsync();
+            var result = await _context.SaveChangesAsync();
+            return result.ToString();
 
         }
 
@@ -266,40 +269,40 @@ namespace Complains_System.Catalog.Complains.management
             return data;
         }
 
-        public async Task<int> Post(EditDraftRequest request)
-        {
-            var complain = await _context.Complains.FindAsync(request.IdComplain);
+        //public async Task<string> Post(EditDraftRequest request)
+        //{
+        //    var complain = await _context.Complains.FindAsync(request.IdComplain);
 
-            complain.Title = request.Title;
-            complain.Content = request.Content;
-            complain.Date = DateTime.Now;
-            complain.IdDepartment = request.IdDepartment;
-            complain.Status = "Chờ duyệt";
-            if (request.ThumbnailImage != null)
-            {
-                var thumbnailimage = await _context.ImageComplains.FirstOrDefaultAsync(i => i.IdComplain == request.IdComplain);
-                if (thumbnailimage != null)
-                {
+        //    complain.Title = request.Title;
+        //    complain.Content = request.Content;
+        //    complain.Date = DateTime.Now;
+        //    complain.IdDepartment = request.IdDepartment;
+        //    complain.Status = "Chờ duyệt";
+        //    if (request.ThumbnailImage != null)
+        //    {
+        //        var thumbnailimage = await _context.ImageComplains.FirstOrDefaultAsync(i => i.IdComplain == request.IdComplain);
+        //        if (thumbnailimage != null)
+        //        {
 
-                    thumbnailimage.filesize = Convert.ToInt32(request.ThumbnailImage.Length);
-                    thumbnailimage.Path_image = await this.SaveFile(request.ThumbnailImage);
-                    _context.ImageComplains.Update(thumbnailimage);
-                };
-                complain.ImageComplain = new List<ImageComplain>()
-                {
-                    new ImageComplain()
-                    {
-                        content_image = complain.Title,
-                        filesize = Convert.ToInt32(request.ThumbnailImage.Length),
-                        Path_image = await this.SaveFile(request.ThumbnailImage),
+        //            thumbnailimage.filesize = Convert.ToInt32(request.ThumbnailImage.Length);
+        //            thumbnailimage.Path_image = await this.SaveFile(request.ThumbnailImage);
+        //            _context.ImageComplains.Update(thumbnailimage);
+        //        };
+        //        complain.ImageComplain = new List<ImageComplain>()
+        //        {
+        //            new ImageComplain()
+        //            {
+        //                content_image = complain.Title,
+        //                filesize = Convert.ToInt32(request.ThumbnailImage.Length),
+        //                Path_image = await this.SaveFile(request.ThumbnailImage),
                        
-                    }
-                };
-            }
-            return await _context.SaveChangesAsync();
-        }
+        //            }
+        //        };
+        //    }
+        //    return await _context.SaveChangesAsync();
+        //}
 
-        public async Task<int> PostRequest(ComplainsCreateRequest request)
+        public async Task<string> PostRequest(ComplainsCreateRequest request)
         {
             var complain = new Complain()
             {
@@ -309,14 +312,6 @@ namespace Complains_System.Catalog.Complains.management
                 Content = request.Content,
                 Status = "Chờ duyệt",
                 IsPublic = false,
-                //DepInfo = new List<Department>()
-                //{
-                //    new Department()
-                //    {
-                //        Name = request.Department
-                //    }
-                //}
-
             };
             if (request.ThumbnailImage != null)
             {
@@ -333,7 +328,7 @@ namespace Complains_System.Catalog.Complains.management
             }
             _context.Complains.Add(complain);
             await _context.SaveChangesAsync();
-            return complain.IdComplains;
+            return complain.IdComplains.ToString();
         }
 
         public async Task<int> ReplyComplain(string reply, int idcomplains, int idemployee)

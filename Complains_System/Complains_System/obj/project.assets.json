@@ -1737,27 +1737,6 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "PagedList/1.9.0": {
-        "type": "package",
-        "compile": {
-          "lib/net40/PagedList.dll": {}
-        },
-        "runtime": {
-          "lib/net40/PagedList.dll": {}
-        }
-      },
-      "PagedList.Mvc/3.4.0": {
-        "type": "package",
-        "dependencies": {
-          "PagedList": "1.6.0"
-        },
-        "compile": {
-          "lib/net40/PagedList.Mvc.dll": {}
-        },
-        "runtime": {
-          "lib/net40/PagedList.Mvc.dll": {}
-        }
-      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -5995,35 +5974,6 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
-      ]
-    },
-    "PagedList/1.9.0": {
-      "sha512": "oGhkM6fv0vVS5//rko+TRvs4UV9kl8tTgOzBYAwmM+KwUEkLMXHCjj8nfUZXBQ04hwJY28X28MvYpBTbzMFgBA==",
-      "type": "package",
-      "path": "pagedlist/1.9.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/PagedList.dll",
-        "lib/net40/PagedList.xml",
-        "pagedlist.1.9.0.nupkg.sha512",
-        "pagedlist.nuspec"
-      ]
-    },
-    "PagedList.Mvc/3.4.0": {
-      "sha512": "AmRwIbHoWR+o+FPIIcVOUyCsP2k8TT4DWXKG0e3pFU7f//H1ziGzLHbjHDov08sc1MYmIiTsjkX364WF1OVghw==",
-      "type": "package",
-      "path": "pagedlist.mvc/3.4.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Content/PagedList.css",
-        "Content/Scripts/PagedList/PagedList.Mvc.Template.html",
-        "Content/Scripts/PagedList/PagedList.Mvc.js",
-        "lib/net40/PagedList.Mvc.XML",
-        "lib/net40/PagedList.Mvc.dll",
-        "pagedlist.mvc.3.4.0.nupkg.sha512",
-        "pagedlist.mvc.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -10820,8 +10770,6 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.15",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
       "MvcPagedList.Core >= 1.1.1",
-      "PagedList >= 1.9.0",
-      "PagedList.Mvc >= 3.4.0",
       "Swashbuckle.AspNetCore >= 6.3.0",
       "X.PagedList >= 8.1.0",
       "X.PagedList.Mvc.Core >= 8.1.0",
@@ -10939,14 +10887,6 @@
             "target": "Package",
             "version": "[1.1.1, )"
           },
-          "PagedList": {
-            "target": "Package",
-            "version": "[1.9.0, )"
-          },
-          "PagedList.Mvc": {
-            "target": "Package",
-            "version": "[3.4.0, )"
-          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.3.0, )"
@@ -10985,27 +10925,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList 1.9.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'PagedList.Mvc 3.4.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "PagedList.Mvc",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }

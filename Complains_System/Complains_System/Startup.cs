@@ -1,4 +1,5 @@
 using Complains_System.Catalog;
+using Complains_System.Catalog.Admin.ComplainsManagement;
 using Complains_System.Catalog.Admin.UserManagement;
 using Complains_System.Catalog.Complains.management;
 using Complains_System.Catalog.Department;
@@ -61,7 +62,8 @@ namespace Complains_System
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserManagementService, UserManagementService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
-
+            services.AddTransient<IComplainsService, ComplainsServices>();
+            
 
             //services.AddScoped<IAuthorizationHandler, PoliciesAuthorizationHandler>();
             //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
