@@ -31,16 +31,16 @@
 
 
     <hr>
-    <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
+    <div class="row d-flex justify-content-lg-around">
+        <div class="col-xl-2 col-md-3 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Bị Đánh Spam
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Đã Xử Lý
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Spam</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Done</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-ban fa-2x text-gray-800"></i>
@@ -49,15 +49,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+        <div class="col-xl-2 col-md-3 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Được Duyệt
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Spam
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Done</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Spam</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -66,13 +66,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
+        <div class="col-xl-2 col-md-3 mb-4">
+            <div class="card border-left-secondary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Chưa Xác Định
+                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                Đã Huỷ
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Cancel</div>
                         </div>
@@ -83,12 +83,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-4">
+        <div class="col-xl-2 col-md-3 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Chờ Duyệt
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Total</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-circle-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-md-3 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Tổng Cộng
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.Total</div>
@@ -104,7 +121,7 @@
 
 
     <hr>
-    <div class="row mr-4 ml-4">
+    <div class="row mr-1 ml-1 ">
         <table class="table table-hover">
             <thead>
                 <tr class="table-info">
@@ -121,12 +138,12 @@
 
                 @for (int i = 0; i < Model.Total_dep; i++)
                 {
-                    
+
                     <tr>
                         <th scope="row">@Model.Departments[i].Name</th>
                         @for (int j = 0; j < 5; j++)
                         {
-                           
+
                             <td>@Model.thongke[i, j]</td>
 
                         }
@@ -139,11 +156,18 @@
     {
         <div class="mt-4">
             <div class="card shadow border-0">
-                <div class="card-body">
+                <div class="card-body ">
                     <div class="row">
                         <div class="post-title col-12">
                             <a href="#">
-                                <div class="card-title"><b>@item.Title</b></div>
+                                <div class="card-title row">
+                                    <div class="col-10">
+                                        <b>@item.Title</b>
+                                    </div>
+                                    <div class="col-2 blockquote-footer">
+                                        Trạng thái: Đã duyệt
+                                    </div>
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -154,69 +178,71 @@
     }
 
 
-        Trang @(Model.Complains_list.PageCount < Model.Complains_list.PageNumber ? 0 : Model.Complains_list.PageNumber) / @Model.Complains_list.PageCount
-
+    @*Trang @(Model.Complains_list.PageCount < Model.Complains_list.PageNumber ? 0 : Model.Complains_list.PageNumber) / @Model.Complains_list.PageCount*@
+<div class="mt-10 row d-flex justify-content-center">
     @Html.PagedListPager(Model.Complains_list, page => Url.Action("Index", new { page }), new PagedListRenderOptions
 {
     LiElementClasses = new string[] { "page-item" },
     PageClasses = new string[] { "page-link" }
 })
+</div>
+        
 
 
 
-    @*<div class="mt-10 row d-flex justify-content-center">
-        <nav aria-label="...">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>*@
+        @*<div class="mt-10 row d-flex justify-content-center">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>*@
 
-<script>
-    // Data Picker Initialization
-    config = {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-    }
-    flatpickr("input[type=datetime-local]", {})
-</script>
+        <script>
+            // Data Picker Initialization
+            config = {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+            }
+            flatpickr("input[type=datetime-local]", {})
+        </script>
 
 
-<script>
-    "use strict";
-    const menus = document.querySelectorAll('.menu');
-    menus.forEach(menu => {
-        const menuItems = menu.querySelectorAll('.menu-item');
-        menuItems.forEach((item) => {
-            item.addEventListener('click', e => {
-                menuItems.forEach(item => item.classList.remove('active'));
-                const target = e.target;
-                target.classList.add('active');
+        <script>
+            "use strict";
+            const menus = document.querySelectorAll('.menu');
+            menus.forEach(menu => {
+                const menuItems = menu.querySelectorAll('.menu-item');
+                menuItems.forEach((item) => {
+                    item.addEventListener('click', e => {
+                        menuItems.forEach(item => item.classList.remove('active'));
+                        const target = e.target;
+                        target.classList.add('active');
+                    });
+                });
             });
-        });
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
-<!-- flatpickr -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <!-- flatpickr -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 

@@ -163,6 +163,10 @@
 .border-left-warning {
   border-left: 0.25rem solid #f6c23e !important;
 }
+
+.border-left-secondary {
+    border-left: 0.25rem solid #8f88bf !important;
+}
 .card{
   padding: 0 0 0 0 !important;
 }
@@ -177,12 +181,11 @@ a{
   box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
 }
 
-
+.table{
+    border: 1px solid;
+}
 /* Kết thúc CSS thống kê */
-
-
 /* footer */
-.footer{
-  background-color:rgb(243,245,250);
-
+.footer {
+    background-color: rgb(243,245,250);
 }
