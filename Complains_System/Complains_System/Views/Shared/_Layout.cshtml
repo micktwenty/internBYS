@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Complains_System</title>
+    <title>Hệ thống tiếp nhận phàn nàn DUE</title>
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />*@
     <link rel="stylesheet" href="~/assets/homepage/css/style.css">
@@ -21,7 +22,7 @@
                         <form class="search">
                             <div class="col-10">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa"
-                                    aria-label="Search">
+                                       aria-label="Search">
                             </div>
                             <div id="search" class=" col-2 ">
                                 <button class="btn btn-search " type="submit">Tìm kiếm</button>
@@ -29,30 +30,12 @@
                         </form>
                     </nav>
                 </div>
-                <div class="col-3 navbar dropdown">
-                    @if (TempData["Name"] != null)
-                    {
-                        <button id="xinchao" class="btn dropdown-toggle " data-toggle="dropdown">Xin chào @TempData["Name"]!</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">
-                                <img class="nav-icon" src="~/assets/img/key.png"><span>Đổi mật khẩu</span>
-                            </a>
-                            <a class="dropdown-item" asp-action="logout" asp-controller="users">
-                                <img class="nav-icon" src="~/assets/img/log-out.png"><span>Đăng xuất</span>
-                            </a>
-                        </div>
-                    }
-                    @if (TempData["Name"] == null)
-                    {
-                        <a class="dropdown-item" asp-action="login" asp-controller="users">
-                            <img class="nav-icon" src="~/assets/img/log-out.png"><span>Đăng nhập!</span>
-                        </a>
-                    }
-
-                </div>
+                <partial name="_LoginPartial" />
 
             </div>
         </div>
+
+
     </div>
     <div class="container">
         <main role="main" class="pb-3">
