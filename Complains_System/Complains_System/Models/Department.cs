@@ -11,8 +11,7 @@ namespace Complains_System.Models
     {
         public int DepartmentId { get; set; }
         public string Name { get; set; }
-        public int? Totalstudent { get; set; }
-        public int? Totalemployee { get; set; }
+        public string Email { get; set; }
         public string Phone { get; set; }
 
         public virtual ICollection<Complain> Complains { get; set; }

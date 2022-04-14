@@ -15,15 +15,15 @@ namespace Complains_System.Extensions
             
 
             modelBuilder.Entity<Department>().HasData(
-               new Department() {DepartmentId = 1,  Name = "Kế toán"},
-               new Department() {DepartmentId =  2,  Name = "Quản trị kinh doanh" }, 
-               new Department() {DepartmentId =  3, Name = "Marketing" },
-               new Department() {DepartmentId =  4,  Name = "Du lịch" },
-               new Department() {DepartmentId =  5,  Name = "Kinh doanh quốc tế" },
-               new Department() {DepartmentId =  6,  Name = "Ngân hàng" }, 
-               new Department() {DepartmentId =  7,  Name = "Tài chính" },
-               new Department() {DepartmentId =  8,  Name = "Thống kê - Tin học" },
-               new Department() {DepartmentId =  9,  Name = "Thương mại điện tử" }
+               new Department() {DepartmentId = 1,  Email = "ngquthien3520@gmail.com" , Name = "Kế toán"},
+               new Department() {DepartmentId =  2, Email = "ngquthien3520@gmail.com" ,  Name = "Quản trị kinh doanh" }, 
+               new Department() {DepartmentId =  3, Email = "ngquthien3520@gmail.com" , Name = "Marketing" },
+               new Department() {DepartmentId =  4, Email = "ngquthien3520@gmail.com" ,  Name = "Du lịch" },
+               new Department() {DepartmentId =  5, Email = "ngquthien3520@gmail.com" ,  Name = "Kinh doanh quốc tế" },
+               new Department() {DepartmentId =  6, Email = "ngquthien3520@gmail.com" ,  Name = "Ngân hàng" }, 
+               new Department() {DepartmentId =  7, Email = "ngquthien3520@gmail.com" ,  Name = "Tài chính" },
+               new Department() {DepartmentId =  8, Email = "ngquthien3520@gmail.com" ,  Name = "Thống kê - Tin học" },
+               new Department() {DepartmentId =  9, Email = "ngquthien3520@gmail.com" ,  Name = "Thương mại điện tử" }
                );
             modelBuilder.Entity<Student>().HasData(
                new Student() {Email = "181121521137@due.udn.vn" ,Studentcode = "181121521137", Name = "Nguyễn Quốc Thiện", DepartmentId = 1},

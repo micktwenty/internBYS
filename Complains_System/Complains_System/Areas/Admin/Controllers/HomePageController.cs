@@ -32,6 +32,7 @@ namespace Complains_System.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index(int? page)
         {
+            ViewData["Title"] = "Quản trị viên";
             var listKhoa = await _departmentService.GetListDepartments();
             
             var report_all = _complain.Statistics_Report(page);

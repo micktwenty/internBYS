@@ -31,6 +31,7 @@ namespace Complains_System.Controllers
         }
         public async Task<IActionResult> Index(int? page)
         {
+
             ClaimsPrincipal currentUser = this.User;
             if (currentUser.FindFirst(ClaimTypes.Name) != null)
             {
@@ -47,6 +48,8 @@ namespace Complains_System.Controllers
         }
         public async Task<IActionResult> Details(int id)
         {
+
+
             var detailsComplain = await _complains.GetbyId(id);
             return View(detailsComplain);
         }

@@ -33,9 +33,7 @@ namespace Complains_System.Configurations
                 .HasColumnName("phone")
                 .IsFixedLength(true);
 
-            entity.Property(e => e.Totalemployee).HasColumnName("totalemployee");
-
-            entity.Property(e => e.Totalstudent).HasColumnName("totalstudent");
+            entity.Property(e => e.Email).HasColumnName("Email");
         }
     }
 }
