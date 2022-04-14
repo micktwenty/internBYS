@@ -18,7 +18,7 @@ namespace Complains_System.Catalog
         public Task<ComplainsViewModel> GetbyId(int IDComplain);// tìm kiếm dựa trên id complains
         public Task<string> EditCraft(EditDraftRequest request); //sửa nháp
         public Task<int> DenyPost(string reply, int idcomplains, int employee); //Từ chối giải quyết
-        public Task<int> SpamPost(string reply, int idcomplains, int employee); //Từ chối giải quyết
+        public Task<int> SpamPost(string reply, int idcomplains, int employee); //spam 
 
         public Task<string> PostRequest(ComplainsCreateRequest request);// đăng bài
         public Task<int> ReplyComplain(string reply, int idcomplains, int employee);// trả lời complains
