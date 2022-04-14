@@ -100,6 +100,20 @@ namespace Complains_System.Controllers
 
             return Ok(complain);
         }
+        [HttpGet("Spam")]
+        public async Task<IActionResult> SpamPost(string reply, int idcomplain, int employee)
+        {
+            var ComplainID = await _complainsManagement.SpamPost(reply,idcomplain,employee);
+
+            if (ComplainID == 0)
+            {
+                return BadRequest();
+            }
+           
+
+
+            return Ok();
+        }
 
         //[Authorize(Roles = "student")]
         [HttpPost]

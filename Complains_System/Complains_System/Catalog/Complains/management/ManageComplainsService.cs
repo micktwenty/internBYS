@@ -12,6 +12,8 @@ using Complains_System.EF;
 using Complains_System.Models;
 using Complains_System.Catalog.Complains.Dtos;
 using Complains_System.Catalog.Public;
+using Complains_System.Catalog.Admin;
+using Complains_System.Catalog.Admin.DepartmentManagement.Dtos;
 
 namespace Complains_System.Catalog.Complains.management
 {
@@ -19,13 +21,16 @@ namespace Complains_System.Catalog.Complains.management
     {
         private readonly ComplainsDbContext _context;
         private readonly IStorageService _storageService;
+        private readonly IMailService _mailservice;
 
 
-        public ManageComplainsService(ComplainsDbContext context, IStorageService storageService)
+
+        public ManageComplainsService(ComplainsDbContext context, IStorageService storageService, IMailService mailservice)
         {
 
             _context = context;
             _storageService = storageService;
+            _mailservice = mailservice;
         }
         public async Task<string> CreateDraft(ComplainsCreateRequest request)
         {
@@ -361,7 +366,7 @@ namespace Complains_System.Catalog.Complains.management
         public async Task<int> SpamPost(string reply, int idcomplains, int employee)
         {
             var data = await _context.Complains.FirstOrDefaultAsync(x => x.IdComplains == idcomplains);
-
+            var user = await _context.AppUsers.FirstOrDefaultAsync(x => x.UserName == data.IdStudent);
             if (data != null)
             {
                 data.Status = "Spam";
@@ -369,7 +374,17 @@ namespace Complains_System.Catalog.Complains.management
                 data.employee_reply = employee;
                 data.Reply = reply;
             }
+            var mail = new MailRequest()
+            {
+                Body = $"Chào {user.Name}, sau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi nhận thấy nội dung không đúng và chưa thể đưa ra hướng giải quyết " +
+                $"cho bạn, vì vậy chúng tôi đã đánh dấu bài của bạn là \"SPAM\". Nếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phàn nàn\" tại tầng " +
+                $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. ",
+                Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
+                ToEmail = user.Email
+            };
+            await _mailservice.SendEmailAsync(mail);
             return await _context.SaveChangesAsync();
+
         }
 
         private async Task<string> SaveFile(IFormFile file)

@@ -1,5 +1,7 @@
 using Complains_System.Catalog;
+using Complains_System.Catalog.Admin;
 using Complains_System.Catalog.Admin.ComplainsManagement;
+using Complains_System.Catalog.Admin.DepartmentManagement.Dtos;
 using Complains_System.Catalog.Admin.UserManagement;
 using Complains_System.Catalog.Complains.management;
 using Complains_System.Catalog.Department;
@@ -64,8 +66,9 @@ namespace Complains_System
             services.AddTransient<IUserManagementService, UserManagementService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
             services.AddTransient<IComplainsService, ComplainsServices>();
-            
+            services.AddTransient<IMailService, MailService>();
 
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
             //services.AddScoped<IAuthorizationHandler, PoliciesAuthorizationHandler>();
             //services.AddScoped<IAuthorizationHandler, RolesAuthorizationHandler>();
             services.AddAuthentication("CookieAuthentication")
