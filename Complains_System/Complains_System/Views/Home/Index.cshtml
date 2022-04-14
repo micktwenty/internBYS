@@ -101,13 +101,16 @@
 
 
     <br />
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
-{
-    LiElementClasses = new string[] { "page-item" },
-    PageClasses = new string[] { "page-link" }
-})
+    <div class="d-flex justify-content-center">
+        
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+            })
+        
+    </div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
