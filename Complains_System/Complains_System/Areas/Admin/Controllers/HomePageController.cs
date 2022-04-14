@@ -1,5 +1,9 @@
-﻿using Complains_System.Catalog.Admin.UserManagement;
+﻿using Complains_System.Catalog.Admin.ComplainsManagement;
+using Complains_System.Catalog.Admin.UserManagement;
+using Complains_System.Catalog.Department;
+using Complains_System.EF;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,19 +15,43 @@ namespace Complains_System.Areas.Admin.Controllers
     //[Authorize(Roles ="admin")]\
     //[Route("[controller]")]
     //[Area("Admin")]
+    [Area("Admin")]
     public class HomePageController : Controller
     {
         private readonly IUserManagementService _userManagementService;
-        public HomePageController(IUserManagementService userManagementService)
+        private readonly IDepartmentService _departmentService;
+        private readonly IComplainsService _complain;
+
+
+        public HomePageController(IUserManagementService userManagementService, IComplainsService complain, IDepartmentService departmentService)
         {
             _userManagementService = userManagementService;
+            _complain = complain;
+            _departmentService = departmentService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-           
-            var lst = await _userManagementService.GetListUsers();
-            return View(lst);
+            var listKhoa = await _departmentService.GetListDepartments();
+            
+            var report_all = _complain.Statistics_Report(page);
+            report_all.Departments = listKhoa;
+            return View(report_all);
+        }
+
+        [HttpPost("getreport")]
+        public async Task<IActionResult> ReportforDepartment([FromForm] IFormCollection frm, int? page)
+        {
+            var listKhoa = await _departmentService.GetListDepartments();
+
+            var request = new StatisticalRequest()
+            {
+                startdate = Convert.ToDateTime(frm["startdate"]),
+                enddate = Convert.ToDateTime(frm["enddate"])
+            };
+            var report =  _complain.Statistics_Report_Department(request,page);
+            report.Departments = listKhoa;
+            return View("Index", report);
         }
 
     }

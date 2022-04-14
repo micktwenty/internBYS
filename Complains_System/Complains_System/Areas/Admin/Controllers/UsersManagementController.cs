@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
-    [Route("[controller]")]
-    //[Area("Admin")]
+    [Route("[Area]")]
+    [Area("Admin")]
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;

@@ -8,6 +8,8 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
 {
      public interface IComplainsService
     {
-        public ReportForDepartment Statistics_Report(StatisticalRequest request);
+        public ReportForDepartment Statistics_Report(int? page);
+        public ReportForDepartment Statistics_Report_Department(StatisticalRequest request, int? page);
+
     }
 }

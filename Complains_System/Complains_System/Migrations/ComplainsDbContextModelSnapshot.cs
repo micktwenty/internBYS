@@ -46,7 +46,7 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "AE59A954-C5F1-419A-A3FF-38A4818EE3A0",
-                            ConcurrencyStamp = "84b152f5-2987-47a2-bb35-bef0163363bf",
+                            ConcurrencyStamp = "7ad4e68f-56fd-4675-8893-b44a484b2b60",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -54,7 +54,7 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "8E742903-5250-4C2C-829B-F1BAE8E7981B",
-                            ConcurrencyStamp = "b767279d-76f8-4121-8619-e3b885bd4302",
+                            ConcurrencyStamp = "8763ed0b-a032-47a2-a45f-9e4e3764a3e6",
                             Description = "student role",
                             Name = "student",
                             NormalizedName = "student"
@@ -62,10 +62,18 @@ namespace Complains_System.Migrations
                         new
                         {
                             Id = "6BFD2AC2-5F05-4EA7-87D9-ECF95EE4A1D5",
-                            ConcurrencyStamp = "401b8746-e789-4c00-b77f-ddc674b2b919",
+                            ConcurrencyStamp = "e92d9d30-18ec-48f7-8183-22ae14bd8bd2",
                             Description = "employee role",
                             Name = "employee",
                             NormalizedName = "employee"
+                        },
+                        new
+                        {
+                            Id = "A639AE1A-D634-455C-BC58-E68883695BE2",
+                            ConcurrencyStamp = "0770afbc-4971-42ac-906d-a39e734b1cfa",
+                            Description = "comlplains department role",
+                            Name = "complain_department",
+                            NormalizedName = "Manager of Complains Department."
                         });
                 });
 
@@ -148,7 +156,7 @@ namespace Complains_System.Migrations
                         {
                             UserName = "admin",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "32365c81-e565-4007-883f-b7bf87ab4bc0",
+                            ConcurrencyStamp = "6ef5b5ae-3727-42e1-a32c-f427cf368cb0",
                             Email = "ngquthien3520@gmail.com",
                             EmailConfirmed = true,
                             Id = "40FB70EC-DBE5-46D0-A55A-A63E751E7AD5",
@@ -158,7 +166,7 @@ namespace Complains_System.Migrations
                             Name = "Thien",
                             NormalizedEmail = "ngquthien3520@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJl3gAy7wr8M11+cb8ehLhaumhdrkt90A2ZEfa2PvcYPkV8ARouHgksJtBOm2FRlQA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOIFvIV6fCh+Fy2yItVcaJkXMXWpnz8WYgaOWQRDZFqhJsKwD4iix2nEE4669RsdSg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

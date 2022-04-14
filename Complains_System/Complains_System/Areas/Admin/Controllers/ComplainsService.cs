@@ -16,11 +16,6 @@ namespace Complains_System.Areas.Admin.Controllers
         {
             _complainsService = complainsService;
         }
-        [HttpPost("getreport")]
-        public ReportForDepartment ReportforDepartment([FromForm] StatisticalRequest request)
-        {
-            var list = _complainsService.Statistics_Report(request);
-            return list;
-        }
+
     }
 }

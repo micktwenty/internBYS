@@ -96,6 +96,12 @@ namespace Complains_System.Extensions
                 Name = "employee",
                 NormalizedName = "employee",
                 Description = "employee role"
+            }, new AppRole
+            {
+                Id = "A639AE1A-D634-455C-BC58-E68883695BE2",
+                Name = "complain_department",
+                NormalizedName = "Manager of Complains Department.",
+                Description = "comlplains department role"
             }
             );
 

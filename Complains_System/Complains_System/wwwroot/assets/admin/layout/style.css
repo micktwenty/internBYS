@@ -43,9 +43,7 @@ a {
     text-decoration: none;
 }
 
-.container {
-    height: 750px;
-}
+
 
 .icon {
     display: inline-flex !important;

@@ -9,8 +9,6 @@ namespace Complains_System.Models
     [Table("Departments")]
     public class Department
     {
-
-
         public int DepartmentId { get; set; }
         public string Name { get; set; }
         public int? Totalstudent { get; set; }
