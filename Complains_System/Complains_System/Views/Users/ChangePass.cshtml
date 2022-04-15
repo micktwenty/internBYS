@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-7">
                     <div class="mt-4">
-                        <form action="/Users/ChangePass" method="post">
+                        <form asp-action="ChangePass_process" asp-controller="Users" method="post">
                             <div class="form container">
                                 <div class="form-title mb-4">
                                     <p>Thay Đổi Mật Khẩu</p>
@@ -41,7 +41,7 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Mật khẩu hiện tại:</label>
                                             <div class="pass">
-                                                <input type="password" name="oldpassword" value="">
+                                                <input type="password" name="oldpassword" placeholder="">
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -62,10 +62,6 @@
                                 <div class="row justify-content-center mt-2">
                                     <button type="submit" class="btn btn-primary ">Cập Nhật</button>
                                 </div>
-
-
-
-
                             </div>
 
                         </form> 

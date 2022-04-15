@@ -1,6 +1,7 @@
 ﻿using Complains_System.Catalog;
 using Complains_System.Catalog.Complains.management;
 using Complains_System.Catalog.Department;
+using Complains_System.Catalog.User;
 using Complains_System.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -22,14 +23,18 @@ namespace Complains_System.Controllers
     {
         private readonly IComplainsManagement _complainsManagement;
         private readonly IDepartmentService _departmentService;
+        private readonly IUserService _userService;
+
         private readonly UserManager<AppUser> _usermanager;
+
         //private readonly Complains_DUEContext _context;
 
-        public Complains(IComplainsManagement complainsManagement, IDepartmentService departmentService, UserManager<AppUser> usermanager)
+        public Complains(IComplainsManagement complainsManagement, IDepartmentService departmentService, UserManager<AppUser> usermanager, IUserService userService)
         {
             _complainsManagement = complainsManagement;
             _departmentService = departmentService;
             _usermanager = usermanager;
+            _userService = userService;
         }
 
         [HttpGet("public-post")]
@@ -90,14 +95,11 @@ namespace Complains_System.Controllers
         public async Task<IActionResult> Create([FromForm] ComplainsCreateRequest request)
         {
             var ComplainID = await _complainsManagement.CreateDraft(request);
-
             if (ComplainID == "0")
             {
                 return BadRequest();
             }
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
-
-
             return Ok(complain);
         }
         [HttpGet("Spam")]
@@ -109,36 +111,30 @@ namespace Complains_System.Controllers
             {
                 return BadRequest();
             }
-           
-
-
             return Ok();
         }
 
         //[Authorize(Roles = "student")]
         [HttpPost]
-        public async Task<IActionResult> RequestPosting(IFormCollection frm, IFormFile file)
+        public async Task<IActionResult> RequestPosting(IFormCollection frm)
         {
             var request = new ComplainsCreateRequest();
             request.Content = frm["content"];
             request.Title = frm["tieude"];
-            request.IdStudent = TempData["id"].ToString();
+            var user = _userService.getUser(_usermanager.GetUserName(User));
+            request.IdStudent = user.IdStudent;
             if (frm.Files.Count > 0)
             {
                 request.ThumbnailImage = frm.Files[0];
             }
-            
             request.IdDepartment = Convert.ToInt32( frm["khoa"]);
-
-            var ComplainID = await _complainsManagement.CreateDraft(request);
+            var ComplainID = await _complainsManagement.PostRequest(request);
 
             if (ComplainID == "0")
             {
                 return BadRequest();
             }
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
-
-
             return Ok(complain);
         }
 
@@ -147,11 +143,16 @@ namespace Complains_System.Controllers
         public async Task<IActionResult> NewDraft()
         {
             var data = await _departmentService.GetListDepartments();
-           
             return View(data);
         }
 
-
+        [HttpGet("request-post-list")]
+        public async Task<IActionResult> GetRequestList()
+        {
+            var user = _userService.getUser(_usermanager.GetUserName(User));
+            var data = await _complainsManagement.GetRequestPost(user.IdDepartment);
+            return View(data);
+        }
         //[Authorize(Roles = "student")]
         [HttpPut]
         public async Task<IActionResult> EditDraft([FromBody]EditDraftRequest request)

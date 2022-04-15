@@ -8,7 +8,7 @@
         <div class="col-3">
             <button id="xinchao" class="btn dropdown-toggle " data-toggle="dropdown">Xin chào @UserManager.GetUserName(User)</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" asp-action="ChangePass" asp-controller="users">
                     <img class="nav-icon" src="~/assets/img/key.png"><span>Đổi mật khẩu</span>
                 </a>
                 <a class="dropdown-item" asp-action="logout" asp-controller="users">

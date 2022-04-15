@@ -57,7 +57,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Total = complains.Count(),
                 Total_dep = _context.Departments.Count(),
                 Request = complains.Where(x => x.Status == "Chờ duyệt").Count(),
-                Done = complains.Where(x => x.Status == "Đã duyệt").Count(),
+                Done = complains.Where(x => x.Status == "Đã duyệt!").Count(),
                 Cancel = complains.Where(x => x.Status == "Đã huỷ").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(null),

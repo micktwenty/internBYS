@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace Complains_System.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
+    //[ApiController]
     public class UsersController : Controller
     {
         private readonly IUserService _userService;
@@ -49,13 +49,13 @@ namespace Complains_System.Controllers
       
             return View();
         }
-        [HttpGet("change-password")]
+        //[HttpGet("change-password")]
         public ViewResult ChangePass()
         {
             return View();
         }
         [HttpPost("changepass")]
-        public async Task<IActionResult> ChangePass(IFormCollection frm)
+        public async Task<IActionResult> ChangePass_process(IFormCollection frm)
         {
             ClaimsPrincipal currentUser = this.User;
             if (currentUser == null) return RedirectToAction("Login");
@@ -109,10 +109,11 @@ namespace Complains_System.Controllers
                     return RedirectToAction("Login");
                 }
                 await HttpContext.SignInAsync(result);
-                var user = _userService.getUser(request.Username);
-                var id = user.IdStudent == null ? user.idteacher.ToString() : user.IdStudent;
-                TempData["id"] = id;
-                TempData["Name"] = user.Name;
+                var user =  _userService.getUser(request.Username);
+                if (user.idteacher != 0)
+                {
+                    return RedirectToAction("GetRequestList", "Complains");
+                }
                 return RedirectToAction("Index", "Home");
             }
 
