@@ -655,3 +655,4 @@ D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Bo
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\SmtpServer.dll
 D:\Github\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\GetRequestList.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\replyview.cshtml.g.cs

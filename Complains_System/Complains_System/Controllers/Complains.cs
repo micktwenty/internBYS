@@ -90,6 +90,17 @@ namespace Complains_System.Controllers
             return View(complains);
         }
 
+        [HttpGet("reply-post/{id}")]
+        public async Task<IActionResult> replyview(string id)
+        {
+            var complains = await _complainsManagement.GetbyId(Convert.ToInt32(id));
+            if (complains == null)
+            {
+                return BadRequest("Cannot find Complains!");
+            }
+            return View(complains);
+        }
+
         //[Authorize(Roles = "student")]
         [HttpGet]
         public async Task<IActionResult> Create([FromForm] ComplainsCreateRequest request)
@@ -102,16 +113,17 @@ namespace Complains_System.Controllers
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
             return Ok(complain);
         }
-        [HttpGet("Spam")]
-        public async Task<IActionResult> SpamPost(string reply, int idcomplain, int employee)
+        [HttpPost("Spam/{id}")]
+        public async Task<IActionResult> SpamPost(IFormCollection frm, string id)
         {
-            var ComplainID = await _complainsManagement.SpamPost(reply,idcomplain,employee);
-
+            var reply = frm["content"].ToString();
+            var user = _userService.getUser(_usermanager.GetUserName(this.User));
+            var ComplainID = await _complainsManagement.SpamPost(reply,Convert.ToInt32(id),user.idteacher);
             if (ComplainID == 0)
             {
                 return BadRequest();
             }
-            return Ok();
+            return RedirectToAction("GetRequestList");
         }
 
         //[Authorize(Roles = "student")]
@@ -147,11 +159,14 @@ namespace Complains_System.Controllers
         }
 
         [HttpGet("request-post-list")]
-        public async Task<IActionResult> GetRequestList()
+        public async Task<IActionResult> GetRequestList(int? page)
         {
             var user = _userService.getUser(_usermanager.GetUserName(User));
             var data = await _complainsManagement.GetRequestPost(user.IdDepartment);
-            return View(data);
+            var pageNumber = page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 10;
+            return View(data.ToPagedList(pageNumber, pageSize));
         }
         //[Authorize(Roles = "student")]
         [HttpPut]
@@ -167,16 +182,34 @@ namespace Complains_System.Controllers
         }
 
         //[Authorize(Roles = "employee")]
-        [HttpPut("reply/{IdCom}")]
-        public async Task<IActionResult> ReplyComplain([FromQuery]string reply, int IdCom, int emp)
+        [HttpPost("reply/{id}")]
+        public async Task<IActionResult> ReplyComplain(IFormCollection frm, string id)
         {
-            var Result = await _complainsManagement.ReplyComplain(reply,IdCom,emp);
+            var user = _userService.getUser(_usermanager.GetUserName(this.User));
+            var reply = frm["content"];
+            var emp = user.idteacher;
+            var Result = await _complainsManagement.ReplyComplain(reply,Convert.ToInt32(id),emp);
             if (Result == 0)
             {
                 return BadRequest();
             }
 
-            return Ok();
+            return RedirectToAction("GetRequestList");
+        }
+
+        [HttpPost("deny/{id}")]
+        public async Task<IActionResult> DenyPost(IFormCollection frm, string id)
+        {
+            var user = _userService.getUser(_usermanager.GetUserName(this.User));
+            var reply = frm["content"];
+            var emp = user.idteacher;
+            var Result = await _complainsManagement.DenyPost(reply, Convert.ToInt32(id), emp);
+            if (Result == 0)
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction("GetRequestList");
         }
 
 

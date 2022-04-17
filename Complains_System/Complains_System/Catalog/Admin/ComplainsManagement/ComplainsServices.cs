@@ -26,7 +26,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         public ReportForDepartment Statistics_Report(int? page)
         {
             List<Complain> complains = new List<Complain>();
-            var sql = $"SELECT * FROM Complains";
+            var sql = $"SELECT * FROM Complains where status <> N'Bản nháp'";
             var connectionString =  _configuration.GetConnectionString(SystemConstants.MainConnectionString);
             using (var connection = new SqlConnection(connectionString))
             {
@@ -40,7 +40,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
             var pageSize = 6;
             var data = from c in _context.Complains
                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-                       
+                       where c.Status != "Bản nháp"
                        select new { c, d };
             var new_data = data.Select(x => new ComplainsViewModel()
             {
@@ -58,7 +58,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Total_dep = _context.Departments.Count(),
                 Request = complains.Where(x => x.Status == "Chờ duyệt").Count(),
                 Done = complains.Where(x => x.Status == "Đã duyệt!").Count(),
-                Cancel = complains.Where(x => x.Status == "Đã huỷ").Count(),
+                Cancel = complains.Where(x => x.Status == "Từ chối giải quyết").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(null),
                 Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
@@ -70,8 +70,9 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         public ReportForDepartment Statistics_Report_Department(StatisticalRequest request, int? page)
         {
             List<Complain> complains = new List<Complain>();
-           
-            var sql = $"SELECT * FROM Complains where date between '{request.startdate}' and '{request.enddate}'";
+            TimeSpan aInterval = new System.TimeSpan(1, 0, 0, 0);
+
+            var sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and date between '{request.startdate.Subtract(aInterval)}' and '{request.enddate.AddDays(1)}'";
            
             var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
             using (var connection = new SqlConnection(connectionString))
@@ -85,9 +86,10 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
             var pageNumber = page ?? 1;
             pageNumber = pageNumber == 0 ? 1 : pageNumber;
             var pageSize = 6;
+
             var data = from c in _context.Complains
                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-                       where c.Date >= request.startdate && c.Date <= request.enddate
+                       where c.Date >= request.startdate.Subtract(aInterval) && c.Date <= request.enddate.AddDays(1)
                        select new { c, d };
             var new_data = data.Select(x => new ComplainsViewModel()
             {
@@ -105,7 +107,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Total_dep = _context.Departments.Count(),
                 Request = complains.Where(x => x.Status == "Chờ duyệt").Count(),
                 Done = complains.Where(x => x.Status == "Đã duyệt").Count(),
-                Cancel = complains.Where(x => x.Status == "Đã huỷ").Count(),
+                Cancel = complains.Where(x => x.Status == "Từ chối giải quyết").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(request),
                 Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
@@ -117,6 +119,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         {
             List<Complains_System.Models.Department> dep = new List<Complains_System.Models.Department>();
             var sql2 = $"SELECT * FROM Departments";
+            TimeSpan aInterval = new System.TimeSpan(1, 0, 0, 0);
 
             var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
             using (var connection = new SqlConnection(connectionString))
@@ -130,10 +133,10 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
             foreach (var item in dep)
             {
 
-                var sql = $"SELECT * FROM Complains where IdDepartment = {j + 1}";
+                var sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {j + 1}";
                 if (request != null)
                 {
-                    sql = $"SELECT * FROM Complains where IdDepartment = {j + 1} and date between '{request.startdate}' and '{request.enddate}'";
+                    sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {j + 1} and date between '{request.startdate.Subtract(aInterval)}' and '{request.enddate.Add(aInterval)}'";
                 }
                 List<Complain> complains = new List<Complain>();
 
@@ -163,10 +166,10 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                                 status = "Spam";
                                 break;
                             case 2:
-                                status = "Đã huỷ";
+                                status = "Từ chối giải quyết";
                                 break;
                             case 3:
-                                status = "Bản nháp";
+                                status = "Chờ duyệt";
                                 break;
                         }
                         if (complains.Count() == 0)

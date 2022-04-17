@@ -1,9 +1,10 @@
-﻿
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 @{
     ViewData["Title"] = "GetRequestList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel> 
+@model X.PagedList.IPagedList<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel>
 <!doctype html>
 <html lang="en">
 
@@ -27,20 +28,31 @@
             <div class="mt-4">
                 <div class="card shadow border-0">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="post-title col-12">
-                                <a href="#">
-                                    <div class="card-title"><b>@item.Title</b></div>
-                                </a>
+                        <a  asp-action="replyview" asp-controller="Complains" asp-route-id="@item.IdComplains">
+                            <div class="row">
+                                <div class="post-title col-12">
+                          
+                                        <div class="card-title"><b>@item.Title</b></div>
+                                   
+                                </div>
                             </div>
-                        </div>
-                        <footer class="blockquote-footer">@item.Date</footer>
+                            <footer class="blockquote-footer">@item.Date</footer>
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
     }
+    <div class="d-flex justify-content-center">
 
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+        {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+        })
+
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

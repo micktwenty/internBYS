@@ -98,13 +98,14 @@ namespace Complains_System.Catalog.Complains.management
             var user = await _context.AppUsers.FirstOrDefaultAsync(x => x.UserName == data.IdStudent);
             var mail = new MailRequest()
             {
-                Body = $"Chào {user.Name},\nSau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi hiểu nhưng chúng tôi chưa thể đưa ra hướng giải quyết cho bạn." +
-                $" Về chi tiết lí do từ chối của phòng/ban mời bạn vui lòng truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để xem." +
+                Body = $"Chào {user.Name},sau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi hiểu nhưng chúng tôi chưa thể đưa ra hướng giải quyết cho bạn." +
+                $" Về chi tiết lí do từ chối của phòng/ban mời bạn vui lòng truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để xem" +
               $". \nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
-              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. \nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. Trân trọng cảm ơn! \n <br>Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
                 ToEmail = user.Email
             };
+            
             await _mailservice.SendEmailAsync(mail);
             return await _context.SaveChangesAsync();
         }
@@ -220,7 +221,10 @@ namespace Complains_System.Catalog.Complains.management
 
         public async Task<ComplainsViewModel> GetbyId(int IDComplain)
         {
-
+            if (IDComplain == 0)
+            {
+                return new ComplainsViewModel();
+            }
             var complain = await _context.Complains.FindAsync(IDComplain);
             var department = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == complain.IdDepartment) ;
             var image = await _context.ImageComplains.FirstOrDefaultAsync(x => x.IdComplain == IDComplain);
@@ -296,38 +300,7 @@ namespace Complains_System.Catalog.Complains.management
             return data;
         }
 
-        //public async Task<string> Post(EditDraftRequest request)
-        //{
-        //    var complain = await _context.Complains.FindAsync(request.IdComplain);
 
-        //    complain.Title = request.Title;
-        //    complain.Content = request.Content;
-        //    complain.Date = DateTime.Now;
-        //    complain.IdDepartment = request.IdDepartment;
-        //    complain.Status = "Chờ duyệt";
-        //    if (request.ThumbnailImage != null)
-        //    {
-        //        var thumbnailimage = await _context.ImageComplains.FirstOrDefaultAsync(i => i.IdComplain == request.IdComplain);
-        //        if (thumbnailimage != null)
-        //        {
-
-        //            thumbnailimage.filesize = Convert.ToInt32(request.ThumbnailImage.Length);
-        //            thumbnailimage.Path_image = await this.SaveFile(request.ThumbnailImage);
-        //            _context.ImageComplains.Update(thumbnailimage);
-        //        };
-        //        complain.ImageComplain = new List<ImageComplain>()
-        //        {
-        //            new ImageComplain()
-        //            {
-        //                content_image = complain.Title,
-        //                filesize = Convert.ToInt32(request.ThumbnailImage.Length),
-        //                Path_image = await this.SaveFile(request.ThumbnailImage),
-                       
-        //            }
-        //        };
-        //    }
-        //    return await _context.SaveChangesAsync();
-        //}
 
         public async Task<string> PostRequest(ComplainsCreateRequest request)
         {
@@ -357,7 +330,7 @@ namespace Complains_System.Catalog.Complains.management
             var mail = new MailRequest()
             {
                 Body = $"Chào {user.Name},\n Hệ thống đã tiếp nhận bài đăng \"{complain.Title}\" của bạn, chúng tôi sẽ gửi thông báo qua email cho bạn khi có phản hồi từ phòng/ban." +
-                $" Bạn có thể truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để theo dõi trạng thái bài đăng mới nhất." +
+                $" Bạn có thể truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để theo dõi trạng thái bài đăng mới nhất" +
               $".\nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
               $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng.\nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Thông báo về bài đăng \"{complain.Title}\"",
@@ -384,7 +357,7 @@ namespace Complains_System.Catalog.Complains.management
             var mail = new MailRequest()
             {
                 Body = $"Chào {user.Name},\nSau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi hiểu và đã đưa ra hướng giải quyết cho bạn, đồng thời cũng đăng bài đăng của bạn lên " +
-                $"trang DUE Complains. Về chi tiết hướng giải quyết và câu trả lời của phòng/ban mời bạn vui lòng truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để xem." +
+                $"trang DUE Complains. Về chi tiết hướng giải quyết và câu trả lời của phòng/ban mời bạn vui lòng truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để xem" +
               $". \nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
               $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. \nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
@@ -410,8 +383,8 @@ namespace Complains_System.Catalog.Complains.management
             {
                 Body = $"Chào {user.Name}, \nSau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi nhận thấy nội dung không đúng và chưa thể đưa ra hướng giải quyết " +
                 $"cho bạn, vì vậy chúng tôi đã đánh dấu bài của bạn là \"SPAM\". \nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
-                $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. ",
-                Subject = $"Phản hồi về bài đăng \"{data.Title}\"\nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+                $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. \nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+                Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
                 ToEmail = user.Email
             };
             await _mailservice.SendEmailAsync(mail);

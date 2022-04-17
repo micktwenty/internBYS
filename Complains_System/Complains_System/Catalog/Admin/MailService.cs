@@ -23,6 +23,7 @@ namespace Complains_System.Catalog.Admin
         public async Task SendEmailAsync(MailRequest mailRequest)
         {
             var email = new MimeMessage();
+            
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
             email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
             email.Subject = mailRequest.Subject;
