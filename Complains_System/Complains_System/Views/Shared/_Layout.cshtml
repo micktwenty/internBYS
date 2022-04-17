@@ -37,12 +37,82 @@
 
 
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    
+    <div class="app">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-2 sidebar shadow">
+                    <div class="homepage"><a href=""><img id="homepage" src="~/assets/homepage/img/home.png"></a></div>
+                    <div class="row mb-4 ml-1 mt-4">
+                        <div class="row lienket">
+                            <a href="">
+                                <i class="fa-solid fa-border-all"></i><span>
+                                    Tổng
+                                    quan
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row  mb-4 ml-1">
+                        <div class="row lienket">
+                            <a href="">
+                                <i class="fa-solid fa-file-circle-plus"></i><span>
+                                    Tạo bài
+                                    đăng mới
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mb-4 ml-1">
+                        <div class="row lienket">
+                            <a href="">
+                                <i class="fa-solid fa-comment"></i><span>
+                                    Đã phản
+                                    hồi
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mb-4 ml-1">
+                        <div class="row lienket">
+                            <a href="">
+                                <i class="fa-solid fa-comment-slash"></i><span>
+                                    Bị đánh
+                                    spam
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mb-4 ml-1">
+                        <div class="row lienket">
+                            <a href="">
+                                <i class="fa-solid fa-spinner"></i><span>
+                                    Chờ
+                                    duyệt
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    @RenderBody()
+                </div>
+                <div class="col-3">
+                    <div class="row lienket"><a><img id="link" src="~/assets/homepage/img/link.png">Liên kết hữu ích</a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/quocte.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/TV.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/tvts_OK.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/ts2022_vlvh.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/banner_CTLKQT.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/img-links-03.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/img-links-05.jpg"></a></div>
+                    <div><a href=""><img class="link" src="~/assets/homepage/img/MatKetLienKet_.jpg"></a></div>
+                </div>
+            </div>
 
+
+        </div>
+    </div>
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -129,40 +199,40 @@
     </div>
 
     @*<div class="footer">
-        <section id="cliens" class="cliens section-bg">
-            <div class="container-fluid">
+            <section id="cliens" class="cliens section-bg">
+                <div class="container-fluid">
 
-                <div class="row" data-aos="zoom-in">
+                    <div class="row" data-aos="zoom-in">
 
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/FPT.png" class="img-fluid" alt="">
-                    </div>
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/FPT.png" class="img-fluid" alt="">
+                        </div>
 
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/bys.png" class="img-fluid" alt="">
-                    </div>
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/bys.png" class="img-fluid" alt="">
+                        </div>
 
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/fast.png" class="img-fluid" alt="">
-                    </div>
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/fast.png" class="img-fluid" alt="">
+                        </div>
 
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/dsa.png" class="img-fluid" alt="">
-                    </div>
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/dsa.png" class="img-fluid" alt="">
+                        </div>
 
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/TMA.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                        <img src="~/assets/homepage/img/Logo/irtech.png" class="img-fluid" alt="">
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/TMA.png" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <img src="~/assets/homepage/img/Logo/irtech.png" class="img-fluid" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>*@
+            </section>
+        </div>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
