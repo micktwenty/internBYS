@@ -332,7 +332,7 @@ namespace Complains_System.Catalog.Complains.management
                 Body = $"Chào {user.Name},\n Hệ thống đã tiếp nhận bài đăng \"{complain.Title}\" của bạn, chúng tôi sẽ gửi thông báo qua email cho bạn khi có phản hồi từ phòng/ban." +
                 $" Bạn có thể truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để theo dõi trạng thái bài đăng mới nhất" +
               $".\nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
-              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng.\nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. Trân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Thông báo về bài đăng \"{complain.Title}\"",
                 ToEmail = user.Email
             };
@@ -359,7 +359,7 @@ namespace Complains_System.Catalog.Complains.management
                 Body = $"Chào {user.Name},\nSau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi hiểu và đã đưa ra hướng giải quyết cho bạn, đồng thời cũng đăng bài đăng của bạn lên " +
                 $"trang DUE Complains. Về chi tiết hướng giải quyết và câu trả lời của phòng/ban mời bạn vui lòng truy cập trang web, đăng nhập và vào mục \"Quản lý bài đăng cá nhân\" để xem" +
               $". \nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
-              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. \nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+              $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. Trân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
                 ToEmail = user.Email
             };
@@ -383,7 +383,7 @@ namespace Complains_System.Catalog.Complains.management
             {
                 Body = $"Chào {user.Name}, \nSau khi xem xét bài đăng \"{data.Title}\" của bạn, chúng tôi nhận thấy nội dung không đúng và chưa thể đưa ra hướng giải quyết " +
                 $"cho bạn, vì vậy chúng tôi đã đánh dấu bài của bạn là \"SPAM\". \nNếu có bất kì thắc mắc nào bạn có thể đến \"Phòng tiếp nhận phản ánh\" tại tầng " +
-                $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. \nTrân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
+                $"20 toà nhà mới trường Đại học Kinh Tế Đà Nẵng địa chỉ: 71 Ngũ Hành Sơn - thành phố Đà Nẵng. Trân trọng cảm ơn! \n Phòng tiếp nhận phản ánh trường Đại học Kinh Tế - Đại học Đà Nẵng",
                 Subject = $"Phản hồi về bài đăng \"{data.Title}\"",
                 ToEmail = user.Email
             };

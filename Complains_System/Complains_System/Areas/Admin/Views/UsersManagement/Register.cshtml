@@ -9,37 +9,43 @@
     <div class="box box-1"></div>
     <div class="box box-2"></div>
     <div class="box box-3"></div>
-    <div class="form d-flex">
-        <div class="form-title mt-8 pb-10">
-            <p>Đăng Kí Tài Khoản Sinh Viên</p>
-        </div>
-        <div class="form-create d-flex">
-            <label for="exampleFormControlInput1" class="form-label ">Tên sinh viên:</label>
-            <div class="this-typing pb-6">
-                <input type="text" name="oldpasswords" value="">
+    <form  action="Register-by-excel" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple />
+        <div class="form d-flex">
+            <div class="form-title mt-8 pb-10">
+                <p>Đăng Kí Tài Khoản Sinh Viên</p>
             </div>
-            <label for="exampleFormControlInput1" class="form-label">Mã số sinh viên:</label>
-            <div class="this-typing pb-6">
-                <input type="text" name="oldpasswords" value="">
-            </div>
-            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+            <div class="form-create d-flex">
+                <label for="exampleFormControlInput1" class="form-label ">Tên sinh viên:</label>
+                <div class="this-typing pb-6">
+                    <input type="text" name="oldpasswords" value="">
+                </div>
+                <label for="exampleFormControlInput1" class="form-label">Mã số sinh viên:</label>
+                <div class="this-typing pb-6">
+                    <input type="text" name="oldpasswords" value="">
+                </div>
+                <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
 
-            <select class="form-select mb-6" aria-label="Default select example">
-                <option value="1">Thống kê- Tin học</option>
-                <option value="2">Du Lịch</option>
-                <option value="3">Kế Toán</option>
-            </select>
-            <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
-            <select class="form-select mb-6" aria-label="Default select example">
-                <option value="1">44k21.1</option>
-                <option value="2">44k21.2</option>
-                <option value="3">44k14</option>
-            </select>
-            <div class="justify-content-center mt-2">
-                <button type="button" class="btn btn-primary btn-create ">Tạo Mới</button>
+                <select class="form-select mb-6" aria-label="Default select example">
+                    <option value="1">Thống kê- Tin học</option>
+                    <option value="2">Du Lịch</option>
+                    <option value="3">Kế Toán</option>
+                </select>
+                <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
+                <select class="form-select mb-6" aria-label="Default select example">
+                    <option value="1">44k21.1</option>
+                    <option value="2">44k21.2</option>
+                    <option value="3">44k14</option>
+                </select>
+                <div class="justify-content-center mt-2">
+                    <button type="submit" asp-action="RegisterbyExcel"  class="btn btn-primary btn-create ">Tạo Mới</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
+        
+
+
 
 </div>
 

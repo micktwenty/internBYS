@@ -8,9 +8,10 @@ namespace Complains_System.Catalog.Department
     public interface IDepartmentService
     {
         Task<List<ListDepartments>> GetListDepartments();
-        public Task<int> CreateDepartment(string Name);
+        public Task<int> CreateDepartment(CreateRequest request);
         public Task<int> DeleteDepartment(int id);
         public Task<int> EditDepartment(EditDepartmentRequest request);
+        public Task SendWarning(int id);
 
 
     }

@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Catalog.Department
 {
-    public class EditDepartmentRequest
+    public class CreateRequest
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
+        public string Name { get; set; }
         public string phone { get; set; }
+        public string email { get; set; }
     }
 }

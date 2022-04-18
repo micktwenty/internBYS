@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
             "FluentEmail.Smtp": {
               "target": "Package",
               "version": "[3.0.2, )"
@@ -119,6 +123,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.15, )"
+            },
+            "Microsoft.Office.Interop.Excel": {
+              "target": "Package",
+              "version": "[15.0.4795.1000, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

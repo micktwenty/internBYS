@@ -16,7 +16,7 @@
 
             <div class="getdate">
                 <b>Từ Ngày:</b>
-                <input class="input-date" type="date" name="startdate">
+                <input class="input-date" type="date" name="startdate" value="@DateTime.Now">
             </div>
             <div class="getdate">
                 <b>Đến Ngày:</b>
@@ -144,7 +144,15 @@
                         @for (int j = 0; j < 5; j++)
                         {
 
-                            <td>@Model.thongke[i, j]</td>
+                            <td>
+                                @Model.thongke[i, j]
+                                @if (j == 3)
+                                {
+                                    
+                                    <u><b><a style="color:red;" href="SendMail/@Model.Departments[i].Id">   Warning!</a></b></u>
+                                }
+                            </td>
+                           
 
                         }
                     </tr>

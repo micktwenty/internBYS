@@ -1,9 +1,13 @@
 ﻿using Complains_System.Catalog.Admin.UserManagement;
+using Complains_System.Catalog.Department;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
@@ -12,20 +16,29 @@ namespace Complains_System.Areas.Admin.Controllers
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
+
         public UsersManagementController(IUserManagementService userManagementService)
         {
             _userManagementService = userManagementService;
+
         }
         [HttpGet("register")]
         public IActionResult Register()
         {
             return View("Register");
         }
-        [HttpPost]
-        public async Task<bool> Register([FromForm] RegisterRequest request)
+        [HttpPost("register-by-excel")]
+        public async Task<bool> RegisterbyExcel([FromForm]IFormFileCollection files)
         {
-            var result = await _userManagementService.Register(request);
-            return result;
+
+
+            IFormFile file = files[0];
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var result = await _userManagementService.RegisterbyExcel(file);
+                return result;
+      
+
+
         }
         [HttpGet("disable-acc")]
         public async Task<bool> disable(string username)

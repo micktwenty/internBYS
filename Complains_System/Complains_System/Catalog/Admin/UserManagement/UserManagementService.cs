@@ -11,7 +11,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-
+using OfficeOpenXml;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
+using System.IO;
 
 namespace Complains_System.Catalog.Admin.UserManagement
 {
@@ -19,14 +22,16 @@ namespace Complains_System.Catalog.Admin.UserManagement
     {
         private readonly UserManager<AppUser> _usermanager;
         private readonly ComplainsDbContext _context;
+        private readonly IStorageService _storageService;
         private readonly IConfiguration _configuration;
 
 
-        public UserManagementService(UserManager<AppUser> userManager, ComplainsDbContext context, IConfiguration configuration)
+        public UserManagementService(UserManager<AppUser> userManager, IStorageService storageService, ComplainsDbContext context, IConfiguration configuration)
         {
             _usermanager = userManager;
             _context = context;
             _configuration = configuration;
+            _storageService = storageService;
 
         }
         public async Task<bool> DeleteAccount(string username)
@@ -213,12 +218,61 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return false;
         }
 
+        public async Task<bool> RegisterbyExcel(IFormFile file)
+        {
+            if (file != null)
+            {
+                string path_file = await this.SaveFile(file);
+         
+                FileInfo fileInfo = new FileInfo(Path.GetFullPath($"wwwroot/ImgComplains/{path_file}"));
+
+                ExcelPackage package = new ExcelPackage(fileInfo);
+                ExcelWorksheet ws = package.Workbook.Worksheets.FirstOrDefault();
+
+                for (int rw = 2; rw < ws.Dimension.End.Row ; rw++)
+                {
+
+                    var sName = ws.Cells[rw, 1].Value; if (sName == null) break;
+                    var sIdStudent = ws.Cells[rw, 4].Value.ToString(); if (sIdStudent == null) break;
+                    var ssClass = ws.Cells[rw, 2].Value; if (ssClass == null) break;
+                    var sIdDepartment =Convert.ToInt32(ws.Cells[rw, 3].Value); if (ws.Cells[rw, 3].Value == null) break;
+
+                    var newuser = new RegisterRequest()
+                    {
+                        Name = (string) sName,
+                        IdStudent = (string) sIdStudent,
+                        sClass = (string) ssClass,
+                        IdDepartment = (int) sIdDepartment,
+                        Password = "Mis@2022",
+                        ConfirmPassword = "Mis@2022",
+                        Isemployee = false,
+                    };
+              
+                    var result = await Register(newuser);
+                    if (result == false)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+
+        }
+
         public async Task<bool> ResetPassword(string username)
         {
             var user = await _usermanager.FindByNameAsync(username);
             var code = await _usermanager.GeneratePasswordResetTokenAsync(user);
             var result = await _usermanager.ResetPasswordAsync(user, code, "Mis@2022");
             return true;
+        }
+        private async Task<string> SaveFile(IFormFile file)
+        {
+            var origanalName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(origanalName)}";
+            await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
+            return fileName;
         }
     }
 }
