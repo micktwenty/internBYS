@@ -228,7 +228,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
 
                 ExcelPackage package = new ExcelPackage(fileInfo);
                 ExcelWorksheet ws = package.Workbook.Worksheets.FirstOrDefault();
-
+                await _storageService.DeleteFileAsync(path_file);
                 for (int rw = 2; rw < ws.Dimension.End.Row ; rw++)
                 {
 
@@ -236,7 +236,6 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     var sIdStudent = ws.Cells[rw, 4].Value.ToString(); if (sIdStudent == null) break;
                     var ssClass = ws.Cells[rw, 2].Value; if (ssClass == null) break;
                     var sIdDepartment =Convert.ToInt32(ws.Cells[rw, 3].Value); if (ws.Cells[rw, 3].Value == null) break;
-
                     var newuser = new RegisterRequest()
                     {
                         Name = (string) sName,
@@ -247,7 +246,6 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         ConfirmPassword = "Mis@2022",
                         Isemployee = false,
                     };
-              
                     var result = await Register(newuser);
                     if (result == false)
                     {
@@ -274,5 +272,6 @@ namespace Complains_System.Catalog.Admin.UserManagement
             await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
             return fileName;
         }
+
     }
 }
