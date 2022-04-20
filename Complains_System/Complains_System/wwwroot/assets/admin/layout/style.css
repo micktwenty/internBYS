@@ -118,3 +118,19 @@ a {
     background-color: rgb(243,245,250);
     width: 100%;
 }
+
+/* dropdown */
+.drop {
+    position: relative !important;
+}
+
+.dropdown-menu-thongke {
+    position: relative !important;
+    top: -35px !important;
+    width: 100%;
+}
+
+.dropdown-menu-right{
+    right: 0;
+    left: auto !important;
+}

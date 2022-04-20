@@ -12,7 +12,7 @@
 <div class="container">
     @using (Html.BeginForm("ReportforDepartment", "HomePage", "POST"))
     {
-        <div class="row date-group">
+        <div class=" date-group">
 
             <div class="getdate">
                 <b>Từ Ngày:</b>
@@ -130,6 +130,7 @@
                     <th scope="col">Spam</th>
                     <th scope="col">Đã Huỷ</th>
                     <th scope="col">Chờ Duyệt</th>
+                    <th scope="col">Hành Động</th>
                     <th scope="col">Tổng Cộng</th>
                 </tr>
             </thead>
@@ -141,15 +142,22 @@
 
                     <tr>
                         <th scope="row">@Model.Departments[i].Name</th>
-                        @for (int j = 0; j < 5; j++)
+                        @for (int j = 0; j < 6; j++)
                         {
 
                             <td>
-                                @Model.thongke[i, j]
-                                @if (j == 3)
+                                
+                                @if (j == 4)
                                 {
                                     
-                                    <u><b><a style="color:red;" href="SendMail/@Model.Departments[i].Id">   Warning!</a></b></u>
+                                    <u><button class="btn btn-danger" href="SendMail/@Model.Departments[i].Id">   Warning!</button></u>
+                                }
+                               else if(j == 5)
+                                {
+                                    @Model.thongke[i, j - 1];
+                                }
+                                else {
+                                    @Model.thongke[i, j];
                                 }
                             </td>
                            
