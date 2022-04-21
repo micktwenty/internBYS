@@ -23,6 +23,68 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
             _context = context;
             _configuration = configuration;
         }
+
+        public async Task<List<ComplainsViewModel>> GetListComplains(GetListRequest request)
+        {
+
+            if (request.Status == "all")
+            {
+                var query = from c in _context.Complains
+                            join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                            join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                            from cpl in complain.DefaultIfEmpty()
+                            where c.IdDepartment.Equals(request.IdDep) && c.Status != "Bản nháp"
+                            select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
+                var data = await query.Select(x => new ComplainsViewModel()
+                {
+                    IdComplains = x.c.IdComplains,
+                    Title = x.c.Title,
+                    Department = x.d.Name,
+                    Content = x.c.Content,
+                    //Picture = x.c.Picture,
+                    Date = x.c.Date,
+                    Reply = x.c.Reply,
+                    Status = x.c.Status,
+                    IsPublic = x.c.IsPublic,
+                    picture = x.image
+
+                }).Where(x => x.Date >= request.startdate && x.Date <= request.enddate).ToListAsync();
+
+
+                return data;
+            }
+            else
+            {
+                 var query = from c in _context.Complains
+                            join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                            join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                            from cpl in complain.DefaultIfEmpty()
+                            where c.IdDepartment.Equals(request.IdDep) && c.Status.Equals(request.Status)
+                            select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
+                var data = await query.Select(x => new ComplainsViewModel()
+                {
+                    IdComplains = x.c.IdComplains,
+                    Title = x.c.Title,
+                    Department = x.d.Name,
+                    Content = x.c.Content,
+                    //Picture = x.c.Picture,
+                    Date = x.c.Date,
+                    Reply = x.c.Reply,
+                    Status = x.c.Status,
+                    IsPublic = x.c.IsPublic,
+                    picture = x.image
+
+                }).Where(x => x.Date >= request.startdate && x.Date <= request.enddate).ToListAsync();
+
+
+                return data;
+            }
+           
+
+
+           
+        }
+
         public ReportForDepartment Statistics_Report(int? page)
         {
             List<Complain> complains = new List<Complain>();
@@ -52,6 +114,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Date = x.c.Date,
                 IdComplains = x.c.IdComplains
             }).ToList();
+            string[] listStt = {"Đã duyệt!", "Spam", "Từ chối giải quyết", "Chờ duyệt", "all"  };
             var report = new ReportForDepartment()
             {
                 Total = complains.Count(),
@@ -61,6 +124,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Cancel = complains.Where(x => x.Status == "Từ chối giải quyết").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(null),
+                Status = listStt,
                 Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
             };
 
@@ -82,25 +146,27 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
               
                 connection.Close();
             }
-            if (complains == null) return null;
-            var pageNumber = page ?? 1;
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            var pageSize = 6;
 
-            var data = from c in _context.Complains
-                       join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-                       where c.Date.ToString().CompareTo(request.startdate) >= 0 && c.Date.ToString().CompareTo(request.enddate) <= 0
-                       select new { c, d };
-            var new_data =data.Select(x => new ComplainsViewModel()
-            {
-                Content = x.c.Content,
-                Status = x.c.Status,
-                Title = x.c.Title,
-                Department = x.d.Name,
-                Reply = x.c.Reply,
-                Date = x.c.Date,
-                IdComplains = x.c.IdComplains
-            }).ToList();
+            //var pageNumber = page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            //var pageSize = 6;
+
+            //var data = from c in _context.Complains
+            //           join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+            //           where c.Date.ToString().CompareTo(request.startdate) >= 0 && c.Date.ToString().CompareTo(request.enddate) <= 0
+            //           select new { c, d };
+            //var new_data =data.Select(x => new ComplainsViewModel()
+            //{
+            //    Content = x.c.Content,
+            //    Status = x.c.Status,
+            //    Title = x.c.Title,
+            //    Department = x.d.Name,
+            //    Reply = x.c.Reply,
+            //    Date = x.c.Date,
+            //    IdComplains = x.c.IdComplains
+            //}).ToList();
+            string[] listStt = { "Đã duyệt!", "Spam", "Từ chối giải quyết", "Chờ duyệt" ,"all"};
+
             var report = new ReportForDepartment()
             {
                 Total = complains.Count(),
@@ -109,8 +175,10 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Done = complains.Where(x => x.Status == "Đã duyệt!").Count(),
                 Cancel = complains.Where(x => x.Status == "Từ chối giải quyết").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
+                Status = listStt,
+
                 thongke = thongke(request),
-                Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
+                //Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
             };
 
             return report;

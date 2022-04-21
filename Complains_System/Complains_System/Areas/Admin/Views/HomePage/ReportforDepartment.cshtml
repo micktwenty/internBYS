@@ -3,20 +3,22 @@
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Complains_System.Catalog.Admin.ComplainsManagement.ReportForDepartment
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout2.cshtml";
+    var parms = new Dictionary<string, string>();
 }
 <link rel="stylesheet" href="~/statistical/css/style.css" />
 <div class="container">
     @using (Html.BeginForm("ReportforDepartment", "HomePage", "POST"))
     {
-        <div class="row date-group">
+        <div class="date-group">
 
             <div class="getdate">
                 <b>Từ Ngày:</b>
-                <input class="input-date" type="date" name="startdate" value="@DateTime.Now.Year/">
+                <input class="input-date" type="date" name="startdate">
             </div>
             <div class="getdate">
                 <b>Đến Ngày:</b>
@@ -130,6 +132,8 @@
                     <th scope="col">Spam</th>
                     <th scope="col">Đã Huỷ</th>
                     <th scope="col">Chờ Duyệt</th>
+                    <th scope="col">Hành Động</th>
+
                     <th scope="col">Tổng Cộng</th>
                 </tr>
             </thead>
@@ -141,18 +145,45 @@
 
                     <tr>
                         <th scope="row">@Model.Departments[i].Name</th>
-                        @for (int j = 0; j < 5; j++)
+                        @for (int j = 0; j < 6; j++)
                         {
+                            
+
 
                             <td>
-                                @Model.thongke[i, j]
-                                @if (j == 3)
+
+                                @if (j == 4)
+                                {
+                                    {
+                                        parms = new Dictionary<string, string>
+                                            {
+                                                { "id", Model.Departments[i].Id.ToString() },
+                                                { "start", Model.startdate.ToString() },
+                                                { "end", Model.enddate.ToString()},
+                                                {"Status", Model.Status[j] }
+                                            };
+                                    }
+                                    <u><a href="SendMail/@Model.Departments[i].Id"><button type="button" class="btn btn-danger">Warning!</button></a></u>
+                                }
+                                else if (j == 5)
                                 {
 
-                                    <u><b><a style="color:red;" href="SendMail/@Model.Departments[i].Id">   Warning!</a></b></u>
+                                    <a asp-route="get-list-complains" asp-all-route-data="parms">@Model.thongke[i, j-1]</a>
+                                }
+                                else
+                                {
+                                    {
+                                        parms = new Dictionary<string, string>
+                                            {
+                                                { "id", Model.Departments[i].Id.ToString() },
+                                                { "start", Model.startdate.ToString() },
+                                                { "end", Model.enddate.ToString()},
+                                                {"Status", Model.Status[j] }
+                                            };
+                                    }
+                                    <a asp-route="get-list-complains" asp-all-route-data="parms">@Model.thongke[i, j]</a>
                                 }
                             </td>
-
 
                         }
                     </tr>
@@ -160,7 +191,7 @@
             </tbody>
         </table>
     </div>
-    @foreach (var item in Model.Complains_list)
+    <!--foreach (var item in Model.Complains_list)
     {
         <div class="mt-4">
             <div class="card shadow border-0">
@@ -170,34 +201,28 @@
                             <a href="#">
                                 <div class="card-title row">
                                     <div class="col-10">
-                                        <b>@item.Title</b>
+                                        <b>item.Title</b>
                                     </div>
                                     <div class="col-2 blockquote-footer">
-                                        Trạng thái: @item.Status
+                                        Trạng thái: item.Status
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <footer class="blockquote-footer">@item.Date </footer>
+                    <footer class="blockquote-footer">item.Date </footer>
                 </div>
             </div>
         </div>
-    }
-
-
+    }-->
     @*Trang @(Model.Complains_list.PageCount < Model.Complains_list.PageNumber ? 0 : Model.Complains_list.PageNumber) / @Model.Complains_list.PageCount*@
-    <div class="mt-10 row d-flex justify-content-center">
-        @Html.PagedListPager(Model.Complains_list, page => Url.Action("ReportforDepartment", new {Model.date, page }), new PagedListRenderOptions
-   {
-       LiElementClasses = new string[] { "page-item" },
-       PageClasses = new string[] { "page-link" }
-   });
-    </div>
-
-
-
-
+    <!--<div class="mt-10 row d-flex justify-content-center">
+         Html.PagedListPager(Model.Complains_list, page => Url.Action("ReportforDepartment", new {Model.date, page }), new PagedListRenderOptions
+    {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    });
+     </div>-->
     @*<div class="mt-10 row d-flex justify-content-center">
                 <nav aria-label="...">
                     <ul class="pagination">
@@ -218,28 +243,28 @@
         </div>*@
 
     <script>
-            // Data Picker Initialization
-            config = {
-                enableTime: true,
-                dateFormat: "Y-m-d H:i",
-            }
-            flatpickr("input[type=datetime-local]", {})
+        // Data Picker Initialization
+        config = {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        }
+        flatpickr("input[type=datetime-local]", {})
     </script>
 
 
     <script>
-            "use strict";
-            const menus = document.querySelectorAll('.menu');
-            menus.forEach(menu => {
-                const menuItems = menu.querySelectorAll('.menu-item');
-                menuItems.forEach((item) => {
-                    item.addEventListener('click', e => {
-                        menuItems.forEach(item => item.classList.remove('active'));
-                        const target = e.target;
-                        target.classList.add('active');
-                    });
+        "use strict";
+        const menus = document.querySelectorAll('.menu');
+        menus.forEach(menu => {
+            const menuItems = menu.querySelectorAll('.menu-item');
+            menuItems.forEach((item) => {
+                item.addEventListener('click', e => {
+                    menuItems.forEach(item => item.classList.remove('active'));
+                    const target = e.target;
+                    target.classList.add('active');
                 });
             });
+        });
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

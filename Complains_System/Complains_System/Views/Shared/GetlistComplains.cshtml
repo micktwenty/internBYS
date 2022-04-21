@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "GetlistComplains";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    var parms = new Dictionary<string, string>();
+}
+@model List<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="mt-4">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    @{
+                        parms = new Dictionary<string, string>
+                        {
+                            {"id", item.IdComplains.ToString() }
+                        };
+                    }
+                    <a asp-area="Admin" asp-route="viewdetailcomplains" asp-all-route-data="parms" >
+                        <div class="row">
+                            <div class="post-title col-12">
+
+                                <div class="card-title"><b>@item.Title</b></div>
+
+                            </div>
+                        </div>
+                        <footer class="blockquote-footer">@item.Date</footer>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

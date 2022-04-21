@@ -55,7 +55,8 @@ namespace Complains_System.Areas.Admin.Controllers
                     };
                     var report =  _complain.Statistics_Report_Department(request,page);
                     report.Departments = listKhoa;
-                    report.date = frm;
+                    report.startdate = Convert.ToDateTime(frm["startdate"]);
+                    report.enddate = Convert.ToDateTime(frm["enddate"]);
                     return View(report);
                 }
                 catch (FormatException)

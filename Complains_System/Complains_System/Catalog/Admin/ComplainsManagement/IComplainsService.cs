@@ -1,4 +1,5 @@
-﻿using Complains_System.Models;
+﻿using Complains_System.Catalog.Complains.Dtos;
+using Complains_System.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
     {
         public ReportForDepartment Statistics_Report(int? page);
         public ReportForDepartment Statistics_Report_Department(StatisticalRequest request, int? page);
+        public Task<List<ComplainsViewModel>> GetListComplains(GetListRequest request); //getlist
 
     }
 }
