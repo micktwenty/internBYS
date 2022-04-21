@@ -84,8 +84,9 @@ a {
     /* width: 100% !important; */
 }
 
-.fa-solid{
-    color: rgb(255 198 0);
+.fa-solid {
+    color: rgb(38 90 162);
+
 }
 
 
@@ -138,39 +139,39 @@ span {
 
 
 .form {
-    border: 1px solid gray !important;
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-bottom: 20px;
     border-radius: 10px;
 }
 
 .form-title {
-    border-bottom: 1px solid gray !important;
+
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 600;
     padding-top: 20px;
-    background-color: gray;
-    color: white;
+
+
     margin-left: -16px !important;
     margin-right: -16px !important;
     border-radius: 10px 10px 0 0;
 }
 
-/*.btn {
-    width: 100%;
+.btn-header {
+
     border: 1px solid gray !important;
     background-color: #fff !important;
     font-weight: bold;
 }
 
-    .btn:hover {
+    .btn-header:hover {
         background-color: #4BACE2 !important;
         color: #fff !important;
-    }*/
+    }
 
 .form-label {
-    font-weight: bold !important;
+    font-weight: 600;
 }
 
 .app-form-control {
@@ -178,7 +179,7 @@ span {
     padding: 10px 0;
     background: none;
     border: none;
-    border-bottom: 1px solid #666;
+    border-bottom: 2px solid #666;
     font-size: 14px;
     text-transform: uppercase;
     outline: none;
@@ -190,17 +191,13 @@ span {
     }
 
     .app-form-control:focus {
-        border-bottom-color: #ddd;
+        border-bottom-color: #4d6ecd;
     }
 
-.btn-draft, .btn-send {
-    font-weight: bold !important;
+.btn-newdraft{
+    font-weight:bold;
+    width:100%;
 }
-
-    .btn-draft:hover {
-        background-color: rgb(19, 218, 95) !important;
-    }
-
 
 
 

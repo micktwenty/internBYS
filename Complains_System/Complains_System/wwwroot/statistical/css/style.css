@@ -167,8 +167,12 @@
 .border-left-secondary {
     border-left: 0.25rem solid #8f88bf !important;
 }
-.card{
-  padding: 0 0 0 0 !important;
+
+.font-weight-bold{
+    font-weight:bold;
+}
+.card {
+    padding: 0 0 0 0 !important;
 }
 
 
@@ -188,4 +192,9 @@ a{
 /* footer */
 .footer {
     background-color: rgb(243,245,250);
+}
+
+/*chuyển trang*/
+.pagination{
+    justify-content:center;
 }
