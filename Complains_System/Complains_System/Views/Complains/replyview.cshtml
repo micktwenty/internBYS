@@ -4,99 +4,87 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model Complains_System.Catalog.Complains.Dtos.ComplainsViewModel
-<!doctype html>
-<html lang="en">
 
-<head>
-    <title>Duyệt bài đăng</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./assets/replypost/css/style.css">
-    <script src="https://kit.fontawesome.com/ca78d69f23.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+    <!doctype html>
+    <html lang="en">
+    <head>
 
-<body>
-    <div class="app">
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-1">
+        <title>Trang Xem Duyệt Bài Đăng</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
 
 
-                </div>
-                <div class="col-10">
-                    <div class="mt-4">
-                        <form asp-controller="Complains" method="post">
-                            <div class="form container">
-                                <div class="form-title mb-4">
-                                    <p>@Model.Title</p>
-                                </div>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
 
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Ngày đăng:</label>
-                                    <input class="form-control" type="text" value="@Model.Date" disabled readonly>
-                                </div>
-                                @if (Model.picture != null)
-                                {
-                                    <div class="mb-3">
-                                        <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
-                                    </div>
-                                }
-
-                                <div class="mb-3">
-                                    <label class="form-label">Nội dung:</label>
-                                    <textarea class="form-control" rows="5" disabled readonly>@Model.Content
-                                </textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Nội dung phản hồi:</label>
-                                    <textarea class="form-control feedback" rows="5" name="content">Nội dung phản hồi</textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-danger " asp-action="SpamPost" asp-controller="Complains" asp-route-id=@Model.IdComplains>Đánh Spam</button>
-
-                                    </div>
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-primary " asp-action="DenyPost" asp-controller="Complains" asp-route-id=@Model.IdComplains>Từ Chối Giải Quyết</button>
-
-                                    </div>
-                                    <div class="col-4">
-                                        <button type="submit" class="btn btn-success " asp-action="ReplyComplain" asp-controller="Complains" asp-route-id=@Model.IdComplains>Duyệt</button>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
-                       
+    <body>
 
 
+
+        <div class="mt-4">
+            <form asp-controller="Complains" method="post">
+                <div class="form container">
+                    <div class="form-title mb-4 text-primary">
+                        <p>@Model.Title</p>
                     </div>
-                </div>
-                <div class="col-1">
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Ngày đăng:</label>
+                        <input class="form-control" type="text" value="@Model.Date" disabled readonly>
+                    </div>
+                    @if (Model.picture != null)
+                    {
+                        <div class="mb-3">
+                            <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label class="form-label">Nội dung:</label>
+                        <textarea class="form-control" rows="5" disabled readonly>@Model.Content
+                                </textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nội dung phản hồi:</label>
+                        <textarea class="form-control feedback" rows="5" name="content">Nội dung phản hồi</textarea>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger btn-replyview" asp-action="SpamPost" asp-controller="Complains" asp-route-id=@Model.IdComplains>Đánh Spam</button>
+                        <div class="">
+                            <button type="submit" class="btn btn-primary me-3" asp-action="DenyPost" asp-controller="Complains" asp-route-id=@Model.IdComplains>Từ Chối Giải Quyết</button>
+                            <button type="submit" class="btn btn-success" asp-action="ReplyComplain" asp-controller="Complains" asp-route-id=@Model.IdComplains>Duyệt</button>
+                        </div>
+                    </div>
 
                 </div>
-            </div>
+            </form>
+
 
 
         </div>
-    </div>
+    </body>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </html>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+@*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    </body>
+
+    </html>*@
