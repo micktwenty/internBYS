@@ -49,6 +49,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                     picture = x.image
 
                 }).Where(x => x.Date >= request.startdate && x.Date <= request.enddate).ToListAsync();
+                data = data.OrderByDescending(x => x.Date).ToList();
 
 
                 return data;
@@ -76,6 +77,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
 
                 }).Where(x => x.Date >= request.startdate && x.Date <= request.enddate).ToListAsync();
 
+                data = data.OrderByDescending(x => x.Date).ToList();
 
                 return data;
             }
