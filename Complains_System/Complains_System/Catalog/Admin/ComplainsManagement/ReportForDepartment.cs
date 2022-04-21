@@ -20,7 +20,9 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         public int Done { get; set; }
         public int Cancel { get; set; }
         public string[,] thongke { get; set; }
-        public IFormCollection date { get; set; }
+        public DateTime startdate { get; set; }
+        public DateTime enddate { get; set; }
+        public string[] Status { get; set; }
         public List<ListDepartments> Departments { get; set; }
         public IPagedList<ComplainsViewModel> Complains_list { get; set; }
 

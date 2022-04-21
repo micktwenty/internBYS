@@ -1,0 +1,60 @@
+﻿@model Complains_System.Catalog.Complains.Dtos.ComplainsViewModel
+@{
+    ViewData["Title"] = "viewdetail";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="mt-4">
+    <div class="form container">
+        <div class="form-title mb-4">
+            <p>@Model.Title</p>
+        </div>
+
+        @*<div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tên người đăng bài:</label>
+            <input class="form-control" type="text" value="@Model." disabled
+                   readonly>
+        </div>*@
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Ngày đăng:</label>
+            <input class="form-control" type="text" value="@Model.Date" disabled
+                   readonly>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+            <input class="form-control" type="text" value="@Model.Department" disabled
+                   readonly>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Trạng thái:</label>
+            <input class="form-control" type="text" value="@Model.Status" disabled
+                   readonly>
+        </div>
+        @if (@Url.Content(Model.picture) != null)
+        {
+            <div class="mb-3">
+                <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
+            </div>
+        }
+
+        <div class="mb-3">
+            <label class="form-label">Nội dung:</label>
+            <textarea class="form-control" rows="5" disabled
+                      readonly>@Model.Content
+                                </textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nội dung phản hồi:</label>
+            <textarea class="form-control" rows="5" disabled
+                      readonly>@Model.Reply
+                                </textarea>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

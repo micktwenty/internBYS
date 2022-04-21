@@ -15,6 +15,7 @@ using X.PagedList;
 using System;
 using Complains_System.Catalog.Complains.Dtos;
 using System.Collections.Generic;
+using Complains_System.Catalog.User;
 
 namespace Complains_System.Controllers
 {
@@ -24,15 +25,32 @@ namespace Complains_System.Controllers
         private readonly UserManager<AppUser> _usermanager;
         private readonly ComplainsDbContext _context;
         private readonly IComplainsManagement _complains;
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> usermanager, ComplainsDbContext context, IComplainsManagement complains)
+        private readonly IUserService _userService;
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> usermanager, ComplainsDbContext context, IComplainsManagement complains, IUserService userService)
         {
             _logger = logger;
             _usermanager = usermanager;
             _context = context;
             _complains = complains;
+            _userService = userService;
         }
         public async Task<IActionResult> Index(int? page)
         {
+            //var usname = _usermanager.GetUserName(this.User);
+            //var user = _userService.getUser(usname);
+            //if (user != null)
+            //{
+            //    var roles = await _usermanager.GetRolesAsync(user);
+            //    if (roles.Contains("employee"))
+            //    {
+            //        return RedirectToAction("GetRequestList", "Complains");
+            //    }
+            //    else if (roles.Contains("admin"))
+            //    {
+            //        return Redirect("/admin");
+            //    }
+            //}
+
             var lstComplains = await _complains.GetAll();
             var pageNumber = page ?? 1;
             pageNumber = pageNumber == 0 ? 1 : pageNumber;

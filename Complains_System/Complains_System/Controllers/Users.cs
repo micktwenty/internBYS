@@ -33,7 +33,7 @@ namespace Complains_System.Controllers
         {
             _userService.Logout();
             TempData.Clear();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Users");
         }
         [HttpGet("Login")]
         [AllowAnonymous]
@@ -109,11 +109,7 @@ namespace Complains_System.Controllers
                     return RedirectToAction("Login");
                 }
                 await HttpContext.SignInAsync(result);
-                var user =  _userService.getUser(request.Username);
-                if (user.idteacher != 0)
-                {
-                    return RedirectToAction("GetRequestList", "Complains");
-                }
+               
                 return RedirectToAction("Index", "Home");
             }
 
