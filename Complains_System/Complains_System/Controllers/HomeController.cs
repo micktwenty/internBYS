@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using X.PagedList.Mvc.Core;
 using X.PagedList;
 using System;
+using Complains_System.Catalog.Complains.Dtos;
+using System.Collections.Generic;
 
 namespace Complains_System.Controllers
 {
@@ -31,15 +33,6 @@ namespace Complains_System.Controllers
         }
         public async Task<IActionResult> Index(int? page)
         {
-
-            ClaimsPrincipal currentUser = this.User;
-            if (currentUser.FindFirst(ClaimTypes.Name) != null)
-            {
-                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
-                var user = await _usermanager.FindByNameAsync(Name);
-              
-            }
-           
             var lstComplains = await _complains.GetAll();
             var pageNumber = page ?? 1;
             pageNumber = pageNumber == 0 ? 1 : pageNumber;

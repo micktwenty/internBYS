@@ -907,7 +907,6 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Co
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.TagHelpers.output.cache
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.RazorCoreGenerate.cache
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePage\Index.cshtml.g.cs
-D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePage\ReportforDepartment.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\Register.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserAccessDenied.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\Getmycomplain.cshtml.g.cs
@@ -939,3 +938,6 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Co
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.pdb
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.genruntimeconfig.cache
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Complains_System.csproj.AssemblyReference.cache
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\Find.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Congrats.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePage\ReportforDepartment.cshtml.g.cs

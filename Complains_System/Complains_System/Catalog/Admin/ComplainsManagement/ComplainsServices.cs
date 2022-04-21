@@ -89,9 +89,9 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
 
             var data = from c in _context.Complains
                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-                       where c.Date >= request.startdate.Subtract(aInterval) && c.Date <= request.enddate.AddDays(1)
+                       where c.Date.ToString().CompareTo(request.startdate) >= 0 && c.Date.ToString().CompareTo(request.enddate) <= 0
                        select new { c, d };
-            var new_data = data.Select(x => new ComplainsViewModel()
+            var new_data =data.Select(x => new ComplainsViewModel()
             {
                 Content = x.c.Content,
                 Status = x.c.Status,
@@ -106,7 +106,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Total = complains.Count(),
                 Total_dep = _context.Departments.Count(),
                 Request = complains.Where(x => x.Status == "Chờ duyệt").Count(),
-                Done = complains.Where(x => x.Status == "Đã duyệt").Count(),
+                Done = complains.Where(x => x.Status == "Đã duyệt!").Count(),
                 Cancel = complains.Where(x => x.Status == "Từ chối giải quyết").Count(),
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(request),

@@ -160,7 +160,7 @@
             </tbody>
         </table>
     </div>
-    @foreach (var item in Model.Complains_list)
+    <!--foreach (var item in Model.Complains_list)
     {
         <div class="mt-4">
             <div class="card shadow border-0">
@@ -170,30 +170,30 @@
                             <a href="#">
                                 <div class="card-title row">
                                     <div class="col-10">
-                                        <b>@item.Title</b>
+                                        <b>item.Title</b>
                                     </div>
                                     <div class="col-2 blockquote-footer">
-                                        Trạng thái: Đã duyệt
+                                        Trạng thái: item.Status
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <footer class="blockquote-footer">@item.Date </footer>
+                    <footer class="blockquote-footer">item.Date </footer>
                 </div>
             </div>
         </div>
-    }
+    }-->
 
 
     @*Trang @(Model.Complains_list.PageCount < Model.Complains_list.PageNumber ? 0 : Model.Complains_list.PageNumber) / @Model.Complains_list.PageCount*@
-<div class="mt-10 row d-flex justify-content-center">
-    @Html.PagedListPager(Model.Complains_list, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+<!--<div class="mt-10 row d-flex justify-content-center">
+    Html.PagedListPager(Model.Complains_list, page => Url.Action("Index", new { page }), new PagedListRenderOptions
 {
     LiElementClasses = new string[] { "page-item" },
     PageClasses = new string[] { "page-link" }
 })
-</div>
+</div>-->
         
 
 
@@ -221,7 +221,7 @@
             // Data Picker Initialization
             config = {
                 enableTime: true,
-                dateFormat: "Y-m-d H:i",
+                dateFormat: "Y-m-d"
             }
             flatpickr("input[type=datetime-local]", {})
         </script>

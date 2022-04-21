@@ -1,6 +1,7 @@
 ﻿using Complains_System.Catalog.Complains.Dtos;
 using Complains_System.Catalog.Department;
 using Complains_System.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         public int Done { get; set; }
         public int Cancel { get; set; }
         public string[,] thongke { get; set; }
+        public IFormCollection date { get; set; }
         public List<ListDepartments> Departments { get; set; }
         public IPagedList<ComplainsViewModel> Complains_list { get; set; }
 
