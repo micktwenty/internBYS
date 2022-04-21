@@ -178,7 +178,7 @@ namespace Complains_System.Catalog.Complains.management
             return data;
         }
 
-        public async Task<PageResult<ComplainsViewModel>> GetAllbyKeyword(GetComplainsPagingRequest request)
+        public async Task<List<ComplainsViewModel>> GetAllbyKeyword(GetComplainsPagingRequest request)
         {
 
             var query = from c in _context.Complains
@@ -187,13 +187,10 @@ namespace Complains_System.Catalog.Complains.management
                         select new {c, d };
             if (!string.IsNullOrEmpty(request.keyword))
             {
-                query = query.Where(x => x.c.Content.Contains(request.keyword));
+                query = query.Where(x => x.c.Content.Contains(request.keyword) || x.c.Title.Contains(request.keyword));
             }
 
-            if(request.idDepartment != null)
-            {
-                query = query.Where(p => request.idDepartment.Contains(p.d.DepartmentId));
-            }
+
 
             int rows = await query.CountAsync();
 
@@ -210,13 +207,8 @@ namespace Complains_System.Catalog.Complains.management
                     Status = x.c.Status,
                     IsPublic = x.c.IsPublic
                 }).ToListAsync();
-            var pageResult = new PageResult<ComplainsViewModel>()
-            {
-                TotalRecord = rows,
-                item = data
 
-            };
-            return pageResult;
+            return data;
         }
 
         public async Task<ComplainsViewModel> GetbyId(int IDComplain)

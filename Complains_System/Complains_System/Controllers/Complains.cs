@@ -1,4 +1,5 @@
 ﻿using Complains_System.Catalog;
+using Complains_System.Catalog.Complains.Dtos;
 using Complains_System.Catalog.Complains.management;
 using Complains_System.Catalog.Department;
 using Complains_System.Catalog.User;
@@ -45,11 +46,19 @@ namespace Complains_System.Controllers
         }
 
         [HttpPost("find-result")]
-        public async Task<IActionResult> Get(GetComplainsPagingRequest request)
+        public async Task<IActionResult> Find(IFormCollection? frm)
         {
+            var request = new GetComplainsPagingRequest()
+            {
+                keyword = frm["search"]
+            };
+           
             var complains = await _complainsManagement.GetAllbyKeyword(request);
-            return Ok(complains);
+            var result = complains.OrderByDescending(x => x.Date);
+            return View(result);
         }
+
+       
 
 
         [HttpGet("my-complains")]

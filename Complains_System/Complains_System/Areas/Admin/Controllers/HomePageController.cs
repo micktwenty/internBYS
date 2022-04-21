@@ -40,20 +40,35 @@ namespace Complains_System.Areas.Admin.Controllers
             return View(report_all);
         }
 
-        [HttpPost("getreport")]
+
         public async Task<IActionResult> ReportforDepartment([FromForm] IFormCollection frm, int? page)
         {
-            var listKhoa = await _departmentService.GetListDepartments();
-
-            var request = new StatisticalRequest()
+            if (ModelState.IsValid)
             {
-                startdate = Convert.ToDateTime(frm["startdate"]),
-                enddate = Convert.ToDateTime(frm["enddate"])
-            };
-            var report =  _complain.Statistics_Report_Department(request,page);
-            report.Departments = listKhoa;
-            return View("Index", report);
+                var listKhoa = await _departmentService.GetListDepartments();
+                try
+                {
+                    var request = new StatisticalRequest()
+                    {
+                        startdate = Convert.ToDateTime(frm["startdate"]),
+                        enddate = Convert.ToDateTime(frm["enddate"])
+                    };
+                    var report =  _complain.Statistics_Report_Department(request,page);
+                    report.Departments = listKhoa;
+                    report.date = frm;
+                    return View(report);
+                }
+                catch (FormatException)
+                {
+
+                    return RedirectToAction("Index","Homepage");
+                }
+            }
+           
+            return View("Index");
         }
+           
+
 
     }
 }
