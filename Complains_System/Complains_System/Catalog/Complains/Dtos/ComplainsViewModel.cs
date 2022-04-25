@@ -15,7 +15,7 @@ namespace Complains_System.Catalog.Complains.Dtos
         public DateTime? Date { get; set; }
         public bool IsPublic { get; set; }
         public string Status { get; set; }
-
+        public string employee_reply { get; set; }
         public string picture { get; set; }
 
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
-    
+    [Area("Admin")]
     public class DepartmentService : Controller
     {
         private readonly IMailService mailService;
@@ -49,6 +49,8 @@ namespace Complains_System.Areas.Admin.Controllers
             }
             return BadRequest();
         }
+
+
 
     }
 }

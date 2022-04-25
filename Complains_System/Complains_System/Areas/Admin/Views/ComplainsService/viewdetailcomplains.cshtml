@@ -5,49 +5,48 @@
 }
 
 
-<div class="mt-4">
+<!--<div class="mt-4">
     <div class="form container">
         <div class="form-title mb-4">
-            <p>@Model.Title</p>
-        </div>
-
-        @*<div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Tên người đăng bài:</label>
-            <input class="form-control" type="text" value="@Model." disabled
-                   readonly>
-        </div>*@
-        <div class="mb-3">
+            <p>Model.Title</p>
+        </div>-->
+@*<div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Tên người đăng bài:</label>
+        <input class="form-control" type="text" value="@Model." disabled
+               readonly>
+    </div>*@
+<!--<div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Ngày đăng:</label>
-            <input class="form-control" type="text" value="@Model.Date" disabled
+            <input class="form-control" type="text" value="Model.Date" disabled
                    readonly>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
-            <input class="form-control" type="text" value="@Model.Department" disabled
+            <input class="form-control" type="text" value="Model.Department" disabled
                    readonly>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Trạng thái:</label>
-            <input class="form-control" type="text" value="@Model.Status" disabled
+            <input class="form-control" type="text" value="Model.Status" disabled
                    readonly>
         </div>
-        @if (@Url.Content(Model.picture) != null)
+       if (Url.Content(Model.picture) != null)
         {
             <div class="mb-3">
-                <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
+                <img id="blah" src="~/ImgComplains/Url.Content(Model.picture)" />
             </div>
         }
 
         <div class="mb-3">
             <label class="form-label">Nội dung:</label>
             <textarea class="form-control" rows="5" disabled
-                      readonly>@Model.Content
+                      readonly>Model.Content
                                 </textarea>
         </div>
         <div class="mb-3">
             <label class="form-label">Nội dung phản hồi:</label>
             <textarea class="form-control" rows="5" disabled
-                      readonly>@Model.Reply
+                      readonly>Model.Reply
                                 </textarea>
         </div>
 
@@ -55,6 +54,47 @@
     </div>
 
 
+</div>-->
+<link rel="stylesheet" href="assets/admin/detail_complains/css/style.css">
+<div class="create-account container mt-10 d-flex">
+    <div class="form-title mb-4 mt-5">
+        <p>@Model.Title</p>
+        <hr>
+    </div>
+    <div class="mb-3 d-flex">
+        <label class="form-label">Trạng thái:</label>
+        <div class="ml-4"><p>@Model.Status</p></div>
+    </div>
+    <div class="mb-3 d-flex">
+        <label class="form-label">Khoa:</label>
+        <div class="ml-4"><p>@Model.Department</p></div>
+    </div>
+
+    <div class="mb-3 d-flex">
+        <label class="form-label">Người phản hồi:</label>
+        <div class="ml-4"><p>@Model.employee_reply</p></div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ngày đăng:</label>
+        <input class="form-control" type="text" value="@Model.Date" disabled readonly>
+    </div>
+    @if (@Url.Content(Model.picture) != null)
+    {
+        <div class="mb-3">
+            <img id="blah" src="~/ImgComplains/@Url.Content(Model.picture)" />
+        </div>
+    }
+
+    <div class="mb-3">
+        <label class="form-label">Nội dung:</label>
+        <textarea class="form-control" rows="10" disabled readonly>@Model.Content
+            </textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nội dung phản hồi:</label>
+        <textarea class="form-control feedback" rows="10" disabled readonly>@Model.Reply</textarea>
+    </div>
 </div>
 
 

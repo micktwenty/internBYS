@@ -956,3 +956,4 @@ E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Are
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\Find.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\GetlistComplains.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Congrats.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\CreateDepartment.cshtml.g.cs
