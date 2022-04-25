@@ -3,49 +3,223 @@
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 <link rel="stylesheet" href="~/assets/admin/formdki/style.css">
 
-<div class="create-account container mt-10 d-flex">
-    <div class="box box-1"></div>
-    <div class="box box-2"></div>
-    <div class="box box-3"></div>
-    <form  action="Register-by-excel" method="post" enctype="multipart/form-data">
-        <input type="file" name="files" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple />
-        <div class="form d-flex">
-            <div class="form-title mt-8 pb-10">
-                <p>Đăng Kí Tài Khoản Sinh Viên</p>
-            </div>
-            <div class="form-create d-flex">
-                <label for="exampleFormControlInput1" class="form-label ">Tên sinh viên:</label>
-                <div class="this-typing pb-6">
-                    <input type="text" name="oldpasswords" value="">
-                </div>
-                <label for="exampleFormControlInput1" class="form-label">Mã số sinh viên:</label>
-                <div class="this-typing pb-6">
-                    <input type="text" name="oldpasswords" value="">
-                </div>
-                <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+<div class="switchtabs">
+    <div class="tabs d-flex justify-content-center">
+        <div class="tab-item active">
+            <i class="fa-solid fa-user"></i>
+            Tạo Tài Khoản Cho Sinh Viên
+        </div>
+        <div class="tab-item">
+            <i class="fa-solid fa-building-user"></i>
+            Tạo Tài Khoản Cho Phòng Ban
+        </div>
+        <div class="tab-item">
+            <i class="fa-solid fa-user-tie"></i>
+            Tạo Tài Khoản Cho Phòng Ban
+        </div>
 
-                <select class="form-select mb-6" aria-label="Default select example">
-                    <option value="1">Thống kê- Tin học</option>
-                    <option value="2">Du Lịch</option>
-                    <option value="3">Kế Toán</option>
-                </select>
-                <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
-                <select class="form-select mb-6" aria-label="Default select example">
-                    <option value="1">44k21.1</option>
-                    <option value="2">44k21.2</option>
-                    <option value="3">44k14</option>
-                </select>
-                <div class="justify-content-center mt-2">
-                    <button type="submit" asp-action="RegisterbyExcel"  class="btn btn-primary btn-create ">Tạo Mới</button>
+        <div class="line"></div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="create-account container mt-10 d-flex">
+                <div class="box box-1"></div>
+                <div class="box box-2"></div>
+                <div class="box box-3"></div>
+                <div class="form d-flex">
+
+                    <div class="form-create mt-5 d-flex">
+                        <form action="register-by-normal-stu" method="post" enctype="multipart/form-data">
+                            <label for="exampleFormControlInput1" class="form-label ">Tên Sinh Viên:</label>
+                            <div class="this-typing pb-6">
+                                <input type="text" class="form-control" name="stu_name">
+                            </div>
+                            <label for="exampleFormControlInput1" class="form-label">Mã Số Sinh Viên:</label>
+                            <div class="this-typing pb-6">
+                                <input type="text" class="form-control" name="idstu">
+                            </div>
+                            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+
+                            <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
+                                @foreach (var item in Model)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+
+
+                            <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
+                            <div class="this-typing pb-6">
+                                <input type="text" class="form-control" name="class">
+                            </div>
+                            <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
+                        </form>
+                        <form action="Register-by-Excel-stu" method="post" enctype="multipart/form-data">
+                            <div class="row OR d-flex  align-items">
+                                <div class="col-2">
+                                    <hr>
+                                </div>
+                                <div class="col-8 align-items-center flex-column d-flex">
+                                    <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
+                                </div>
+                                <div class="col-2">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row mt-4 ">
+                                <div class="col-8">
+                                    <p>Vui lòng tải file excel mẫu ở đây </p>
+
+                                </div>
+                                <div class="col-4">
+                                    <a href="https://drive.google.com/uc?id=1of1e4L_WOg177PR5AA2lJ6z_rM9FtalS&export=download"><i class=" fa-2x fa-solid fa-download "></i></a>
+                                </div>
+                            </div>
+                            <div class="row mt-5 mb-4">
+                                <div class="col-8">
+                                    <p>Hãy tài file excel đã điền thông tin tạo tài khoản ở đây</p>
+                                </div>
+                                <div class="col-4">
+                                    <label for="files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="files" id="files" hidden />
+                                </div>
+                            </div>
+                            <div class="justify-content-center mt-2">
+                                <button type="submit"  class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
+
             </div>
         </div>
-    </form>
-        
+        <div class="tab-pane">
+            <div class="create-account container mt-10 d-flex">
+
+                <div class="form d-flex">
+                    <div class="form-create mt-5 d-flex">
+                        <form action="register-by-normal-emp" method="post" enctype="multipart/form-data">
+                            <label for="exampleFormControlInput1" class="form-label ">Tên cán bộ:</label>
+                            <div class="this-typing pb-6">
+                                <input type="text" class="form-control" name="emp_name">
+                            </div>
+                            <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                            <div class="this-typing pb-6">
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+
+                            <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
+                                @foreach (var item in Model)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
 
 
+                           
+                            <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
+                        </form>
+                        <form action="Register-by-Excel-emp" method="post" enctype="multipart/form-data">
+                            <div class="row OR d-flex  align-items">
+                                <div class="col-2">
+                                    <hr>
+                                </div>
+                                <div class="col-8 align-items-center flex-column d-flex">
+                                    <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
+                                </div>
+                                <div class="col-2">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row mt-4 ">
+                                <div class="col-8">
+                                    <p>Vui lòng tải file excel mẫu ở đây </p>
 
+                                </div>
+                                <div class="col-4">
+                                    <a href="https://drive.google.com/uc?id=1YFKzEE9EePb7T5LLK1JjYbndOQaU06CJ&export=download"><i class=" fa-2x fa-solid fa-download "></i></a>
+                                </div>
+                            </div>
+                            <div class="row mt-5 mb-4">
+                                <div class="col-8">
+                                    <p>Hãy tài file excel đã điền thông tin tạo tài khoản ở đây</p>
+                                </div>
+                                <div class="col-4">
+                                    <label for="emp_files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="emp_files" id="emp_files" hidden />
+                                </div>
+                            </div>
+                            <div class="justify-content-center mt-2">
+                                <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tab-pane">
+            <div class="create-account container mt-10 d-flex">
+
+                <div class="form d-flex">
+
+                    <div class="form-create mt-5 d-flex">
+                        <label for="exampleFormControlInput1" class="form-label ">Tên Người Dùng:</label>
+                        <div class="this-typing pb-6">
+                            <input type="text" class="form-control" name="oldpasswords">
+                        </div>
+                        <label for="exampleFormControlInput1" class="form-label">Email Người Dùng:</label>
+                        <div class="this-typing pb-6">
+                            <input type="text" class="form-control" name="oldpasswords">
+                        </div>
+
+                        <div class="justify-content-center mt-2">
+                            <button type="button" class="btn py-2 btn-primary btn-create ">Upload</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
+
+
+<!-- js cho chuyển tabs -->
+<script>
+    const $ = document.querySelector.bind(document);
+    const $$ = document.querySelectorAll.bind(document);
+
+    const tabs = $$(".tab-item");
+    const panes = $$(".tab-pane");
+
+    const tabActive = $(".tab-item.active");
+    const line = $(".tabs .line");
+
+
+    requestIdleCallback(function () {
+        line.style.left = tabActive.offsetLeft + "px";
+        line.style.width = tabActive.offsetWidth + "px";
+    });
+
+    tabs.forEach((tab, index) => {
+        const pane = panes[index];
+
+        tab.onclick = function () {
+            $(".tab-item.active").classList.remove("active");
+            $(".tab-pane.active").classList.remove("active");
+
+            line.style.left = this.offsetLeft + "px";
+            line.style.width = this.offsetWidth + "px";
+
+            this.classList.add("active");
+            pane.classList.add("active");
+        };
+    });
+</script>
 

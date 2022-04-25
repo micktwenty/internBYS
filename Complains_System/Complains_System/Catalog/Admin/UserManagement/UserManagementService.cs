@@ -15,9 +15,12 @@ using OfficeOpenXml;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using System.IO;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Complains_System.Catalog.Admin.UserManagement
 {
+
     public class UserManagementService : IUserManagementService
     {
         private readonly UserManager<AppUser> _usermanager;
@@ -137,7 +140,6 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         IdDepartment = request.IdDepartment,
                         Email = request.Email,
                         idteacher = await _context.Employees.MaxAsync(x => x.Id) + 1
-
                     };
                     var result = await _usermanager.CreateAsync(user, request.Password);
 
@@ -218,7 +220,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return false;
         }
 
-        public async Task<bool> RegisterbyExcel(IFormFile file)
+        public async Task<bool> RegisterbyExcelStu(IFormFile file)
         {
             if (file != null)
             {
@@ -246,7 +248,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         ConfirmPassword = "Mis@2022",
                         Isemployee = false,
                     };
-                    var result = await Register(newuser);
+                    var result = await this.Register(newuser);
                     if (result == false)
                     {
                         return false;
@@ -257,7 +259,44 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return false;
 
         }
+        public async Task<bool> RegisterbyExcelEmp(IFormFile file)
+        {
+            if (file != null)
+            {
+                string path_file = await this.SaveFile(file);
 
+                FileInfo fileInfo = new FileInfo(Path.GetFullPath($"wwwroot/ImgComplains/{path_file}"));
+
+                ExcelPackage package = new ExcelPackage(fileInfo);
+                ExcelWorksheet ws = package.Workbook.Worksheets.FirstOrDefault();
+                await _storageService.DeleteFileAsync(path_file);
+                for (int rw = 2; rw < ws.Dimension.End.Row; rw++)
+                {
+
+                    var sName = ws.Cells[rw, 1].Value; if (sName == null) break;
+                  
+                    var sIdDepartment =Convert.ToInt32( ws.Cells[rw, 2].Value); if (sIdDepartment == 0) break;
+                    var sEmail = ws.Cells[rw, 3].Value; if (ws.Cells[rw, 3].Value == null) break;
+                    var newuser = new RegisterRequest()
+                    {
+                        Name = (string)sName,
+                        Email = (string)sEmail,
+                        IdDepartment = sIdDepartment,
+                        Password = "Mis@2022",
+                        ConfirmPassword = "Mis@2022",
+                        Isemployee = true,
+                    };
+                    var result = await this.Register(newuser);
+                    if (result == false)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+
+        }
         public async Task<bool> ResetPassword(string username)
         {
             var user = await _usermanager.FindByNameAsync(username);

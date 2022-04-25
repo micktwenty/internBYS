@@ -15,7 +15,9 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public Task<bool> ResetPassword(string username);
         public Task<bool> DisableAccount(string username);
         public Task<bool> EnableAccount(string username);
-        public Task<bool> RegisterbyExcel(IFormFile file);
+        public Task<bool> RegisterbyExcelStu(IFormFile file);
+        public Task<bool> RegisterbyExcelEmp(IFormFile file);
+
         public Task<bool> DeleteAccount(string username);
         public Task<bool> Register(RegisterRequest request);
     }

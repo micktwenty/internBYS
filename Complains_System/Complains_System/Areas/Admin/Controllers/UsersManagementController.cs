@@ -7,38 +7,77 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Complains_System.Areas.Admin.Controllers
 {
-    [Route("[Area]")]
     [Area("Admin")]
+    [Route("[Area]")]
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
+        private readonly IDepartmentService _departmentService;
 
-        public UsersManagementController(IUserManagementService userManagementService)
+
+        public UsersManagementController(IUserManagementService userManagementService, IDepartmentService department)
         {
             _userManagementService = userManagementService;
+            _departmentService = department;
 
         }
         [HttpGet("register")]
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
-            return View("Register");
+            var data = await _departmentService.GetListDepartments();
+            return View(data);
         }
-        [HttpPost("register-by-excel")]
-        public async Task<bool> RegisterbyExcel([FromForm]IFormFileCollection files)
+        [HttpPost("Register-by-Excel-stu")]
+        public async Task<bool> RegisterbyExcelforStu([FromForm]IFormFileCollection files)
         {
-
-
             IFormFile file = files[0];
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var result = await _userManagementService.RegisterbyExcel(file);
+            var result = await _userManagementService.RegisterbyExcelStu(file);
                 return result;
-      
-
-
+        }
+        [HttpPost("register-by-normal-stu")]
+        public async Task<bool> RegisterforStu([FromForm]IFormCollection frm)
+        {
+            var request = new RegisterRequest()
+            {
+                IdStudent = frm["idstu"],
+                Name = frm["stu_name"],
+                IdDepartment = Convert.ToInt32(frm["khoa"]),
+                sClass = frm["class"],
+                Isemployee = false,
+                Password = "Mis@2022",
+                ConfirmPassword = "Mis@2022"
+            };
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var result = await _userManagementService.Register(request);
+            return result;
+        }
+        [HttpPost("Register-by-Excel-emp")]
+        public async Task<bool> RegisterbyExcelforEmployee([FromForm] IFormFileCollection emp_files)
+        {
+            IFormFile file = emp_files[0];
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var result = await _userManagementService.RegisterbyExcelEmp(file);
+            return result;
+        }
+        [HttpPost("register-by-normal-emp")]
+        public async Task<bool> RegisterforEmployee([FromForm] IFormCollection frm)
+        {
+            var request = new RegisterRequest()
+            {
+                Email = frm["email"],
+                Name = frm["emp_name"],
+                IdDepartment = Convert.ToInt32(frm["khoa"]),
+                Isemployee = true,
+                Password = "Mis@2022",
+                ConfirmPassword = "Mis@2022"
+            };
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var result = await _userManagementService.Register(request);
+            return result;
         }
         [HttpGet("disable-acc")]
         public async Task<bool> disable(string username)

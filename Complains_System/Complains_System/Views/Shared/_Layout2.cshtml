@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Complains_System.Catalog.User
 
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+@inject IUserService userService
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,23 +29,28 @@
                         <ul class="menu mt-6">
                             @*<li class="menu-item active"><a asp-area="admin" asp-action="register" asp-controller="UsersManagement"><i class="icon fas fa-user mr-5"></i>Tạo tài khoản sinh viên</a></li>*@
                             <div class="drop">
-                                <li class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"><i
-                                        class="icon fa-solid fa-user mr-5"></i>Quản lý tài khoản người dùng</li>
-                                <div class="dropdown-menu dropdown-menu-thongke " aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"><i class="icon fa-solid fa-user-plus mr-5"></i>Tạo
-                                        tài khoản người dùng</a>
-                                    <a class="dropdown-item" href="#"><i class="icon fa-solid fa-user-gear mr-5"></i>Xem
-                                        và chỉnh sửa tài khoản</a>
-                                </div>
-                            </div>
-                            <div class="drop">
-                                <li class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon fa-solid fa-people-roof mr-5"></i>Quản lý phòng ban</li>
+                            <li class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="icon fa-solid fa-user mr-5"></i>Quản lý tài khoản người dùng
+                            </li>
                             <div class="dropdown-menu dropdown-menu-thongke " aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"><i class="icon fa-solid fa-building-user mr-5"></i>Tạo phòng ban mới</a>
-                                <a class="dropdown-item" href="#"><i class="icon fa-solid fa-building mr-5"></i>Xem và chỉnh sửa phòng ban</a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon fa-solid fa-user-plus mr-5"></i>Tạo
+                                    tài khoản người dùng
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="icon fa-solid fa-user-gear mr-5"></i>Xem
+                                    và chỉnh sửa tài khoản
+                                </a>
                             </div>
-                        
+                    </div>
+                    <div class="drop">
+                        <li class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon fa-solid fa-people-roof mr-5"></i>Quản lý phòng ban</li>
+                        <div class="dropdown-menu dropdown-menu-thongke " aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#"><i class="icon fa-solid fa-building-user mr-5"></i>Tạo phòng ban mới</a>
+                            <a class="dropdown-item" href="#"><i class="icon fa-solid fa-building mr-5"></i>Xem và chỉnh sửa phòng ban</a>
+                        </div>
+
                         </ul>
                     </div>
 
@@ -103,11 +110,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@UserManager.GetUserName(User)</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">hi @userService.getUser(UserManager.GetUserName(User)).Name</span>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown" >
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fa-solid fa-key mr-2 text-gray-400"></i>
                                     Đổi Mật Khẩu
