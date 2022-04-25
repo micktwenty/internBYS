@@ -1,0 +1,156 @@
+.this-sidebar {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: #eaecf0;
+    font-size: 14px;
+  }
+  
+  .light-mode {
+    --primary-color: white;
+    --info-color: #2169f6;
+    --info-color-darker: white;
+    --info-color-lighter: #7c8b97;
+    --secondary-color: #7c8b97;
+    --secondary-color-lightest: white;
+    --secondary-color-darkest: black;
+  
+  }
+  
+  
+  
+  .col-3,
+  .col-9 {
+    padding: 0 0 0 0 !important;
+  }
+  
+  .container-fluid {
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+  }
+  
+  .bg-color {
+    background: #fff;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+  
+  .container {
+    height: 750px;
+  }
+  
+  .icon {
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 1rem !important;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu>*~* {
+    margin-top: 0.5rem;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--secondary-color);
+    white-space: nowrap;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .menu-item.active {
+    color: var(--info-color-darker);
+    background: var(--info-color);
+  }
+  
+  .divider {
+    position: relative;
+    width: 123%;
+    left: -27px;
+    max-height: 2px;
+    margin: 1rem 0;
+    border-top: 2px solid var(--divider-border-color);
+  }
+  
+  /* search */
+  .topbar .navbar-search{
+  width: 35rem;
+  }
+  
+  #search-height{
+  height: auto;
+  }
+  
+  #btn-search{
+  border-radius: 0 5px 5px 0 ;
+  }
+  
+  
+  
+  
+  
+  /* header */
+  
+  .topbar #sidebarToggleTop {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  
+  .rounded-circle {
+    border-radius: 50% !important;
+  }
+
+
+/* footer */
+.footer {
+    background-color: rgb(243, 245, 250);
+  
+  }
+  
+  
+  /* dropdown */
+  .drop{
+    position: relative !important;
+  }
+  
+  .dropdown-menu-thongke{
+    position: relative !important;
+    top: -35px !important;
+    width: 100%;
+  }
+
+.dropdown-menu a{
+  right: 10px !important;
+}
+
+/* table */
+td{
+  text-align: center !important;
+}
+
+th{
+  text-align: center !important;
+}
+
+/* btn */
+.btn-save{
+  height: 50px;
+}

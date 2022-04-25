@@ -1,0 +1,73 @@
+﻿@model List<Complains_System.Catalog.Department.ListDepartments>
+@{
+    ViewData["Title"] = "manage_department";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<!-- form xem và sửa tài  phòng ban-->
+<link rel="stylesheet" href="~/assets/admin/manage_dep/css/style.css">
+
+<div class="row align-items-center">
+    <div class="col-8">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input id="search-height" type="text" class="form-control bg-light border-0 small"
+                       placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="btn-search" class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-4 d-flex justify-content-center" style="margin: 0 0 0 0">
+        <button class="btn btn-success btn-save" type="submit">LƯU</button>
+    </div>
+
+</div>
+
+
+<div class="row mr-4 ml-4">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="table-info">
+                <th scope="col">TÊN PHÒNG BAN</th>
+                <th scope="col">SỐ ĐIỆN THOẠI</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col" colspan="1">Hành động</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row" contenteditable='true'>@item.Name</th>
+                    <td contenteditable='true'>@item.phone</td>
+                    <td contenteditable='true'>@item.email</td>
+                    <td><button class="btn btn-success">LƯU</td>
+                    <td><button id="delete1" class="btn btn-danger delete">Xoá</td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+</div>
+
+<!-- kết thúc form xem và sửa phòng ban -->
+<!--JS xoá phòng ban -->
+<script>
+    var deleteLinks = document.querySelectorAll('.delete');
+
+    for (var i = 0; i < deleteLinks.length; i++) {
+        deleteLinks[i].addEventListener('click', function (event) {
+            var choice = confirm("Bạn có muốn xoá phòng ban này?");
+            event.preventDefault();
+
+            if (choice) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
+

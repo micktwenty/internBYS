@@ -12,12 +12,12 @@ namespace Complains_System.Areas.Admin.Controllers
     [Area("Admin")]
     public class DepartmentService : Controller
     {
-        private readonly IMailService mailService;
+
         private readonly IDepartmentService _departmentService;
 
-        public DepartmentService(IMailService mailService, IDepartmentService departmentService)
+        public DepartmentService( IDepartmentService departmentService)
         {
-            this.mailService = mailService;
+
             this._departmentService = departmentService;
         }
         [Route("SendMail/{id}")]
@@ -50,7 +50,12 @@ namespace Complains_System.Areas.Admin.Controllers
             return BadRequest();
         }
 
-
+        [HttpGet("manage-department")]
+        public async Task<IActionResult> manage_department()
+        {
+            var data = await _departmentService.GetListDepartments();
+            return View(data);
+        }
 
     }
 }

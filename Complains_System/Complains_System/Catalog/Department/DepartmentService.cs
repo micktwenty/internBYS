@@ -61,7 +61,10 @@ namespace Complains_System.Catalog.Department
             var data = await query.Select(x => new ListDepartments()
             {
                 Id = x.DepartmentId,
-                Name = x.Name
+                Name = x.Name,
+                phone = x.Phone,
+                email = x.Email
+                
             }).ToListAsync();
             return data;
         }
