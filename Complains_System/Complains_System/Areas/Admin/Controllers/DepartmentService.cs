@@ -26,7 +26,7 @@ namespace Complains_System.Areas.Admin.Controllers
             try
             {
                 await _departmentService.SendWarning(id);
-                return RedirectToAction("Index", "admin");
+                return RedirectToAction("Index","HomePage");
             }
             catch (Exception ex)
             {

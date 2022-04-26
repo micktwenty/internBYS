@@ -13,5 +13,6 @@ namespace Complains_System.Catalog.Complains.management
         public List<int> idDepartment { get; set; }
         public string idStudent { get; set; }
         public int? page { get; set; }
+        public string status { get; set; }
     }
 }

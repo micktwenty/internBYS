@@ -39,7 +39,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Nội dung phản hồi:</label>
                                 <textarea class="form-control" rows="5" disabled
-                                          readonly>@Model.Reply
+                                          readonly>@((Model.Reply == null)?"Chưa có phản hồi.":Model.Reply)
                                 </textarea>
                             </div>
 

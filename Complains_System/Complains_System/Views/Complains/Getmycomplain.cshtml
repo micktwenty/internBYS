@@ -3,124 +3,76 @@
 @using X.PagedList.Mvc.Core;
 @using X.PagedList.Web.Common;
 @{
-    ViewData["Title"] = "Getmycomplain";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="~/assets/homepage/css/style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="app">
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-2 sidebar shadow">
-                <div class="homepage"><a href=""><img id="homepage" src="~/assets/my_complains/img/home.png"></a></div>
-                <div class="row mb-4 ml-1 mt-4">
-                    <div class="row lienket">
-                        <a href="">
-                            <img class="sidebar-icon"
-                                 src="~/assets/my_complains/img/all.png"><span>Tổng quan</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row  mb-4 ml-1">
-                    <div class="row lienket">
-                        <a href="">
-                            <img class="sidebar-icon"
-                                 src="~/assets/my_complains/img/new-document.png"><span>Tạo bài đăng mới</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-4 ml-1">
-                    <div class="row lienket">
-                        <a href="">
-                            <img class="sidebar-icon"
-                                 src="~/assets/my_complains/img/reply.png"><span>Đã phản hồi</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-4 ml-1">
-                    <div class="row lienket">
-                        <a href="">
-                            <img class="sidebar-icon"
-                                 src="~/assets/my_complains/img/spam.png"><span>Bị đánh spam</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-4 ml-1">
-                    <div class="row lienket">
-                        <a href="">
-                            <img class="sidebar-icon"
-                                 src="~/assets/my_complains/img/draft.png"><span>Chờ duyệt</span>
-                        </a>
-                    </div>
-                </div>
+<!doctype html>
+<html lang="en">
+<head>
 
-            </div>
-            <div class="col-7">
-                <div class="mt-4">
-                    @foreach (var item in Model)
-                    {
-                        <div class="card shadow border-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-10">
-                                        <a href="#">
-                                            <div class="card-title"><b>@item.Title</b></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-2 clear d-flex">
-                                        @if (item.picture != null)
-                                        {
-                                            <div><img src="~/ImgComplains/@Url.Content(item.picture)"></div>
-                                        }
-                                        @if (item.picture == null)
-                                        {
-                                            <div><img src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
-                                        }
-                                    </div>
-                                </div>
-                                <div id="status">@item.Status</div>
-                                <footer class="blockquote-footer">@item.Date </footer>
+    <title>Trang Chủ</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/ca78d69f23.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/assets/homepage/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="col-7" style="max-width:none">
+        <div class="mt-4">
+            @foreach (var item in Model)
+            {
+                <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
+                    <div class="card shadow border-0">
+                        <div class="row">
+                            @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
+                            <div class="col-4">
+
+                                @if (item.picture != null)
+                                {
+                                    <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
+                                }
+                                @if (item.picture == null)
+                                {
+                                    <div><img class="imgpost" src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
+                                }
+
 
                             </div>
+                            @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">@item.Date</h6>
+                                    <p class="card-text">@item.Content</p>
+                                </div>
+                            </div>
+                            @*</a>*@
                         </div>
-                    }
+                    </div>
+                </a>
+            }
 
-
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="row lienket"><a><img id="link" src="~/assets/my_complains/img/link.png">Liên kết hữu ích</a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/quocte.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/TV.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/tvts_OK.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/ts2022_vlvh.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/banner_CTLKQT.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/img-links-03.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/img-links-05.jpg"></a></div>
-                <div><a href=""><img class="link" src="~/assets/my_complains/img/MatKetLienKet_.jpg"></a></div>
-            </div>
         </div>
+    </div>
 
+    <br />
+    <div class="d-flex justify-content-center">
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+        {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+        })
 
     </div>
-</div>
-<br />
-    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("my-complains", new { page }), new PagedListRenderOptions
-{
-    LiElementClasses = new string[] { "page-item" },
-    PageClasses = new string[] { "page-link" }
-})
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html> 

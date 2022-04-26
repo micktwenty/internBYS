@@ -17,6 +17,7 @@ namespace Complains_System.Catalog.Complains.Dtos
         public string Status { get; set; }
         public string employee_reply { get; set; }
         public string picture { get; set; }
+        public string IdStudent { get; set; }
 
     }
 }

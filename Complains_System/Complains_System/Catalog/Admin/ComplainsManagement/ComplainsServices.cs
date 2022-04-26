@@ -42,8 +42,6 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                     IdComplains = x.c.IdComplains,
                     Title = x.c.Title,
                     Department = x.d.Name,
-                    Content = x.c.Content,
-                    //Picture = x.c.Picture,
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
@@ -63,19 +61,21 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                             join d in _context.Departments on c.IdDepartment equals d.DepartmentId
                             join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
                             from cpl in complain.DefaultIfEmpty()
+                            join f in _context.Employees on c.employee_reply equals f.Id into employees
+                            from emp in employees.DefaultIfEmpty()
                             where c.IdDepartment.Equals(request.IdDep) && c.Status.Equals(request.Status)
-                            select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
+                            select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image, employee_reply = (emp.Name == null) ? "Chưa xử lý!" : emp.Name };
                 var data = await query.Select(x => new ComplainsViewModel()
                 {
                     IdComplains = x.c.IdComplains,
                     Title = x.c.Title,
                     Department = x.d.Name,
                     Content = x.c.Content,
-                    //Picture = x.c.Picture,
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
                     IsPublic = x.c.IsPublic,
+                    employee_reply = x.employee_reply,
                     picture = x.image
 
                 }).Where(x => x.Date >= request.startdate && x.Date <= request.enddate).ToListAsync();
@@ -102,23 +102,7 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 connection.Close();
             }
             if (complains == null) return null;
-            //var pageNumber = page ?? 1;
-            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            //var pageSize = 6;
-            //var data = from c in _context.Complains
-            //           join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-            //           where c.Status != "Bản nháp"
-            //           select new { c, d };
-            //var new_data = data.Select(x => new ComplainsViewModel()
-            //{
-            //    Content = x.c.Content,
-            //    Status = x.c.Status,
-            //    Title = x.c.Title,
-            //    Department = x.d.Name,
-            //    Reply = x.c.Reply,
-            //    Date = x.c.Date,
-            //    IdComplains = x.c.IdComplains
-            //}).ToList();
+
             string[] listStt = {"Đã duyệt!", "Spam", "Từ chối giải quyết", "Chờ duyệt", "all"  };
             var report = new ReportForDepartment()
             {
@@ -130,7 +114,6 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Spam = complains.Where(x => x.Status == "Spam").Count(),
                 thongke = thongke(null),
                 Status = listStt,
-                //Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
             };
 
             return report;
@@ -151,25 +134,6 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
               
                 connection.Close();
             }
-
-            //var pageNumber = page ?? 1;
-            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            //var pageSize = 6;
-
-            //var data = from c in _context.Complains
-            //           join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-            //           where c.Date.ToString().CompareTo(request.startdate) >= 0 && c.Date.ToString().CompareTo(request.enddate) <= 0
-            //           select new { c, d };
-            //var new_data =data.Select(x => new ComplainsViewModel()
-            //{
-            //    Content = x.c.Content,
-            //    Status = x.c.Status,
-            //    Title = x.c.Title,
-            //    Department = x.d.Name,
-            //    Reply = x.c.Reply,
-            //    Date = x.c.Date,
-            //    IdComplains = x.c.IdComplains
-            //}).ToList();
             string[] listStt = { "Đã duyệt!", "Spam", "Từ chối giải quyết", "Chờ duyệt" ,"all"};
 
             var report = new ReportForDepartment()
@@ -183,7 +147,6 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
                 Status = listStt,
 
                 thongke = thongke(request),
-                //Complains_list = new_data.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize)
             };
 
             return report;

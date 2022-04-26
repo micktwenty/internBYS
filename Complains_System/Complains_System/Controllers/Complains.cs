@@ -62,22 +62,113 @@ namespace Complains_System.Controllers
 
 
         [HttpGet("my-complains")]
-        public async Task<IActionResult> Getmycomplain([FromQuery] GetComplainsPagingRequest request)
+        public async Task<IActionResult> Getmycomplain(GetComplainsPagingRequest request)
         {
             ClaimsPrincipal currentUser = this.User;
             if (currentUser.FindFirst(ClaimTypes.Name) != null)
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
-                var user = await _usermanager.FindByNameAsync(Name);
+                var user = _userService.getUser(Name);
                 request.idStudent = user.IdStudent;
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
             }
             var complains = await _complainsManagement.GetOwnPaging(request);
             var pageNumber = request.page ?? 1;
             //pageNumber = pageNumber == 0 ? 1 : pageNumber;
             var pageSize = 6;
-            return View(complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
-        }
+            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
+        }
+        [HttpGet("my-complains/request")]
+        public async Task<IActionResult> Getmyrequestcomplain(GetComplainsPagingRequest request)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = _userService.getUser(Name);
+                request.idStudent = user.IdStudent;
+                request.status = "Chờ duyệt";
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+
+        }
+        [HttpGet("my-complains/deny")]
+        public async Task<IActionResult> Getmydenycomplain( GetComplainsPagingRequest request)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = _userService.getUser(Name);
+                request.idStudent = user.IdStudent;
+                request.status = "Từ chối giải quyết";
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+
+        }
+        [HttpGet("my-complains/spam")]
+        public async Task<IActionResult> Getmyspamcomplain(GetComplainsPagingRequest request)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = _userService.getUser(Name);
+                request.idStudent = user.IdStudent;
+                request.status = "spam";
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+
+        }
+        [HttpGet("my-complains/done")]
+        public async Task<IActionResult> Getmydonecomplain( GetComplainsPagingRequest request)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = _userService.getUser(Name);
+                request.idStudent = user.IdStudent;
+                request.status = "Đã duyệt!";
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View("Getmycomplain",complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+        }
         [HttpGet("{IdComplain}")]
         public async Task<IActionResult> GetbyID(int IdComplain)
         {
@@ -95,8 +186,12 @@ namespace Complains_System.Controllers
             if (complains == null)
             {
                 return BadRequest("Cannot find Complains!");
+            }                
+            if (complains.IsPublic == true || complains.IdStudent == _usermanager.GetUserName(this.User))
+            {
+                return View(complains);
             }
-            return View(complains);
+            return BadRequest("Cannot find Complains!");
         }
 
         [HttpGet("reply-post/{id}")]
@@ -156,7 +251,7 @@ namespace Complains_System.Controllers
                 return BadRequest();
             }
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
-            return Ok(complain);
+            return View("viewdetail",complain);
         }
 
         //[Authorize(Roles = "student")]

@@ -165,7 +165,6 @@ namespace Complains_System.Catalog.Complains.management
                     Title = x.c.Title,
                     Department = x.d.Name,
                     Content = x.c.Content,
-                    //Picture = x.c.Picture,
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
@@ -183,7 +182,7 @@ namespace Complains_System.Catalog.Complains.management
 
             var query = from c in _context.Complains
                         join d in _context.Departments on c.IdDepartment equals d.DepartmentId
-                        where /*c.Content.Contains(request.keyword) &&*/ c.IsPublic.Equals(true)
+                        where c.IsPublic.Equals(true)
                         select new {c, d };
             if (!string.IsNullOrEmpty(request.keyword))
             {
@@ -201,7 +200,6 @@ namespace Complains_System.Catalog.Complains.management
                     Title = x.c.Title,
                     Department = x.d.Name,
                     Content = x.c.Content,
-                    //Picture = x.c.Picture,
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
@@ -220,6 +218,7 @@ namespace Complains_System.Catalog.Complains.management
             var complain = await _context.Complains.FindAsync(IDComplain);
             var department = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == complain.IdDepartment) ;
             var image = await _context.ImageComplains.FirstOrDefaultAsync(x => x.IdComplain == IDComplain);
+            var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == complain.employee_reply);
 
 
             var complainview = new ComplainsViewModel()
@@ -231,7 +230,10 @@ namespace Complains_System.Catalog.Complains.management
                 Date = complain.Date,
                 Reply = complain.Reply,
                 Status = complain.Status,
-                picture = image != null ? image.Path_image : null
+                employee_reply = (employee == null)? "Đang chờ duyệt!" : employee.Name,
+                picture = image != null ? image.Path_image : null,
+                IdStudent = complain.IdStudent,
+                IsPublic = complain.IsPublic
             };
             return complainview;
         }
@@ -242,6 +244,13 @@ namespace Complains_System.Catalog.Complains.management
                         join d in _context.Departments on c.IdDepartment equals d.DepartmentId
                         where c.IdStudent.Equals(request.idStudent)
                         select new { c, d };
+            if (request.status != null)
+            {
+                query = from c in _context.Complains
+                        join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                        where c.IdStudent.Equals(request.idStudent) && c.Status.Equals(request.status)
+                        select new { c, d };
+            }
             int rows = await query.CountAsync();
 
             var data = await query
@@ -251,7 +260,6 @@ namespace Complains_System.Catalog.Complains.management
                     Title = x.c.Title,
                     Department = x.d.Name,
                     Content = x.c.Content,
-                    //Picture = x.c.Picture,
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
