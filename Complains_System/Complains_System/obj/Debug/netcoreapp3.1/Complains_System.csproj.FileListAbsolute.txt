@@ -164,7 +164,6 @@ E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Vie
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\Getmycomplain.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\NewDraft.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\viewdetail.cshtml.g.cs
-E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Home\View.cshtml.g.cs
@@ -945,7 +944,6 @@ E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.IO.RecyclableMemoryStream.dll
-E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\Microsoft.Office.Interop.Excel.dll
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\internBYS\Complains_System\Complains_System\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
@@ -957,3 +955,5 @@ E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Vie
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Congrats.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\CreateDepartment.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\manage_department.cshtml.g.cs
+E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\CreateDepartment.cshtml.g.cs
+E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\manage_department.cshtml.g.cs

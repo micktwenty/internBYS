@@ -15,9 +15,7 @@ a{
     text-decoration: none !important;
 }
 
-.fa-solid{
-    color:rgb(0 194 255 / 50%)
-}
+
 
 .lienket{
     margin-left: 0 !important;
@@ -80,13 +78,10 @@ span{
 }
 
 .form-title{
-    border-bottom: 1px solid gray !important;
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 600;
     padding-top: 20px;
-    background-color: gray;
-    color: white;
     margin-left: -16px !important;
     margin-right: -16px !important;
     border-radius: 10px 10px 0 0; 
@@ -99,7 +94,7 @@ span{
 
 
 .form-label{
-    font-weight:bold!important;
+    font-weight:600!important;
 }
 
   .app-form-control {

@@ -5,190 +5,208 @@
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<link rel="stylesheet" href="~/assets/admin/formdki/style.css">
+<!doctype html>
+<html lang="en">
+<head>
 
-<div class="switchtabs">
-    <div class="tabs d-flex justify-content-center">
-        <div class="tab-item active">
-            <i class="fa-solid fa-user"></i>
-            Tạo Tài Khoản Cho Sinh Viên
+    <title>Trang Tạo Bản Nháp</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="~/assets/admin/formdki/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="switchtabs">
+        <div class="tabs d-flex justify-content-center">
+            <div class="tab-item active">
+                <i class="fa-solid fa-user"></i>
+                Tạo tài khoản cho sinh viên
+            </div>
+            <div class="tab-item">
+                <i class="fa-solid fa-building-user"></i>
+                Tạo tài khoản cho phòng ban
+            </div>
+            <div class="tab-item">
+                <i class="fa-solid fa-user-tie"></i>
+                Tạo tài khoản cho ban giám hiệu
+            </div>
+
+            <div class="line"></div>
         </div>
-        <div class="tab-item">
-            <i class="fa-solid fa-building-user"></i>
-            Tạo Tài Khoản Cho Phòng Ban
-        </div>
-        <div class="tab-item">
-            <i class="fa-solid fa-user-tie"></i>
-            Tạo Tài Khoản Cho Phòng Ban
-        </div>
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div class="create-account container mt-10 d-flex">
+                    <div class="box box-1"></div>
+                    <div class="box box-2"></div>
+                    <div class="box box-3"></div>
+                    <div class="form d-flex">
 
-        <div class="line"></div>
-    </div>
-    <div class="tab-content">
-        <div class="tab-pane active">
-            <div class="create-account container mt-10 d-flex">
-                <div class="box box-1"></div>
-                <div class="box box-2"></div>
-                <div class="box box-3"></div>
-                <div class="form d-flex">
+                        <div class="form-create mt-5 d-flex">
+                            <form action="register-by-normal-stu" method="post" enctype="multipart/form-data">
+                                <label for="exampleFormControlInput1" class="form-label ">Tên Sinh Viên:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="stu_name">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Mã Số Sinh Viên:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="idstu">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
 
-                    <div class="form-create mt-5 d-flex">
-                        <form action="register-by-normal-stu" method="post" enctype="multipart/form-data">
-                            <label for="exampleFormControlInput1" class="form-label ">Tên Sinh Viên:</label>
+                                <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+
+
+                                <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="class">
+                                </div>
+                                <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
+                            </form>
+                            <form action="Register-by-Excel-stu" method="post" enctype="multipart/form-data">
+                                <div class="row OR d-flex  align-items">
+                                    <div class="col-2">
+                                        <hr>
+                                    </div>
+                                    <div class="col-8 align-items-center flex-column d-flex">
+                                        <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
+                                    </div>
+                                    <div class="col-2">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 ">
+                                    <div class="col-8">
+                                        <p>Vui lòng tải file excel mẫu ở đây </p>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="import-file" style="color:black" href="https://drive.google.com/uc?id=1of1e4L_WOg177PR5AA2lJ6z_rM9FtalS&export=download"><i class=" fa-2x fa-solid fa-download import-file"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row mt-5 mb-4">
+                                    <div class="col-8">
+                                        <p>Hãy tải file excel đã điền thông tin tạo tài khoản ở đây</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="import-file" for="files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="files" id="files" hidden />
+                                    </div>
+                                </div>
+                                <div class="justify-content-center mt-2">
+                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="create-account container mt-10 d-flex">
+
+                    <div class="form d-flex">
+                        <div class="form-create mt-5 d-flex">
+                            <form action="register-by-normal-emp" method="post" enctype="multipart/form-data">
+                                <label for="exampleFormControlInput1" class="form-label ">Tên cán bộ:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="emp_name">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
+
+                                <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+
+
+
+                                <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
+                            </form>
+                            <form action="Register-by-Excel-emp" method="post" enctype="multipart/form-data">
+                                <div class="row OR d-flex  align-items">
+                                    <div class="col-2">
+                                        <hr>
+                                    </div>
+                                    <div class="col-8 align-items-center flex-column d-flex">
+                                        <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
+                                    </div>
+                                    <div class="col-2">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 ">
+                                    <div class="col-8">
+                                        <p>Vui lòng tải file excel mẫu ở đây </p>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a  style="color:black" href="https://drive.google.com/uc?id=1YFKzEE9EePb7T5LLK1JjYbndOQaU06CJ&export=download"><i class=" fa-2x fa-solid fa-download import-file"></i></a>
+                                    </div>
+                                </div>
+                                <div class="row mt-5 mb-4">
+                                    <div class="col-8">
+                                        <p>Hãy tài file excel đã điền thông tin tạo tài khoản ở đây</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="import-file" for="emp_files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="emp_files" id="emp_files" hidden />
+                                    </div>
+                                </div>
+                                <div class="justify-content-center mt-2">
+                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane">
+                <div class="create-account container mt-10 d-flex">
+
+                    <div class="form d-flex">
+
+                        <div class="form-create mt-5 d-flex">
+                            <label for="exampleFormControlInput1" class="form-label ">Tên Người Dùng:</label>
                             <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="stu_name">
+                                <input type="text" class="form-control" name="oldpasswords">
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label">Mã Số Sinh Viên:</label>
+                            <label for="exampleFormControlInput1" class="form-label">Email Người Dùng:</label>
                             <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="idstu">
+                                <input type="text" class="form-control" name="oldpasswords">
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
 
-                            <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
-                                @foreach (var item in Model)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
-                            </select>
-
-
-                            <label for="exampleFormControlInput1" class="form-label">Lớp:</label>
-                            <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="class">
-                            </div>
-                            <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
-                        </form>
-                        <form action="Register-by-Excel-stu" method="post" enctype="multipart/form-data">
-                            <div class="row OR d-flex  align-items">
-                                <div class="col-2">
-                                    <hr>
-                                </div>
-                                <div class="col-8 align-items-center flex-column d-flex">
-                                    <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
-                                </div>
-                                <div class="col-2">
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row mt-4 ">
-                                <div class="col-8">
-                                    <p>Vui lòng tải file excel mẫu ở đây </p>
-
-                                </div>
-                                <div class="col-4">
-                                    <a href="https://drive.google.com/uc?id=1of1e4L_WOg177PR5AA2lJ6z_rM9FtalS&export=download"><i class=" fa-2x fa-solid fa-download "></i></a>
-                                </div>
-                            </div>
-                            <div class="row mt-5 mb-4">
-                                <div class="col-8">
-                                    <p>Hãy tài file excel đã điền thông tin tạo tài khoản ở đây</p>
-                                </div>
-                                <div class="col-4">
-                                    <label for="files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="files" id="files" hidden />
-                                </div>
-                            </div>
                             <div class="justify-content-center mt-2">
-                                <button type="submit"  class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                                <button type="button" class="btn py-2 btn-primary btn-create ">Upload</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                 </div>
-
             </div>
+
         </div>
-        <div class="tab-pane">
-            <div class="create-account container mt-10 d-flex">
-
-                <div class="form d-flex">
-                    <div class="form-create mt-5 d-flex">
-                        <form action="register-by-normal-emp" method="post" enctype="multipart/form-data">
-                            <label for="exampleFormControlInput1" class="form-label ">Tên cán bộ:</label>
-                            <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="emp_name">
-                            </div>
-                            <label for="exampleFormControlInput1" class="form-label">Email:</label>
-                            <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="email">
-                            </div>
-                            <label for="exampleFormControlInput1" class="form-label">Khoa:</label>
-
-                            <select class="custom-select mb-6" name="khoa" aria-label="Default select example">
-                                @foreach (var item in Model)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
-                            </select>
-
-
-                           
-                            <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
-                        </form>
-                        <form action="Register-by-Excel-emp" method="post" enctype="multipart/form-data">
-                            <div class="row OR d-flex  align-items">
-                                <div class="col-2">
-                                    <hr>
-                                </div>
-                                <div class="col-8 align-items-center flex-column d-flex">
-                                    <b>HOẶC TẠO NHIỀU TÀI KHOẢN CÙNG LÚC</b>
-                                </div>
-                                <div class="col-2">
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row mt-4 ">
-                                <div class="col-8">
-                                    <p>Vui lòng tải file excel mẫu ở đây </p>
-
-                                </div>
-                                <div class="col-4">
-                                    <a href="https://drive.google.com/uc?id=1YFKzEE9EePb7T5LLK1JjYbndOQaU06CJ&export=download"><i class=" fa-2x fa-solid fa-download "></i></a>
-                                </div>
-                            </div>
-                            <div class="row mt-5 mb-4">
-                                <div class="col-8">
-                                    <p>Hãy tài file excel đã điền thông tin tạo tài khoản ở đây</p>
-                                </div>
-                                <div class="col-4">
-                                    <label for="emp_files"><i class="fa-2x fa-solid fa-upload"></i></label><input type="file" name="emp_files" id="emp_files" hidden />
-                                </div>
-                            </div>
-                            <div class="justify-content-center mt-2">
-                                <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="tab-pane">
-            <div class="create-account container mt-10 d-flex">
-
-                <div class="form d-flex">
-
-                    <div class="form-create mt-5 d-flex">
-                        <label for="exampleFormControlInput1" class="form-label ">Tên Người Dùng:</label>
-                        <div class="this-typing pb-6">
-                            <input type="text" class="form-control" name="oldpasswords">
-                        </div>
-                        <label for="exampleFormControlInput1" class="form-label">Email Người Dùng:</label>
-                        <div class="this-typing pb-6">
-                            <input type="text" class="form-control" name="oldpasswords">
-                        </div>
-
-                        <div class="justify-content-center mt-2">
-                            <button type="button" class="btn py-2 btn-primary btn-create ">Upload</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
     </div>
-</div>
 
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- js cho chuyển tabs -->
 <script>
@@ -223,3 +241,4 @@
     });
 </script>
 
+</html>
