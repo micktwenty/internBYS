@@ -4,5 +4,101 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<link rel="stylesheet" href="~/assets/admin/> @*tạo file css r bỏ tên vào đây là đc*@
+<!doctype html>
+<html lang="en">
+<head>
 
+    <title>Trang Quản Lý Tài Khoản Người Dùng</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/assets/admin/manage_user/css/style.css  />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="d-flex align-items-center">
+        <div class="col-8">
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group">
+                    <input id="search-height" type="text" class="form-control bg-light border-0 small"
+                           placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button id="btn-search" class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4 d-flex justify-content-center" style="margin: 0 0 0 0">
+            <button class="btn btn-success btn-save" type="submit">LƯU</button>
+        </div>
+
+    </div>
+
+
+    <div class="row mr-4 ml-4">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr class="table-info">
+                    <th scope="col">Tên tài khoản</th>
+                    <th scope="col">Tình trạng</th>
+                    <th scope="col" colspan="3">Hành động</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">nqthanh452@gmail.com</th>
+                    <td>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                    </td>
+                    <td><label for="nav-input" class="btn btn-primary">Cấp quyền</label></td>
+                    <td><button class="btn btn-warning">Đặt lại mật khẩu</button></td>
+                    <td><button class="btn btn-danger">Xoá</td>
+                </tr>
+
+
+        </table>
+    </div>
+    <input hidden class="form-check-input" type="checkbox" id="nav-input">
+    <label for="nav-input" class="over_lay"></label>
+    <div class="gb-1">
+        <label for="nav-input" class="close_form">
+            <i class="fa-2x fa-solid fa-square-xmark"></i>
+        </label>
+        <table class="open_form table table-hover table-bordered">
+
+            <thead>
+                <tr class="table-info">
+                    <th scope="row" rowspan="2">
+                        nqthanh452@gmail.com
+                    </th>
+                    <th scope="col">ADMIN</th>
+                    <th scope="col">BAN GIÁM HIỆU</th>
+                    <th scope="col">NHÂN VIÊN PHÒNG BAN</th>
+                    <th scope="col">SINH VIÊN</th>
+                </tr>
+                <tr>
+                    <th scope="row"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></th>
+                    <th scope="row"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></th>
+                    <th scope="row"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></th>
+                    <th scope="row"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
