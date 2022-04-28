@@ -204,11 +204,21 @@ namespace Complains_System.Controllers
             }
             return View(complains);
         }
-
+        
         //[Authorize(Roles = "student")]
-        [HttpGet]
-        public async Task<IActionResult> Create([FromForm] ComplainsCreateRequest request)
+        [HttpPost("create-draft")]
+        public async Task<IActionResult> CreateDraft(IFormCollection frm)
         {
+            var request = new ComplainsCreateRequest();
+            request.Content = frm["content"];
+            request.Title = frm["tieude"];
+            var user = _userService.getUser(_usermanager.GetUserName(User));
+            request.IdStudent = user.IdStudent;
+            if (frm.Files.Count > 0)
+            {
+                request.ThumbnailImage = frm.Files[0];
+            }
+            request.IdDepartment = Convert.ToInt32(frm["khoa"]);
             var ComplainID = await _complainsManagement.CreateDraft(request);
             if (ComplainID == "0")
             {
