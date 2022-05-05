@@ -328,7 +328,7 @@ namespace Complains_System.Controllers
 
 
         //[Authorize(Roles = "student")]
-        [HttpDelete("{Id}")]
+        [HttpGet("delete/{id}")]
         public async Task<IActionResult> DeleteDraft(int Id)
         {
             var EditedResult = await _complainsManagement.Delete(Id);
@@ -337,7 +337,7 @@ namespace Complains_System.Controllers
                 return BadRequest();
             }
 
-            return Ok();
+            return RedirectToAction("Getmyspamcomplain");
         }
     }
 }
