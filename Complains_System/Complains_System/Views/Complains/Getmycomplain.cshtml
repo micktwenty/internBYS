@@ -23,55 +23,57 @@
         <div class="mt-4">
             @foreach (var item in Model)
             {
-               
+                <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
+
                     <div class="card shadow border-0">
                         <div class="row">
-                            @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                            <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
-                                <div class="col-4">
+                            
+                            <div class="col-4">
 
-                                    @if (item.picture != null)
-                                    {
-                                        <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
-                                    }
-                                    @if (item.picture == null)
-                                    {
-                                        <div><img class="imgpost" src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
-                                    }
-                                </div>
+                                @if (item.picture != null)
+                                {
+                                    <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
+                                }
+                                @if (item.picture == null)
+                                {
+                                    <div><img class="imgpost" src="~/ImgComplains/depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg"></div>
+                                }
+                            </div>
+                            
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <div class="row">
+                                        
 
-                            </a>
+                                            <div class="col-10">
+                                                <h5 class="card-title">@item.Title</h5>
 
-                        </div>
+                                            </div>
+                                            @if (item.Status == "Bản nháp")
+                                            {
+                                                <a asp-action="DeleteDraft" asp-controller="complains" asp-route-id="@item.IdComplains">
+                                                    <div class="col-2">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </div>
+                                                </a>
+                                            }
+                                        
+                                        
 
-                                @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                                <div class="col-8">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
-
-                                                <div class="col-10">
-                                                    <h5 class="card-title">@item.Title</h5>
-
-                                                </div>
-                                            </a>
-                                                @if (item.Status == "Bản nháp")
-                                                {
-                                                    <a asp-action="DeleteDraft" asp-controller="complains" asp-route-id="@item.IdComplains">
-                                                        <div class="col-2">
-                                                            <i class="fa-solid fa-trash-can"></i>
-                                                        </div>
-                                                    </a>
-                                                }
-
-                                        </div>
-
-                                        <h6 class="card-subtitle mb-2 text-muted">Trạng thái: @item.Status</h6>
-                                        <footer class="blockquote-footer">@item.Date</footer>
                                     </div>
+
+                                    <h6 class="card-subtitle mb-2 text-muted">Trạng thái: @item.Status</h6>
+                                    <footer class="blockquote-footer">@item.Date</footer>
                                 </div>
-                                @*</a>*@
+                            </div>
+                            
+
+
                         </div>
+
+
+                    </div>
+                </a>
             }
 
         </div>
