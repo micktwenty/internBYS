@@ -118,7 +118,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     Name = item.c.Name,
                     Department = dep != null ? dep.Name : null,
                     username = item.c.UserName,
-                    Role = string.Join(", ",rolelist)
+                    Role = rolelist
                 };
                 ListUser.Add(user);
             }
