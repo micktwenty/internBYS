@@ -30,6 +30,11 @@ namespace Complains_System.Areas.Admin.Controllers
             var data = await _departmentService.GetListDepartments();
             return View(data);
         }
+        [HttpGet("permitting")]
+        public async Task<IActionResult> PhanQuyen()
+        {
+            return View();
+        }
         [HttpGet("user-manager")]
         public async Task<IActionResult> usermanager()
         {
