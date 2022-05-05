@@ -10,7 +10,7 @@ namespace Complains_System.Catalog.Admin.UserManagement.Dtos
         public string username { get; set; }
         public string Name { get; set; }
         public string Department { get; set; }
-        public string Role { get; set; }
+        public List<string> Role { get; set; }
         
     }
 }

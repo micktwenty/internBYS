@@ -958,3 +958,5 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Ra
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\CreateDepartment.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\manage_department.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\usermanager.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\usermanager.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_permitPartial.cshtml.g.cs
