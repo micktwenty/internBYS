@@ -55,7 +55,7 @@
 
                                                 </div>
                                             </a>
-                                                @if (item.Status == "Bản nháp")
+                                                @if (item.Status == "Bản nháp" || item.Status == "Spam")
                                                 {
                                                     <a asp-action="DeleteDraft" asp-controller="complains" asp-route-id="@item.IdComplains">
                                                         <div class="col-2">
