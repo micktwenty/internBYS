@@ -12,91 +12,152 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="header shadow">
-        <div class="container">
-            <div class="row d-flex " style="align-items:center">
-                <div class="col-2">
-                    <div><a href="~/"><img id="logo" src="~/assets/homepage/img/logo-dc.png"></a></div>
-                </div>
-                <div class="col-7">
-                    <nav class="navbar ">
-                        <form class="search" asp-action="Find" asp-controller="Complains" method="post" >
-                            <div class="col-10">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa"
-                                       aria-label="Search"name="search">
-                            </div>
-                            <div id="search" class=" col-2 ">
-                                <button class="btn btn-search  btn-header" type="submit">Tìm kiếm</button>
-                            </div>
-                        </form>
-                    </nav>
-                </div>
-                <partial name="_LoginPartial" />
+    <nav class="navbar navbar-expand-lg navbar-light mt-4" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="~/">DUE COMPLAINS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-action="Find" asp-controller="Complains" method="post">
+                    <div class="input-group">
+                        <input type="search" class="form-control bg-light border-0 small" placeholder="Nhập từ khoá..."
+                               aria-label="Search" name="search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
 
+                    <li class="nav-item mr-4">
+                        <div class=" dropdown">
+                            <button style="font-weight:600" class="btn btn-info  dropdown-toggle btn-managepost" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                QUẢN LÝ BÀI ĐĂNG
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a style="font-weight:600" class="dropdown-item" href="/Complains/my-complains"><i  class="mr-2 fa-solid fa-border-all"></i></i>TỔNG QUAN</a>
+                                <a style="font-weight:600" class="dropdown-item" href="/Complains/new-draft"><i class=" mr-2 fa-solid fa-file-circle-plus"></i>TẠO BÀI ĐĂNG MỚI</a>
+                                <a style="font-weight:600" class="dropdown-item" href="/Complains/my-complains/done"><i class="mr-2 fa-solid fa-comment"></i>ĐÃ PHẢN HỒI</a>
+                                <a style="font-weight:600" class="dropdown-item" href="/Complains/my-complains/spam"><i class="mr-2 fa-solid fa-comment-slash"></i>BỊ ĐÁNH SPAM</a>
+                                <a style="font-weight:600" class="dropdown-item" href="/Complains/my-complains/request"><i class="mr-2 fa-solid fa-spinner"></i>CHỜ DUYỆT</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    @*<li class="nav-item"><a class="btn btn-info nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Đăng Nhập</a></li>*@
+                    <li class="nav-item">
+                        <partial name="_LoginPartial" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="hero" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <h1>Chào mừng bạn đến với DUE COMPLAINS</h1>
+                    <h2>Hệ thống phản ánh cho sinh viên Đại Học Kinh Tế Đà Nẵng</h2>
+
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="~/assets/homepage/img/hero-img.png" class="img-fluid animated" alt="">
+                </div>
             </div>
         </div>
 
+    </section>
+    @*<div class="header shadow">
+            <div class="container">
+                <div class="row d-flex " style="align-items:center">
+                    <div class="col-2">
+                        <div><a href="~/"><img id="logo" src="~/assets/homepage/img/logo-dc.png"></a></div>
+                    </div>
+                    <div class="col-7">
+                        <nav class="navbar ">
+                            <form class="search" asp-action="Find" asp-controller="Complains" method="post">
+                                <div class="col-10">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa"
+                                           aria-label="Search" name="search">
+                                </div>
+                                <div id="search" class=" col-2 ">
+                                    <button class="btn btn-search  btn-header" type="submit">Tìm kiếm</button>
+                                </div>
+                            </form>
+                        </nav>
+                    </div>
+                    <partial name="_LoginPartial" />
 
-    </div>
-    
-    <div class="app">
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-2 sidebar shadow">
-                    <div class="homepage"><i class="fa-5x fa-solid fa-house"></i></a></div>
-                    <div class="row mb-4 ml-1 mt-4">
-                        <div class="row lienket">
-                            <a href="/Complains/my-complains">
-                                <i class="fa-solid fa-border-all"></i><span>
-                                    Tổng
-                                    quan
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row  mb-4 ml-1">
-                        <div class="row lienket">
-                            <a href="/Complains/new-draft">
-                                <i class="fa-solid fa-file-circle-plus"></i><span>
-                                    Tạo bài
-                                    đăng mới
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row mb-4 ml-1">
-                        <div class="row lienket">
-                            <a href="/Complains/my-complains/done">
-                                <i class="fa-solid fa-comment"></i><span>
-                                    Đã phản
-                                    hồi
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row mb-4 ml-1">
-                        <div class="row lienket">
-                            <a href="/Complains/my-complains/spam">
-                                <i class="fa-solid fa-comment-slash"></i><span>
-                                    Bị đánh
-                                    spam
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row mb-4 ml-1">
-                        <div class="row lienket">
-                            <a href="/Complains/my-complains/request">
-                                <i class="fa-solid fa-spinner"></i><span>
-                                    Chờ
-                                    duyệt
-                                </span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-7">
-                    @RenderBody()
+            </div>
+
+
+        </div>*@
+
+    <!--<div class="app">
+        <div class="container mt-4">
+            <div class="row">-->
+                @*<div class="col-2 sidebar shadow">
+                        <div class="homepage"><i class="fa-5x fa-solid fa-house"></i></a></div>
+                        <div class="row mb-4 ml-1 mt-4">
+                            <div class="row lienket">
+                                <a href="/Complains/my-complains">
+                                    <i class="fa-solid fa-border-all"></i><span>
+                                        Tổng
+                                        quan
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row  mb-4 ml-1">
+                            <div class="row lienket">
+                                <a href="/Complains/new-draft">
+                                    <i class="fa-solid fa-file-circle-plus"></i><span>
+                                        Tạo bài
+                                        đăng mới
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-4 ml-1">
+                            <div class="row lienket">
+                                <a href="/Complains/my-complains/done">
+                                    <i class="fa-solid fa-comment"></i><span>
+                                        Đã phản
+                                        hồi
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-4 ml-1">
+                            <div class="row lienket">
+                                <a href="/Complains/my-complains/spam">
+                                    <i class="fa-solid fa-comment-slash"></i><span>
+                                        Bị đánh
+                                        spam
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-4 ml-1">
+                            <div class="row lienket">
+                                <a href="/Complains/my-complains/request">
+                                    <i class="fa-solid fa-spinner"></i><span>
+                                        Chờ
+                                        duyệt
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>*@
+                <!--<div class="col-7">
+                    
                 </div>
                 <div class="col-3">
                     <div class="row lienket"><a><img id="link" src="~/assets/homepage/img/link.png">Liên kết hữu ích</a></div>
@@ -113,7 +174,32 @@
 
 
         </div>
+    </div>-->
+
+<div class="app">
+    
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+            <div class="col-md-3">
+                <div class="row lienket"><a><img id="link" src="~/assets/homepage/img/link.png">Liên kết hữu ích</a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/quocte.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/TV.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/tvts_OK.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/ts2022_vlvh.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/banner_CTLKQT.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/img-links-03.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/img-links-05.jpg"></a></div>
+                <div><a href=""><img class="link" src="~/assets/homepage/img/MatKetLienKet_.jpg"></a></div>
+
+            </div>
+        </div>
     </div>
+
+</div>
+
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -231,6 +317,32 @@
                 </div>
             </section>
         </div>*@
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            let scrollPos = 0;
+            const mainNav = document.getElementById('mainNav');
+            const headerHeight = mainNav.clientHeight;
+            window.addEventListener('scroll', function () {
+                const currentTop = document.body.getBoundingClientRect().top * -1;
+                if (currentTop < scrollPos) {
+                    // Scrolling Up
+                    if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
+                        mainNav.classList.add('is-visible');
+                    } else {
+                        console.log(123);
+                        mainNav.classList.remove('is-visible', 'is-fixed');
+                    }
+                } else {
+                    // Scrolling Down
+                    mainNav.classList.remove(['is-visible']);
+                    if (currentTop > headerHeight && !mainNav.classList.contains('is-fixed')) {
+                        mainNav.classList.add('is-fixed');
+                    }
+                }
+                scrollPos = currentTop;
+            });
+        })
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -208,17 +208,25 @@ label {
 }
 
 .gb-1 {
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     justify-content: center;
     background-color: #fff;
-    height: 30vh;
+    height: 25vh;
     width: 80%;
     z-index: 4;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border-radius: 5px;
-    transform: translateY(-300%);
-    transition: transform linear 0.2s, opacity linear 0.2s;
-    opacity: 0;
+    /* transform: translateY(-300%);
+  transition: transform linear 0.2s, opacity linear 0.2s; */
+}
+
+.form_table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/assets/homepage/css/style.css">
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="col-3">
+    <div class="col-12">
         <button id="xinchao" class="btn dropdown-toggle btn-header" data-toggle="dropdown">Hi @userService.getUser(UserManager.GetUserName(User)).Name!</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" asp-action="ChangePass" asp-controller="users">
@@ -22,9 +22,9 @@
 }
 else
 {
-    <div class="col-3">
-        <a class="btn btn-info" asp-action="login" asp-controller="users">
-            <i style="color:white   " class="fa-solid fa-right-to-bracket"></i><span style="color:white!important">Đăng nhập!</span>
+    <div class="col-12">
+        <a class="btn btn-info nav-link btn-login" asp-action="login" asp-controller="users">
+            <i style="color:white   " class="fa-solid fa-right-to-bracket"></i><span style="color:white!important">ĐĂNG NHẬP!</span>
         </a>
     </div>
 

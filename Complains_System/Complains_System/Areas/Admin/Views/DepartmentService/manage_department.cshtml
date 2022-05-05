@@ -35,7 +35,7 @@
                 </div>
             </form>
         </div>
-        
+
 
     </div>
 
@@ -53,44 +53,52 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <th scope="row">@item.Name</th>
-                    <td>@item.phone</td>
-                    <td>@item.email</td>
-                    <td>
-                        <label for="nav-input" class="btn btn-info">
-                            CHỈNH SỬA
-                        </label>
-                    </td>
-                    <input hidden class="form-check-input" type="checkbox" id="nav-input">
-                    <label for="nav-input" class="over_lay"></label>
-                    <div class="open_form container mt-10 d-flex">
-                        <label for="nav-input" class="close_form">
-                            <i class="fa-2x fa-solid fa-square-xmark"></i>
-                        </label>
-                        <div class="form d-flex">
-                            <div class="form-title mt-8 pb-5">
-                                <p class="text-primary">CHỈNH SỬA PHÒNG BAN</p>
-                            </div>
-                            <div class="form-create d-flex">
-                                <label for="exampleFormControlInput1" class="form-label ">TÊN PHÒNG BAN:</label>
-                                <div class="this-typing pb-6">
-                                    <input type="text" class="form-control" name="">
+                    <tr>
+                        <th scope="row">@item.Name</th>
+                        <td>@item.phone</td>
+                        <td>@item.email</td>
+                        <td>
+                            <label  for="nav-input" class="btn btn-info btn-fix">
+                                CHỈNH SỬA
+                            </label>
+                        </td>
+                        <input hidden class="form-check-input" type="checkbox" id="nav-input">
+                        <label for="nav-input" class="over_lay"></label>
+                        <div class="bg-1 d-flex ">
+                            <div style="display: none;" id="content" class="open_form container mt-10 ">
+                                <label id="btn-close" for="nav-input" class="close_form">
+                                    <i class="fa-2x fa-solid fa-square-xmark"></i>
+                                </label>
+                                <div class="form d-flex ">
+                                    <div class="form-title mt-8 pb-5">
+                                        <p class="text-primary">CHỈNH SỬA PHÒNG BAN</p>
+                                    </div>
+                                    <div class="form-create d-flex">
+                                        <label for="exampleFormControlInput1" class="form-label ">
+                                            TÊN PHÒNG
+                                            BAN:
+                                        </label>
+                                        <div class="this-typing pb-6">
+                                            <input type="text" class="form-control" name="">
+                                        </div>
+                                        <label for="exampleFormControlInput1" class="form-label">
+                                            SỐ ĐIỆN
+                                            THOẠI:
+                                        </label>
+                                        <div class="this-typing pb-6">
+                                            <input type="text" class="form-control" name="">
+                                        </div>
+                                        <label for="exampleFormControlInput1" class="form-label">EMAIL:</label>
+                                        <div class="this-typing pb-6">
+                                            <input type="text" class="form-control" name="">
+                                        </div>
+                                        <button class="btn btn-success mb-5">LƯU</button>
+                                    </div>
                                 </div>
-                                <label for="exampleFormControlInput1" class="form-label">SỐ ĐIỆN THOẠI:</label>
-                                <div class="this-typing pb-6">
-                                    <input type="text" class="form-control" name="">
-                                </div>
-                                <label for="exampleFormControlInput1" class="form-label">EMAIL:</label>
-                                <div class="this-typing pb-6">
-                                    <input type="text" class="form-control" name="">
-                                </div>
-                                <button class="btn btn-success mb-5">LƯU</button>
                             </div>
                         </div>
-                    </div>
-                    <td><button id="delete1" class="btn btn-danger delete">Xoá</td>
-                </tr>
+                        <td><button id="delete1" class="btn btn-danger delete">Xoá</td>
+                    </tr>
                 }
 
             </tbody>
@@ -120,6 +128,30 @@
             }
         });
     }
+</script>
+
+<!--JS cho hien popup -->
+<script>
+    var showpopups = document.querySelectorAll('.btn-fix');
+
+    for (var i = 0; i < showpopups.length; i++) {
+        showpopups[i].addEventListener('click', function (event) {
+            document.getElementById("content").style.display = 'block';
+        })
+    }
+
+    document.getElementById("btn-close").onclick = function () {
+        document.getElementById("content").style.display = 'none';
+    };
+    //document.querySelectorAll('.btn-fix').onclick = function () {
+    //    document.getElementById("content").style.display = 'block ';
+    //};
+
+   
+    
+ 
+
+
 </script>
 
 </html>

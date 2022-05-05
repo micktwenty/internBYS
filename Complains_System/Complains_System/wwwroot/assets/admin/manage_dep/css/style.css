@@ -174,10 +174,10 @@ th {
     display: block;
 }
 
-.form-check-input:checked ~ .open_form {
-    transform: translateY(0);
-    opacity: 1;
-}
+/* .form-check-input:checked ~ .open_form{
+  transform: translateY(0);
+  opacity: 1;
+} */
 
 
 
@@ -186,17 +186,23 @@ th {
 .open_form {
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border-radius: 5px;
-    width: 70% !important;
+    width: 60% !important;
+    right:10rem;
+    bottom:10rem; 
     height: auto;
     align-items: center;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     background-color: #fff;
     z-index: 4;
-    transform: translateY(-200%);
-    transition: transform linear 0.2s, opacity linear 0.2s;
-    opacity: 0;
+    /* transform: translateY(-200%); */
+    /*transition: transform linear 0.2s, opacity linear 0.2s;*/
+    /* opacity: ; */
+    /* display:none !important; */
 }
+
+
+
 
 .close_form {
     position: absolute;
@@ -227,8 +233,9 @@ input {
 }
 
 .form {
-    width: 80%;
+    width: 100%;
     flex-direction: column;
+    text-align: left !important;
 }
 
 .form-title {
