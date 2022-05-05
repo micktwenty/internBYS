@@ -30,6 +30,12 @@ namespace Complains_System.Areas.Admin.Controllers
             var data = await _departmentService.GetListDepartments();
             return View(data);
         }
+        [HttpGet("user-manager")]
+        public async Task<IActionResult> usermanager()
+        {
+            var data = await _userManagementService.GetListUsers();
+            return View(data);
+        }
         [HttpPost("Register-by-Excel-stu")]
         public async Task<bool> RegisterbyExcelforStu([FromForm]IFormFileCollection files)
         {
