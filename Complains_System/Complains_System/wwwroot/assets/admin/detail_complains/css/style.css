@@ -45,9 +45,7 @@
     text-decoration: none;
   }
   
-  .container {
-    height: 750px;
-  }
+
   
   .icon {
     display: inline-flex !important;
@@ -90,21 +88,7 @@
     border-top: 2px solid var(--divider-border-color);
   }
   
-  /* search */
-  /* .topbar .navbar-search{
-  width: 35rem;
-  }
-  
-  #search-height{
-  height: auto;
-  }
-  
-  #btn-search{
-  border-radius: 0 5px 5px 0 ;
-  } */
-  
-  
-  
+
   
   
   /* header */
@@ -149,11 +133,11 @@
     width: 100%;
     z-index: 1000;
   }
-  
-  .form {
-    width: 80%;
+
+.create-account {
+    width: 80% !important;
     flex-direction: column;
-  }
+}
   
   .form-title {
     text-align: center;
@@ -200,3 +184,45 @@
     background-color: rgb(243, 245, 250);
   
   }
+
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+}
+
+.card:hover {
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
+}
+
+.main {
+}
+
+span {
+    margin-left: 10px;
+}
+
+
+a {
+    color: black !important;
+    text-decoration: none !important;
+}
