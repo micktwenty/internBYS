@@ -148,6 +148,28 @@ namespace Complains_System.Controllers
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+        [HttpGet("my-complains/draft")]
+        public async Task<IActionResult> Getmydraftcomplain(GetComplainsPagingRequest request)
+        {
+            ClaimsPrincipal currentUser = this.User;
+            if (currentUser.FindFirst(ClaimTypes.Name) != null)
+            {
+                var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
+                var user = _userService.getUser(Name);
+                request.idStudent = user.IdStudent;
+                request.status = "Bản nháp";
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            var complains = await _complainsManagement.GetOwnPaging(request);
+            var pageNumber = request.page ?? 1;
+            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 6;
+            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+
+        }
         [HttpGet("my-complains/done")]
         public async Task<IActionResult> Getmydonecomplain( GetComplainsPagingRequest request)
         {
@@ -165,7 +187,6 @@ namespace Complains_System.Controllers
             }
             var complains = await _complainsManagement.GetOwnPaging(request);
             var pageNumber = request.page ?? 1;
-            //pageNumber = pageNumber == 0 ? 1 : pageNumber;
             var pageSize = 6;
             return View("Getmycomplain",complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
         }
@@ -204,8 +225,7 @@ namespace Complains_System.Controllers
             }
             return View(complains);
         }
-        
-        //[Authorize(Roles = "student")]
+
         [HttpPost("create-draft")]
         public async Task<IActionResult> CreateDraft(IFormCollection frm)
         {

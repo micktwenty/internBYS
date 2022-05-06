@@ -242,14 +242,18 @@ namespace Complains_System.Catalog.Complains.management
         {
             var query = from c in _context.Complains
                         join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                        join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                        from cpl in complain.DefaultIfEmpty()
                         where c.IdStudent.Equals(request.idStudent)
-                        select new { c, d };
+                        select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
             if (request.status != null)
             {
                 query = from c in _context.Complains
                         join d in _context.Departments on c.IdDepartment equals d.DepartmentId
+                        join e in _context.ImageComplains on c.IdComplains equals e.IdComplain into complain
+                        from cpl in complain.DefaultIfEmpty()
                         where c.IdStudent.Equals(request.idStudent) && c.Status.Equals(request.status)
-                        select new { c, d };
+                        select new { c, d, image = (cpl.Path_image == null) ? "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg" : cpl.Path_image };
             }
             int rows = await query.CountAsync();
 
@@ -263,7 +267,8 @@ namespace Complains_System.Catalog.Complains.management
                     Date = x.c.Date,
                     Reply = x.c.Reply,
                     Status = x.c.Status,
-                    IsPublic = x.c.IsPublic
+                    IsPublic = x.c.IsPublic,
+                    picture = x.image
                 }).ToListAsync();
             var pageResult = new PageResult<ComplainsViewModel>()
             {
