@@ -1,4 +1,7 @@
-﻿
+﻿@model X.PagedList.IPagedList<Complains_System.Catalog.Complains.Dtos.ComplainsViewModel>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 @{
     ViewData["Title"] = "ListDraft";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -31,92 +34,29 @@
 
                 </b>
         </div>
+        @foreach (var item in Model)
+        {
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-10">
+                            <a href="#">
+                                <div class="card-title"><b>@item.Title</b></div>
+                            </a>
+                        </div>
+                        <div class="col-2 clear d-flex">
+                            @if (item.picture != "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg")
+                            {
+                                <a href="#"><img class="sidebar-icon" src="~/ImgComplains/@Url.Content(item.picture)"></a>
+                            }
+                        </div>
+                    </div>
+                    <div id="status">Bản nháp</div>
+                    <footer class="blockquote-footer">@item.Date</footer>
 
-        <div class="card shadow border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                        <a href="#">
-                            <div class="card-title"><b>Cơ sở vật chất xuống cấp</b></div>
-                        </a>
-                    </div>
-                    <div class="col-2 clear d-flex">
-                        <a href="#"><img class="sidebar-icon" src="./assets/img/trash-bin.png"></a>
-                    </div>
                 </div>
-                <div id="status">Bản nháp</div>
-                <footer class="blockquote-footer">15/2/2021 </footer>
-
             </div>
-        </div>
-        <div class="card shadow border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                        <a href="#">
-                            <div class="card-title"><b>Cơ sở vật chất xuống cấp</b></div>
-                        </a>
-                    </div>
-                    <div class="col-2 clear d-flex">
-                        <a href="#"><img class="sidebar-icon" src="./assets/img/trash-bin.png"></a>
-                    </div>
-                </div>
-                <div id="status">Bản nháp</div>
-                <footer class="blockquote-footer">15/2/2021 </footer>
-
-            </div>
-        </div>
-        <div class="card shadow border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                        <a href="#">
-                            <div class="card-title"><b>Cơ sở vật chất xuống cấp</b></div>
-                        </a>
-                    </div>
-                    <div class="col-2 clear d-flex">
-                        <a href="#"><img class="sidebar-icon" src="./assets/img/trash-bin.png"></a>
-                    </div>
-                </div>
-                <div id="status">Bản nháp</div>
-                <footer class="blockquote-footer">15/2/2021 </footer>
-
-            </div>
-        </div>
-        <div class="card shadow border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                        <a href="#">
-                            <div class="card-title"><b>Cơ sở vật chất xuống cấp</b></div>
-                        </a>
-                    </div>
-                    <div class="col-2 clear d-flex">
-                        <a href="#"><img class="sidebar-icon" src="./assets/img/trash-bin.png"></a>
-                    </div>
-                </div>
-                <div id="status">Bản nháp</div>
-                <footer class="blockquote-footer">15/2/2021 </footer>
-
-            </div>
-        </div>
-        <div class="card shadow border-0">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-10">
-                        <a href="#">
-                            <div class="card-title"><b>Cơ sở vật chất xuống cấp</b></div>
-                        </a>
-                    </div>
-                    <div class="col-2 clear d-flex">
-                    </div>
-                </div>
-                <div id="status">Đã duyệt</div>
-                <footer class="blockquote-footer">15/2/2021 </footer>
-
-            </div>
-        </div>
-
+        }
 
 
 

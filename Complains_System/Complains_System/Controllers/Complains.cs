@@ -167,7 +167,7 @@ namespace Complains_System.Controllers
             var pageNumber = request.page ?? 1;
             //pageNumber = pageNumber == 0 ? 1 : pageNumber;
             var pageSize = 6;
-            return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
+            return View("ListDraft", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
         [HttpGet("my-complains/done")]
