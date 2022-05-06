@@ -214,7 +214,22 @@ namespace Complains_System.Controllers
             }
             return BadRequest("Cannot find Complains!");
         }
-
+        [HttpGet("editdraft/{id}")]
+        public async Task<IActionResult> editdraft(int id)
+        {
+            var complains = await _complainsManagement.GetbyId(id);
+            var data = await _departmentService.GetListDepartments();
+            ViewBag.khoa = data;
+            if (complains == null)
+            {
+                return BadRequest("Cannot find Complains!");
+            }
+            if (complains.IsPublic == true || complains.IdStudent == _usermanager.GetUserName(this.User))
+            {
+                return View(complains);
+            }
+            return BadRequest("Cannot find Complains!");
+        }
         [HttpGet("reply-post/{id}")]
         public async Task<IActionResult> replyview(string id)
         {

@@ -6,6 +6,8 @@
     ViewData["Title"] = "ListDraft";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 
 <!doctype html>
 <html lang="en">
@@ -26,13 +28,16 @@
 
 
         <div class=" d-flex justify-content-end">
-            <btn class=" d-flex new_box justify-content-around shadow mb-4">
+            <a asp-action="new-draft" asp-controller="complains">
+                <btn class=" d-flex new_box justify-content-around shadow mb-4">
 
 
-                <div class=""><b>Mới</b></div>
-                <i class="fa-solid fa-plus"></i>
+                    <div class=""><b>Mới</b></div>
+                    <i class="fa-solid fa-plus"></i>
+                </btn>
+            </a>
 
-                </b>
+
         </div>
         @foreach (var item in Model)
         {
@@ -40,14 +45,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-10">
-                            <a href="#">
+                            <a asp-action="editdraft" asp-controller="complains" asp-route-id="@item.IdComplains">
                                 <div class="card-title"><b>@item.Title</b></div>
                             </a>
                         </div>
                         <div class="col-2 clear d-flex">
                             @if (item.picture != "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg")
                             {
-                                <a href="#"><img class="sidebar-icon" src="~/ImgComplains/@Url.Content(item.picture)"></a>
+                                <a asp-action="editdraft" asp-controller="complains" asp-route-id="@item.IdComplains"><img class="sidebar-icon" src="~/ImgComplains/@Url.Content(item.picture)"></a>
                             }
                         </div>
                     </div>
