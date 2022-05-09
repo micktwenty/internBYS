@@ -11,10 +11,10 @@
         <button id="xinchao" class="btn dropdown-toggle btn-header" data-toggle="dropdown">Hi @userService.getUser(UserManager.GetUserName(User)).Name!</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" asp-action="ChangePass" asp-controller="users">
-                <img class="nav-icon" src="~/assets/img/key.png"><span>Đổi mật khẩu</span>
+                <i class="fa-solid fa-key"></i><span>Đổi mật khẩu</span>
             </a>
             <a class="dropdown-item" asp-action="logout" asp-controller="users">
-                <img class="nav-icon" src="~/assets/img/log-out.png"><span>Đăng xuất</span>
+                <i class="fa-solid fa-right-to-bracket"></i><span>Đăng xuất</span>
             </a>
         </div>
     </div>

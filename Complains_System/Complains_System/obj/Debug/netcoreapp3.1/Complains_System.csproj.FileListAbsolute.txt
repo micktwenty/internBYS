@@ -968,3 +968,4 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Ra
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\EditDraft.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\EditDraft.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml.g.cs
+E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml.g.cs

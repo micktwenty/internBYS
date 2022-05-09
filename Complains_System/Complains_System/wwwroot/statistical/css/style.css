@@ -137,6 +137,18 @@
   justify-content: space-around;
   margin: 20px 0 20px 0;
 }
+/*@media (min-width: 63.9375em){
+    
+}*/
+
+
+/*@media  (min-width: 46.25em) and (max-width: 63.9375em){
+    .date-group {
+        display: flex;
+        flex-direction:row-reverse;
+
+
+    }*/
 
 .input-date{
   height: 50px;
@@ -145,7 +157,10 @@
   border-radius:4px;
 }
 
-
+.getdate {
+    width: auto;
+    
+}
 /*  */
 
 .border-left-danger {
