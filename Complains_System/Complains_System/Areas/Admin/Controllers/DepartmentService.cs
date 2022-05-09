@@ -87,6 +87,11 @@ namespace Complains_System.Areas.Admin.Controllers
             var data = await _departmentService.GetListDepartments();
             return View(data);
         }
-
+        [HttpGet("deleting-department")]
+        public async Task<IActionResult> deleting_department(int id)
+        {
+            var data = await _departmentService.DeleteDepartment(id);
+            return RedirectToAction("manage_department");
+        }
     }
 }
