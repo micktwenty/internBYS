@@ -1091,6 +1091,13 @@ hr{
     justify-content: center;
 }
 
+.clear:hover{
+    filter: none;
+    transform: scale(1.1);
+
+}
+
+
 /* newbox */
 .new_box {
     width: 5rem;

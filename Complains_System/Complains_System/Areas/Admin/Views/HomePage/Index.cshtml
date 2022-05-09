@@ -27,7 +27,7 @@
             </div>
 
             <div class="getdate">
-                <button style="font-weight:600" type="submit" class="btn btn-primary ">Lọc Dữ Liệu</button>
+                <button style="font-weight:600" type="submit" class="btn btn-primary ">LỌC DỮ LIỆU</button>
             </div>
         </div>
     }
@@ -128,13 +128,13 @@
         <table class="table table-hover">
             <thead>
                 <tr class="table-info">
-                    <th scope="col">Phòng Ban</th>
-                    <th scope="col">Đã Xử Lý</th>
-                    <th scope="col">Spam</th>
-                    <th scope="col">Đã Huỷ</th>
-                    <th scope="col">Chờ Duyệt</th>
-                    <th scope="col">Hành Động</th>
-                    <th scope="col">Tổng Cộng</th>
+                    <th style="text-align:center" scope="col">Phòng Ban</th>
+                    <th style="text-align:center" scope="col">Đã Xử Lý</th>
+                    <th style="text-align:center" scope="col">Spam</th>
+                    <th style="text-align:center" scope="col">Đã Huỷ</th>
+                    <th style="text-align:center" scope="col">Chờ Duyệt</thstyle="text-align:center">
+                    <th style="text-align:center" scope="col">Hành Động</th>
+                    <th style="text-align:center" scope="col">Tổng Cộng</th>
                 </tr>
             </thead>
 
@@ -144,10 +144,10 @@
                 {
                    
                     <tr>
-                        <th scope="row">@Model.Departments[i].Name</th>
+                        <th style="text-align:center"  scope="row">@Model.Departments[i].Name</th>
                         @for (int j = 0; j < 6; j++)
                         {
-                            <td>
+                            <td style="text-align:center">
 
                                 @if (j == 4)
                                 {
@@ -161,7 +161,7 @@
                                                     };
                                     }
 
-                                    <u><a href="SendMail/@Model.Departments[i].Id"><button type="button" class="btn btn-danger">Warning!</button></a></u>
+                                    <u><a href="SendMail/@Model.Departments[i].Id"><i style="color:red" class="fa-solid fa-triangle-exclamation fa-2x"></i></a></u>
                                 }
                                 else if (j == 5)
                                 {
