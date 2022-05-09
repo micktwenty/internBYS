@@ -50,10 +50,8 @@
                             </a>
                         </div>
                         <div class="col-2 clear d-flex">
-                            @if (item.picture != "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg")
-                            {
-                                <a asp-action="editdraft" asp-controller="complains" asp-route-id="@item.IdComplains"><img class="sidebar-icon" src="~/ImgComplains/@Url.Content(item.picture)"></a>
-                            }
+                            
+                            <a style="color:black" href=""><i style="color:black" class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
                     <div id="status">Bản nháp</div>
