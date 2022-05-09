@@ -1,9 +1,11 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "PhanQuyen";
     Layout = "~/Views/Shared/_Layout2.cshtml";
+    
 }
-
+@using Complains_System.Models
+@inject Complains_System.Catalog.Admin.UserManagement.IUserManagementService UserManager
+@model Complains_System.Catalog.Admin.UserManagement.Dtos.UserViewModel
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,49 +33,36 @@
 
                 <label for="exampleFormControlInput1" class="form-label ">Tên Tài Khoản:</label>
                 <div class="this-typing pb-6">
-                    <input type="text" class="form-control" name="oldpasswords">
+                    <input type="text" class="form-control" name="oldpasswords" value="@Model.user.UserName">
                 </div>
                 <label for="exampleFormControlInput1" class="form-label ">Chọn Quyền Hạng Người Dùng:</label>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked-1"
-                               checked>
-                        <label class="form-check-label" for="flexCheckChecked-1">
-                            Admin
-                        </label>
-                    </div>
-                    <hr>
-                </div>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked-2"
-                               checked>
-                        <label class="form-check-label" for="flexCheckChecked-2">
-                            Ban Giám Hiệu
-                        </label>
-                    </div>
-                    <hr>
-                </div>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked-3"
-                               checked>
-                        <label class="form-check-label" for="flexCheckChecked-3">
-                            Nhân Viên Phòng Ban
-                        </label>
-                    </div>
-                    <hr>
-                </div>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked-4"
-                               checked>
-                        <label class="form-check-label" for="flexCheckChecked-4">
-                            Sinh Viên
-                        </label>
-                    </div>
 
-                </div>
+                @foreach (var item in Model.Role)
+                {
+                    var result = await UserManager.IsInRole(Model.user, item.id);
+
+                    <div>
+                        <div class="form-check">
+                            @if (result)
+                            {
+                                <input class="form-check-input" type="checkbox" value="@item.id" id="flexCheckChecked-1"
+                                       checked>
+                                <label class="form-check-label" for="flexCheckChecked-1">
+                                    @item.Name
+                                </label>
+                            }
+                            else
+                            {
+                                <input class="form-check-input" type="checkbox" value="@item.id" id="flexCheckChecked-1">
+                                <label class="form-check-label" for="flexCheckChecked-1">
+                                    @item.Name
+                                </label>
+                            }
+                        </div>
+                        <hr>
+                    </div>
+                    
+                }
                 <div class="d-flex justify-content-end mb-4 mt-2">
 
                     <button style="font-weight:600" class="btn btn-success ">LƯU</button>

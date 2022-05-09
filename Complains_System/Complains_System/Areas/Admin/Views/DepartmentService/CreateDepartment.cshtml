@@ -3,6 +3,7 @@
     ViewData["Title"] = "CreateDepartment";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!doctype html>
 <html lang="en">
@@ -25,24 +26,27 @@
                 <p class="text-primary">Thêm phòng ban mới</p>
             </div>
             <div class="form-create d-flex">
-                <div class="form-create d-flex">
-                    <label for="exampleFormControlInput1" class="form-label ">Tên Phòng Ban:</label>
-                    <div class="this-typing pb-6">
-                        <input type="text" class="form-control">
-                    </div>
-                    <label for="exampleFormControlInput1" class="form-label ">Số Điện Thoại Phòng Ban:</label>
-                    <div class="this-typing pb-6">
-                        <input type="text" class="form-control">
-                    </div>
-                    <label for="exampleFormControlInput1" class="form-label ">Email Phòng Ban:</label>
-                    <div class="this-typing pb-6">
-                        <input type="text" class="form-control">
-                    </div>
+                <form action="creating-department" method="post">
+                    <div class="form-create d-flex">
+                        <label for="exampleFormControlInput1" class="form-label ">Tên Phòng Ban:</label>
+                        <div class="this-typing pb-6">
+                            <input type="text" class="form-control" name="name">
+                        </div>
+                        <label for="exampleFormControlInput1" class="form-label ">Số Điện Thoại Phòng Ban:</label>
+                        <div class="this-typing pb-6">
+                            <input type="text" class="form-control" name="phone">
+                        </div>
+                        <label for="exampleFormControlInput1" class="form-label ">Email Phòng Ban:</label>
+                        <div class="this-typing pb-6">
+                            <input type="text" class="form-control" name="email">
+                        </div>
 
-                    <div class="justify-content-center mt-2">
-                        <button type="button" class="btn py-2 btn-primary btn-create ">Thêm Mới</button>
+                        <div class="justify-content-center mt-2">
+                            <button type="submit" class="btn py-2 btn-primary btn-create ">Thêm Mới</button>
+                        </div>
                     </div>
-                </div>
+                </form>
+                
 
 
             </div>

@@ -6,12 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace Complains_System.Catalog.Admin.UserManagement
 {
     public interface IUserManagementService
     {
         public Task<List<UserViewModel>> GetListUsers();
+        public Task<List<Role>> GetListRole();
+        public Task<bool> IsInRole(AppUser user, string id);
+
         public Task<bool> ResetPassword(string username);
         public Task<bool> DisableAccount(string username);
         public Task<bool> EnableAccount(string username);

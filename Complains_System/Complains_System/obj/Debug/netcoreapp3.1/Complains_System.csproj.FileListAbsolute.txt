@@ -961,11 +961,10 @@ E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Are
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\usermanager.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_permitPartial.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_permitPartial.cshtml.g.cs
-D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\PhanQuyen.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\PhanQuyen.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\ListDraft.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\ListDraft.cshtml.g.cs
 D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\EditDraft.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Views\Complains\EditDraft.cshtml.g.cs
-D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml.g.cs
-E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\editdepartment.cshtml.g.cs
+D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\Permiting.cshtml.g.cs

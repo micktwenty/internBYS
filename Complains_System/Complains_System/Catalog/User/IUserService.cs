@@ -18,7 +18,7 @@ namespace Complains_System.Catalog.User
         Task<IdentityResult> ChangePassword(ChangePasswordRequest request);
 
         public void Logout();
-        public AppUser getUser(string username);
+        public Task<AppUser> getUser(string username);
 
     }
 }

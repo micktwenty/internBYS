@@ -12,6 +12,7 @@ namespace Complains_System.Catalog.Department
         public Task<int> DeleteDepartment(int id);
         public Task<int> EditDepartment(EditDepartmentRequest request);
         public Task SendWarning(int id);
+        public Task<Complains_System.Models.Department> GetDepartment(int id);
 
 
     }
