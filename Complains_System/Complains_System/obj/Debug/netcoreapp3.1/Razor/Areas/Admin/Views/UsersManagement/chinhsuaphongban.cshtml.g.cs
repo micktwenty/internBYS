@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #pragma checksum "E:\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "5fdb01453e3650c0dc33e354863065f35acf9180"
+=======
+#pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "5fdb01453e3650c0dc33e354863065f35acf9180"
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
 #pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "5fdb01453e3650c0dc33e354863065f35acf9180"
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -18,9 +22,13 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5fdb01453e3650c0dc33e354863065f35acf9180", @"/Areas/Admin/Views/UsersManagement/chinhsuaphongban.cshtml")]
 <<<<<<< HEAD
+<<<<<<< HEAD
     #nullable restore
     public class Areas_Admin_Views_UsersManagement_chinhsuaphongban : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
+=======
+    public class Areas_Admin_Views_UsersManagement_chinhsuaphongban : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
     public class Areas_Admin_Views_UsersManagement_chinhsuaphongban : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -56,7 +64,11 @@ namespace AspNetCore
             WriteLiteral("\r\n");
 #nullable restore
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 2 "E:\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml"
+=======
+#line 2 "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml"
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
 #line 2 "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\UsersManagement\chinhsuaphongban.cshtml"
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -69,9 +81,15 @@ namespace AspNetCore
 #nullable disable
             WriteLiteral("<!doctype html>\r\n<html lang=\"en\">\r\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91804120", async() => {
                 WriteLiteral("\r\n\r\n    <title>Chỉnh sửa phòng ban</title>\r\n    <!-- Required meta tags -->\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n    <!-- Bootstrap CSS -->\r\n\r\n    ");
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5fdb01453e3650c0dc33e354863065f35acf91804627", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91804088", async() => {
+                WriteLiteral("\r\n\r\n    <title>Chỉnh sửa phòng ban</title>\r\n    <!-- Required meta tags -->\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n    <!-- Bootstrap CSS -->\r\n\r\n    ");
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "5fdb01453e3650c0dc33e354863065f35acf91804595", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91804088", async() => {
                 WriteLiteral("\r\n\r\n    <title>Chỉnh sửa phòng ban</title>\r\n    <!-- Required meta tags -->\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n    <!-- Bootstrap CSS -->\r\n\r\n    ");
@@ -104,7 +122,11 @@ namespace AspNetCore
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91806737", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91806705", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fdb01453e3650c0dc33e354863065f35acf91806705", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -171,6 +193,7 @@ namespace AspNetCore
         }
         #pragma warning restore 1998
 <<<<<<< HEAD
+<<<<<<< HEAD
         #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
@@ -192,6 +215,8 @@ namespace AspNetCore
         public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<dynamic> Html { get; private set; } = default!;
         #nullable disable
 =======
+=======
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
@@ -202,6 +227,9 @@ namespace AspNetCore
         public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<dynamic> Html { get; private set; }
+<<<<<<< HEAD
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
+=======
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
     }
 }

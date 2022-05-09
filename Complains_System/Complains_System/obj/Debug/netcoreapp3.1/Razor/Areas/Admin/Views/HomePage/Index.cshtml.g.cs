@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #pragma checksum "E:\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "90297d2de1231088082269935a7e19cb42fb40d1"
+=======
+#pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "427bdba00ece6e5d4f9ac7cfc8bada1a73a16574"
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
 #pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "427bdba00ece6e5d4f9ac7cfc8bada1a73a16574"
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -45,8 +49,12 @@ using X.PagedList.Web.Common;
 #line hidden
 #nullable disable
 <<<<<<< HEAD
+<<<<<<< HEAD
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"90297d2de1231088082269935a7e19cb42fb40d1", @"/Areas/Admin/Views/HomePage/Index.cshtml")]
     #nullable restore
+=======
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"427bdba00ece6e5d4f9ac7cfc8bada1a73a16574", @"/Areas/Admin/Views/HomePage/Index.cshtml")]
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"427bdba00ece6e5d4f9ac7cfc8bada1a73a16574", @"/Areas/Admin/Views/HomePage/Index.cshtml")]
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -93,7 +101,11 @@ using X.PagedList.Web.Common;
 #line hidden
 #nullable disable
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "90297d2de1231088082269935a7e19cb42fb40d15029", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "427bdba00ece6e5d4f9ac7cfc8bada1a73a165745025", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "427bdba00ece6e5d4f9ac7cfc8bada1a73a165745025", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -306,9 +318,12 @@ WriteAttributeValue("", 754, DateTime.Now, 754, 13, false);
             WriteLiteral("                    <tr>\r\n                        <th style=\"text-align:center\"  scope=\"row\">");
 #nullable restore
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 147 "E:\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml"
                                                               Write(Model.Departments[i].Name);
 =======
+=======
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 #line 147 "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml"
                                    Write(Model.Departments[i].Name);
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -349,9 +364,12 @@ WriteAttributeValue("", 754, DateTime.Now, 754, 13, false);
             WriteAttributeValue("", 7335, "SendMail/", 7335, 9, true);
 #nullable restore
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 164 "E:\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml"
 WriteAttributeValue("", 7344, Model.Departments[i].Id, 7344, 24, false);
 =======
+=======
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 #line 164 "D:\Github\internBYS\Complains_System\Complains_System\Areas\Admin\Views\HomePage\Index.cshtml"
 WriteAttributeValue("", 7084, Model.Departments[i].Id, 7084, 24, false);
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -372,7 +390,11 @@ WriteAttributeValue("", 7084, Model.Departments[i].Id, 7084, 24, false);
 #nullable disable
             WriteLiteral("                                    ");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90297d2de1231088082269935a7e19cb42fb40d117164", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "427bdba00ece6e5d4f9ac7cfc8bada1a73a1657416900", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "427bdba00ece6e5d4f9ac7cfc8bada1a73a1657416900", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -426,7 +448,11 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_AnchorTagHelper.RouteValues = parms;
 #nullable disable
             WriteLiteral("                                    ");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90297d2de1231088082269935a7e19cb42fb40d120049", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "427bdba00ece6e5d4f9ac7cfc8bada1a73a1657419806", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "427bdba00ece6e5d4f9ac7cfc8bada1a73a1657419806", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642

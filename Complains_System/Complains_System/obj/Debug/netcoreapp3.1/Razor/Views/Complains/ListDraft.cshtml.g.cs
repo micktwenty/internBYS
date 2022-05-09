@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #pragma checksum "E:\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "8c57b0683f5e276830e78e956e02d2964dc6c24d"
+=======
+#pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc2"
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
 #pragma checksum "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml" "{ff1816ec-aa5e-4d10-87f7-6f4963833460}" "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc2"
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -95,7 +99,11 @@ using X.PagedList.Web.Common;
 #nullable disable
             WriteLiteral("\r\n\r\n<!doctype html>\r\n<html lang=\"en\">\r\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c57b0683f5e276830e78e956e02d2964dc6c24d5268", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc25781", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc25781", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -123,9 +131,15 @@ using X.PagedList.Web.Common;
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n");
 <<<<<<< HEAD
+<<<<<<< HEAD
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c57b0683f5e276830e78e956e02d2964dc6c24d6700", async() => {
                 WriteLiteral("\r\n    <div class=\"mt-4\">\r\n\r\n\r\n        <div class=\" d-flex justify-content-end\">\r\n            ");
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c57b0683f5e276830e78e956e02d2964dc6c24d7061", async() => {
+=======
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc27213", async() => {
+                WriteLiteral("\r\n    <div class=\"mt-4\">\r\n\r\n\r\n        <div class=\" d-flex justify-content-end\">\r\n            ");
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc27574", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
             __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc27213", async() => {
                 WriteLiteral("\r\n    <div class=\"mt-4\">\r\n\r\n\r\n        <div class=\" d-flex justify-content-end\">\r\n            ");
@@ -161,7 +175,11 @@ using X.PagedList.Web.Common;
 #nullable disable
                 WriteLiteral("            <div class=\"card shadow border-0\">\r\n                <div class=\"card-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-10\">\r\n                            ");
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c57b0683f5e276830e78e956e02d2964dc6c24d9382", async() => {
+=======
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc29902", async() => {
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
                 __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9e566f260c88f163a826ec6c0a2ca7f2ad92dc29902", async() => {
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
@@ -210,8 +228,11 @@ using X.PagedList.Web.Common;
                 WriteLiteral("><i style=\"color:black\" class=\"fa-solid fa-trash\"></i></a>\r\n                        </div>\r\n                    </div>\r\n                    <div id=\"status\">Bản nháp</div>\r\n                    <footer class=\"blockquote-footer\">");
 #nullable restore
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 58 "E:\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
 =======
+=======
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 #line 53 "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
                              if (item.picture != "depositphotos_223101402-stock-illustration-complaint-icon-trendy-design-style.jpg")
                             {
@@ -285,6 +306,9 @@ AddHtmlAttributeValue("", 2110, Url.Content(item.picture), 2110, 26, false);
                 WriteLiteral("                        </div>\r\n                    </div>\r\n                    <div id=\"status\">Bản nháp</div>\r\n                    <footer class=\"blockquote-footer\">");
 #nullable restore
 #line 60 "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
+<<<<<<< HEAD
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
+=======
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
                                                  Write(item.Date);
 
@@ -294,7 +318,11 @@ AddHtmlAttributeValue("", 2110, Url.Content(item.picture), 2110, 26, false);
                 WriteLiteral("</footer>\r\n\r\n                </div>\r\n            </div>\r\n");
 #nullable restore
 <<<<<<< HEAD
+<<<<<<< HEAD
 #line 62 "E:\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
+=======
+#line 64 "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
+>>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
 =======
 #line 64 "D:\Github\internBYS\Complains_System\Complains_System\Views\Complains\ListDraft.cshtml"
 >>>>>>> 93550f0504445b6c476112e8b6ef76ace3ddc642
