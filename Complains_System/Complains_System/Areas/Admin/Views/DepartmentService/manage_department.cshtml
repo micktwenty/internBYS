@@ -3,6 +3,7 @@
     ViewData["Title"] = "manage_department";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!doctype html>
 <html lang="en">
@@ -58,45 +59,13 @@
                         <td>@item.phone</td>
                         <td>@item.email</td>
                         <td>
-                            <label  for="nav-input" class="btn btn-info btn-fix">
-                                CHỈNH SỬA
-                            </label>
-                        </td>
-                        <input hidden class="form-check-input" type="checkbox" id="nav-input">
-                        <label for="nav-input" class="over_lay"></label>
-                        <div class="bg-1 d-flex ">
-                            <div style="display: none;" id="content" class="open_form container mt-10 ">
-                                <label id="btn-close" for="nav-input" class="close_form">
-                                    <i class="fa-2x fa-solid fa-square-xmark"></i>
+                            <a asp-controller="DepartmentService" asp-action="editdepartment" asp-route-id="@item.Id">
+                                <label for="nav-input" class="btn btn-info btn-fix">
+                                    CHỈNH SỬA
                                 </label>
-                                <div class="form d-flex ">
-                                    <div class="form-title mt-8 pb-5">
-                                        <p class="text-primary">CHỈNH SỬA PHÒNG BAN</p>
-                                    </div>
-                                    <div class="form-create d-flex">
-                                        <label for="exampleFormControlInput1" class="form-label ">
-                                            TÊN PHÒNG
-                                            BAN:
-                                        </label>
-                                        <div class="this-typing pb-6">
-                                            <input type="text" class="form-control" name="">
-                                        </div>
-                                        <label for="exampleFormControlInput1" class="form-label">
-                                            SỐ ĐIỆN
-                                            THOẠI:
-                                        </label>
-                                        <div class="this-typing pb-6">
-                                            <input type="text" class="form-control" name="">
-                                        </div>
-                                        <label for="exampleFormControlInput1" class="form-label">EMAIL:</label>
-                                        <div class="this-typing pb-6">
-                                            <input type="text" class="form-control" name="">
-                                        </div>
-                                        <button class="btn btn-success mb-5">LƯU</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </a>
+
+                        </td>
                         <td><button id="delete1" class="btn btn-danger delete">Xoá</td>
                     </tr>
                 }
@@ -110,6 +79,11 @@
 
 <!-- kết thúc form xem và sửa phòng ban -->
 
+
+
+
+
+</html>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -129,29 +103,3 @@
         });
     }
 </script>
-
-<!--JS cho hien popup -->
-<script>
-    var showpopups = document.querySelectorAll('.btn-fix');
-
-    for (var i = 0; i < showpopups.length; i++) {
-        showpopups[i].addEventListener('click', function (event) {
-            document.getElementById("content").style.display = 'block';
-        })
-    }
-
-    document.getElementById("btn-close").onclick = function () {
-        document.getElementById("content").style.display = 'none';
-    };
-    //document.querySelectorAll('.btn-fix').onclick = function () {
-    //    document.getElementById("content").style.display = 'block ';
-    //};
-
-   
-    
- 
-
-
-</script>
-
-</html>

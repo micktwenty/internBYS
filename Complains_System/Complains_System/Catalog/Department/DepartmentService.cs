@@ -54,6 +54,12 @@ namespace Complains_System.Catalog.Department
             return await _context.SaveChangesAsync();
         }
 
+        public async Task<Models.Department> GetDepartment(int id)
+        {
+            var dep = await _context.Departments.FindAsync(id);
+            return dep;
+        }
+
         public async Task<List<ListDepartments>> GetListDepartments()
         {
             var query = from c in _context.Departments

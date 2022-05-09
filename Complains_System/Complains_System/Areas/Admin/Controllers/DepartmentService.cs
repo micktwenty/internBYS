@@ -16,6 +16,7 @@ namespace Complains_System.Areas.Admin.Controllers
 
         private readonly IDepartmentService _departmentService;
 
+
         public DepartmentService( IDepartmentService departmentService)
         {
 
@@ -35,13 +36,36 @@ namespace Complains_System.Areas.Admin.Controllers
             }
 
         }
+        [HttpGet("edit-department")]
+        public async Task<IActionResult> editdepartment(int id)
+        {
+            var dep = await _departmentService.GetDepartment(id);
+            return View(dep);
+        }
+        [HttpPost("editting-department")]
+        public async Task<IActionResult> editdepartmentprocess(IFormCollection frm, int id)
+        {
+            var request = new EditDepartmentRequest()
+            {
+                email = frm["email"],
+                phone = frm["phone"],
+                name = frm["name"],
+                id = id
+            };
+            var result = await _departmentService.EditDepartment(request);
+            if (result > 0)
+            {
+                return Ok("OK");
+            }
+            return BadRequest();
+        }
         [HttpGet("new-department")]
         public async Task<IActionResult> CreateDepartment()
         {
             return View();
         }
         [HttpPost("creating-department")]
-        public async Task<IActionResult> CreateDepartment([FromForm] IFormCollection frm)
+        public async Task<IActionResult> CreateDepartmentprocess([FromForm] IFormCollection frm)
         {
             var request = new CreateRequest()
             {
@@ -52,7 +76,7 @@ namespace Complains_System.Areas.Admin.Controllers
            var result =  await _departmentService.CreateDepartment(request);
             if (result > 0)
             {
-                return Ok();
+                return RedirectToAction("CreateDepartment");
             }
             return BadRequest();
         }
