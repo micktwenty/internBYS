@@ -138,8 +138,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         Name = request.Name,
                         UserName = request.Email,
                         IdDepartment = request.IdDepartment,
-                        Email = request.Email,
-                        idteacher = await _context.Employees.MaxAsync(x => x.Id) + 1
+                        Email = request.Email
                     };
                     var result = await _usermanager.CreateAsync(user, request.Password);
 
@@ -163,8 +162,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     {
                         Name = request.Name,
                         Email = request.Email,
-                        DepartmentId = request.IdDepartment,
-                        //Id = await _context.Employees.MaxAsync(x => x.Id) + 1
+                        DepartmentId = request.IdDepartment
                     };
                     _context.Employees.Add(employee);
                     var result_reg = await _context.SaveChangesAsync();
@@ -172,6 +170,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     {
                         return false;
                     }
+                    user.idteacher = employee.Id;
+                    await _context.SaveChangesAsync();
 
                 }
                 else
