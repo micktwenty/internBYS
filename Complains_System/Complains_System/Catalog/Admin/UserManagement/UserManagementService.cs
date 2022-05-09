@@ -90,9 +90,9 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public async Task<List<UserViewModel>> GetListUsers()
         {
             List<UserViewModel> ListUser = new List<UserViewModel>();
-           
+
             var data = from c in _context.AppUsers
-                       select new {c};
+                       select new { c };
             foreach (var item in data)
             {
                 List<string> rolelist = new List<string>();
@@ -102,7 +102,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    roles =  connection.Query<AppUserRole>(sql).ToList();
+                    roles = connection.Query<AppUserRole>(sql).ToList();
                     connection.Close();
 
                 }
@@ -111,14 +111,13 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     var role = await _context.AppRoles.FirstOrDefaultAsync(x => x.Id == roleitem.RoleId);
                     rolelist.Add(role.Name);
                 }
-                var dep  = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == item.c.IdDepartment);
-                
+                var dep = await _context.Departments.FirstOrDefaultAsync(x => x.DepartmentId == item.c.IdDepartment);
+
                 var user = new UserViewModel()
                 {
                     Name = item.c.Name,
                     Department = dep != null ? dep.Name : null,
-                    username = item.c.UserName,
-                    Role = rolelist
+                    username = item.c.UserName
                 };
                 ListUser.Add(user);
             }
@@ -312,5 +311,36 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return fileName;
         }
 
+        public async Task<List<Role>> GetListRole()
+        {
+            var roles = new List<Role>();
+            var sql = $"SELECT Id, Name FROM AppRoles";
+            var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                roles = connection.Query<Role>(sql).ToList();
+                connection.Close();
+            }
+            return roles;
+        }
+
+        public async Task<bool> IsInRole(AppUser user, string id)
+        {
+            var roles = new List<AppUserRole>();
+            var sql = $"SELECT UserId, RoleId FROM AppUserRoles where Userid = '{user.Id}' and RoleId = '{id}'";
+            var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                roles = connection.Query<AppUserRole>(sql).ToList();
+                connection.Close();
+            }
+            if (roles.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

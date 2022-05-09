@@ -78,9 +78,9 @@ namespace Complains_System.Catalog.User
        
 
        
-        public AppUser getUser(string username)
+        public async Task<AppUser> getUser(string username)
         {
-            return _context.AppUsers.Find(username);
+            return await _context.AppUsers.FindAsync(username);
         }
 
 

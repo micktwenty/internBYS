@@ -69,7 +69,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
                 request.status = "Chờ duyệt";
             }
             else
@@ -112,7 +112,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
                 request.status = "Từ chối giải quyết";
             }
             else
@@ -134,7 +134,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
                 request.status = "spam";
             }
             else
@@ -156,7 +156,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
                 request.status = "Bản nháp";
             }
             else
@@ -178,7 +178,7 @@ namespace Complains_System.Controllers
             {
                 var Name = currentUser.FindFirst(ClaimTypes.Name).Value;
                 var user = _userService.getUser(Name);
-                request.idStudent = user.IdStudent;
+                request.idStudent = user.Result.IdStudent;
                 request.status = "Đã duyệt!";
             }
             else
@@ -248,7 +248,7 @@ namespace Complains_System.Controllers
             request.Content = frm["content"];
             request.Title = frm["tieude"];
             var user = _userService.getUser(_usermanager.GetUserName(User));
-            request.IdStudent = user.IdStudent;
+            request.IdStudent = user.Result.IdStudent;
             if (frm.Files.Count > 0)
             {
                 request.ThumbnailImage = frm.Files[0];
@@ -267,7 +267,7 @@ namespace Complains_System.Controllers
         {
             var reply = frm["content"].ToString();
             var user = _userService.getUser(_usermanager.GetUserName(this.User));
-            var ComplainID = await _complainsManagement.SpamPost(reply,Convert.ToInt32(id),user.idteacher);
+            var ComplainID = await _complainsManagement.SpamPost(reply,Convert.ToInt32(id),user.Result.idteacher);
             if (ComplainID == 0)
             {
                 return BadRequest();
@@ -283,7 +283,7 @@ namespace Complains_System.Controllers
             request.Content = frm["content"];
             request.Title = frm["tieude"];
             var user = _userService.getUser(_usermanager.GetUserName(User));
-            request.IdStudent = user.IdStudent;
+            request.IdStudent = user.Result.IdStudent;
             if (frm.Files.Count > 0)
             {
                 request.ThumbnailImage = frm.Files[0];
@@ -311,7 +311,7 @@ namespace Complains_System.Controllers
         public async Task<IActionResult> GetRequestList(int? page)
         {
             var user = _userService.getUser(_usermanager.GetUserName(User));
-            var data = await _complainsManagement.GetRequestPost(user.IdDepartment);
+            var data = await _complainsManagement.GetRequestPost(user.Result.IdDepartment);
             var pageNumber = page ?? 1;
             //pageNumber = pageNumber == 0 ? 1 : pageNumber;
             var pageSize = 10;
@@ -336,7 +336,7 @@ namespace Complains_System.Controllers
         {
             var user = _userService.getUser(_usermanager.GetUserName(this.User));
             var reply = frm["content"];
-            var emp = user.idteacher;
+            var emp = user.Result.idteacher;
             var Result = await _complainsManagement.ReplyComplain(reply,Convert.ToInt32(id),emp);
             if (Result == 0)
             {
@@ -351,7 +351,7 @@ namespace Complains_System.Controllers
         {
             var user = _userService.getUser(_usermanager.GetUserName(this.User));
             var reply = frm["content"];
-            var emp = user.idteacher;
+            var emp = user.Result.idteacher;
             var Result = await _complainsManagement.DenyPost(reply, Convert.ToInt32(id), emp);
             if (Result == 0)
             {

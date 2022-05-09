@@ -1,7 +1,16 @@
 ﻿using Complains_System.Catalog.Admin.UserManagement;
+using Complains_System.Catalog.Admin.UserManagement.Dtos;
 using Complains_System.Catalog.Department;
+using Complains_System.Catalog.User;
+using Complains_System.Constants;
+using Complains_System.EF;
+using Complains_System.Models;
+using Dapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -15,14 +24,22 @@ namespace Complains_System.Areas.Admin.Controllers
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
+        private readonly IUserService _userService;
+        private readonly IConfiguration _configuration;
         private readonly IDepartmentService _departmentService;
+        private readonly ComplainsDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
 
-        public UsersManagementController(IUserManagementService userManagementService, IDepartmentService department)
+
+        public UsersManagementController(UserManager<AppUser> userManager, IUserManagementService userManagementService, IDepartmentService department, IUserService userService, IConfiguration configuration, ComplainsDbContext context)
         {
             _userManagementService = userManagementService;
             _departmentService = department;
-
+            _userService = userService;
+            _configuration = configuration;
+            _context = context;
+            _userManager = userManager;
         }
         [HttpGet("register")]
         public async Task<IActionResult> Register()
@@ -31,9 +48,18 @@ namespace Complains_System.Areas.Admin.Controllers
             return View(data);
         }
         [HttpGet("permitting")]
-        public async Task<IActionResult> PhanQuyen()
+        public async Task<IActionResult> Permiting(string id)
+        
         {
-            return View();
+            var user = await _userService.getUser(id);
+
+            ViewBag.Role = _userManagementService.GetListRole();
+            var result = new UserViewModel()
+            {
+                user = user,
+                Role = await _userManagementService.GetListRole()
+            };
+            return View(result);
         }
         [HttpGet("user-manager")]
         public async Task<IActionResult> usermanager()
