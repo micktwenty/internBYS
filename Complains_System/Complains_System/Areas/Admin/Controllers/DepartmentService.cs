@@ -1,6 +1,7 @@
 ﻿using Complains_System.Catalog.Admin;
 using Complains_System.Catalog.Admin.DepartmentManagement.Dtos;
 using Complains_System.Catalog.Department;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -39,9 +40,15 @@ namespace Complains_System.Areas.Admin.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateDepartment([FromForm] CreateRequest request)
+        [HttpPost("creating-department")]
+        public async Task<IActionResult> CreateDepartment([FromForm] IFormCollection frm)
         {
+            var request = new CreateRequest()
+            {
+                email = frm["email"],
+                phone = frm["phone"],
+                Name = frm["name"]
+            };
            var result =  await _departmentService.CreateDepartment(request);
             if (result > 0)
             {
