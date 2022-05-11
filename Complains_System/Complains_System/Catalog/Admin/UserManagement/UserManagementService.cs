@@ -37,6 +37,24 @@ namespace Complains_System.Catalog.Admin.UserManagement
             _storageService = storageService;
 
         }
+        public async Task<List<UserViewModel>> FindbyKeyword(string username)
+        {
+
+            var query = from c in _context.AppUsers
+                        where c.UserName.Contains(username)
+                        select  c ;
+           
+            //int rows = await query.CountAsync();
+
+            var data = await query
+                .Select(x => new UserViewModel()
+                {
+                    Name = x.Name,
+                    username = x.UserName
+                }).ToListAsync();
+
+            return data;
+        }
         public async Task<bool> DeleteAccount(string username)
         {
             

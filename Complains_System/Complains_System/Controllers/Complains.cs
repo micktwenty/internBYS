@@ -78,7 +78,7 @@ namespace Complains_System.Controllers
             var complains = await _complainsManagement.GetOwnPaging(request);
             var pageNumber = request.page ?? 1;
             pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            var pageSize = 6;
+            var pageSize = 8;
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }

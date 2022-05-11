@@ -6,6 +6,7 @@ using Complains_System.Constants;
 using Complains_System.EF;
 using Complains_System.Models;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
+
 
 namespace Complains_System.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("[Area]")]
+    [Authorize(Roles = "admin")]
     public class UsersManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
@@ -29,10 +33,12 @@ namespace Complains_System.Areas.Admin.Controllers
         private readonly IDepartmentService _departmentService;
         private readonly ComplainsDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signinManager;
 
 
 
-        public UsersManagementController(UserManager<AppUser> userManager, IUserManagementService userManagementService, IDepartmentService department, IUserService userService, IConfiguration configuration, ComplainsDbContext context)
+
+        public UsersManagementController(SignInManager<AppUser> signinManager, UserManager<AppUser> userManager, IUserManagementService userManagementService, IDepartmentService department, IUserService userService, IConfiguration configuration, ComplainsDbContext context)
         {
             _userManagementService = userManagementService;
             _departmentService = department;
@@ -40,6 +46,7 @@ namespace Complains_System.Areas.Admin.Controllers
             _configuration = configuration;
             _context = context;
             _userManager = userManager;
+            _signinManager = signinManager;
         }
         [HttpGet("register")]
         public async Task<IActionResult> Register()
@@ -62,10 +69,21 @@ namespace Complains_System.Areas.Admin.Controllers
             return View(result);
         }
         [HttpGet("user-manager")]
-        public async Task<IActionResult> usermanager()
+
+        public async Task<IActionResult> usermanager(int? page)
         {
+
+            var pageNumber = page ?? 1;
+            pageNumber = pageNumber == 0 ? 1 : pageNumber;
+            var pageSize = 15;
             var data = await _userManagementService.GetListUsers();
-            return View(data);
+            return View(data.OrderBy(x => x.username).ToPagedList(pageNumber, pageSize));
+        }
+        [HttpPost("user-manager/find")]
+        public async Task<IActionResult> finduser( IFormCollection? frm)
+        {
+            var data = await _userManagementService.FindbyKeyword(frm["keyword"]);
+            return View(data.OrderBy(x => x.username).ToList());
         }
         [HttpPost("Register-by-Excel-stu")]
         public async Task<bool> RegisterbyExcelforStu([FromForm]IFormFileCollection files)
