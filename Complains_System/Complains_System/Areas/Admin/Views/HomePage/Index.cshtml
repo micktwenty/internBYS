@@ -15,21 +15,24 @@
 <div class="container">
     @using (Html.BeginForm("ReportforDepartment", "HomePage", "POST"))
     {
-        <div class=" date-group">
+    <div class="container-fluid">
+        <div class="row date-group">
 
-            <div class="getdate">
+            <div class="mt-2 getdate">
                 <b>Từ Ngày:</b>
                 <input class="input-date" type="date" name="startdate" value="@DateTime.Now">
             </div>
-            <div class="getdate">
+            <div class="mt-2 getdate">
                 <b>Đến Ngày:</b>
                 <input class="input-date" type="date" name="enddate">
             </div>
 
-            <div class="getdate">
+            <div class="mt-2 getdate">
                 <button style="font-weight:600" type="submit" class="btn btn-primary ">LỌC DỮ LIỆU</button>
             </div>
         </div>
+
+    </div>
     }
 
 
@@ -124,7 +127,7 @@
 
 
     <hr>
-    <div class="row mr-1 ml-1 ">
+    <div class="table-responsive row mr-1 ml-1 ">
         <table class="table table-hover">
             <thead>
                 <tr class="table-info">
