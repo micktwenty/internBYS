@@ -55,19 +55,19 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <th scope="row">@item.username</th>
-                        <td>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"></label>
-                            </div>
-                        </td>
-                        <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><label for="nav-input" class="btn btn-primary">Cấp quyền</label></a></td>
-                        <td><button class="btn btn-warning">Đặt lại mật khẩu</button></td>
-                        <td><button class="btn btn-danger">Xoá</button></td>
+                <tr>
+                    <th scope="row">@item.username</th>
+                    <td>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                            <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                    </td>
+                    <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><label for="nav-input" class="btn btn-primary">Cấp quyền</label></a></td>
+                    <td><a asp-action="ResetPassword" asp-controller="UsersManagement" asp-route-id="@item.username"><button class="btn btn-danger">Đặt lại mật khẩu</button></a></td>
+                    <td><a asp-action="delete" asp-controller="UsersManagement" asp-route-id="@item.username"><button class="btn btn-danger">Xoá</button></a></td>
 
-                    </tr>
+                </tr>
 
                 }
             </tbody>

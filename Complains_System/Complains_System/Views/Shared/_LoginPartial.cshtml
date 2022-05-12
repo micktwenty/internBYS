@@ -1,13 +1,13 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Complains_System.Catalog.User;
-
+@using Complains_System.Catalog.Admin.UserManagement
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 @inject IUserService userService
+@inject IUserManagementService _usermanaservice
 <link rel="stylesheet" href="~/assets/homepage/css/style.css">
 @if (SignInManager.IsSignedIn(User))
 {
-    
     <div class="col-12">
         <button id="xinchao" class="btn dropdown-toggle btn-header" data-toggle="dropdown">Hi @userService.getUser(UserManager.GetUserName(User)).Result.Name!</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
