@@ -56,14 +56,12 @@
                     <tr>
                         <th scope="row">@item.username</th>
                         <td>
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                                <label class="custom-control-label" for="customSwitch1"></label>
-                            </div>
+                            <a  style="color:black" href=""><i  class="table-icon fa-solid fa-lock"></i></a>
+                            <a class="table-icon" href=""><i class="table-icon fa-solid fa-lock-open"></i></a>
                         </td>
                         <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><label for="nav-input" class="btn btn-primary">Cấp quyền</label></a></td>
                         <td><button class="btn btn-warning">Đặt lại mật khẩu</button></td>
-                        <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
+                        <td><a href=""><i class=" table-icon fa-solid fa-trash"></i></a></td>
 
                     </tr>
 
