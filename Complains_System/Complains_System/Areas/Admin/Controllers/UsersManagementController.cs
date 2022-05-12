@@ -48,6 +48,12 @@ namespace Complains_System.Areas.Admin.Controllers
             _userManager = userManager;
             _signinManager = signinManager;
         }
+        [HttpGet("reset-password")]
+        public async Task<IActionResult> ResetPassword(string id)
+        {
+            var data = await _userManagementService.ResetPassword(id);
+            return RedirectToAction("usermanager");
+        }
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {
@@ -147,10 +153,14 @@ namespace Complains_System.Areas.Admin.Controllers
             return result;
         }
         [HttpGet("delete-acc")]
-        public async Task<bool> delete(string username)
+        public async Task<IActionResult> delete(string id)
         {
-            var result = await _userManagementService.DeleteAccount(username);
-            return result;
+            var result = await _userManagementService.DeleteAccount(id);
+            if (result)
+            {
+                return RedirectToAction("usermanager");
+            }
+            return BadRequest();
         }
     }
 }
