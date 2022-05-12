@@ -16,6 +16,7 @@ namespace Complains_System.Areas.Admin.Controllers
     //[Route("[controller]")]
     //[Area("Admin")]
     [Area("Admin")]
+    [Authorize(Roles ="admin")]
     public class HomePageController : Controller
     {
         private readonly IUserManagementService _userManagementService;
