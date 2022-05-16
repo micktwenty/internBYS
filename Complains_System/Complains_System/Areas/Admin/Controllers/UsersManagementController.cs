@@ -141,16 +141,24 @@ namespace Complains_System.Areas.Admin.Controllers
             return result;
         }
         [HttpGet("disable-acc")]
-        public async Task<bool> disable(string username)
+        public async Task<IActionResult> disable(string id)
         {
-            var result = await _userManagementService.DisableAccount(username);
-            return result;
+            var result = await _userManagementService.DisableAccount(id);
+            if (result)
+            {
+                return RedirectToAction("usermanager");
+            }
+            return BadRequest(result);
         }
         [HttpGet("enable-acc")]
-        public async Task<bool> enable(string username)
+        public async Task<IActionResult> enable(string id)
         {
-            var result = await _userManagementService.EnableAccount(username);
-            return result;
+            var result = await _userManagementService.EnableAccount(id);
+            if (result)
+            {
+                return RedirectToAction("usermanager");
+            }
+            return BadRequest(result);
         }
         [HttpGet("delete-acc")]
         public async Task<IActionResult> delete(string id)

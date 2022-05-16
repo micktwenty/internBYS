@@ -135,7 +135,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
                 {
                     Name = item.c.Name,
                     Department = dep != null ? dep.Name : null,
-                    username = item.c.UserName
+                    username = item.c.UserName,
+                    isActived = item.c.IsActive
                 };
                 ListUser.Add(user);
             }
@@ -319,7 +320,12 @@ namespace Complains_System.Catalog.Admin.UserManagement
             var user = await _usermanager.FindByNameAsync(username);
             var code = await _usermanager.GeneratePasswordResetTokenAsync(user);
             var result = await _usermanager.ResetPasswordAsync(user, code, "Mis@2022");
-            return true;
+            if (result.Succeeded)
+            {
+                return true;
+
+            }
+            return false;
         }
         private async Task<string> SaveFile(IFormFile file)
         {

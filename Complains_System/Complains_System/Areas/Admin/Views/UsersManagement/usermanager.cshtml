@@ -24,12 +24,12 @@
 <body>
     <div class="d-flex align-items-center">
         <div class="col-8 mb-3">
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form asp-action="finduser" asp-controller="UsersManagement" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
                     <input id="search-height" type="text" class="form-control bg-light border-0 small"
                            placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button id="btn-search" class="btn btn-primary" type="button">
+                        <button id="btn-search" class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
                         </button>
                     </div>
@@ -56,12 +56,18 @@
                     <tr>
                         <th scope="row">@item.username</th>
                         <td>
-                            <a  style="color:black" href=""><i  class="table-icon fa-solid fa-lock"></i></a>
-                            <a class="table-icon" href=""><i class="table-icon fa-solid fa-lock-open"></i></a>
+                            @if (!item.isActived)
+                            {
+                                <a style="color:black" asp-action="enable" asp-controller="UsersManagement" asp-route-id="@item.username" ><i class="table-icon fa-solid fa-lock"></i></a>
+                            }
+                            else
+                            {
+                                <a class="table-icon" asp-action="disable" asp-controller="UsersManagement" asp-route-id="@item.username" ><i class="table-icon fa-solid fa-lock-open"></i></a>
+                            }
                         </td>
                         <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-users-gear"></i></a></td>
-                        <td><a><i class="table-icon fa-solid fa-key"></i></a></td>
-                        <td><a href=""><i class=" table-icon fa-solid fa-trash"></i></a></td>
+                        <td><a asp-action="ResetPassword" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-key"></i></a></td>
+                        <td><a asp-action="delete" asp-controller="UsersManagement" asp-route-id="@item.username"><i class=" table-icon fa-solid fa-trash"></i></a></td>
 
                     </tr>
 
@@ -71,13 +77,11 @@
     </div>
     <br />
     <div class="d-flex justify-content-center">
-
         @Html.PagedListPager(Model, page => Url.Action("usermanager", new { page }), new PagedListRenderOptions
         {
         LiElementClasses = new string[] { "page-item" },
         PageClasses = new string[] { "page-link" }
         })
-
     </div>
 
     <!--<input hidden class="form-check-input" type="checkbox" id="nav-input">

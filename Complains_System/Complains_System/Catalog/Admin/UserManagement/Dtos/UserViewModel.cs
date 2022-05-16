@@ -13,6 +13,7 @@ namespace Complains_System.Catalog.Admin.UserManagement.Dtos
         public string Name { get; set; }
         public string Department { get; set; }
         public List<Role> Role { get; set; }
+        public bool isActived { get; set; } 
         
     }
 }
