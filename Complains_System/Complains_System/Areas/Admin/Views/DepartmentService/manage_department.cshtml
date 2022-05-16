@@ -60,13 +60,11 @@
                         <td>@item.email</td>
                         <td>
                             <a asp-controller="DepartmentService" asp-action="editdepartment" asp-route-id="@item.Id">
-                                <label for="nav-input" class="btn btn-info btn-fix">
-                                    CHỈNH SỬA
-                                </label>
+                                <i class="fa-solid fa-pen"></i>
                             </a>
 
                         </td>
-                        <td><a asp-controller="DepartmentService" asp-action="deleting_department" asp-route-id="@item.Id"><button id="delete1" class="btn btn-danger delete">Xoá</button></a></td>
+                        <td><a asp-controller="DepartmentService" asp-action="deleting_department" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a></td>
 
                     </tr>
                 }
