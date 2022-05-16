@@ -74,6 +74,37 @@ namespace Complains_System.Areas.Admin.Controllers
             };
             return View(result);
         }
+
+        [HttpPost("permitting-process")]
+        public async Task<IActionResult> PermitingInProcess(IFormCollection frm)
+
+        {
+            var rolelist = await _userManagementService.GetListRole();
+            var user = _userService.getUser(_userManager.GetUserName(this.User)).Result;
+            foreach (var item in rolelist)
+            {
+                var role = frm[$"{item.id}"];
+                if (role.Contains("true"))
+                {
+                   var check = await _userManagementService.IsInRole(user,item.id);
+                    if (!check)
+                    {
+                        var result = await _userManagementService.AddRole(user.Id, item.id);
+                    }
+                }
+                else if (role.Contains("false"))
+                {
+                    var check = await _userManagementService.IsInRole(user, item.id);
+                    if (check)
+                    {
+                        var result = await _userManagementService.RemoveRole(user.Id, item.id);
+                    }
+                }
+            }
+
+           
+            return Ok();
+        }
         [HttpGet("user-manager")]
 
         public async Task<IActionResult> usermanager(int? page)
