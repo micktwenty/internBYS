@@ -13,6 +13,10 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public Task<List<UserViewModel>> GetListUsers();
         public Task<List<Role>> GetListRole();
         public Task<bool> IsInRole(AppUser user, string id);
+        public Task<bool> AddRole(string id_user, string id_role);
+        public Task<bool> RemoveRole(string id_user, string id_role);
+
+
         public Task<List<UserViewModel>> FindbyKeyword(string username);
         public Task<bool> ResetPassword(string username);
         public Task<bool> DisableAccount(string username);

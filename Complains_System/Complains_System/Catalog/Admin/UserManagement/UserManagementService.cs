@@ -42,8 +42,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
 
             var query = from c in _context.AppUsers
                         where c.UserName.Contains(username)
-                        select  c ;
-           
+                        select c;
+
             //int rows = await query.CountAsync();
 
             var data = await query
@@ -57,7 +57,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
         }
         public async Task<bool> DeleteAccount(string username)
         {
-            
+
             var user = await _usermanager.FindByNameAsync(username);
             var student = await _context.Students.FindAsync(username);
             var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == user.idteacher);
@@ -164,7 +164,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     {
                         return false;
                     }
-                   
+
                     if (user == null) return false;
                     var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_employee}')";
                     var add = 0;
@@ -243,25 +243,25 @@ namespace Complains_System.Catalog.Admin.UserManagement
             if (file != null)
             {
                 string path_file = await this.SaveFile(file);
-         
+
                 FileInfo fileInfo = new FileInfo(Path.GetFullPath($"wwwroot/ImgComplains/{path_file}"));
 
                 ExcelPackage package = new ExcelPackage(fileInfo);
                 ExcelWorksheet ws = package.Workbook.Worksheets.FirstOrDefault();
                 await _storageService.DeleteFileAsync(path_file);
-                for (int rw = 2; rw < ws.Dimension.End.Row ; rw++)
+                for (int rw = 2; rw < ws.Dimension.End.Row; rw++)
                 {
 
                     var sName = ws.Cells[rw, 1].Value; if (sName == null) break;
                     var sIdStudent = ws.Cells[rw, 4].Value.ToString(); if (sIdStudent == null) break;
                     var ssClass = ws.Cells[rw, 2].Value; if (ssClass == null) break;
-                    var sIdDepartment =Convert.ToInt32(ws.Cells[rw, 3].Value); if (ws.Cells[rw, 3].Value == null) break;
+                    var sIdDepartment = Convert.ToInt32(ws.Cells[rw, 3].Value); if (ws.Cells[rw, 3].Value == null) break;
                     var newuser = new RegisterRequest()
                     {
-                        Name = (string) sName,
-                        IdStudent = (string) sIdStudent,
-                        sClass = (string) ssClass,
-                        IdDepartment = (int) sIdDepartment,
+                        Name = (string)sName,
+                        IdStudent = (string)sIdStudent,
+                        sClass = (string)ssClass,
+                        IdDepartment = (int)sIdDepartment,
                         Password = "Mis@2022",
                         ConfirmPassword = "Mis@2022",
                         Isemployee = false,
@@ -292,8 +292,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
                 {
 
                     var sName = ws.Cells[rw, 1].Value; if (sName == null) break;
-                  
-                    var sIdDepartment =Convert.ToInt32( ws.Cells[rw, 2].Value); if (sIdDepartment == 0) break;
+
+                    var sIdDepartment = Convert.ToInt32(ws.Cells[rw, 2].Value); if (sIdDepartment == 0) break;
                     var sEmail = ws.Cells[rw, 3].Value; if (ws.Cells[rw, 3].Value == null) break;
                     var newuser = new RegisterRequest()
                     {
@@ -365,6 +365,36 @@ namespace Complains_System.Catalog.Admin.UserManagement
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> AddRole(string id_user, string id_role)
+        {
+            var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{id_user}','{id_role}')";
+            var add = 0;
+            var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                add = await connection.ExecuteAsync(sql);
+                connection.Close();
+            }
+            if (add == 0) return false;
+            return true;
+        }
+
+        public async Task<bool> RemoveRole(string id_user, string id_role)
+        {
+            var sql = $"DELETE FROM APPUSERROLES WHERE USERID = '{id_user}' AND ROLEID ='{id_role}'";
+            var add = 0;
+            var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                add = await connection.ExecuteAsync(sql);
+                connection.Close();
+            }
+            if (add == 0) return false;
+            return true;
         }
     }
 }
