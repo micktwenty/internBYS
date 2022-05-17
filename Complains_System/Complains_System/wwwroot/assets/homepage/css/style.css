@@ -42,7 +42,7 @@
 }
 
 #xinchao {
-    font-size: 12px;
+    font-size: 1em;
     font-weight: bold;
     border: 0 0 0 0;
 }
@@ -319,10 +319,10 @@ hr{
         color: #fff;
     }
 
-    #hero h2 {
+    #hero h3 {
         color: rgba(255, 255, 255, 0.6);
         margin-bottom: 50px;
-        font-size: 24px;
+        font-size: 22px;
     }
 
     #hero .btn-get-started {
@@ -395,7 +395,7 @@ hr{
         line-height: 36px;
     }
 
-    #hero h2 {
+    #hero h3 {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 30px;

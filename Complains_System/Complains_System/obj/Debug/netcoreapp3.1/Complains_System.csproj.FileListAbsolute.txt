@@ -971,3 +971,4 @@ D:\Github\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Ra
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\DepartmentService\editdepartment.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\finduser.cshtml.g.cs
 E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\UsersManagement\Permiting.cshtml.g.cs
+E:\internBYS\Complains_System\Complains_System\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomePage\welcome.cshtml.g.cs
