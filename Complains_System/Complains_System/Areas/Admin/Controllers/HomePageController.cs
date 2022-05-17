@@ -16,7 +16,6 @@ namespace Complains_System.Areas.Admin.Controllers
     //[Route("[controller]")]
     //[Area("Admin")]
     [Area("Admin")]
-    [Authorize(Roles = "complain_department")]
     public class HomePageController : Controller
     {
         private readonly IUserManagementService _userManagementService;
@@ -30,18 +29,25 @@ namespace Complains_System.Areas.Admin.Controllers
             _complain = complain;
             _departmentService = departmentService;
         }
+        [Authorize(Roles = "admin")]
 
-        public async Task<IActionResult> Index(int? page)
+        public async Task<IActionResult> Index()
+        {
+            return View("welcome");
+        }
+
+        [Authorize(Roles = "complain_department")]
+        [Route("thongke")]
+        public async Task<IActionResult> review_department(int? page)
         {
             ViewData["Title"] = "Quản trị viên";
             var listKhoa = await _departmentService.GetListDepartments();
-            
+
             var report_all = _complain.Statistics_Report(page);
             report_all.Departments = listKhoa;
             return View(report_all);
         }
-
-
+        [Authorize(Roles = "complain_department")]
         public async Task<IActionResult> ReportforDepartment([FromForm] IFormCollection frm, int? page)
         {
             if (ModelState.IsValid)
@@ -63,11 +69,11 @@ namespace Complains_System.Areas.Admin.Controllers
                 catch (FormatException)
                 {
 
-                    return RedirectToAction("Index","Homepage");
+                    return RedirectToAction("review_department","Homepage");
                 }
             }
            
-            return View("Index");
+            return View("review_department");
         }
            
 
