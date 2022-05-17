@@ -1,6 +1,7 @@
 ﻿using Complains_System.Catalog;
 using Complains_System.Catalog.Admin.ComplainsManagement;
 using Complains_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace Complains_System.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="admin")]
     public class ComplainsService : Controller
     {
         private readonly IComplainsService _complainsService;

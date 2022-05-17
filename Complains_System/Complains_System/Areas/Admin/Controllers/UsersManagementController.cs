@@ -80,30 +80,32 @@ namespace Complains_System.Areas.Admin.Controllers
 
         {
             var rolelist = await _userManagementService.GetListRole();
-            var user = _userService.getUser(_userManager.GetUserName(this.User)).Result;
+            var user = _userService.getUser(frm["username"]).Result;
+            bool result = true;
             foreach (var item in rolelist)
             {
                 var role = frm[$"{item.id}"];
-                if (role.Contains("true"))
+                if (role == ($"{item.id}"))
                 {
                    var check = await _userManagementService.IsInRole(user,item.id);
                     if (!check)
                     {
-                        var result = await _userManagementService.AddRole(user.Id, item.id);
+                         result = await _userManagementService.AddRole(user.Id, item.id);
                     }
+                    
                 }
-                else if (role.Contains("false"))
+                else
                 {
                     var check = await _userManagementService.IsInRole(user, item.id);
                     if (check)
                     {
-                        var result = await _userManagementService.RemoveRole(user.Id, item.id);
+                         result = await _userManagementService.RemoveRole(user.Id, item.id);
                     }
                 }
             }
 
            
-            return Ok();
+            return Ok(result);
         }
         [HttpGet("user-manager")]
 

@@ -19,7 +19,6 @@ namespace Complains_System.Controllers
 {
     [Route("/[controller]")]
 
-    //[Authorize]
     public class Complains : Controller
     {
         private readonly IComplainsManagement _complainsManagement;
@@ -58,9 +57,9 @@ namespace Complains_System.Controllers
             return View(result);
         }
 
-       
 
 
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains")]
         public async Task<IActionResult> Getmycomplain(GetComplainsPagingRequest request)
         {
@@ -82,6 +81,7 @@ namespace Complains_System.Controllers
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains/request")]
         public async Task<IActionResult> Getmyrequestcomplain(GetComplainsPagingRequest request)
         {
@@ -104,6 +104,8 @@ namespace Complains_System.Controllers
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains/deny")]
         public async Task<IActionResult> Getmydenycomplain( GetComplainsPagingRequest request)
         {
@@ -126,6 +128,8 @@ namespace Complains_System.Controllers
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains/spam")]
         public async Task<IActionResult> Getmyspamcomplain(GetComplainsPagingRequest request)
         {
@@ -148,6 +152,8 @@ namespace Complains_System.Controllers
             return View("Getmycomplain", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains/draft")]
         public async Task<IActionResult> Getmydraftcomplain(GetComplainsPagingRequest request)
         {
@@ -170,6 +176,8 @@ namespace Complains_System.Controllers
             return View("ListDraft", complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
 
         }
+
+        [Authorize(Roles = "student")]
         [HttpGet("my-complains/done")]
         public async Task<IActionResult> Getmydonecomplain( GetComplainsPagingRequest request)
         {
@@ -190,6 +198,8 @@ namespace Complains_System.Controllers
             var pageSize = 6;
             return View("Getmycomplain",complains.item.OrderByDescending(x => x.Date).ToPagedList(pageNumber, pageSize));
         }
+
+
         [HttpGet("{IdComplain}")]
         public async Task<IActionResult> GetbyID(int IdComplain)
         {
@@ -200,7 +210,8 @@ namespace Complains_System.Controllers
             }
             return Ok(complains);
         }
-        [HttpGet("viewdetail/{id}")]
+
+        [HttpGet("viewdetail")]
         public async Task<IActionResult> viewdetail(int id)
         {
             var complains = await _complainsManagement.GetbyId(id);
@@ -214,7 +225,9 @@ namespace Complains_System.Controllers
             }
             return BadRequest("Cannot find Complains!");
         }
-        [HttpGet("editdraft/{id}")]
+
+        [Authorize(Roles = "student")]
+        [HttpGet("editdraft")]
         public async Task<IActionResult> editdraft(int id)
         {
             var complains = await _complainsManagement.GetbyId(id);
@@ -230,7 +243,9 @@ namespace Complains_System.Controllers
             }
             return BadRequest("Cannot find Complains!");
         }
-        [HttpGet("reply-post/{id}")]
+
+        [Authorize(Roles = "employee")]
+        [HttpGet("reply-post")]
         public async Task<IActionResult> replyview(string id)
         {
             var complains = await _complainsManagement.GetbyId(Convert.ToInt32(id));
@@ -241,6 +256,8 @@ namespace Complains_System.Controllers
             return View(complains);
         }
 
+
+        [Authorize(Roles = "student")]
         [HttpPost("create-draft")]
         public async Task<IActionResult> CreateDraft(IFormCollection frm)
         {
@@ -262,7 +279,9 @@ namespace Complains_System.Controllers
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
             return Ok(complain);
         }
-        [HttpPost("Spam/{id}")]
+
+        [Authorize(Roles = "employee")]
+        [HttpPost("Spaming-post")]
         public async Task<IActionResult> SpamPost(IFormCollection frm, string id)
         {
             var reply = frm["content"].ToString();
@@ -275,7 +294,7 @@ namespace Complains_System.Controllers
             return RedirectToAction("GetRequestList");
         }
 
-        //[Authorize(Roles = "student")]
+        [Authorize(Roles = "student")]
         [HttpPost]
         public async Task<IActionResult> RequestPosting(IFormCollection frm)
         {
@@ -299,7 +318,7 @@ namespace Complains_System.Controllers
             return View("viewdetail",complain);
         }
 
-        //[Authorize(Roles = "student")]
+        [Authorize(Roles = "student")]
         [HttpGet("new-draft")]
         public async Task<IActionResult> NewDraft()
         {
@@ -307,6 +326,7 @@ namespace Complains_System.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "employee")]
         [HttpGet("request-post-list")]
         public async Task<IActionResult> GetRequestList(int? page)
         {
@@ -330,7 +350,7 @@ namespace Complains_System.Controllers
             return Ok();
         }
 
-        //[Authorize(Roles = "employee")]
+        [Authorize(Roles = "employee")]
         [HttpPost("reply/{id}")]
         public async Task<IActionResult> ReplyComplain(IFormCollection frm, string id)
         {

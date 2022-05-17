@@ -1,6 +1,7 @@
 ﻿using Complains_System.Catalog.Admin;
 using Complains_System.Catalog.Admin.DepartmentManagement.Dtos;
 using Complains_System.Catalog.Department;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace Complains_System.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="admin")]
     public class DepartmentService : Controller
     {
 
