@@ -9,8 +9,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
 {
     public class RegisterRequest
     {
-         [Display(Name="Tạo cho nhân viên nhà trường?")]
-        public bool Isemployee { get; set; }
+
+        public bool? Isemployee { get; set; }
 
         public string Name { get; set; }
         public string UserName { get; set; }
@@ -18,6 +18,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
         public string Email { get; set; }
         public int IdDepartment { get; set; }
         public string sClass { get; set; }
+        public string phone { get; set; }
 
         public string IdStudent { get; set; }
         public string Password { get; set; }

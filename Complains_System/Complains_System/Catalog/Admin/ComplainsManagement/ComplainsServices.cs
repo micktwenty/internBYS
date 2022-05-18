@@ -10,18 +10,22 @@ using Complains_System.Constants;
 using Microsoft.Data.SqlClient;
 using X.PagedList;
 using Complains_System.Catalog.Complains.Dtos;
+using Complains_System.Catalog.Department;
 
 namespace Complains_System.Catalog.Admin.ComplainsManagement
 {
     public class ComplainsServices : IComplainsService
     {
         private readonly ComplainsDbContext _context;
+        private readonly IDepartmentService _dep;
+
         private readonly IConfiguration _configuration;
 
-        public ComplainsServices(ComplainsDbContext context, IConfiguration configuration)
+        public ComplainsServices(ComplainsDbContext context, IConfiguration configuration, IDepartmentService dep)
         {
             _context = context;
             _configuration = configuration;
+            _dep = dep;
         }
 
         public async Task<List<ComplainsViewModel>> GetListComplains(GetListRequest request)
@@ -153,26 +157,27 @@ namespace Complains_System.Catalog.Admin.ComplainsManagement
         }
         private string[,] thongke(StatisticalRequest? request)
         {
-            List<Complains_System.Models.Department> dep = new List<Complains_System.Models.Department>();
-            var sql2 = $"SELECT * FROM Departments";
+            //List<Complains_System.Models.Department> dep = new List<Complains_System.Models.Department>();
+            //var sql2 = $"SELECT * FROM Departments";
             TimeSpan aInterval = new System.TimeSpan(1, 0, 0, 0);
 
             var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                dep = connection.Query<Models.Department>(sql2).ToList();
-                connection.Close();
-            }
-            string[,] thongke = new string[dep.Count,5];
+            //using (var connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    dep = connection.Query<Models.Department>(sql2).ToList();
+            //    connection.Close();
+            //}
+            var listDep =  _dep.GetListDepartments().Result;
+            string[,] thongke = new string[listDep.Count,5];
             int j = 0;
-            foreach (var item in dep)
+            foreach (var item in listDep)
             {
 
-                var sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {j + 1}";
+                var sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {item.Id}";
                 if (request != null)
                 {
-                    sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {j + 1} and date between '{request.startdate.Subtract(aInterval)}' and '{request.enddate.Add(aInterval)}'";
+                    sql = $"SELECT * FROM Complains where [status] <> N'Bản nháp' and IdDepartment = {item.Id} and date between '{request.startdate.Subtract(aInterval)}' and '{request.enddate.Add(aInterval)}'";
                 }
                 List<Complain> complains = new List<Complain>();
 

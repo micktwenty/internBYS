@@ -36,7 +36,7 @@ namespace Complains_System.Areas.Admin.Controllers
             return View("welcome");
         }
 
-        [Authorize(Roles = "complain_department")]
+        [Authorize(Roles = "board_of_director")]
         [Route("thongke")]
         public async Task<IActionResult> review_department(int? page)
         {
@@ -47,7 +47,7 @@ namespace Complains_System.Areas.Admin.Controllers
             report_all.Departments = listKhoa;
             return View(report_all);
         }
-        [Authorize(Roles = "complain_department")]
+        [Authorize(Roles = "board_of_director")]
         public async Task<IActionResult> ReportforDepartment([FromForm] IFormCollection frm, int? page)
         {
             if (ModelState.IsValid)

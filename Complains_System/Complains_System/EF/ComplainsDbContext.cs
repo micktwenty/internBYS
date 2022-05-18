@@ -26,6 +26,8 @@ namespace Complains_System.EF
             modelBuilder.ApplyConfiguration(new AppUsersConfigurations());
             modelBuilder.ApplyConfiguration(new ImageComplainsConfigurations());
             modelBuilder.ApplyConfiguration(new StudentsConfigurations());
+            modelBuilder.ApplyConfiguration(new BoardOfDirectorsConfigurations());
+
             //Data Seeding
             modelBuilder.Seed();
 
@@ -44,6 +46,8 @@ namespace Complains_System.EF
         public virtual DbSet<AppUser> AppUsers { get; set; }
         public virtual DbSet<AppUserRole> AppUserRoles { get; set; }
         public virtual DbSet<AppRole> AppRoles { get; set; }
+        public virtual DbSet<BoardOfDirectors> BoardOfDirectors { get; set; }
+
 
 
 

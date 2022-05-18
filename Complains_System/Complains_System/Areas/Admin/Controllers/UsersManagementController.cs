@@ -57,6 +57,7 @@ namespace Complains_System.Areas.Admin.Controllers
         [HttpGet("register")]
         public async Task<IActionResult> Register()
         {
+           
             var data = await _departmentService.GetListDepartments();
             return View(data);
         }
@@ -148,6 +149,31 @@ namespace Complains_System.Areas.Admin.Controllers
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var result = await _userManagementService.Register(request);
             return result;
+        }
+        [HttpPost("register-director")]
+        public async Task<IActionResult> RegisterforDirector([FromForm] IFormCollection frm)
+        {
+            var request = new RegisterRequest()
+            {
+                Email = frm["email"],
+                Name = frm["name"],
+                phone =frm["phone"],
+                Isemployee = null,
+                Password = "Due@2022",
+                ConfirmPassword = "Due@2022"
+            };
+            var result = await _userManagementService.Register(request);
+            string message;
+            if (result)
+            {
+                message = "Tạo mới thành công!";
+            }
+            else
+            {
+                message = "Tạo mới không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("Register");
         }
         [HttpPost("Register-by-Excel-emp")]
         public async Task<bool> RegisterbyExcelforEmployee([FromForm] IFormFileCollection emp_files)

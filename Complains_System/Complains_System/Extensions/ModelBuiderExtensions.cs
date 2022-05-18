@@ -12,7 +12,9 @@ namespace Complains_System.Extensions
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<BoardOfDirectors>().HasData(
+               new BoardOfDirectors() {id = 1, name = "Nguyễn Mạnh Toàn", email = "ngmanhtoan@due.udn.vn", phone="0978456112" }
+               );
 
             modelBuilder.Entity<Department>().HasData(
                new Department() {DepartmentId = 1,  Email = "ngquthien3520@gmail.com" , Name = "Kế toán"},
@@ -99,7 +101,7 @@ namespace Complains_System.Extensions
             }, new AppRole
             {
                 Id = "A639AE1A-D634-455C-BC58-E68883695BE2",
-                Name = "complain_department",
+                Name = "board_of_director",
                 NormalizedName = "Manager of Complains Department.",
                 Description = "comlplains department role"
             }
@@ -117,12 +119,29 @@ namespace Complains_System.Extensions
                 PasswordHash = hasher.HashPassword(null, "Mis@2022"),
                 SecurityStamp = string.Empty,
                 Name = "Thien"
+            },
+            new AppUser
+            {
+                Id = "D7109CE2-34E7-4736-9687-4418A3973285",
+                UserName = "ngmanhtoan@due.udn.vn",
+                NormalizedUserName = "Toan",
+                Email = "ngmanhtoan@due.udn.vn",
+                NormalizedEmail = "ngmanhtoan@due.udn.vn",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Mis@2022"),
+                SecurityStamp = string.Empty,
+                Name = "Nguyễn Mạnh Toàn"
             });
 
             modelBuilder.Entity<AppUserRole>().ToTable("AppUserRoles").HasData(new AppUserRole
             {
                 RoleId = roleId,
                 UserId = adminId
+            },
+            new AppUserRole
+            {
+                RoleId = "A639AE1A-D634-455C-BC58-E68883695BE2",
+                UserId = "D7109CE2-34E7-4736-9687-4418A3973285"
             });
         }
     }

@@ -63,6 +63,7 @@ namespace Complains_System.Catalog.Department
         public async Task<List<ListDepartments>> GetListDepartments()
         {
             var query = from c in _context.Departments
+                        
                         select c;
             var data = await query.Select(x => new ListDepartments()
             {

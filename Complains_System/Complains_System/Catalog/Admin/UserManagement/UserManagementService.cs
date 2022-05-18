@@ -149,7 +149,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
             var result_vali = await validation.ValidateAsync(request);
             if (result_vali.IsValid)
             {
-                if (request.Isemployee)
+                if (request.Isemployee == true)
                 {
                     var user = new AppUser()
                     {
@@ -192,7 +192,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     await _context.SaveChangesAsync();
 
                 }
-                else
+                else if(request.Isemployee == false)
                 {
                     var user = new AppUser()
                     {
@@ -227,6 +227,44 @@ namespace Complains_System.Catalog.Admin.UserManagement
                         DepartmentId = request.IdDepartment
                     };
                     _context.Students.Add(student);
+                    var result_reg = await _context.SaveChangesAsync();
+                    if (result_reg == 0)
+                    {
+                        return false;
+                    }
+                }
+                else if (request.Isemployee == null)
+                {
+                    var user = new AppUser()
+                    {
+                        Name = request.Name,
+                        UserName = request.Email,
+                        Email = request.Email,
+
+                    };
+                    var result = await _usermanager.CreateAsync(user, request.Password);
+                    if (!result.Succeeded) return false;
+
+                    if (user == null) return false;
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_complaint_dep}')";
+                    var add = 0;
+                    var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        add = await connection.ExecuteAsync(sql);
+                        connection.Close();
+
+                    }
+                    if (add == 0) return false;
+
+                    var director = new BoardOfDirectors()
+                    {
+                        name = request.Name,
+                        email = request.Email,
+                        phone = request.phone,
+                    };
+                    _context.BoardOfDirectors.Add(director);
                     var result_reg = await _context.SaveChangesAsync();
                     if (result_reg == 0)
                     {

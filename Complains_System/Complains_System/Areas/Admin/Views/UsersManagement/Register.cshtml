@@ -20,6 +20,11 @@
 </head>
 
 <body>
+    @if (TempData["Noti"] != null)
+    {
+        <partial name="_statusMessage" model="@TempData["Noti"]" />
+        <div hidden> @TempData.Remove("Noti");</div>
+    }
     <div class="switchtabs">
         <div class="tabs d-flex justify-content-center">
             <div class="tab-item active">
@@ -101,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="justify-content-center mt-2">
-                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Upload</button>
                                 </div>
                             </form>
                         </div>
@@ -155,7 +160,7 @@
 
                                     </div>
                                     <div class="col-4">
-                                        <a  style="color:black" href="https://drive.google.com/uc?id=1YFKzEE9EePb7T5LLK1JjYbndOQaU06CJ&export=download"><i class=" fa-2x fa-solid fa-download import-file"></i></a>
+                                        <a style="color:black" href="https://drive.google.com/uc?id=1YFKzEE9EePb7T5LLK1JjYbndOQaU06CJ&export=download"><i class=" fa-2x fa-solid fa-download import-file"></i></a>
                                     </div>
                                 </div>
                                 <div class="row mt-5 mb-4">
@@ -167,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="justify-content-center mt-2">
-                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo Mới</button>
+                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Upload</button>
                                 </div>
                             </form>
                         </div>
@@ -179,21 +184,25 @@
                 <div class="create-account container mt-10 d-flex">
 
                     <div class="form d-flex">
-
-                        <div class="form-create mt-5 d-flex">
-                            <label for="exampleFormControlInput1" class="form-label ">Tên Người Dùng:</label>
-                            <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="oldpasswords">
+                        <form action="register-director" method="post" enctype="multipart/form-data">
+                            <div class="form-create mt-5 d-flex">
+                                <label for="exampleFormControlInput1" class="form-label ">Tên Người Dùng:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Email Người Dùng:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <label for="exampleFormControlInput1" class="form-label">Số điện thoại:</label>
+                                <div class="this-typing pb-6">
+                                    <input type="text" class="form-control" name="phone">
+                                </div>
+                                <div class="justify-content-center mt-2">
+                                    <button type="submit" class="btn py-2 btn-primary btn-create ">Tạo</button>
+                                </div>
                             </div>
-                            <label for="exampleFormControlInput1" class="form-label">Email Người Dùng:</label>
-                            <div class="this-typing pb-6">
-                                <input type="text" class="form-control" name="oldpasswords">
-                            </div>
-
-                            <div class="justify-content-center mt-2">
-                                <button type="button" class="btn py-2 btn-primary btn-create ">Upload</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>

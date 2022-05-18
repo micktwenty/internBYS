@@ -13,7 +13,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
             RuleFor(x => x.ConfirmPassword).Equal(x => x.Password).WithMessage("Mật khẩu chưa khớp!")
                 .NotEmpty().WithMessage("Vui lòng nhập đầy đủ!");
             RuleFor(x => x.Password).NotEmpty().WithMessage("Vui lòng nhập đầy đủ!");
-            RuleFor(x => x.IdDepartment).NotEmpty().WithMessage("Vui lòng nhập đầy đủ!");
+            //RuleFor(x => x.IdDepartment).NotEmpty().WithMessage("Vui lòng nhập đầy đủ!");
             RuleFor(x => x.Name).NotEmpty().WithMessage("Vui lòng nhập đầy đủ!");
         }
     }
