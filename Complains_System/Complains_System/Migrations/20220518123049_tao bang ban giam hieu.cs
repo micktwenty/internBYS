@@ -51,8 +51,8 @@ namespace Complains_System.Migrations
 
             migrationBuilder.InsertData(
                 table: "AppUserRoles",
-                columns: new[] { "RoleId", "UserId", "Discriminator" },
-                values: new object[] { "A639AE1A-D634-455C-BC58-E68883695BE2", "D7109CE2-34E7-4736-9687-4418A3973285", "AppUserRole" });
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "A639AE1A-D634-455C-BC58-E68883695BE2", "D7109CE2-34E7-4736-9687-4418A3973285" });
 
             migrationBuilder.UpdateData(
                 table: "AppUsers",

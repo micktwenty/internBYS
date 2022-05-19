@@ -216,7 +216,7 @@ span {
 
 
 #blah {
-    max-width: 180px;
+    max-width: 350px;
 }
 
 input[type=file] {
@@ -1112,4 +1112,49 @@ hr{
 
 .collapse:not(.show) {
     display: none;
+}
+
+@media (max-width: 994px) {
+    .navbar{
+        transform: translateX(-100%);
+        margin: 0 0 0 0 !important;
+    }
+
+    
+
+}
+
+@media (max-width: 992px) {
+    .nav-close-btn {
+        display: block !important;
+    }
+}
+
+.nav-input:checked ~ .navbar {
+        transform: translateX(0%);
+    }
+
+@media (max-width:992px) {
+        .nav-bar-btn {
+            display: block !important;
+        }
+    }
+
+    .nav-bar-btn {
+        display: none;
+        background-color: rgb(55,81,126);
+        margin: 0 0 0 0;
+    }
+
+    .nav-close-btn {
+        right: 3px;
+        display: none;
+        position: fixed;
+        right: 5px;
+        top: 5px;
+    }
+
+@media (max-width:700px){
+    .repon-card{
+        flex-direction:column;
 }

@@ -27,13 +27,13 @@
             {
                 <a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">
                     <div class="card shadow border-0">
-                        <div class="row">
+                        <div class="row repon-card">
                             @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                            <div class="col-4">
+                            <div class="col-md-4 col-xs-12">
 
                                 @if (item.picture != null)
                                 {
-                                    <div><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
+                                    <div class="text-center"><img class="imgpost" src="~/ImgComplains/@Url.Content(item.picture)"></div>
                                 }
                                 @if (item.picture == null)
                                 {
@@ -43,7 +43,7 @@
 
                             </div>
                             @*<a asp-action="viewdetail" asp-controller="complains" asp-route-id="@item.IdComplains">*@
-                            <div class="col-8">
+                            <div class="col-md-8 col-xs-12">
                                 <div class="card-body">
                                     <h5 class="card-title">@item.Title</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">@item.Date</h6>

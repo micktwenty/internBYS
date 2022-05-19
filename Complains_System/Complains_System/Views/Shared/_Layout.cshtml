@@ -12,16 +12,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light mt-4" id="mainNav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="~/">DUE COMPLAINTS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+
+
+    <div>
+        <label for="nav-mobile-input" class="nav-bar-btn">
+            <i style="color:white"class="fa-2x fas fa-bars"></i>
+
+        </label>
+        <input type="checkbox" hidden name="" class="nav-input" id="nav-mobile-input">
+        <nav class="navbar navbar-expand-lg navbar-light pt-lg-4" id="mainNav">
+            <div class="container justify-content-center px-4 px-lg-5">
+                <a class="navbar-brand" href="~/">DUE COMPLAINTS</a>
+                <label for="nav-mobile-input" class="nav-close-btn">
+                    <i style="color:red" class="fa-2x fa-solid fa-xmark"></i>
+
+                </label>
+
+                @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu*@
+
+                @*</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">*@
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-action="Find" asp-controller="Complains" method="post">
+                <form class=" d-xs-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-action="Find" asp-controller="Complains" method="post">
                     <div class="input-group">
                         <input type="search" class="form-control bg-light border-0 small" placeholder="Nhập từ khoá..."
                                aria-label="Search" name="search" aria-describedby="basic-addon2">
@@ -34,7 +49,7 @@
                 </form>
                 <ul class="navbar-nav ms-auto py-4 py-lg-0 align-items-center">
 
-                    <li  class="nav-item"><a class="nav-link" href="/thongke"> THỐNG KÊ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/thongke"> THỐNG KÊ</a></li>
                     <li class="nav-item"><a class="nav-link " href="/Complains/request-post-list"> DUYỆT BÀI</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin"> QUẢN TRỊ VIÊN</a></li>
                     <li class="nav-item mr-4">
@@ -59,8 +74,10 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+
+    </div>
+
     <section id="hero" class="d-flex align-items-center">
 
         <div class="container">
