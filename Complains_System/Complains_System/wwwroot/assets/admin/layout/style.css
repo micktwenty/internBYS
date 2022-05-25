@@ -137,3 +137,44 @@ a {
     left: auto !important;
 }
 
+@media screen and (max-width:1200px) {
+    .this-sidebar {
+        display: none!important;
+    }
+}
+
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1200;
+    transform: translateX(-100%);
+}
+
+.btn-close-nav {
+    font-size: 1.4rem;
+    color: #666;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.over-lay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1100;
+    background-color: rgba(0,0,0,0.3);
+    display: none;
+}
+
+.show_overlay:checked ~ .over-lay {
+    display: block;
+}
+
+.show_overlay:checked ~ .nav-mobile {
+    transform: translateX(0)
+}

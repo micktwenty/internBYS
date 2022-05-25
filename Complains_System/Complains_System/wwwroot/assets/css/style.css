@@ -15,7 +15,7 @@
 }
 .header-title {
     font-size: 26px;
-    /* padding-top: 10px; */
+     padding-top: 10px; 
     font-weight: bold;
     padding-left: 20px;
     text-align: center;
@@ -67,10 +67,10 @@
     font-weight: bold;
 }
 
-/* .form-label{
+ .form-label{
     padding-top: 10px;
     font-weight: bold;
-} */
+} 
 
 .form-title{
     background-color: #2196F3;
@@ -121,6 +121,80 @@
     filter: none;
     transform: scale(1.1);
 }
-/* 
- */
  
+ 
+
+
+/*.title {
+    color: rgb(31, 103, 235);
+}
+
+.body {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-account {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    width: 50% !important;
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+}
+
+.login input:focus {
+    outline: none;
+    color: #444;
+    border-color: #2196f3;
+    border-left-width: 35px;
+}
+
+
+
+
+
+input:focus {
+    transition: 0.5s;
+    border-color: rgb(11, 106, 238);
+}
+
+
+
+.form {
+    width: 80%;
+    flex-direction: column;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.form-create {
+    flex-direction: column;
+}
+
+
+
+.form-label {
+    font-weight: 600;
+}
+
+.btn-create {
+    background-color: #5A92E4 !important;
+    color: #fff;
+    font-weight: 600 !important;
+    width: 100%;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+footer {
+    background-color: rgb(210, 210, 210)
+}*/

@@ -18,9 +18,9 @@
     <link href=@Url.Content("https://cdn.jsdelivr.net/npm/@alphardex/aqua.css@1.5.0/dist/aqua.min.css") rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="row container-fluid">
-        <div class="col-3 this-sidebar">
+        <div class="col-3 this-sidebar ">
             <div class=" container-fluid flex-wrap justify-between">
                 <div class="light-mode mr-4  h-full bg-color flex flex-col justify-between px-6 py-12 overflow-hidden this-margin mb-5">
                     <div>
@@ -31,24 +31,24 @@
                             <div class="drop">
                             <li style="font-weight:600" class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <i class="icon fa-solid fa-user mr-5"></i>Quản lý tài khoản người dùng
+                                <i class="icon fa-solid fa-user mr-1"></i>Quản lý tài khoản người dùng
                             </li>
                             <div class="dropdown-menu dropdown-menu-thongke " aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/Admin/Register">
-                                    <i class="icon fa-solid fa-user-plus mr-5"></i>Tạo
+                                <a style="padding: 0 0 0 5px" class="dropdown-item" href="/Admin/Register">
+                                    <i class="icon fa-solid fa-user-plus mr-1"></i>Tạo
                                     tài khoản người dùng
                                 </a>
-                                <a class="dropdown-item" href="/Admin/user-manager">
-                                    <i class="icon fa-solid fa-user-gear mr-5"></i>Xem
+                                <a style="padding: 0 0 0 5px" class="dropdown-item" href="/Admin/user-manager">
+                                    <i class="icon fa-solid fa-user-gear mr-1"></i>Xem
                                     và chỉnh sửa tài khoản
                                 </a>
                             </div>
                     </div>
                     <div class="drop">
-                        <li style="font-weight:600" class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon fa-solid fa-people-roof mr-5"></i>Quản lý phòng ban</li>
+                        <li style="font-weight:600" class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon fa-solid fa-people-roof mr-1"></i>Quản lý phòng ban</li>
                         <div class="dropdown-menu dropdown-menu-thongke " aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="/new-department"><i class="icon fa-solid fa-building-user mr-5"></i>Tạo phòng ban mới</a>
-                            <a class="dropdown-item" href="/manage-department"><i class="icon fa-solid fa-building mr-5"></i>Xem và chỉnh sửa phòng ban</a>
+                            <a style="padding: 0 0 0 5px" class="dropdown-item" href="/new-department"><i class="icon fa-solid fa-building-user mr-1"></i>Tạo phòng ban mới</a>
+                            <a style="padding: 0 0 0 5px" class="dropdown-item" href="/manage-department"><i class="icon fa-solid fa-building mr-1"></i>Xem và chỉnh sửa phòng ban</a>
                         </div>
 
                         </ul>
@@ -58,27 +58,68 @@
 
             </div>
         </div>
-        <div class="col-9 mb-5">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xl-9 mb-5 this-main">
             <div id="content-wrapper" class="d-flex flex-column">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <label for="nav-mobile-input" id="sidebarToggleTop" class="btn btn-link d-xl-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button>
+                    </label>
 
+                    <input hidden class="form-check-input show_overlay" type="checkbox" value="" id="nav-mobile-input">
+                    <label for="nav-mobile-input" class="over-lay">
+
+                    </label>
+                    <div class="nav-mobile light-mode mr-4  h-full bg-color flex flex-col justify-between px-6 py-12 overflow-hidden this-margin mb-5">
+                        <div>
+                            <label for="nav-mobile-input" class="btn-close-nav">
+                                <i class="fa-solid fa-xmark"></i>
+
+                            </label>
+                            <img src="~/ImgComplains/Component 1.png" class="img-fluid" alt="">
+
+                            <ul class="menu mt-6">
+                                @*<li class="menu-item active"><a asp-area="admin" asp-action="register" asp-controller="UsersManagement"><i class="icon fas fa-user mr-5"></i>Tạo tài khoản sinh viên</a></li>*@
+                                <div class="drop">
+                                <li style="font-weight:600" class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon fa-solid fa-user mr-1"></i>Quản lý tài khoản người dùng
+                                </li>
+                                <div style="width: 100%; position:relative" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                    <a style="padding: 0 0 0 5px" class="dropdown-item" href="/Admin/Register">
+                                        <i class="icon fa-solid fa-user-plus mr-1"></i>Tạo
+                                        tài khoản người dùng
+                                    </a>
+                                    <a style="padding: 0 0 0 5px" class="dropdown-item" href="/Admin/user-manager">
+                                        <i class="icon fa-solid fa-user-gear mr-1"></i>Xem
+                                        và chỉnh sửa tài khoản
+                                    </a>
+                                </div>
+                        </div>
+                        <div class="drop">
+                            <li style="font-weight:600" class="menu-item  dropdown-toggle " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon fa-solid fa-people-roof mr-1"></i>Quản lý phòng ban</li>
+                            <div style="width:100%; position:relative" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <a style="padding: 0 0 0 5px" class="dropdown-item" href="/new-department"><i class="icon fa-solid fa-building-user mr-1"></i>Tạo phòng ban mới</a>
+                                <a style="padding: 0 0 0 5px" class="dropdown-item" href="/manage-department"><i class="icon fa-solid fa-building mr-1"></i>Xem và chỉnh sửa phòng ban</a>
+                            </div>
+
+                            </ul>
+                        </div>
+
+                    </div>
                     <!-- Topbar Search -->
                     <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                      <div class="input-group">
-                        <input id="search-height" type="text" class="form-control bg-light border-0 small"
-                          placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                          <button id="btn-search" class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </form> -->
+      <div class="input-group">
+        <input id="search-height" type="text" class="form-control bg-light border-0 small"
+          placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button id="btn-search" class="btn btn-primary" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form> -->
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto" style="margin-left:auto">
 
@@ -144,7 +185,7 @@
 
         </div>
     </div>
-    <div class="footer shadow d-flex justify-content-center align-items-center p-3">
+    <div class="footer shadow d-flex justify-content-center align-items-center p-3 mt-auto">
 
             <p class="m-0">© 2022.Bản quyền Trường Đại học Kinh Tế Đà Nẵng</p>
 
