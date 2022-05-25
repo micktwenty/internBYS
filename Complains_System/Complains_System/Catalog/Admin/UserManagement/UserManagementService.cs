@@ -24,6 +24,8 @@ namespace Complains_System.Catalog.Admin.UserManagement
     public class UserManagementService : IUserManagementService
     {
         private readonly UserManager<AppUser> _usermanager;
+
+
         private readonly ComplainsDbContext _context;
         private readonly IStorageService _storageService;
         private readonly IConfiguration _configuration;
@@ -355,7 +357,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
         }
         public async Task<bool> ResetPassword(string username)
         {
-            var user = await _usermanager.FindByNameAsync(username);
+            var user = await _context.AppUsers.FirstOrDefaultAsync(x => x.UserName == username);
             var code = await _usermanager.GeneratePasswordResetTokenAsync(user);
             var result = await _usermanager.ResetPasswordAsync(user, code, "Mis@2022");
             if (result.Succeeded)
