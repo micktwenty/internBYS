@@ -52,6 +52,16 @@ namespace Complains_System.Areas.Admin.Controllers
         public async Task<IActionResult> ResetPassword(string id)
         {
             var data = await _userManagementService.ResetPassword(id);
+            string message;
+            if (data)
+            {
+                message = "Thành công!";
+            }
+            else
+            {
+                message = "Không thành công!";
+            }
+            TempData["Noti"] = message;
             return RedirectToAction("usermanager");
         }
         [HttpGet("register")]
@@ -104,9 +114,19 @@ namespace Complains_System.Areas.Admin.Controllers
                     }
                 }
             }
+            string message;
+            if (result)
+            {
+                message = "Thành công!";
+            }
+            else
+            {
+                message = "Không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("usermanager");
 
-           
-            return Ok(result);
+        
         }
         [HttpGet("user-manager")]
 
@@ -126,15 +146,25 @@ namespace Complains_System.Areas.Admin.Controllers
             return View(data.OrderBy(x => x.username).ToList());
         }
         [HttpPost("Register-by-Excel-stu")]
-        public async Task<bool> RegisterbyExcelforStu([FromForm]IFormFileCollection files)
+        public async Task<IActionResult> RegisterbyExcelforStu([FromForm]IFormFileCollection files)
         {
             IFormFile file = files[0];
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var result = await _userManagementService.RegisterbyExcelStu(file);
-                return result;
+            string message;
+            if (result)
+            {
+                message = "Tạo mới thành công!";
+            }
+            else
+            {
+                message = "Tạo mới không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("Register");
         }
         [HttpPost("register-by-normal-stu")]
-        public async Task<bool> RegisterforStu([FromForm]IFormCollection frm)
+        public async Task<IActionResult> RegisterforStu([FromForm]IFormCollection frm)
         {
             var request = new RegisterRequest()
             {
@@ -148,7 +178,17 @@ namespace Complains_System.Areas.Admin.Controllers
             };
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var result = await _userManagementService.Register(request);
-            return result;
+            string message;
+            if (result)
+            {
+                message = "Tạo mới thành công!";
+            }
+            else
+            {
+                message = "Tạo mới không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("Register");
         }
         [HttpPost("register-director")]
         public async Task<IActionResult> RegisterforDirector([FromForm] IFormCollection frm)
@@ -176,15 +216,25 @@ namespace Complains_System.Areas.Admin.Controllers
             return RedirectToAction("Register");
         }
         [HttpPost("Register-by-Excel-emp")]
-        public async Task<bool> RegisterbyExcelforEmployee([FromForm] IFormFileCollection emp_files)
+        public async Task<IActionResult> RegisterbyExcelforEmployee([FromForm] IFormFileCollection emp_files)
         {
             IFormFile file = emp_files[0];
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var result = await _userManagementService.RegisterbyExcelEmp(file);
-            return result;
+            string message;
+            if (result)
+            {
+                message = "Tạo mới thành công!";
+            }
+            else
+            {
+                message = "Tạo mới không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("Register");
         }
         [HttpPost("register-by-normal-emp")]
-        public async Task<bool> RegisterforEmployee([FromForm] IFormCollection frm)
+        public async Task<IActionResult> RegisterforEmployee([FromForm] IFormCollection frm)
         {
             var request = new RegisterRequest()
             {
@@ -197,7 +247,17 @@ namespace Complains_System.Areas.Admin.Controllers
             };
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var result = await _userManagementService.Register(request);
-            return result;
+            string message;
+            if (result)
+            {
+                message = "Tạo mới thành công!";
+            }
+            else
+            {
+                message = "Tạo mới không thành công";
+            }
+            TempData["Noti"] = message;
+            return RedirectToAction("Register");
         }
         [HttpGet("disable-acc")]
         public async Task<IActionResult> disable(string id)
