@@ -216,7 +216,19 @@ span {
 
 
 #blah {
-    max-width: 350px;
+    max-width: 600px;
+}
+
+@media (max-width:990px){
+    #blah{
+        width: 350px;
+    }
+}
+
+@media (max-width:440px){
+    #blah{
+        width:230px;
+    }
 }
 
 input[type=file] {
@@ -1137,6 +1149,9 @@ hr{
 @media (max-width:992px) {
         .nav-bar-btn {
             display: block !important;
+            position:absolute;
+            top:5px;
+            left:5px;
         }
     }
 
