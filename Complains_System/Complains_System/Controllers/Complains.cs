@@ -27,8 +27,6 @@ namespace Complains_System.Controllers
 
         private readonly UserManager<AppUser> _usermanager;
 
-        //private readonly Complains_DUEContext _context;
-
         public Complains(IComplainsManagement complainsManagement, IDepartmentService departmentService, UserManager<AppUser> usermanager, IUserService userService)
         {
             _complainsManagement = complainsManagement;
