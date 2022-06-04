@@ -14,6 +14,16 @@ namespace Complains_System.Configurations
         {
             entity.ToTable("AppUserRoles");
 
+            entity.Property(x => x.username)
+                .HasColumnType("nvarchar(450)")
+                .HasColumnName("Username")
+                .IsRequired();
+            entity.HasOne(x => x.AppUser)
+                .WithMany(y => y.AppUserRoles)
+                .HasForeignKey(z => z.username);
+            entity.HasOne(x => x.AppRole)
+                .WithMany(y => y.AppUserRole)
+                .HasForeignKey(z => z.RoleId);
 
 
 

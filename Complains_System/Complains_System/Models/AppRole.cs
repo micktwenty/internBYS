@@ -11,6 +11,7 @@ namespace Complains_System.Models
     public class AppRole : IdentityRole
     {
         public string Description { get; set; }
+        public ICollection<AppUserRole> AppUserRole { get; set; }
 
 
     }

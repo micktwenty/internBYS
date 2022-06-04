@@ -110,7 +110,7 @@ namespace Complains_System.Catalog.Complains.management
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<string> EditCraft(EditDraftRequest request)
+        public async Task<string> EditDraft(EditDraftRequest request)
         {
             var complain = await _context.Complains.FindAsync(request.IdComplain);
 
@@ -145,6 +145,10 @@ namespace Complains_System.Catalog.Complains.management
             }
             _context.Complains.Update(complain);
             var result = await _context.SaveChangesAsync();
+            if (result > 0)
+            {
+                return request.IdComplain.ToString();
+            }
             return result.ToString();
 
         }

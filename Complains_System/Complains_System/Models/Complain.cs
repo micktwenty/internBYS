@@ -19,7 +19,7 @@ namespace Complains_System.Models
         public bool IsPublic { get; set; }
         public string Status { get; set; }
         public int? employee_reply { get; set; }
-        
+
         public Department Department { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Student IdStudentNavigation { get; set; }

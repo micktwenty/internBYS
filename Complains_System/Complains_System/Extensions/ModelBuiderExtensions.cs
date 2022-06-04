@@ -136,12 +136,14 @@ namespace Complains_System.Extensions
             modelBuilder.Entity<AppUserRole>().ToTable("AppUserRoles").HasData(new AppUserRole
             {
                 RoleId = roleId,
-                UserId = adminId
+                UserId = adminId,
+                username = "admin"
             },
             new AppUserRole
             {
                 RoleId = "A639AE1A-D634-455C-BC58-E68883695BE2",
-                UserId = "D7109CE2-34E7-4736-9687-4418A3973285"
+                UserId = "D7109CE2-34E7-4736-9687-4418A3973285",
+                username = "ngmanhtoan@due.udn.vn"
             });
         }
     }
