@@ -57,18 +57,6 @@ namespace Complains_System.Controllers
             var pageSize = 6;
             return View(lstComplains.OrderByDescending(x => x.Date).ToPagedList(pageNumber,pageSize));
         }
-        public async Task<IActionResult> Details(int id)
-        {
-
-
-            var detailsComplain = await _complains.GetbyId(id);
-            return View(detailsComplain);
-        }
-        [Authorize(Roles ="employee")]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

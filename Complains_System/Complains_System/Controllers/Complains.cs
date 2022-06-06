@@ -275,7 +275,7 @@ namespace Complains_System.Controllers
                 return BadRequest();
             }
             var complain = await _complainsManagement.GetbyId(Convert.ToInt32(ComplainID));
-            return Ok(complain);
+            return RedirectToAction("Getmydraftcomplain");
         }
 
         [Authorize(Roles = "employee")]

@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace Complains_System.Controllers
 {
     [Route("[controller]")]
-    //[ApiController]
+
     public class UsersController : Controller
     {
         private readonly IUserService _userService;
@@ -49,7 +49,8 @@ namespace Complains_System.Controllers
       
             return View();
         }
-        //[HttpGet("change-password")]
+        [HttpGet("change-password")]
+        [Authorize(Roles = "employee, admin, student, board_of_director")]
         public ViewResult ChangePass()
         {
             return View();
@@ -79,7 +80,7 @@ namespace Complains_System.Controllers
                 }
             }
            
-            return Content(string.Join(";",validateresult.Errors));
+            return RedirectToAction("ChangePass_process");
         }
 
         [HttpPost("authenticate")]
@@ -109,7 +110,6 @@ namespace Complains_System.Controllers
                     return RedirectToAction("Login");
                 }
                 await HttpContext.SignInAsync(result);
-               
                 return RedirectToAction("Index", "Home");
             }
 
