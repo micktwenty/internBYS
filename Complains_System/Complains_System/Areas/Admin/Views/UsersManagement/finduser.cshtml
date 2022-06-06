@@ -22,7 +22,7 @@
 
 <body>
     <div class="d-flex align-items-center">
-        <div class="col-8">
+        <div class="col-8 mb-3">
             <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" asp-action="finduser" asp-controller="UsersManagement" method="post">
                 <div class="input-group">
                     <input id="search-height" type="text" class="form-control bg-light border-0 small"
@@ -35,13 +35,18 @@
                 </div>
             </form>
         </div>
-        
+
 
     </div>
 
 
-    <div class="row mr-4 ml-4 mt-3">
-        <table class="table table-hover table-bordered">
+    @if (TempData["Noti"] != null)
+    {
+        <partial name="_statusMessage" model="@TempData["Noti"]" />
+        <div hidden> @TempData.Remove("Noti");</div>
+    }
+    <div class="row mr-4 ml-4">
+        <table class="table table-responsive-sm table-hover table-bordered">
             <thead>
                 <tr class="table-info">
                     <th scope="col">Tên tài khoản</th>
@@ -53,19 +58,23 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <th scope="row">@item.username</th>
-                    <td>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                            <label class="custom-control-label" for="customSwitch1"></label>
-                        </div>
-                    </td>
-                    <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><label for="nav-input" class="btn btn-primary">Cấp quyền</label></a></td>
-                    <td><a asp-action="ResetPassword" asp-controller="UsersManagement" asp-route-id="@item.username"><button class="btn btn-danger">Đặt lại mật khẩu</button></a></td>
-                    <td><a asp-action="delete" asp-controller="UsersManagement" asp-route-id="@item.username"><button class="btn btn-danger">Xoá</button></a></td>
+                    <tr>
+                        <th scope="row">@item.username</th>
+                        <td>
+                            @if (!item.isActived)
+                            {
+                                <a style="color:black" asp-action="enable" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-lock"></i></a>
+                            }
+                            else
+                            {
+                                <a class="table-icon" asp-action="disable" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-lock-open"></i></a>
+                            }
+                        </td>
+                        <td><a asp-action="Permiting" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-users-gear"></i></a></td>
+                        <td><a asp-action="ResetPassword" asp-controller="UsersManagement" asp-route-id="@item.username"><i class="table-icon fa-solid fa-key"></i></a></td>
+                        <td><a asp-action="delete" asp-controller="UsersManagement" asp-route-id="@item.username"><i class=" table-icon fa-solid fa-trash"></i></a></td>
 
-                </tr>
+                    </tr>
 
                 }
             </tbody>
