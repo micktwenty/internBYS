@@ -168,7 +168,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     }
 
                     if (user == null) return false;
-                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_employee}')";
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID,USERNAME) VALUES('{user.Id}','{SystemConstants.roleId_employee}','{request.Email}')";
                     var add = 0;
                     var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
                     using (var connection = new SqlConnection(connectionString))
@@ -209,7 +209,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     if (!result.Succeeded) return false;
 
                     if (user == null) return false;
-                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_student}')";
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID,USERNAME) VALUES('{user.Id}','{SystemConstants.roleId_student}','{request.IdStudent}')";
                     var add = 0;
                     var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
                     using (var connection = new SqlConnection(connectionString))
@@ -248,7 +248,7 @@ namespace Complains_System.Catalog.Admin.UserManagement
                     if (!result.Succeeded) return false;
 
                     if (user == null) return false;
-                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{user.Id}','{SystemConstants.roleId_complaint_dep}')";
+                    var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID,USERNAME) VALUES('{user.Id}','{SystemConstants.roleId_complaint_dep}','{request.Email}')";
                     var add = 0;
                     var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
                     using (var connection = new SqlConnection(connectionString))
@@ -407,9 +407,9 @@ namespace Complains_System.Catalog.Admin.UserManagement
             return false;
         }
 
-        public async Task<bool> AddRole(string id_user, string id_role)
+        public async Task<bool> AddRole(string id_user, string id_role, string username)
         {
-            var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID) VALUES('{id_user}','{id_role}')";
+            var sql = $"INSERT INTO APPUSERROLES (USERID,ROLEID,USERNAME) VALUES('{id_user}','{id_role}','{username}')";
             var add = 0;
             var connectionString = _configuration.GetConnectionString(SystemConstants.MainConnectionString);
             using (var connection = new SqlConnection(connectionString))

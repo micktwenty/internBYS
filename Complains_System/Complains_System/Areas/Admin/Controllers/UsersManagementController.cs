@@ -101,7 +101,7 @@ namespace Complains_System.Areas.Admin.Controllers
                    var check = await _userManagementService.IsInRole(user,item.id);
                     if (!check)
                     {
-                         result = await _userManagementService.AddRole(user.Id, item.id);
+                         result = await _userManagementService.AddRole(user.Id, item.id,user.UserName);
                     }
                     
                 }

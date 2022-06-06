@@ -339,13 +339,13 @@ namespace Complains_System.Controllers
         [HttpPut]
         public async Task<IActionResult> EditDraft([FromBody]EditDraftRequest request)
         {
-            var EditedResult = await _complainsManagement.EditCraft(request);
+            var EditedResult = await _complainsManagement.EditDraft(request);
             if (EditedResult == "0")
             {
                 return BadRequest();
             }
-
-            return Ok();
+            var complain = await _complainsManagement.GetbyId(Convert.ToInt32(EditedResult));
+            return View("viewdetail", complain);
         }
 
         [Authorize(Roles = "employee")]
