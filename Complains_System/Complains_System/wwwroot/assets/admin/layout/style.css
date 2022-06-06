@@ -178,3 +178,28 @@ a {
 .show_overlay:checked ~ .nav-mobile {
     transform: translateX(0)
 }
+
+
+#blah {
+    max-width: 700px;
+}
+
+@media (max-width:990px) {
+    #blah {
+        width: 450px;
+    }
+}
+
+@media (max-width:600px) {
+    #blah {
+        width: 330px;
+    }
+
+@media (max-width:490px){
+    #blah{
+        width: 190px;   
+    }
+
+    
+}
+
