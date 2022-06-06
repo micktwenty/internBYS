@@ -52,19 +52,19 @@ namespace Complains_System.Catalog.Complains.management
 
 
             };
-            if (request.ThumbnailImage != null)
-            {
-                complain.ImageComplain = new List<ImageComplain>()
-                {
-                    new ImageComplain()
-                    {
-                        content_image = complain.Title,
-                        filesize = Convert.ToInt32(request.ThumbnailImage.Length),
-                        Path_image = await this.SaveFile(request.ThumbnailImage),
+            //if (request.ThumbnailImage != null)
+            //{
+            //    complain.ImageComplain = new List<ImageComplain>()
+            //    {
+            //        new ImageComplain()
+            //        {
+            //            content_image = complain.Title,
+            //            filesize = Convert.ToInt32(request.ThumbnailImage.Length),
+            //            Path_image = await this.SaveFile(request.ThumbnailImage),
     
-                    }
-                };
-            }
+            //        }
+            //    };
+            //}
             _context.Complains.Add(complain);
              await _context.SaveChangesAsync();
             return complain.IdComplains.ToString();

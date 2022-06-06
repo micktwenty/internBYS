@@ -247,7 +247,7 @@ namespace Complains_System.Controllers
         public async Task<IActionResult> replyview(string id)
         {
             var complains = await _complainsManagement.GetbyId(Convert.ToInt32(id));
-            if (complains == null)
+            if (complains == null || complains.Status != "Chờ duyệt")
             {
                 return BadRequest("Cannot find Complains!");
             }
